@@ -1,109 +1,56 @@
 import BracketNode from "./BracketNode";
 
-type Match = {
-    id: number;
+export type BracketMatch = {
+    id: string | number;
     home: string;
     away: string;
     score: string;
 };
 
-export default function Bracket() {
-    // LEFT SIDE
-    const leftRound32: Match[] = Array.from({ length: 8 }).map((_, i) => ({
-        id: i,
-        home: `Đội ${i * 2 + 1}`,
-        away: `Đội ${i * 2 + 2}`,
-        score: "? - ?",
-    }));
+export interface BracketData {
+    roundOf32: BracketMatch[];
+    roundOf16: BracketMatch[];
+    quarterFinals: BracketMatch[];
+    semiFinals: BracketMatch[];
+    final: BracketMatch | null;
+}
 
-    const leftRound16: Match[] = Array.from({ length: 4 }).map((_, i) => ({
-        id: i,
-        home: `Đội thắng ${i * 2 + 1}`,
-        away: `Đội thắng ${i * 2 + 2}`,
-        score: "? - ?",
-    }));
-
-    const leftQuarter: Match[] = Array.from({ length: 2 }).map((_, i) => ({
-        id: i,
-        home: `Đội thắng ${i * 2 + 1}`,
-        away: `Đội thắng ${i * 2 + 2}`,
-        score: "? - ?",
-    }));
-
-    const leftSemi: Match[] = [
-        {
-            id: 1,
-            home: "Đội thắng 1",
-            away: "Đội thắng 2",
-            score: "? - ?",
-        },
-    ];
-
-    // RIGHT SIDE
-    const rightRound32: Match[] = Array.from({ length: 8 }).map((_, i) => ({
-        id: i + 8,
-        home: `Đội ${i * 2 + 17}`,
-        away: `Đội ${i * 2 + 18}`,
-        score: "? - ?",
-    }));
-
-    const rightRound16: Match[] = Array.from({ length: 4 }).map((_, i) => ({
-        id: i,
-        home: `Đội thắng ${i * 2 + 1}`,
-        away: `Đội thắng ${i * 2 + 2}`,
-        score: "? - ?",
-    }));
-
-    const rightQuarter: Match[] = Array.from({ length: 2 }).map((_, i) => ({
-        id: i,
-        home: `Đội thắng ${i * 2 + 1}`,
-        away: `Đội thắng ${i * 2 + 2}`,
-        score: "? - ?",
-    }));
-
-    const rightSemi: Match[] = [
-        {
-            id: 1,
-            home: "Đội thắng 1",
-            away: "Đội thắng 2",
-            score: "? - ?",
-        },
-    ];
-
-    const finalMatch: Match = {
-        id: 999,
-        home: "Nhà vô địch bên trái",
-        away: "Nhà vô địch bên phải",
-        score: "? - ?",
+export default function Bracket({ data }: { data: BracketData }) {
+    // Hàm tự động bổ đôi mảng cho Nhánh Trái và Nhánh Phải
+    const splitData = (arr: BracketMatch[]) => {
+        if (!arr || arr.length === 0) return [[], []]
+        const mid = Math.ceil(arr.length / 2)
+        return [arr.slice(0, mid), arr.slice(mid)]
     };
 
-    return (
-        <div className="overflow-x-auto">
-            <div className="flex justify-center items-center min-w-max px-8 py-8">
+    const [leftRound32, rightRound32] = splitData(data.roundOf32)
+    const [leftRound16, rightRound16] = splitData(data.roundOf16)
+    const [leftQuarter, rightQuarter] = splitData(data.quarterFinals)
+    const [leftSemi, rightSemi] = splitData(data.semiFinals)
 
-                {/* LEFT BRACKET */}
-                <div className="flex">
-                    <BracketColumn
-                        matches={leftRound32}
-                        round="Vòng 32 đội"
-                    />
-                    <BracketColumn
-                        matches={leftRound16}
-                        round="Vòng 16 đội"
-                    />
-                    <BracketColumn
-                        matches={leftQuarter}
-                        round="Tứ kết"
-                    />
-                    <BracketColumn
-                        matches={leftSemi}
-                        round="Bán kết"
-                    />
+    const finalMatch = data.final || {
+        id: 999,
+        home: "TBD",
+        away: "TBD",
+        score: "? - ?"
+    }
+
+    return (
+        <div className="overflow-x-auto no-scrollbar w-full">
+            {/* Định nghĩa chiều cao cố định cho khu vực Bracket (h-[640px]) để justify-around phân rã khoảng cách chuẩn */}
+            <div className="flex justify-center items-center min-w-max px-8 py-4 h-170">
+
+                {/* NHÁNH TRÁI (LEFT SIDE) */}
+                <div className="flex h-full items-center">
+                    {leftRound32.length > 0 && <BracketColumn matches={leftRound32} round="Vòng 32 đội" />}
+                    {leftRound16.length > 0 && <BracketColumn matches={leftRound16} round="Vòng 16 đội" />}
+                    {leftQuarter.length > 0 && <BracketColumn matches={leftQuarter} round="Tứ kết" />}
+                    {leftSemi.length > 0 && <BracketColumn matches={leftSemi} round="Bán kết" />}
                 </div>
 
-                {/* FINAL */}
-                <div className="px-12 flex items-center">
-                    <div className="rounded-xl border border-blue-500/40 bg-blue-900/20 p-4">
+                {/* TRẬN CHUNG KẾT (CENTER) */}
+                <div className="px-6 flex items-center h-full justify-center">
+                    <div className="rounded-xl border border-blue-500/40 bg-blue-900/20 p-5 shadow-[0_0_30px_rgba(59,130,246,0.2)] animate-pulse">
                         <BracketNode
                             home={finalMatch.home}
                             away={finalMatch.away}
@@ -113,47 +60,34 @@ export default function Bracket() {
                     </div>
                 </div>
 
-                {/* RIGHT BRACKET */}
-                <div className="flex flex-row-reverse">
-                    <BracketColumn
-                        matches={rightRound32}
-                        round="Vòng 32 đội"
-                    />
-                    <BracketColumn
-                        matches={rightRound16}
-                        round="Vòng 16 đội"
-                    />
-                    <BracketColumn
-                        matches={rightQuarter}
-                        round="Tứ kết"
-                    />
-                    <BracketColumn
-                        matches={rightSemi}
-                        round="Bán kết"
-                    />
+                {/* NHÁNH PHẢI (RIGHT SIDE - Lật ngược thứ tự cột bằng flex-row-reverse) */}
+                <div className="flex flex-row-reverse h-full items-center">
+                    {rightRound32.length > 0 && <BracketColumn matches={rightRound32} round="Vòng 32 đội" />}
+                    {rightRound16.length > 0 && <BracketColumn matches={rightRound16} round="Vòng 16 đội" />}
+                    {rightQuarter.length > 0 && <BracketColumn matches={rightQuarter} round="Tứ kết" />}
+                    {rightSemi.length > 0 && <BracketColumn matches={rightSemi} round="Bán kết" />}
                 </div>
+
             </div>
         </div>
     );
 }
 
-function BracketColumn({
-    matches,
-    round,
-}: {
-    matches: Match[];
-    round: string;
-}) {
+// Component Cột chứa các trận đấu
+function BracketColumn({ matches, round }: { matches: BracketMatch[]; round: string; }) {
     return (
-        <div className="flex flex-col justify-around gap-6 px-4">
+        // Quan trọng: h-full (chiều cao 100%) kết hợp với flex-col justify-around 
+        // giúp các vòng ít trận tự động giãn cách đều, đối xứng hoàn hảo với vòng nhiều trận.
+        <div className="flex flex-col justify-around h-full py-2 px-4 border-r border-slate-900/50 last:border-0">
             {matches.map((match) => (
-                <BracketNode
-                    key={match.id}
-                    home={match.home}
-                    away={match.away}
-                    score={match.score}
-                    round={round}
-                />
+                <div key={match.id} className="flex items-center justify-center transition-all duration-300 hover:scale-105">
+                    <BracketNode
+                        home={match.home}
+                        away={match.away}
+                        score={match.score}
+                        round={round}
+                    />
+                </div>
             ))}
         </div>
     );

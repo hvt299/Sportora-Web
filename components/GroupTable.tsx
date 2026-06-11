@@ -18,16 +18,16 @@ export default function GroupTable({ data, groupName }: { data: TeamData[], grou
 
     return (
         <div className="w-full overflow-x-auto">
-            {/* Header khớp 100% với yêu cầu */}
+            {/* Header chuẩn tiếng Việt */}
             <div className={`grid ${gridCols} gap-2 text-[10px] text-slate-500 font-bold uppercase tracking-widest px-2 mb-4 text-center`}>
                 <span className="text-left">#</span>
                 <span className="text-left">Đội bóng</span>
-                <span>PL</span>
-                <span>W</span>
-                <span>D</span>
-                <span>L</span>
-                <span>GD</span>
-                <span className="text-white">PTS</span>
+                <span title="Số trận">ST</span>
+                <span title="Thắng">T</span>
+                <span title="Hòa">H</span>
+                <span title="Thua">B</span>
+                <span title="Hiệu số">HS</span>
+                <span className="text-white" title="Điểm">Đ</span>
             </div>
 
             {/* Rows */}
@@ -43,8 +43,8 @@ export default function GroupTable({ data, groupName }: { data: TeamData[], grou
                             }`}
                     >
                         <span className={`font-mono ${(isBest3rdTable && row.pos <= 8) || (!isBest3rdTable && row.pos <= 2)
-                                ? 'text-blue-500'
-                                : 'text-slate-600'
+                            ? 'text-blue-500'
+                            : 'text-slate-600'
                             }`}>
                             {row.pos}
                         </span>
