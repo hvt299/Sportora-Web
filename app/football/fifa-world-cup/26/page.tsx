@@ -1,12 +1,12 @@
-import { getFixtures, getStandings, getNews } from '@/lib/scraper'; // Thêm getNews
+import { getFixtures, getStandings, getNews, getBracket } from '@/lib/scraper';
 import WC26ClientPage from '@/components/WC26ClientPage';
 
 export default async function Page() {
-    // Gọi song song 3 hàm để tối ưu tốc độ tải trang
-    const [matches, standings, news] = await Promise.all([
+    const [matches, standings, news, bracket] = await Promise.all([
         getFixtures(),
         getStandings(),
-        getNews()
+        getNews(),
+        getBracket()
     ]);
 
     return (
@@ -14,6 +14,7 @@ export default async function Page() {
             initialMatches={matches}
             initialStandings={standings}
             initialNews={news}
+            initialBracket={bracket}
         />
     );
 }
