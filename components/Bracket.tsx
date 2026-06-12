@@ -37,7 +37,7 @@ export default function Bracket({ data }: { data: BracketData }) {
     const thirdPlaceMatch = data.thirdPlace;
 
     return (
-        <div className="overflow-x-auto overflow-y-hidden no-scrollbar w-full">
+        <div className="overflow-x-auto overflow-y-hidden w-full scrollbar-thin scrollbar-thumb-sky-900 scrollbar-track-slate-900/50">
             {/* Sử dụng items-stretch và bỏ min-h cứng để các khối kết nối liền mạch */}
             <div className="flex justify-start md:justify-center items-stretch min-w-max px-4 py-8 mx-auto gap-3 md:gap-6">
 
