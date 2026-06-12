@@ -1,55 +1,80 @@
 'use client';
-import { useState, useEffect } from 'react';
+
+import { useEffect, useState } from 'react';
 
 interface CountdownProps {
-    targetDate: string;
+    startDate: string;
+    endDate?: string;
 }
 
-export default function Countdown({ targetDate }: CountdownProps) {
-    const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+export default function Countdown({ startDate, endDate }: CountdownProps) {
+    const [status, setStatus] = useState<'upcoming' | 'live' | 'finished'>('upcoming');
+    const [timeLeft, setTimeLeft] = useState({
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+    });
 
     useEffect(() => {
-        const target = new Date(targetDate).getTime();
-        const interval = setInterval(() => {
-            const now = new Date().getTime();
-            const difference = target - now;
+        const update = () => {
+            const now = Date.now();
+            const start = new Date(startDate).getTime();
+            const end = endDate ? new Date(endDate).getTime() : null;
 
-            if (difference <= 0) {
-                clearInterval(interval);
+            if (now < start) {
+                setStatus('upcoming');
+                const diff = start - now;
+                setTimeLeft({
+                    days: Math.floor(diff / 86400000),
+                    hours: Math.floor((diff % 86400000) / 3600000),
+                    minutes: Math.floor((diff % 3600000) / 60000),
+                    seconds: Math.floor((diff % 60000) / 1000),
+                });
                 return;
             }
 
-            setTimeLeft({
-                days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-                hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-                minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-                seconds: Math.floor((difference % (1000 * 60)) / 1000),
-            });
-        }, 1000);
+            if (end && now <= end) {
+                setStatus('live');
+                const diff = end - now;
+                setTimeLeft({
+                    days: Math.floor(diff / 86400000),
+                    hours: Math.floor((diff % 86400000) / 3600000),
+                    minutes: Math.floor((diff % 3600000) / 60000),
+                    seconds: Math.floor((diff % 60000) / 1000),
+                });
+                return;
+            }
 
+            setStatus('finished');
+        };
+
+        update();
+        const interval = setInterval(update, 1000);
         return () => clearInterval(interval);
-    }, [targetDate]);
+    }, [startDate, endDate]);
 
-    // Helper để thêm số 0 phía trước
-    const pad = (num: number) => num.toString().padStart(2, '0');
+    if (status === 'finished') return null;
 
     return (
-        <div className="flex gap-3 md:gap-6 font-mono text-center">
-            {[
-                { label: 'Ngày', value: timeLeft.days },
-                { label: 'Giờ', value: timeLeft.hours },
-                { label: 'Phút', value: timeLeft.minutes },
-                { label: 'Giây', value: timeLeft.seconds },
-            ].map((item) => (
-                <div key={item.label} className="flex flex-col items-center">
-                    <div className="bg-slate-800 border border-slate-700 w-16 h-16 md:w-24 md:h-24 flex items-center justify-center rounded-2xl text-2xl md:text-4xl font-black text-blue-400 shadow-inner">
-                        {item.value.toString().padStart(2, '0')}
+        <div className="flex flex-col items-center gap-5">
+            <div className="flex gap-3 md:gap-5">
+                {[
+                    ['Ngày', timeLeft.days],
+                    ['Giờ', timeLeft.hours],
+                    ['Phút', timeLeft.minutes],
+                    ['Giây', timeLeft.seconds],
+                ].map(([label, value]) => (
+                    <div key={label} className="text-center">
+                        <div className="w-18 h-18 md:w-24 md:h-24 rounded-3xl bg-black/40 backdrop-blur-xl border border-white/10 flex items-center justify-center text-2xl md:text-4xl font-black text-white">
+                            {String(value).padStart(2, '0')}
+                        </div>
+                        <div className="mt-2 text-[10px] md:text-xs uppercase tracking-widest text-slate-500 font-bold">
+                            {label}
+                        </div>
                     </div>
-                    <span className="text-[10px] md:text-xs uppercase tracking-widest text-slate-500 mt-2 font-bold">
-                        {item.label}
-                    </span>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     );
 }

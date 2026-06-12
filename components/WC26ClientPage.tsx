@@ -7,21 +7,13 @@ import Bracket from '@/components/Bracket';
 import SidebarNews from '@/components/SidebarNews';
 import { NewsItem, MatchItem } from '@/lib/scraper';
 import { useRouter } from 'next/navigation';
+import { tournamentDetails } from '@/data/tournament-details';
 
 const TABS = [
     { id: 'overview', name: 'Tổng quan', icon: Trophy },
     { id: 'fixtures', name: 'Lịch thi đấu', icon: CalendarDays },
     { id: 'standings', name: 'Bảng xếp hạng', icon: Table },
     { id: 'bracket', name: 'Nhánh đấu', icon: GitBranch },
-];
-
-const hostCities = [
-    { city: "New York", country: "USA" }, { city: "Los Angeles", country: "USA" }, { city: "Dallas", country: "USA" },
-    { city: "Houston", country: "USA" }, { city: "Atlanta", country: "USA" }, { city: "Miami", country: "USA" },
-    { city: "Seattle", country: "USA" }, { city: "Boston", country: "USA" }, { city: "Philadelphia", country: "USA" },
-    { city: "Kansas City", country: "USA" }, { city: "San Francisco", country: "USA" },
-    { city: "Toronto", country: "CAN" }, { city: "Vancouver", country: "CAN" },
-    { city: "Mexico City", country: "MEX" }, { city: "Guadalajara", country: "MEX" }, { city: "Monterrey", country: "MEX" },
 ];
 
 type FixturesData = Record<string, Record<string, MatchItem[]>>;
@@ -59,13 +51,14 @@ export default function WC26ClientPage({
     };
 
     const roundData = initialMatches[selectedRound] || {};
+    const details = tournamentDetails.worldCup2026; // Gọi data từ file ngoài
 
     return (
         <div className="min-h-screen bg-black text-white font-wc26">
             {/* Hero Header riêng của WC26 */}
             <section
                 className="h-[40vh] relative flex items-end p-8 border-b border-slate-800 bg-center bg-cover"
-                style={{ backgroundImage: `url('/images/wc26.jpg')` }}
+                style={{ backgroundImage: `url('${details.hero.backgroundImage}')` }}
             >
                 {/* Overlay tối để chữ dễ đọc hơn */}
                 <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent" />
@@ -73,10 +66,10 @@ export default function WC26ClientPage({
                 {/* Nội dung */}
                 <div className="relative z-10">
                     <span className="text-blue-500 font-bold uppercase tracking-widest text-xs mb-2 block">
-                        FIFA Official Tournament
+                        {details.hero.badge}
                     </span>
                     <h1 className="font-display-black text-5xl md:text-7xl italic uppercase tracking-tighter drop-shadow-lg">
-                        FIFA WORLD CUP 2026
+                        {details.hero.title}
                     </h1>
                 </div>
             </section>
@@ -115,48 +108,44 @@ export default function WC26ClientPage({
                                     FIFA
                                 </div>
                                 <h2 className="text-4xl md:text-5xl font-display-black italic uppercase tracking-tighter mb-4 bg-linear-to-r from-blue-400 via-indigo-400 to-cyan-400 bg-clip-text text-transparent relative z-10">
-                                    FIFA World Cup 2026
+                                    {details.overview.title}
                                 </h2>
                                 <p className="text-slate-300 leading-relaxed mb-8 relative z-10">
-                                    FIFA World Cup 2026 là kỳ World Cup lớn nhất trong lịch sử
-                                    bóng đá thế giới với 48 đội tuyển quốc gia tham dự và
-                                    104 trận đấu được tổ chức trên khắp Bắc Mỹ.
-                                    Giải đấu sẽ được đồng tổ chức bởi Hoa Kỳ, Canada và Mexico,
-                                    đánh dấu lần đầu tiên ba quốc gia cùng đăng cai một kỳ World Cup.
+                                    {details.overview.description}
                                 </p>
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 relative z-10">
                                     <div className="bg-slate-950/60 border border-slate-800/80 rounded-xl p-4 backdrop-blur-md hover:border-blue-500/50 transition">
                                         <p className="text-[10px] uppercase text-slate-400 font-bold mb-1">Số đội</p>
-                                        <p className="text-3xl font-bold font-mono text-blue-400">48</p>
+                                        <p className="text-3xl font-bold font-mono text-blue-400">{details.overview.stats.teams}</p>
                                     </div>
                                     <div className="bg-slate-950/60 border border-slate-800/80 rounded-xl p-4 backdrop-blur-md hover:border-blue-500/50 transition">
                                         <p className="text-[10px] uppercase text-slate-400 font-bold mb-1">Trận đấu</p>
-                                        <p className="text-3xl font-bold font-mono text-blue-400">104</p>
+                                        <p className="text-3xl font-bold font-mono text-blue-400">{details.overview.stats.matches}</p>
                                     </div>
                                     <div className="bg-slate-950/60 border border-slate-800/80 rounded-xl p-4 backdrop-blur-md hover:border-blue-500/50 transition">
                                         <p className="text-[10px] uppercase text-slate-400 font-bold mb-1">Thành phố</p>
-                                        <p className="text-3xl font-bold font-mono text-blue-400">16</p>
+                                        <p className="text-3xl font-bold font-mono text-blue-400">{details.overview.stats.cities}</p>
                                     </div>
                                     <div className="bg-slate-950/60 border border-slate-800/80 rounded-xl p-4 backdrop-blur-md hover:border-blue-500/50 transition">
                                         <p className="text-[10px] uppercase text-slate-400 font-bold mb-1">Sân vận động</p>
-                                        <p className="text-3xl font-bold font-mono text-blue-400">16</p>
+                                        <p className="text-3xl font-bold font-mono text-blue-400">{details.overview.stats.stadiums}</p>
                                     </div>
                                 </div>
                             </div>
 
                             {/* TOURNAMENT MESSAGE (Indigo) */}
                             <div className="bg-linear-to-br from-indigo-900/30 to-slate-900/50 border border-indigo-500/20 rounded-3xl p-8 relative overflow-hidden">
-                                <div className="absolute -right-10 -top-10 opacity-10 pointer-events-none text-9xl font-black italic text-indigo-300">
+                                <div className="absolute -right-4 -bottom-6 opacity-5 pointer-events-none text-[180px] font-display-black italic leading-none text-indigo-300">
                                     26
                                 </div>
                                 <h3 className="text-sm font-black text-indigo-400 uppercase tracking-widest mb-2 relative z-10">
                                     Thông điệp chính thức
                                 </h3>
                                 <h2 className="text-4xl font-display-black italic tracking-tighter mb-4 text-white relative z-10">
-                                    WE ARE 26
+                                    {details.message.title}
                                 </h2>
                                 <p className="text-slate-300 leading-relaxed relative z-10 max-w-2xl">
-                                    "WE ARE 26" không chỉ là một khẩu hiệu, mà là lời kêu gọi sự đoàn kết. Ba quốc gia, một lục địa, và toàn bộ thế giới bóng đá cùng hội tụ để tạo nên một lễ hội thể thao vĩ đại nhất, đa dạng nhất và toàn diện nhất từ trước đến nay. Đây là lúc bóng đá vượt qua mọi rào cản biên giới.
+                                    {details.message.description}
                                 </p>
                             </div>
 
@@ -167,63 +156,14 @@ export default function WC26ClientPage({
                                 </div>
                                 <div className="flex justify-between items-center mb-8 relative z-10 border-b border-teal-500/20 pb-4">
                                     <h3 className="text-2xl md:text-3xl font-display-black italic uppercase tracking-tighter text-teal-400">
-                                        48 Đội tuyển tham dự
+                                        {details.overview.stats.teams} Đội tuyển tham dự
                                     </h3>
                                     <span className="text-xs uppercase text-teal-200 font-bold bg-teal-900/50 px-3 py-1 rounded-full border border-teal-500/30 hidden sm:block">
                                         Danh sách chính thức
                                     </span>
                                 </div>
                                 <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-12 gap-3 relative z-10">
-                                    {[
-                                        { name: "Mexico", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6710_xsmall.png" },
-                                        { name: "South Korea", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/7804_xsmall.png" },
-                                        { name: "Czechia", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8496_xsmall.png" },
-                                        { name: "South Africa", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6316_xsmall.png" },
-                                        { name: "Bosnia & Herzegovina", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/10106_xsmall.png" },
-                                        { name: "Canada", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5810_xsmall.png" },
-                                        { name: "Qatar", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5902_xsmall.png" },
-                                        { name: "Switzerland", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6717_xsmall.png" },
-                                        { name: "Brazil", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8256_xsmall.png" },
-                                        { name: "Haiti", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5934_xsmall.png" },
-                                        { name: "Morocco", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6262_xsmall.png" },
-                                        { name: "Scotland", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8498_xsmall.png" },
-                                        { name: "Australia", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6716_xsmall.png" },
-                                        { name: "Paraguay", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6724_xsmall.png" },
-                                        { name: "Türkiye", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6595_xsmall.png" },
-                                        { name: "USA", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6713_xsmall.png" },
-                                        { name: "Curaçao", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/287981_xsmall.png" },
-                                        { name: "Ecuador", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6707_xsmall.png" },
-                                        { name: "Germany", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8570_xsmall.png" },
-                                        { name: "Côte d'Ivoire", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6709_xsmall.png" },
-                                        { name: "Japan", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6715_xsmall.png" },
-                                        { name: "Netherlands", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6708_xsmall.png" },
-                                        { name: "Sweden", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8520_xsmall.png" },
-                                        { name: "Tunisia", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6719_xsmall.png" },
-                                        { name: "Belgium", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8263_xsmall.png" },
-                                        { name: "Egypt", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/10255_xsmall.png" },
-                                        { name: "Iran", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6711_xsmall.png" },
-                                        { name: "New Zealand", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5820_xsmall.png" },
-                                        { name: "Cape Verde", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5888_xsmall.png" },
-                                        { name: "Saudi Arabia", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/7795_xsmall.png" },
-                                        { name: "Spain", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6720_xsmall.png" },
-                                        { name: "Uruguay", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5796_xsmall.png" },
-                                        { name: "France", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6723_xsmall.png" },
-                                        { name: "Iraq", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5819_xsmall.png" },
-                                        { name: "Norway", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8492_xsmall.png" },
-                                        { name: "Senegal", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6395_xsmall.png" },
-                                        { name: "Algeria", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6317_xsmall.png" },
-                                        { name: "Argentina", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6706_xsmall.png" },
-                                        { name: "Austria", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8255_xsmall.png" },
-                                        { name: "Jordan", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5816_xsmall.png" },
-                                        { name: "Colombia", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8258_xsmall.png" },
-                                        { name: "DR Congo", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6321_xsmall.png" },
-                                        { name: "Portugal", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8361_xsmall.png" },
-                                        { name: "Uzbekistan", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8700_xsmall.png" },
-                                        { name: "Croatia", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/10155_xsmall.png" },
-                                        { name: "England", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8491_xsmall.png" },
-                                        { name: "Ghana", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6714_xsmall.png" },
-                                        { name: "Panama", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5922_xsmall.png" }
-                                    ].map((team, idx) => (
+                                    {details.teams.map((team, idx) => (
                                         <div key={idx} className="group relative flex justify-center">
                                             <div className="w-10 h-10 sm:w-12 sm:h-12 bg-slate-950/60 backdrop-blur-md rounded-full p-2 border border-slate-700/80 group-hover:border-teal-400 group-hover:scale-110 group-hover:bg-slate-50 transition-all duration-300 z-10 cursor-pointer shadow-sm shadow-black">
                                                 <img src={team.logo} alt={team.name} className="w-full h-full object-contain" />
@@ -250,7 +190,6 @@ export default function WC26ClientPage({
                                                 <h3 className="text-3xl font-display-black italic uppercase tracking-tighter text-white">{initialBracket.defendingChampion.name}</h3>
                                             </div>
                                         </div>
-                                        {/* Thêm Runner-up (Á Quân) */}
                                         {initialBracket.runnerUp && (
                                             <div className="flex items-center gap-4 sm:border-l sm:border-sky-500/20 sm:pl-6 pt-4 sm:pt-0 w-full sm:w-auto border-t sm:border-t-0 border-sky-500/20">
                                                 <div className="text-left sm:text-right flex-1">
@@ -273,18 +212,12 @@ export default function WC26ClientPage({
                                     Quốc gia đăng cai
                                 </h3>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 relative z-10">
-                                    <div className="bg-slate-950/60 backdrop-blur-md border border-slate-800/80 rounded-2xl p-6 text-center hover:border-purple-500/50 transition">
-                                        <img src="https://images.fotmob.com/image_resources/logo/teamlogo/6713_xsmall.png" alt="USA" className="w-20 h-20 mx-auto mb-4 object-contain" />
-                                        <h4 className="font-display-black italic tracking-tighter text-xl text-white uppercase">Hoa Kỳ</h4>
-                                    </div>
-                                    <div className="bg-slate-950/60 backdrop-blur-md border border-slate-800/80 rounded-2xl p-6 text-center hover:border-purple-500/50 transition">
-                                        <img src="https://images.fotmob.com/image_resources/logo/teamlogo/5810_xsmall.png" alt="Canada" className="w-20 h-20 mx-auto mb-4 object-contain" />
-                                        <h4 className="font-display-black italic tracking-tighter text-xl text-white uppercase">Canada</h4>
-                                    </div>
-                                    <div className="bg-slate-950/60 backdrop-blur-md border border-slate-800/80 rounded-2xl p-6 text-center hover:border-purple-500/50 transition">
-                                        <img src="https://images.fotmob.com/image_resources/logo/teamlogo/6710_xsmall.png" alt="Mexico" className="w-20 h-20 mx-auto mb-4 object-contain" />
-                                        <h4 className="font-display-black italic tracking-tighter text-xl text-white uppercase">Mexico</h4>
-                                    </div>
+                                    {details.hosts.map(host => (
+                                        <div key={host.code} className="bg-slate-950/60 backdrop-blur-md border border-slate-800/80 rounded-2xl p-6 text-center hover:border-purple-500/50 transition">
+                                            <img src={host.logo} alt={host.code} className="w-20 h-20 mx-auto mb-4 object-contain" />
+                                            <h4 className="font-display-black italic tracking-tighter text-xl text-white uppercase">{host.name}</h4>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
 
@@ -298,22 +231,23 @@ export default function WC26ClientPage({
                                         Các thành phố đăng cai
                                     </h3>
                                     <span className="text-xs uppercase text-sky-200 font-bold bg-sky-900/50 px-3 py-1 rounded-full border border-sky-500/30">
-                                        16 Thành phố
+                                        {details.overview.stats.cities} Thành phố
                                     </span>
                                 </div>
                                 <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-sky-900 relative z-10">
-                                    {hostCities.map((city) => (
-                                        <div key={city.city} className="min-w-45 bg-slate-950/60 backdrop-blur-md border border-slate-800/80 rounded-2xl p-4 hover:border-sky-400/50 transition">
-                                            {/* HIỂN THỊ CỜ FOTMOB */}
-                                            <div className="w-8 h-8 mb-3 drop-shadow-md">
-                                                {city.country === "USA" && <img src="https://images.fotmob.com/image_resources/logo/teamlogo/6713_xsmall.png" alt="USA" className="w-full h-full object-contain" />}
-                                                {city.country === "CAN" && <img src="https://images.fotmob.com/image_resources/logo/teamlogo/5810_xsmall.png" alt="Canada" className="w-full h-full object-contain" />}
-                                                {city.country === "MEX" && <img src="https://images.fotmob.com/image_resources/logo/teamlogo/6710_xsmall.png" alt="Mexico" className="w-full h-full object-contain" />}
+                                    {details.hostCities.map((city) => {
+                                        // Tìm kiếm logo tương ứng của quốc gia chứa thành phố đó trong mảng hosts
+                                        const hostCountry = details.hosts.find(h => h.code === city.country);
+                                        return (
+                                            <div key={city.city} className="min-w-45 bg-slate-950/60 backdrop-blur-md border border-slate-800/80 rounded-2xl p-4 hover:border-sky-400/50 transition flex flex-col items-start justify-center">
+                                                <div className="w-8 h-8 mb-3 drop-shadow-md">
+                                                    {hostCountry?.logo && <img src={hostCountry.logo} alt={city.country} className="w-full h-full object-contain" />}
+                                                </div>
+                                                <h4 className="font-bold text-white">{city.city}</h4>
+                                                <p className="text-xs text-sky-200/60 mt-1 uppercase font-bold">{city.country}</p>
                                             </div>
-                                            <h4 className="font-bold text-white">{city.city}</h4>
-                                            <p className="text-xs text-sky-200/60 mt-1 uppercase font-bold">{city.country}</p>
-                                        </div>
-                                    ))}
+                                        );
+                                    })}
                                 </div>
                             </div>
 
@@ -325,13 +259,10 @@ export default function WC26ClientPage({
                                         RULE
                                     </div>
                                     <h3 className="text-2xl font-display-black italic uppercase tracking-tighter text-rose-400 mb-4 relative z-10">
-                                        Thể thức thi đấu
+                                        {details.format.title}
                                     </h3>
                                     <p className="text-slate-300 leading-relaxed text-sm relative z-10">
-                                        48 đội được chia thành 12 bảng, mỗi bảng 4 đội.
-                                        Hai đội dẫn đầu mỗi bảng cùng 8 đội xếp thứ ba xuất sắc nhất
-                                        sẽ tiến vào vòng 32 đội. Từ đây giải đấu tiếp tục theo thể thức
-                                        loại trực tiếp cho tới trận chung kết.
+                                        {details.format.description}
                                     </p>
                                 </div>
 
@@ -346,15 +277,17 @@ export default function WC26ClientPage({
                                     <div className="space-y-4 text-sm font-medium relative z-10">
                                         <div className="flex justify-between border-b border-amber-900/50 pb-3">
                                             <span className="text-amber-200/70">Thời gian</span>
-                                            <span className="text-white">11/06 - 19/07/2026</span>
+                                            <span className="text-white">
+                                                {details.tournamentInfo.startDate.split('-').reverse().join('/')} - {details.tournamentInfo.endDate.split('-').reverse().join('/')}
+                                            </span>
                                         </div>
                                         <div className="flex justify-between border-b border-amber-900/50 pb-3">
                                             <span className="text-amber-200/70">Đội tham dự</span>
-                                            <span className="text-white">48</span>
+                                            <span className="text-white">{details.tournamentInfo.teams}</span>
                                         </div>
                                         <div className="flex justify-between border-b border-amber-900/50 pb-3">
                                             <span className="text-amber-200/70">Tổng trận đấu</span>
-                                            <span className="text-white">104</span>
+                                            <span className="text-white">{details.tournamentInfo.matches}</span>
                                         </div>
                                     </div>
                                 </div>
