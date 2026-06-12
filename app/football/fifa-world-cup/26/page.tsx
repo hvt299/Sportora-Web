@@ -5,10 +5,10 @@ export const dynamic = 'force-dynamic';
 
 export default async function Page() {
     const [matches, standings, news, bracket] = await Promise.all([
-        getFixtures(),
-        getStandings(),
-        getNews(),
-        getBracket()
+        getFixtures(77, "2026"),
+        getStandings(77, "2026"),
+        getNews("World Cup 2026"),
+        getBracket(77, "2026")
     ]);
 
     return (

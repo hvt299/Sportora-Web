@@ -1,21 +1,4 @@
-import axios from 'axios';
-import * as cheerio from 'cheerio';
 import Parser from 'rss-parser';
-
-// Map trạng thái trận đấu
-const periodMap: Record<string, string> = {
-    PRE_MATCH: "Chưa diễn ra",
-    FIRST_HALF: "Hiệp 1",
-    HALF_TIME: "Nghỉ giữa hiệp",
-    SECOND_HALF: "Hiệp 2",
-    EXTRA_TIME_FIRST_HALF: "Hiệp phụ 1",
-    EXTRA_TIME_SECOND_HALF: "Hiệp phụ 2",
-    PENALTY_SHOOTOUT: "Luân lưu",
-    FULL_TIME: "Kết thúc",
-    POSTPONED: "Hoãn",
-    CANCELLED: "Hủy",
-    ABANDONED: "Bị hủy"
-};
 
 export interface MatchItem {
     home: string;
@@ -32,96 +15,89 @@ export interface MatchItem {
     rawPeriod: string;
 }
 
-export async function getFixtures() {
+// Hàm dịch mã đội bóng (Dùng chung cho cả Bracket và Fixtures)
+function translateTeamName(name: string) {
+    if (!name) return "TBD";
+    return name
+        .replace(/Winner EF/g, "Thắng V16 đội")
+        .replace(/Winner QF/g, "Thắng Tứ Kết")
+        .replace(/Winner SF/g, "Thắng Bán Kết")
+        .replace(/Loser SF/g, "Thua Bán Kết")
+        .replace(/Winner/g, "Thắng")
+        .replace(/Loser/g, "Thua");
+}
+
+/**
+ * 1. LẤY LỊCH THI ĐẤU (FIXTURES)
+ */
+export async function getFixtures(leagueId: number | string = 77, season: string = "2026") {
     try {
-        let allLists: any[] = [];
-        let url: string | undefined = "https://api.onefootball.com/web-experience/en/competition/fifa-world-cup-12/fixtures";
+        const url = `https://www.fotmob.com/api/data/leagues?id=${leagueId}&ccode3=VNM&season=${season}`;
+        const response = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" }, next: { revalidate: 60 } });
+        const data: any = await response.json();
 
-        for (let i = 0; i < 5; i++) {
-            if (!url) break;
+        const nestedFixtures: Record<string, Record<string, MatchItem[]>> = {};
+        const allMatches = data?.fixtures?.allMatches || data?.overview?.matches?.allMatches || [];
 
-            // Bổ sung <any> để TypeScript không bắt bẻ cấu trúc phản hồi
-            const response = await axios.get<any>(url, {
-                headers: { "User-Agent": "Mozilla/5.0" },
-            });
+        allMatches.forEach((match: any) => {
+            let roundCategory = "Vòng bảng";
+            if (match.round === "1/16") roundCategory = "Vòng 32 đội";
+            else if (match.round === "1/8") roundCategory = "Vòng 16 đội";
+            else if (match.round === "1/4") roundCategory = "Tứ kết";
+            else if (match.round === "1/2") roundCategory = "Bán kết";
+            else if (match.round === "bronze") roundCategory = "Tranh hạng ba";
+            else if (match.round === "final") roundCategory = "Chung kết";
 
-            // Ép kiểu tường minh : any
-            const data: any = response.data;
-            let currentLists: any[] = [];
-            let nextUrl: string | undefined = undefined;
+            if (!nestedFixtures[roundCategory]) nestedFixtures[roundCategory] = {};
 
-            if (data.containers && Array.isArray(data.containers)) {
-                // Ép kiểu tường minh : any cho container và listComponent
-                const container: any = data.containers.find((c: any) => c.fullWidth?.component?.matchCardsListsAppender);
-                const listComponent: any = container?.fullWidth?.component?.matchCardsListsAppender;
+            // Fallback thời gian phòng hờ Fotmob đổi key
+            const utcTime = match.status?.utcTime || match.matchDate;
+            const dateObj = new Date(utcTime);
 
-                if (listComponent?.lists) {
-                    currentLists = listComponent.lists;
-                }
-                nextUrl = listComponent?.loadMoreButton?.apiUrl;
-            } else if (data.lists && Array.isArray(data.lists)) {
-                currentLists = data.lists;
-                nextUrl = data.loadMoreButton?.apiUrl;
+            const dateKey = dateObj.toLocaleString("en-GB", { timeZone: "Asia/Ho_Chi_Minh", day: "2-digit", month: "2-digit", year: "numeric" });
+            const timeStr = dateObj.toLocaleTimeString("en-GB", { timeZone: "Asia/Ho_Chi_Minh", hour: "2-digit", minute: "2-digit" });
+
+            if (!nestedFixtures[roundCategory][dateKey]) nestedFixtures[roundCategory][dateKey] = [];
+
+            const isStarted = match.status?.started ?? false;
+            const isFinished = match.status?.finished ?? false;
+            const isCancelled = match.status?.cancelled ?? false;
+
+            let live = false;
+            let mappedStatus = "Chưa diễn ra";
+            let minute = null;
+            let score = null; // Mặc định là null để UI hiện thời gian
+
+            if (isCancelled) {
+                mappedStatus = "Hủy";
+            } else if (isFinished) {
+                mappedStatus = "Kết thúc";
+            } else if (isStarted && !isFinished) {
+                live = true;
+                mappedStatus = "Đang diễn ra";
+                minute = match.status?.liveTime?.short || match.status?.reason?.short || "LIVE";
             }
 
-            allLists.push(...currentLists);
-            url = nextUrl;
-        }
-
-        const nestedFixtures: Record<string, Record<string, any[]>> = {};
-
-        allLists.forEach((list: any) => {
-            if (!list.sectionHeader?.subtitle || !list.matchCards || list.matchCards.length === 0) return;
-
-            const roundName: string = list.sectionHeader.subtitle;
-
-            if (!nestedFixtures[roundName]) {
-                nestedFixtures[roundName] = {};
+            // BẢO MẬT HIỂN THỊ: Chỉ gán điểm số nếu trận đấu thực sự đã bắt đầu hoặc kết thúc
+            if (isStarted || isFinished) {
+                // Ưu tiên lấy scoreStr (ví dụ: "2 - 1"), nếu không có thì tự ghép từ điểm 2 đội
+                score = match.status?.scoreStr ??
+                    (match.home?.score != null && match.away?.score != null ? `${match.home.score} - ${match.away.score}` : null);
             }
 
-            list.matchCards.forEach((match: any) => {
-                const dateObj = new Date(match.kickoff);
-
-                const dateKey = dateObj.toLocaleString("en-GB", {
-                    timeZone: "Asia/Ho_Chi_Minh",
-                    day: "2-digit",
-                    month: "2-digit",
-                    year: "numeric",
-                });
-
-                const timeStr = dateObj.toLocaleString("en-GB", {
-                    timeZone: "Asia/Ho_Chi_Minh",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                });
-
-                if (!nestedFixtures[roundName][dateKey]) {
-                    nestedFixtures[roundName][dateKey] = [];
-                }
-
-                const isDuplicate = nestedFixtures[roundName][dateKey].find(
-                    (m: any) => m.home === match.homeTeam?.name && m.away === match.awayTeam?.name
-                );
-
-                if (!isDuplicate) {
-                    const isLive = match.period !== "PRE_MATCH" && match.period !== "FULL_TIME" && match.period !== "POSTPONED" && match.period !== "CANCELLED";
-                    const mappedPeriod = periodMap[match.period] || match.period;
-
-                    nestedFixtures[roundName][dateKey].push({
-                        home: match.homeTeam?.name || "Unknown",
-                        away: match.awayTeam?.name || "Unknown",
-                        homeLogo: match.homeTeam?.imageObject?.path,
-                        awayLogo: match.awayTeam?.imageObject?.path,
-                        time: timeStr,
-                        date: dateKey,
-                        status: mappedPeriod,
-                        score: match.homeTeam?.score != null ? `${match.homeTeam.score} - ${match.awayTeam.score}` : null,
-                        round: roundName,
-                        live: isLive,
-                        minute: match.timePeriod ?? null,
-                        rawPeriod: match.period
-                    });
-                }
+            nestedFixtures[roundCategory][dateKey].push({
+                home: translateTeamName(match.home?.name),
+                away: translateTeamName(match.away?.name),
+                homeLogo: match.home?.id ? `https://images.fotmob.com/image_resources/logo/teamlogo/${match.home.id}.png` : undefined,
+                awayLogo: match.away?.id ? `https://images.fotmob.com/image_resources/logo/teamlogo/${match.away.id}.png` : undefined,
+                time: timeStr,
+                date: dateKey,
+                status: mappedStatus,
+                score: score,
+                round: roundCategory,
+                live: live,
+                minute: minute,
+                rawPeriod: match.status?.reason?.short || ""
             });
         });
 
@@ -132,128 +108,209 @@ export async function getFixtures() {
     }
 }
 
-export async function getStandings() {
+/**
+ * 2. LẤY BẢNG XẾP HẠNG (STANDINGS)
+ */
+export async function getStandings(leagueId: number | string = 77, season: string = "2026") {
     try {
-        // Lấy dữ liệu trực tiếp từ API Table
-        const response = await axios.get<any>('https://api.onefootball.com/web-experience/en/competition/fifa-world-cup-12/table', {
-            headers: { "User-Agent": "Mozilla/5.0" },
-        });
-
-        const data: any = response.data;
+        const url = `https://www.fotmob.com/api/data/leagues?id=${leagueId}&ccode3=VNM&season=${season}`;
+        const response = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" }, next: { revalidate: 60 } });
+        const data: any = await response.json();
         const standings: Record<string, any[]> = {};
 
-        if (data.containers && Array.isArray(data.containers)) {
-            data.containers.forEach((container: any) => {
-                // Trỏ đúng vào component standings
-                const standingsComponent: any = container?.fullWidth?.component?.standings;
+        if (data?.table?.[0]?.data?.tables) {
+            data.table[0].data.tables.forEach((groupData: any) => {
+                const rawName = groupData.leagueName || "";
+                if (!rawName) return;
 
-                if (!standingsComponent || !standingsComponent.title || !standingsComponent.rows) return;
-
-                // API trả về title: "Group Group A" hoặc "Group Best 3rd placed teams "
-                // Ta dùng Regex xóa chữ "Group" để lấy tên bảng cho đẹp (VD: "A", "Best 3rd placed teams")
-                const groupName = standingsComponent.title.replace(/Group/ig, "").trim();
-
+                const groupName = rawName.replace(/Grp\.\s*/i, "").trim();
                 if (!standings[groupName]) standings[groupName] = [];
 
-                standingsComponent.rows.forEach((row: any) => {
+                const rows = groupData.table?.all || [];
+                rows.forEach((row: any) => {
                     standings[groupName].push({
-                        pos: row.position || 0,
-                        team: row.teamName || "Unknown",
-                        logo: row.imageObject?.path || "",
-                        // Các chỉ số như w, d, l nếu API không trả về nghĩa là 0
-                        pl: row.playedMatchesCount || 0,
-                        w: row.wonMatchesCount || 0,
-                        d: row.drawnMatchesCount || 0,
-                        l: row.lostMatchesCount || 0,
-                        gd: row.goalsDiff ?? 0, // Dùng ?? vì hiệu số có thể là 0
-                        pts: row.points || 0,
+                        pos: row.idx || 0,
+                        team: row.name || "Unknown",
+                        logo: `https://images.fotmob.com/image_resources/logo/teamlogo/${row.id}.png`,
+                        pl: row.played || 0,
+                        w: row.wins || 0,
+                        d: row.draws || 0,
+                        l: row.losses || 0,
+                        scoresStr: row.scoresStr || "0-0",
+                        gd: row.goalConDiff ?? 0,
+                        pts: row.pts || 0,
+                        qualColor: row.qualColor || null
                     });
                 });
             });
         }
-
         return standings;
     } catch (error) {
-        console.error("Lỗi cào dữ liệu Standings API:", error);
+        console.error("Lỗi cào dữ liệu Standings:", error);
         return {};
     }
 }
 
-// Thêm hàm lấy dữ liệu Bracket
-export async function getBracket() {
+/**
+ * 3. LẤY NHÁNH ĐẤU (BRACKET) VÀ LỊCH SỬ NHÀ VÔ ĐỊCH
+ */
+export async function getBracket(leagueId: number | string = 77, season: string = "2026") {
     try {
-        const { data } = await axios.get<any>('https://api.onefootball.com/web-experience/en/competition/fifa-world-cup-12/kotree', {
-            headers: { "User-Agent": "Mozilla/5.0" },
+        const url = `https://www.fotmob.com/api/data/leagues?id=${leagueId}&ccode3=VNM&season=${season}`;
+        const response = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" }, next: { revalidate: 60 } });
+        const data: any = await response.json();
+
+        const rounds = data?.playoff?.rounds || [];
+        const specials = data?.playoff?.special || [];
+        const allRounds = [...rounds, ...specials];
+
+        // Lấy tên nhà vô địch mùa hiện tại (Nếu đã kết thúc)
+        const seasonIndex = data?.seasons?.findIndex((s: any) => s.seasonName.includes(season));
+        // Lấy tên nhà vô địch mùa hiện tại (Nếu đã kết thúc)
+        const currentSeasonObj = data?.seasons?.find((s: any) => s.seasonName.includes(season));
+        const championName = currentSeasonObj?.winner?.name || null;
+
+        // TÌM LỊCH SỬ: Lấy mùa giải diễn ra ngay trước năm được truyền vào
+        const targetYear = parseInt(season.substring(0, 4)) || 2026;
+        const prevSeasonObj = data?.seasons?.find((s: any) => {
+            const historyYear = parseInt(s.seasonName.substring(0, 4));
+            return historyYear < targetYear;
         });
 
-        // Tìm container chứa knockoutTree
-        const container = data.containers?.find((c: any) => c.fullWidth?.component?.knockoutTree);
-        const stages = container?.fullWidth?.component?.knockoutTree?.stages || [];
+        const defendingChampion = prevSeasonObj?.winner ? {
+            name: translateTeamName(prevSeasonObj.winner.name),
+            logo: `https://images.fotmob.com/image_resources/logo/teamlogo/${prevSeasonObj.winner.id}.png`
+        } : null;
 
-        // Hàm helper để map từng stage
-        const getStageNodes = (keyword: string) => {
-            const stage = stages.find((s: any) => s.label?.text?.toLowerCase().includes(keyword.toLowerCase()));
-            if (!stage) return [];
+        const runnerUp = prevSeasonObj?.loser ? {
+            name: translateTeamName(prevSeasonObj.loser.name),
+            logo: `https://images.fotmob.com/image_resources/logo/teamlogo/${prevSeasonObj.loser.id}.png`
+        } : null;
 
-            return stage.nodes.map((node: any) => {
-                const homeScore = node.firstTeam?.score;
-                const awayScore = node.secondTeam?.score;
+        // BÍ QUYẾT: Lấy mảng lịch thi đấu CHUẨN XÁC NHẤT để đối chiếu
+        const allMatches = data?.fixtures?.allMatches || data?.overview?.matches?.allMatches || [];
 
-                // Nếu chưa đá thì hiện giờ, nếu có tỷ số thì hiện tỷ số
-                let score = "? - ?";
-                if (homeScore != null && awayScore != null) {
-                    score = `${homeScore} - ${awayScore}`;
-                } else if (node.kickoffTimeFormatted) {
-                    score = node.kickoffTimeFormatted;
+        const getStageNodes = (stageId: string) => {
+            const round = allRounds.find((r: any) => r.stage === stageId);
+            if (!round) return [];
+
+            return round.matchups.map((matchup: any) => {
+                const matchObj = matchup.matches?.[0] || {};
+                const matchId = matchObj.matchId || matchObj.matchID;
+
+                const realMatchData = allMatches.find((m: any) => String(m.id) === String(matchId));
+
+                const homeName = translateTeamName(matchObj.home?.name || matchObj.homeTeam || matchup.homeTeam);
+                const awayName = translateTeamName(matchObj.away?.name || matchObj.awayTeam || matchup.awayTeam);
+                const homeId = matchObj.home?.id || matchObj.homeTeamID || matchup.homeTeamId;
+                const awayId = matchObj.away?.id || matchObj.awayTeamID || matchup.awayTeamId;
+
+                const statusSource = realMatchData?.status || matchObj.status || matchObj;
+                const started = statusSource.started ?? false;
+                const finished = statusSource.finished ?? false;
+
+                const hScore = realMatchData?.home?.score ?? matchObj.home?.score ?? matchObj.homeScore;
+                const aScore = realMatchData?.away?.score ?? matchObj.away?.score ?? matchObj.awayScore;
+
+                let score = null;
+                if ((started || finished) && hScore != null && aScore != null) {
+                    score = `${hScore} - ${aScore}`;
+                }
+
+                let time = null;
+                const utcTime = realMatchData?.status?.utcTime || matchObj.status?.utcTime || matchObj.matchDate;
+                if (utcTime) {
+                    const dateObj = new Date(utcTime);
+                    const h = dateObj.toLocaleTimeString("en-GB", { timeZone: "Asia/Ho_Chi_Minh", hour: "2-digit", minute: "2-digit" });
+                    const d = dateObj.toLocaleDateString("en-GB", { timeZone: "Asia/Ho_Chi_Minh", day: "2-digit", month: "2-digit" });
+                    time = `${h} - ${d}`;
                 }
 
                 return {
-                    id: node.uiKey || Math.random().toString(),
-                    home: node.firstTeam?.name || "TBD",
-                    away: node.secondTeam?.name || "TBD",
+                    id: matchId || Math.random().toString(),
+                    home: homeName,
+                    away: awayName,
+                    homeLogo: homeId ? `https://images.fotmob.com/image_resources/logo/teamlogo/${homeId}.png` : undefined,
+                    awayLogo: awayId ? `https://images.fotmob.com/image_resources/logo/teamlogo/${awayId}.png` : undefined,
                     score: score,
+                    time: time,
                 };
             });
         };
 
         return {
-            roundOf32: getStageNodes('32'),
-            roundOf16: getStageNodes('16'),
-            quarterFinals: getStageNodes('quarter'),
-            semiFinals: getStageNodes('semi'),
-            final: getStageNodes('final')[0] || null, // Chung kết chỉ có 1 trận
+            roundOf32: getStageNodes('1/16'),
+            roundOf16: getStageNodes('1/8'),
+            quarterFinals: getStageNodes('1/4'),
+            semiFinals: getStageNodes('1/2'),
+            thirdPlace: getStageNodes('bronze')[0] || null,
+            final: getStageNodes('final')[0] || null,
+            winner: championName,
+            defendingChampion,
+            runnerUp
         };
     } catch (error) {
-        console.error("Lỗi cào dữ liệu Bracket:", error);
-        return { roundOf32: [], roundOf16: [], quarterFinals: [], semiFinals: [], final: null };
+        console.error("Lỗi cào dữ liệu Bracket Fotmob:", error);
+        return { roundOf32: [], roundOf16: [], quarterFinals: [], semiFinals: [], thirdPlace: null, final: null, winner: null, defendingChampion: null, runnerUp: null };
     }
 }
 
-export interface NewsItem { tag: string; title: string; link: string; }
+/**
+ * 4. TIN TỨC BÊN LỀ
+ */
+export interface NewsItem {
+    tag: string;
+    title: string;
+    link: string;
+}
 
-export async function getNews() {
+export interface NewsData {
+    vn: NewsItem[];
+    global: NewsItem[];
+}
+
+export async function getNews(query: string = "World Cup 2026"): Promise<NewsData> {
     const parser = new Parser();
     try {
-        // Dùng fetch API chuẩn của Web/Next.js thay vì parseURL để tránh lỗi url.parse()
-        const response = await fetch('https://news.google.com/rss/search?q=World+Cup+2026&hl=vi&gl=VN&ceid=VN:vi', {
-            // Thêm Header giả lập trình duyệt để Google News không chặn
-            headers: { 'User-Agent': 'Mozilla/5.0' },
-            // Nếu dùng Next.js App Router, có thể thêm cache để web chạy siêu mượt
-            next: { revalidate: 3600 }
-        });
+        const encodedQuery = encodeURIComponent(query);
 
-        const xml = await response.text();
+        // Link lấy tin tức Việt Nam
+        const vnUrl = `https://news.google.com/rss/search?q=${encodedQuery}&hl=vi&gl=VN&ceid=VN:vi`;
+        // Link lấy tin tức Quốc tế (Tiếng Anh - Mỹ)
+        const globalUrl = `https://news.google.com/rss/search?q=${encodedQuery}&hl=en-US&gl=US&ceid=US:en`;
 
-        // Phân tích dữ liệu từ chuỗi XML đã tải về
-        const feed = await parser.parseString(xml);
+        // Gọi song song 2 API bằng Promise.all để tăng tốc độ tải
+        const [vnResponse, globalResponse] = await Promise.all([
+            fetch(vnUrl, { headers: { 'User-Agent': 'Mozilla/5.0' }, next: { revalidate: 3600 } }),
+            fetch(globalUrl, { headers: { 'User-Agent': 'Mozilla/5.0' }, next: { revalidate: 3600 } })
+        ]);
 
-        return feed.items.slice(0, 25).map(item => ({
-            tag: "WORLD CUP",
+        const [vnXml, globalXml] = await Promise.all([
+            vnResponse.text(),
+            globalResponse.text()
+        ]);
+
+        const [vnFeed, globalFeed] = await Promise.all([
+            parser.parseString(vnXml),
+            parser.parseString(globalXml)
+        ]);
+
+        // Cắt đúng 25 tin cho mỗi bên
+        const vnItems: NewsItem[] = vnFeed.items.slice(0, 25).map(item => ({
+            tag: "VN",
             title: item.title ? item.title.split(' - ')[0].trim() : "Tin tức mới",
             link: item.link || "#"
         }));
+
+        const globalItems: NewsItem[] = globalFeed.items.slice(0, 25).map(item => ({
+            tag: "GLOBAL",
+            title: item.title ? item.title.split(' - ')[0].trim() : "New Update",
+            link: item.link || "#"
+        }));
+
+        return { vn: vnItems, global: globalItems };
     } catch (e) {
         console.error("Lỗi RSS News:", e);
-        return [];
+        return { vn: [], global: [] };
     }
 }
