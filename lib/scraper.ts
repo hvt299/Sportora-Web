@@ -234,7 +234,19 @@ export interface NewsItem { tag: string; title: string; link: string; }
 export async function getNews() {
     const parser = new Parser();
     try {
-        const feed = await parser.parseURL('https://news.google.com/rss/search?q=World+Cup+2026&hl=vi&gl=VN&ceid=VN:vi');
+        // Dùng fetch API chuẩn của Web/Next.js thay vì parseURL để tránh lỗi url.parse()
+        const response = await fetch('https://news.google.com/rss/search?q=World+Cup+2026&hl=vi&gl=VN&ceid=VN:vi', {
+            // Thêm Header giả lập trình duyệt để Google News không chặn
+            headers: { 'User-Agent': 'Mozilla/5.0' },
+            // Nếu dùng Next.js App Router, có thể thêm cache để web chạy siêu mượt
+            next: { revalidate: 3600 }
+        });
+
+        const xml = await response.text();
+
+        // Phân tích dữ liệu từ chuỗi XML đã tải về
+        const feed = await parser.parseString(xml);
+
         return feed.items.slice(0, 25).map(item => ({
             tag: "WORLD CUP",
             title: item.title ? item.title.split(' - ')[0].trim() : "Tin tức mới",

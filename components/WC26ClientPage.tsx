@@ -1,11 +1,12 @@
 "use client";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Trophy, CalendarDays, Table, GitBranch } from 'lucide-react';
 import MatchCard from '@/components/MatchCard';
 import GroupTable from '@/components/GroupTable';
 import Bracket from '@/components/Bracket';
 import SidebarNews from '@/components/SidebarNews';
 import { NewsItem, MatchItem } from '@/lib/scraper';
+import { useRouter } from 'next/navigation';
 
 const TABS = [
     { id: 'overview', name: 'Tổng quan', icon: Trophy },
@@ -42,6 +43,14 @@ export default function WC26ClientPage({
     const [activeGroup, setActiveGroup] = useState(() => Object.keys(initialStandings)[0]);
     const [newsData] = useState(initialNews);
     const [selectedRound, setSelectedRound] = useState('Vòng bảng');
+
+    const router = useRouter();
+    useEffect(() => {
+        const interval = setInterval(() => {
+            router.refresh();
+        }, 60000);
+        return () => clearInterval(interval);
+    }, [router]);
 
     const getRoundKey = (tab: string) => {
         const mapping: Record<string, string> = {

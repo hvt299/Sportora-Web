@@ -1,6 +1,8 @@
 import { getFixtures, getStandings, getNews, getBracket } from '@/lib/scraper';
 import WC26ClientPage from '@/components/WC26ClientPage';
 
+export const dynamic = 'force-dynamic';
+
 export default async function Page() {
     const [matches, standings, news, bracket] = await Promise.all([
         getFixtures(),
