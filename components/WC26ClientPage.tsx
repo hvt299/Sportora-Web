@@ -29,7 +29,7 @@ type FixturesData = Record<string, Record<string, MatchItem[]>>;
 interface PageProps {
     initialMatches: FixturesData;
     initialStandings: Record<string, any[]>;
-    initialNews: NewsItem[];
+    initialNews: { vn: NewsItem[], global: NewsItem[] };
     initialBracket: any; // Bổ sung dòng này
 }
 
@@ -52,41 +52,13 @@ export default function WC26ClientPage({
         return () => clearInterval(interval);
     }, [router]);
 
-    const getRoundKey = (tab: string) => {
-        const mapping: Record<string, string> = {
-            'Vòng bảng': 'group stage',
-            'Vòng 32 đội': 'round of 32',
-            'Vòng 16 đội': 'round of 16',
-            'Tứ kết': 'quarter-final',
-            'Bán kết': 'semi-final',
-            'Tranh hạng ba': 'third place',
-            'Chung kết': 'final'
-        };
-        return mapping[tab] || 'group stage';
-    };
 
     const formatGroupName = (name: string) => {
         if (name.toLowerCase().includes('best 3rd')) return 'Các đội hạng 3 tốt nhất';
         return `Bảng ${name}`;
     };
 
-    const activeRoundKeyword = getRoundKey(selectedRound).toLowerCase();
-
-    // Logic này đã được fix để chữ "final" không nhận nhầm "quarter-final" hay "semi-final"
-    const matchedKeys = Object.keys(initialMatches).filter(key => {
-        const k = key.toLowerCase();
-        if (activeRoundKeyword === 'final') return k === 'final';
-        return k.includes(activeRoundKeyword);
-    });
-
-    const roundData = matchedKeys.reduce((acc, key) => {
-        const dates = initialMatches[key];
-        Object.entries(dates).forEach(([date, matches]) => {
-            if (!acc[date]) acc[date] = [];
-            acc[date] = [...acc[date], ...(matches as MatchItem[])];
-        });
-        return acc;
-    }, {} as Record<string, MatchItem[]>);
+    const roundData = initialMatches[selectedRound] || {};
 
     return (
         <div className="min-h-screen bg-black text-white font-wc26">
@@ -188,7 +160,7 @@ export default function WC26ClientPage({
                                 </p>
                             </div>
 
-                            {/* 48 PARTICIPATING TEAMS (Teal/Xanh ngọc) */}
+                            {/* 48 PARTICIPATING TEAMS (Teal) */}
                             <div className="bg-linear-to-br from-teal-900/30 to-slate-900/50 border border-teal-500/20 rounded-3xl p-8 relative overflow-hidden">
                                 <div className="absolute -right-4 -bottom-6 opacity-5 pointer-events-none text-[140px] font-display-black italic leading-none text-teal-200">
                                     TEAMS
@@ -203,54 +175,54 @@ export default function WC26ClientPage({
                                 </div>
                                 <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-12 gap-3 relative z-10">
                                     {[
-                                        { name: "Mexico", logo: "https://images.onefootball.com/icons/teams/164/69.png" },
-                                        { name: "Czechia", logo: "https://images.onefootball.com/icons/teams/164/100.png" },
-                                        { name: "Korea Republic", logo: "https://images.onefootball.com/icons/teams/164/70.png" },
-                                        { name: "South Africa", logo: "https://images.onefootball.com/icons/teams/164/39.png" },
-                                        { name: "Canada", logo: "https://images.onefootball.com/icons/teams/164/132.png" },
-                                        { name: "Bosnia & Herzegovina", logo: "https://images.onefootball.com/icons/teams/164/297.png" },
-                                        { name: "Qatar", logo: "https://images.onefootball.com/icons/teams/164/586.png" },
-                                        { name: "Switzerland", logo: "https://images.onefootball.com/icons/teams/164/93.png" },
-                                        { name: "Brazil", logo: "https://images.onefootball.com/icons/teams/164/79.png" },
-                                        { name: "Morocco", logo: "https://images.onefootball.com/icons/teams/164/108.png" },
-                                        { name: "Haiti", logo: "https://images.onefootball.com/icons/teams/164/134.png" },
-                                        { name: "Scotland", logo: "https://images.onefootball.com/icons/teams/164/113.png" },
-                                        { name: "United States", logo: "https://images.onefootball.com/icons/teams/164/81.png" },
-                                        { name: "Paraguay", logo: "https://images.onefootball.com/icons/teams/164/47.png" },
-                                        { name: "Australia", logo: "https://images.onefootball.com/icons/teams/164/74.png" },
-                                        { name: "Türkiye", logo: "https://images.onefootball.com/icons/teams/164/123.png" },
-                                        { name: "Germany", logo: "https://images.onefootball.com/icons/teams/164/96.png" },
-                                        { name: "Curaçao", logo: "https://images.onefootball.com/icons/teams/164/1354.png" },
-                                        { name: "Côte d'Ivoire", logo: "https://images.onefootball.com/icons/teams/164/41.png" },
-                                        { name: "Ecuador", logo: "https://images.onefootball.com/icons/teams/164/101.png" },
-                                        { name: "Netherlands", logo: "https://images.onefootball.com/icons/teams/164/38.png" },
-                                        { name: "Japan", logo: "https://images.onefootball.com/icons/teams/164/52.png" },
-                                        { name: "Sweden", logo: "https://images.onefootball.com/icons/teams/164/105.png" },
-                                        { name: "Tunisia", logo: "https://images.onefootball.com/icons/teams/164/112.png" },
-                                        { name: "Belgium", logo: "https://images.onefootball.com/icons/teams/164/116.png" },
-                                        { name: "Egypt", logo: "https://images.onefootball.com/icons/teams/164/590.png" },
-                                        { name: "Iran", logo: "https://images.onefootball.com/icons/teams/164/102.png" },
-                                        { name: "New Zealand", logo: "https://images.onefootball.com/icons/teams/164/54.png" },
-                                        { name: "Spain", logo: "https://images.onefootball.com/icons/teams/164/34.png" },
-                                        { name: "Cabo Verde", logo: "https://images.onefootball.com/icons/teams/164/589.png" },
-                                        { name: "Saudi Arabia", logo: "https://images.onefootball.com/icons/teams/164/104.png" },
-                                        { name: "Uruguay", logo: "https://images.onefootball.com/icons/teams/164/56.png" },
-                                        { name: "France", logo: "https://images.onefootball.com/icons/teams/164/45.png" },
-                                        { name: "Senegal", logo: "https://images.onefootball.com/icons/teams/164/121.png" },
-                                        { name: "Iraq", logo: "https://images.onefootball.com/icons/teams/164/133.png" },
-                                        { name: "Norway", logo: "https://images.onefootball.com/icons/teams/164/115.png" },
-                                        { name: "Argentina", logo: "https://images.onefootball.com/icons/teams/164/55.png" },
-                                        { name: "Algeria", logo: "https://images.onefootball.com/icons/teams/164/59.png" },
-                                        { name: "Austria", logo: "https://images.onefootball.com/icons/teams/164/117.png" },
-                                        { name: "Jordan", logo: "https://images.onefootball.com/icons/teams/164/777.png" },
-                                        { name: "Portugal", logo: "https://images.onefootball.com/icons/teams/164/43.png" },
-                                        { name: "DR Congo", logo: "https://images.onefootball.com/icons/teams/164/895.png" },
-                                        { name: "Uzbekistan", logo: "https://images.onefootball.com/icons/teams/164/592.png" },
-                                        { name: "Colombia", logo: "https://images.onefootball.com/icons/teams/164/118.png" },
-                                        { name: "England", logo: "https://images.onefootball.com/icons/teams/164/61.png" },
-                                        { name: "Croatia", logo: "https://images.onefootball.com/icons/teams/164/99.png" },
-                                        { name: "Ghana", logo: "https://images.onefootball.com/icons/teams/164/60.png" },
-                                        { name: "Panama", logo: "https://images.onefootball.com/icons/teams/164/1022.png" }
+                                        { name: "Mexico", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6710_xsmall.png" },
+                                        { name: "South Korea", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/7804_xsmall.png" },
+                                        { name: "Czechia", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8496_xsmall.png" },
+                                        { name: "South Africa", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6316_xsmall.png" },
+                                        { name: "Bosnia & Herzegovina", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/10106_xsmall.png" },
+                                        { name: "Canada", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5810_xsmall.png" },
+                                        { name: "Qatar", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5902_xsmall.png" },
+                                        { name: "Switzerland", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6717_xsmall.png" },
+                                        { name: "Brazil", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8256_xsmall.png" },
+                                        { name: "Haiti", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5934_xsmall.png" },
+                                        { name: "Morocco", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6262_xsmall.png" },
+                                        { name: "Scotland", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8498_xsmall.png" },
+                                        { name: "Australia", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6716_xsmall.png" },
+                                        { name: "Paraguay", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6724_xsmall.png" },
+                                        { name: "Türkiye", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6595_xsmall.png" },
+                                        { name: "USA", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6713_xsmall.png" },
+                                        { name: "Curaçao", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/287981_xsmall.png" },
+                                        { name: "Ecuador", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6707_xsmall.png" },
+                                        { name: "Germany", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8570_xsmall.png" },
+                                        { name: "Côte d'Ivoire", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6709_xsmall.png" },
+                                        { name: "Japan", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6715_xsmall.png" },
+                                        { name: "Netherlands", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6708_xsmall.png" },
+                                        { name: "Sweden", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8520_xsmall.png" },
+                                        { name: "Tunisia", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6719_xsmall.png" },
+                                        { name: "Belgium", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8263_xsmall.png" },
+                                        { name: "Egypt", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/10255_xsmall.png" },
+                                        { name: "Iran", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6711_xsmall.png" },
+                                        { name: "New Zealand", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5820_xsmall.png" },
+                                        { name: "Cape Verde", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5888_xsmall.png" },
+                                        { name: "Saudi Arabia", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/7795_xsmall.png" },
+                                        { name: "Spain", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6720_xsmall.png" },
+                                        { name: "Uruguay", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5796_xsmall.png" },
+                                        { name: "France", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6723_xsmall.png" },
+                                        { name: "Iraq", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5819_xsmall.png" },
+                                        { name: "Norway", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8492_xsmall.png" },
+                                        { name: "Senegal", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6395_xsmall.png" },
+                                        { name: "Algeria", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6317_xsmall.png" },
+                                        { name: "Argentina", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6706_xsmall.png" },
+                                        { name: "Austria", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8255_xsmall.png" },
+                                        { name: "Jordan", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5816_xsmall.png" },
+                                        { name: "Colombia", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8258_xsmall.png" },
+                                        { name: "DR Congo", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6321_xsmall.png" },
+                                        { name: "Portugal", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8361_xsmall.png" },
+                                        { name: "Uzbekistan", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8700_xsmall.png" },
+                                        { name: "Croatia", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/10155_xsmall.png" },
+                                        { name: "England", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8491_xsmall.png" },
+                                        { name: "Ghana", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6714_xsmall.png" },
+                                        { name: "Panama", logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5922_xsmall.png" }
                                     ].map((team, idx) => (
                                         <div key={idx} className="group relative flex justify-center">
                                             <div className="w-10 h-10 sm:w-12 sm:h-12 bg-slate-950/60 backdrop-blur-md rounded-full p-2 border border-slate-700/80 group-hover:border-teal-400 group-hover:scale-110 group-hover:bg-slate-50 transition-all duration-300 z-10 cursor-pointer shadow-sm shadow-black">
@@ -264,20 +236,33 @@ export default function WC26ClientPage({
                                 </div>
                             </div>
 
-                            {/* ARGENTINA (Sky Blue) - Giữ nguyên nhưng nâng cấp form chữ */}
-                            <div className="bg-linear-to-r from-sky-500/10 via-cyan-500/10 to-blue-500/10 border border-sky-500/20 rounded-3xl p-6 relative overflow-hidden hover:border-sky-400/40 transition">
-                                <div className="absolute -right-4 -bottom-4 opacity-5 pointer-events-none text-[120px] font-display-black italic leading-none text-sky-200">
-                                    CHAMP
-                                </div>
-                                <div className="flex items-center gap-5 relative z-10">
-                                    <img src="https://image-service.onefootball.com/transform?w=128&dpr=2&image=https://images.onefootball.com/icons/teams/164/55.png" alt="Argentina" className="w-20 h-20 object-contain drop-shadow-[0_0_15px_rgba(56,189,248,0.4)]" />
-                                    <div>
-                                        <p className="text-sky-400 text-xs uppercase tracking-widest font-black mb-1">Defending Champion</p>
-                                        <h3 className="text-3xl font-display-black italic uppercase tracking-tighter text-white">Argentina</h3>
-                                        <p className="text-sky-100/70 text-sm mt-1">Nhà vô địch FIFA World Cup 2022 sau chiến thắng trước Pháp trong trận chung kết.</p>
+                            {/* DEFENDING CHAMPION & RUNNER-UP (Động qua API Fotmob) */}
+                            {initialBracket?.defendingChampion && (
+                                <div className="bg-linear-to-r from-sky-500/10 via-cyan-500/10 to-blue-500/10 border border-sky-500/20 rounded-3xl p-6 relative overflow-hidden hover:border-sky-400/40 transition">
+                                    <div className="absolute -right-4 -bottom-4 opacity-5 pointer-events-none text-[120px] font-display-black italic leading-none text-sky-200">
+                                        CHAMP
+                                    </div>
+                                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 relative z-10">
+                                        <div className="flex items-center gap-5">
+                                            <img src={initialBracket.defendingChampion.logo} alt={initialBracket.defendingChampion.name} className="w-20 h-20 object-contain drop-shadow-[0_0_15px_rgba(56,189,248,0.4)]" />
+                                            <div>
+                                                <p className="text-sky-400 text-xs uppercase tracking-widest font-black mb-1">Defending Champion</p>
+                                                <h3 className="text-3xl font-display-black italic uppercase tracking-tighter text-white">{initialBracket.defendingChampion.name}</h3>
+                                            </div>
+                                        </div>
+                                        {/* Thêm Runner-up (Á Quân) */}
+                                        {initialBracket.runnerUp && (
+                                            <div className="flex items-center gap-4 sm:border-l sm:border-sky-500/20 sm:pl-6 pt-4 sm:pt-0 w-full sm:w-auto border-t sm:border-t-0 border-sky-500/20">
+                                                <div className="text-left sm:text-right flex-1">
+                                                    <p className="text-slate-400 text-[10px] uppercase tracking-widest font-bold mb-1">Runner-up</p>
+                                                    <h4 className="text-xl font-display-black italic uppercase tracking-tighter text-slate-200">{initialBracket.runnerUp.name}</h4>
+                                                </div>
+                                                <img src={initialBracket.runnerUp.logo} alt={initialBracket.runnerUp.name} className="w-12 h-12 object-contain opacity-80 drop-shadow-md" />
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
-                            </div>
+                            )}
 
                             {/* HOST NATIONS (Purple/Tím) */}
                             <div className="bg-linear-to-br from-purple-900/30 to-slate-900/50 border border-purple-500/20 rounded-3xl p-8 relative overflow-hidden">
@@ -289,15 +274,15 @@ export default function WC26ClientPage({
                                 </h3>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 relative z-10">
                                     <div className="bg-slate-950/60 backdrop-blur-md border border-slate-800/80 rounded-2xl p-6 text-center hover:border-purple-500/50 transition">
-                                        <img src="https://image-service.onefootball.com/transform?w=128&dpr=2&image=https://images.onefootball.com/icons/teams/164/81.png" alt="USA" className="w-20 h-20 mx-auto mb-4" />
+                                        <img src="https://images.fotmob.com/image_resources/logo/teamlogo/6713_xsmall.png" alt="USA" className="w-20 h-20 mx-auto mb-4 object-contain" />
                                         <h4 className="font-display-black italic tracking-tighter text-xl text-white uppercase">Hoa Kỳ</h4>
                                     </div>
                                     <div className="bg-slate-950/60 backdrop-blur-md border border-slate-800/80 rounded-2xl p-6 text-center hover:border-purple-500/50 transition">
-                                        <img src="https://image-service.onefootball.com/transform?w=128&dpr=2&image=https://images.onefootball.com/icons/teams/164/132.png" alt="Canada" className="w-20 h-20 mx-auto mb-4" />
+                                        <img src="https://images.fotmob.com/image_resources/logo/teamlogo/5810_xsmall.png" alt="Canada" className="w-20 h-20 mx-auto mb-4 object-contain" />
                                         <h4 className="font-display-black italic tracking-tighter text-xl text-white uppercase">Canada</h4>
                                     </div>
                                     <div className="bg-slate-950/60 backdrop-blur-md border border-slate-800/80 rounded-2xl p-6 text-center hover:border-purple-500/50 transition">
-                                        <img src="https://image-service.onefootball.com/transform?w=128&dpr=2&image=https://images.onefootball.com/icons/teams/164/69.png" alt="Mexico" className="w-20 h-20 mx-auto mb-4" />
+                                        <img src="https://images.fotmob.com/image_resources/logo/teamlogo/6710_xsmall.png" alt="Mexico" className="w-20 h-20 mx-auto mb-4 object-contain" />
                                         <h4 className="font-display-black italic tracking-tighter text-xl text-white uppercase">Mexico</h4>
                                     </div>
                                 </div>
@@ -319,10 +304,11 @@ export default function WC26ClientPage({
                                 <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-sky-900 relative z-10">
                                     {hostCities.map((city) => (
                                         <div key={city.city} className="min-w-45 bg-slate-950/60 backdrop-blur-md border border-slate-800/80 rounded-2xl p-4 hover:border-sky-400/50 transition">
-                                            <div className="text-2xl mb-3 drop-shadow-md">
-                                                {city.country === "USA" && "🇺🇸"}
-                                                {city.country === "CAN" && "🇨🇦"}
-                                                {city.country === "MEX" && "🇲🇽"}
+                                            {/* HIỂN THỊ CỜ FOTMOB */}
+                                            <div className="w-8 h-8 mb-3 drop-shadow-md">
+                                                {city.country === "USA" && <img src="https://images.fotmob.com/image_resources/logo/teamlogo/6713_xsmall.png" alt="USA" className="w-full h-full object-contain" />}
+                                                {city.country === "CAN" && <img src="https://images.fotmob.com/image_resources/logo/teamlogo/5810_xsmall.png" alt="Canada" className="w-full h-full object-contain" />}
+                                                {city.country === "MEX" && <img src="https://images.fotmob.com/image_resources/logo/teamlogo/6710_xsmall.png" alt="Mexico" className="w-full h-full object-contain" />}
                                             </div>
                                             <h4 className="font-bold text-white">{city.city}</h4>
                                             <p className="text-xs text-sky-200/60 mt-1 uppercase font-bold">{city.country}</p>
