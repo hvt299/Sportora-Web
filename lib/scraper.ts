@@ -1,6 +1,7 @@
 import Parser from 'rss-parser';
 
 export interface MatchItem {
+    id: string;
     home: string;
     away: string;
     homeLogo?: string;
@@ -13,6 +14,71 @@ export interface MatchItem {
     live: boolean;
     minute: string | null;
     rawPeriod: string;
+}
+
+export interface FotmobMatchTeam {
+    id: number;
+    name: string;
+    imageUrl: string;
+    score?: number;
+    pageUrl?: string;
+    fifaRank?: number;
+}
+
+export interface FotmobMatchStatus {
+    utcTime: string;
+    started: boolean;
+    finished: boolean;
+    cancelled: boolean;
+    scoreStr?: string;
+    reason?: {
+        short: string;
+        long: string;
+    };
+}
+
+export interface FotmobLineupTeam {
+    id: number;
+    name: string;
+    formation: string;
+    starters: any[]; // Bạn có thể quy định chi tiết Player ở đây nếu muốn
+    subs?: any[];    // Có thể là undefined nếu trận chưa đá
+    coach?: {
+        name: string;
+    };
+}
+
+export interface FotmobMatchDetails {
+    general: any;
+    header: {
+        teams: FotmobMatchTeam[];
+        status: FotmobMatchStatus;
+        events: any | null; // Sẽ là null nếu chưa đá
+    };
+    content: {
+        matchFacts: {
+            infoBox: any;
+            events: { events: any[] };
+            highlights: any | null;
+            poll: any | null;
+            teamForm: any[];
+        };
+        stats: {
+            Periods: {
+                All: {
+                    stats: any[];
+                };
+            };
+        } | null;
+        momentum: any | boolean; // Trả về false nếu chưa có dữ liệu
+        lineup: {
+            lineupType: string;
+            homeTeam: FotmobLineupTeam;
+            awayTeam: FotmobLineupTeam;
+        } | null;
+        weather: any | null;
+        h2h: any | null;
+    };
 }
 
 // Hàm dịch mã đội bóng (Dùng chung cho cả Bracket và Fixtures)
@@ -86,6 +152,7 @@ export async function getFixtures(leagueId: number | string = 77, season: string
             }
 
             nestedFixtures[roundCategory][dateKey].push({
+                id: match.id.toString(),
                 home: translateTeamName(match.home?.name),
                 away: translateTeamName(match.away?.name),
                 homeLogo: match.home?.id ? `https://images.fotmob.com/image_resources/logo/teamlogo/${match.home.id}.png` : undefined,
@@ -312,5 +379,21 @@ export async function getNews(query: string = "World Cup 2026"): Promise<NewsDat
     } catch (e) {
         console.error("Lỗi RSS News:", e);
         return { vn: [], global: [] };
+    }
+}
+
+/**
+ * 5. LẤY CHI TIẾT TRẬN ĐẤU (MATCH DETAILS)
+ */
+export async function getMatchDetails(matchId: string): Promise<FotmobMatchDetails | null> {
+    try {
+        const url = `https://www.fotmob.com/api/data/matchDetails?matchId=${matchId}&ccode3=VNM`;
+        const response = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" }, next: { revalidate: 30 } });
+        const data = await response.json();
+
+        return data;
+    } catch (error) {
+        console.error(`Lỗi cào dữ liệu chi tiết trận đấu ${matchId}:`, error);
+        return null;
     }
 }

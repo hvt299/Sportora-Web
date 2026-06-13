@@ -28,7 +28,7 @@ export default function HomePage() {
     }
 
     // 2. Lọc chặt chẽ thời gian (Chỉ lấy giải đấu TRONG VÒNG 6 THÁNG - cả quá khứ lẫn tương lai)
-    return groups.flatMap((group) => group.events).filter((event) => {
+    const filtered = groups.flatMap((group) => group.events).filter((event) => {
       const now = new Date();
 
       const sixMonthsAgo = new Date();
@@ -43,6 +43,24 @@ export default function HomePage() {
 
       // LOGIC CHUẨN: Ngày kết thúc không được cũ hơn 6 tháng trước VÀ Ngày bắt đầu không được xa hơn 6 tháng tới
       return endDate >= sixMonthsAgo && startDate <= sixMonthsFuture;
+    });
+
+    // 3. Sắp xếp ưu tiên: Đang diễn ra -> Sắp diễn ra -> Đã kết thúc
+    // Nếu cùng trạng thái: Sự kiện nào bắt đầu trước thì xếp trước
+    return filtered.sort((a, b) => {
+      const statusA = getTournamentStatus(a.startDate, a.endDate);
+      const statusB = getTournamentStatus(b.startDate, b.endDate);
+
+      const weight = { live: 1, upcoming: 2, finished: 3 };
+      const weightA = weight[statusA as keyof typeof weight] || 4;
+      const weightB = weight[statusB as keyof typeof weight] || 4;
+
+      if (weightA !== weightB) {
+        return weightA - weightB; // Ưu tiên theo độ quan trọng trạng thái
+      }
+
+      // Cùng trạng thái -> ưu tiên giải đấu có ngày bắt đầu trước (nhỏ hơn)
+      return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
     });
   }, [selectedSport]);
 

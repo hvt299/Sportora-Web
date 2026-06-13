@@ -1,4 +1,5 @@
 import { MatchItem } from "@/lib/scraper";
+import Link from "next/link";
 
 // Map trạng thái chuẩn của Fotmob sang Tiếng Việt
 const fotmobStatusMap: Record<string, string> = {
@@ -13,7 +14,7 @@ const fotmobStatusMap: Record<string, string> = {
 };
 
 export default function MatchCard({
-    home, away, homeLogo, awayLogo, score, time, status, live, minute, rawPeriod
+    id, home, away, homeLogo, awayLogo, score, time, status, live, minute, rawPeriod
 }: MatchItem) {
 
     // Nhận diện đội chưa xác định (Thắng, Thua, mã nhóm như 1A, 2B, TBD)
@@ -30,7 +31,7 @@ export default function MatchCard({
     const displayStatus = fotmobStatusMap[rawPeriod || ""] || status;
 
     return (
-        <div className="group flex items-center justify-between p-4 bg-slate-900/40 border border-slate-800 rounded-2xl hover:border-blue-500/50 hover:bg-slate-900 transition-all cursor-pointer">
+        <Link href={`/match/${id}`} className="group flex items-center justify-between p-4 bg-slate-900/40 border border-slate-800 rounded-2xl hover:border-blue-500/50 hover:bg-slate-900 transition-all cursor-pointer">
             {/* Đội nhà */}
             <div className="w-[30%] flex items-center justify-end gap-3 text-right">
                 <span className="font-display-reg text-sm md:text-base hidden sm:block truncate">{home}</span>
@@ -83,6 +84,6 @@ export default function MatchCard({
                 <span className="font-display-reg text-sm md:text-base hidden sm:block truncate">{away}</span>
                 <span className="font-display-reg text-sm sm:hidden block truncate">{away.substring(0, 3).toUpperCase()}</span>
             </div>
-        </div>
+        </Link>
     );
 }
