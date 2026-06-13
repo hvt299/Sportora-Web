@@ -82,15 +82,28 @@ export interface FotmobMatchDetails {
 }
 
 // Hàm dịch mã đội bóng (Dùng chung cho cả Bracket và Fixtures)
-function translateTeamName(name: string) {
-    if (!name) return "TBD";
+export function translateTeamName(name: string) {
+    if (!name) return "Chưa xác định";
+
     return name
-        .replace(/Winner EF/g, "Thắng V16 đội")
-        .replace(/Winner QF/g, "Thắng Tứ Kết")
-        .replace(/Winner SF/g, "Thắng Bán Kết")
-        .replace(/Loser SF/g, "Thua Bán Kết")
+        // 1. Dịch nhánh đấu loại trực tiếp
+        .replace(/Winner EF/g, "Thắng V16 đội")  // EF (Eighth-finals)
+        .replace(/Winner QF/g, "Thắng Tứ kết")       // QF (Quarter-finals)
+        .replace(/Winner SF/g, "Thắng Bán kết")      // SF (Semi-finals)
+        .replace(/Loser SF/g, "Thua Bán kết")        // Tranh hạng 3
         .replace(/Winner/g, "Thắng")
-        .replace(/Loser/g, "Thua");
+        .replace(/Loser/g, "Thua")
+
+        // 2. Dịch ghép cặp nhánh đấu (VD: 1E/3ABCDF -> Nhất E/Ba ABCDF, 2A/2B -> Nhì A/Nhì B)
+        // Dịch Nhất bảng (1A -> 1L)
+        .replace(/(^|\/)1([A-L])(?=\/|$)/g, "$1Nhất $2")
+        // Dịch Nhì bảng (2A -> 2L)
+        .replace(/(^|\/)2([A-L])(?=\/|$)/g, "$1Nhì $2")
+        // Dịch Đứng thứ 3 có thành tích tốt nhất (VD: 3ABCDF -> Ba ABCDF)
+        .replace(/(^|\/)3([A-Z]{3,6})(?=\/|$)/g, "$1Ba $2")
+
+        // 3. Xử lý các từ khóa TBD
+        .replace(/TBD/g, "Chưa xác định");
 }
 
 /**
