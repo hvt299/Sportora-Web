@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { tournaments } from "@/data/tournaments";
 import { getTournamentLabel } from "@/lib/tournament";
 import { Trophy, Search, Bell, Menu, CalendarDays, ArrowRight, Clock, ChevronLeft, ChevronRight } from "lucide-react";
@@ -26,20 +26,48 @@ const getDaysLeft = (startDate: string) => {
     return Math.ceil(diff / (1000 * 3600 * 24));
 };
 
-// Component hiển thị từng hàng giải đấu (Có nút cuộn trái phải)
+// Component hiển thị từng hàng giải đấu (Có nút cuộn, vuốt cảm ứng & kéo chuột)
 function FranchiseRow({ franchiseName, events }: { franchiseName: string, events: any[] }) {
     const scrollRef = useRef<HTMLDivElement>(null);
+    const [isDragging, setIsDragging] = useState(false);
+    const [isDragged, setIsDragged] = useState(false); // Dùng để phân biệt giữa click và kéo chuột
+    const [startX, setStartX] = useState(0);
+    const [scrollLeft, setScrollLeft] = useState(0);
 
-    // Xử lý sự kiện bấm nút cuộn
+    // 1. Xử lý sự kiện bấm nút cuộn mũi tên
     const scroll = (direction: 'left' | 'right') => {
-        if (scrollRef.current) {
-            // Lấy độ rộng của 1 card (khoảng 400px) + gap (24px)
-            const scrollAmount = window.innerWidth < 768 ? 344 : 424;
+        if (scrollRef.current && scrollRef.current.firstElementChild) {
+            const cardWidth = scrollRef.current.firstElementChild.getBoundingClientRect().width;
+            const scrollAmount = cardWidth + 24;
             scrollRef.current.scrollBy({
                 left: direction === 'left' ? -scrollAmount : scrollAmount,
-                behavior: 'smooth' // Cuộn mượt mà
+                behavior: 'smooth'
             });
         }
+    };
+
+    // 2. Xử lý sự kiện vuốt/kéo bằng chuột trên PC
+    const handleMouseDown = (e: React.MouseEvent) => {
+        if (!scrollRef.current) return;
+        setIsDragging(true);
+        setIsDragged(false); // Đặt lại trạng thái kéo
+        setStartX(e.pageX - scrollRef.current.offsetLeft);
+        setScrollLeft(scrollRef.current.scrollLeft);
+    };
+
+    const handleMouseLeaveOrUp = () => {
+        setIsDragging(false);
+        // Đợi 1 chút trước khi reset cờ để tránh click nhầm sau khi thả chuột
+        setTimeout(() => setIsDragged(false), 50);
+    };
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (!isDragging || !scrollRef.current) return;
+        e.preventDefault();
+        setIsDragged(true); // Ghi nhận là người dùng đang kéo chuột
+        const x = e.pageX - scrollRef.current.offsetLeft;
+        const walk = (x - startX) * 1.5; // Tốc độ trượt (Tăng/giảm hệ số để điều chỉnh)
+        scrollRef.current.scrollLeft = scrollLeft - walk;
     };
 
     const sortedEvents = [...events].sort(
@@ -77,10 +105,14 @@ function FranchiseRow({ franchiseName, events }: { franchiseName: string, events
                 </div>
             </div>
 
-            {/* Danh sách thẻ (Đã tắt cuộn tay, chỉ dùng nút bấm) */}
+            {/* Danh sách thẻ trượt ngang (Carousel) tích hợp kéo thả */}
             <div
                 ref={scrollRef}
-                className="flex gap-6 overflow-hidden pb-8 -mx-6 px-6 md:mx-0 md:px-0"
+                className={`flex gap-6 overflow-x-auto pb-8 -mx-6 px-6 md:mx-0 md:px-0 transition-all scrollbar-hide ${isDragging ? "cursor-grabbing snap-none" : "cursor-grab snap-x snap-mandatory"}`}
+                onMouseDown={handleMouseDown}
+                onMouseLeave={handleMouseLeaveOrUp}
+                onMouseUp={handleMouseLeaveOrUp}
+                onMouseMove={handleMouseMove}
             >
                 {sortedEvents.map((event) => {
                     const label = getTournamentLabel(event.startDate, event.endDate);
@@ -92,27 +124,31 @@ function FranchiseRow({ franchiseName, events }: { franchiseName: string, events
                         <a
                             key={event.id}
                             href={event.path}
-                            className="group relative min-w-[320px] md:min-w-100 h-120 rounded-4xl overflow-hidden border border-slate-800 hover:border-slate-500 snap-center flex flex-col justify-end transition-all shrink-0 shadow-xl shadow-black/50"
+                            onClick={(e) => {
+                                // Ngăn chuyển trang nếu người dùng chỉ đang vuốt/kéo
+                                if (isDragged) e.preventDefault();
+                            }}
+                            className="group relative w-[85vw] sm:w-100 md:w-115 lg:w-130 h-120 md:h-130 shrink-0 rounded-4xl overflow-hidden border border-slate-800 hover:border-slate-500 snap-center flex flex-col justify-end transition-all shadow-xl shadow-black/50"
                             style={{ '--theme-color': event.themeColor } as React.CSSProperties}
                         >
-                            {/* Background Image với hiệu ứng zoom */}
+                            {/* Bỏ thuộc tính draggable của hình nền để không bị lỗi bóng mờ khi vuốt */}
                             <div
-                                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 pointer-events-none"
                                 style={{ backgroundImage: `url(${event.image})` }}
                             />
                             {/* Overlay tối để dễ đọc chữ */}
-                            <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent opacity-90" />
+                            <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent opacity-90 pointer-events-none" />
                             {/* Lớp gradient màu chủ đạo khi hover */}
                             <div
-                                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                                 style={{ backgroundImage: `linear-gradient(to top, ${event.themeColor}80, transparent)` }}
                             />
 
                             {/* TOP: Logo & Trạng thái */}
-                            <div className="absolute top-6 left-6 right-6 flex justify-between items-start z-10">
+                            <div className="absolute top-6 left-6 right-6 flex justify-between items-start z-10 pointer-events-none">
                                 {event.logo ? (
                                     <div className="w-16 h-16 bg-black/40 backdrop-blur-md rounded-2xl p-3 border border-white/10 shadow-lg">
-                                        <img src={event.logo} alt={event.shortName} className="w-full h-full object-contain drop-shadow-md" />
+                                        <img src={event.logo} alt={event.shortName} draggable={false} className="w-full h-full object-contain drop-shadow-md" />
                                     </div>
                                 ) : (
                                     <div className="w-16 h-16 bg-black/40 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/10">
@@ -129,12 +165,12 @@ function FranchiseRow({ franchiseName, events }: { franchiseName: string, events
                             </div>
 
                             {/* BOTTOM: Thông tin chi tiết */}
-                            <div className="relative p-6 md:p-8 z-10 w-full">
-                                <h4 className="text-2xl font-black italic uppercase tracking-tighter mb-3 drop-shadow-lg leading-none text-white">
+                            <div className="relative p-6 md:p-8 z-10 w-full pointer-events-none">
+                                <h4 className="text-3xl font-black italic uppercase tracking-tighter mb-3 drop-shadow-lg leading-none text-white">
                                     {event.name}
                                 </h4>
 
-                                {/* Ngày tháng (Đã xử lý chống lỗi crash) */}
+                                {/* Ngày tháng */}
                                 <div className="flex items-center gap-3 text-slate-300 text-sm font-medium mb-6">
                                     <CalendarDays className="w-4 h-4 text-slate-400" />
                                     <span>

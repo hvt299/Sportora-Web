@@ -74,24 +74,48 @@ export default function WC26ClientPage({
                 </div>
             </section>
 
-            {/* Tab Navigation */}
-            <div className="flex border-b border-slate-800 bg-black/50 sticky top-0 z-40">
-                {TABS.map((tab) => {
-                    const Icon = tab.icon;
-                    return (
-                        <button
-                            key={tab.id}
-                            onClick={() => setActiveTab(tab.id)}
-                            className={`flex items-center gap-2 px-6 py-4 border-b-2 transition ${activeTab === tab.id
-                                ? 'border-blue-500 text-white'
-                                : 'border-transparent text-slate-500 hover:text-white'
-                                }`}
-                        >
-                            <Icon size={18} />
-                            {tab.name}
-                        </button>
-                    );
-                })}
+            {/* Tab Navigation (Responsive) */}
+            <div className="border-b border-slate-800 bg-black/50 sticky top-0 z-40">
+
+                {/* Desktop */}
+                <div className="hidden md:flex">
+                    {TABS.map((tab) => {
+                        const Icon = tab.icon;
+                        return (
+                            <button
+                                key={tab.id}
+                                onClick={() => setActiveTab(tab.id)}
+                                className={`flex items-center gap-2 px-6 py-4 border-b-2 transition ${activeTab === tab.id
+                                    ? 'border-blue-500 text-white'
+                                    : 'border-transparent text-slate-500 hover:text-white'
+                                    }`}
+                            >
+                                <Icon size={18} />
+                                {tab.name}
+                            </button>
+                        );
+                    })}
+                </div>
+
+                {/* Mobile */}
+                <div className="md:hidden overflow-x-auto scrollbar-hide flex gap-2 px-3 py-3">
+                    {TABS.map((tab) => {
+                        const Icon = tab.icon;
+                        return (
+                            <button
+                                key={tab.id}
+                                onClick={() => setActiveTab(tab.id)}
+                                className={`flex items-center gap-2 whitespace-nowrap px-4 py-2 rounded-full border transition ${activeTab === tab.id
+                                    ? 'bg-blue-500 text-white border-blue-500'
+                                    : 'bg-transparent text-slate-400 border-slate-700 hover:text-white'
+                                    }`}
+                            >
+                                <Icon size={16} />
+                                {tab.name}
+                            </button>
+                        );
+                    })}
+                </div>
             </div>
 
             {/* Nội dung theo Tab */}
