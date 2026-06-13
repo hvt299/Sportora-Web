@@ -1,5 +1,16 @@
 import { Clock, BarChart2 } from 'lucide-react';
 
+const GOAL_DESC_MAP: Record<string, string> = {
+    "Header": "Đánh đầu",
+    "Penalty": "Phạt đền",
+    "Own goal": "Phản lưới nhà",
+    "Free kick": "Đá phạt trực tiếp",
+    "Right foot": "Chân phải",
+    "Left foot": "Chân trái",
+    "RightFoot": "Chân phải",
+    "LeftFoot": "Chân trái"
+};
+
 export default function MatchTimeline({ events, momentum }: { events: any[], momentum: any[] }) {
     return (
         <div className="space-y-8">
@@ -7,7 +18,7 @@ export default function MatchTimeline({ events, momentum }: { events: any[], mom
             {momentum && momentum.length > 0 && (
                 <div className="bg-slate-900/40 border border-slate-800 rounded-3xl p-6 md:p-8">
                     <h3 className="text-xl font-black italic tracking-tighter uppercase mb-6 flex items-center gap-3 text-slate-200 border-b border-slate-800 pb-4">
-                        <BarChart2 className="w-5 h-5 text-indigo-500" /> Match Momentum
+                        <BarChart2 className="w-5 h-5 text-indigo-500" /> Áp lực trận đấu
                     </h3>
                     <div className="relative w-full h-32 flex flex-col">
                         <div className="absolute inset-y-0 left-0 w-full h-px bg-slate-700 top-1/2 -translate-y-1/2" />
@@ -23,7 +34,7 @@ export default function MatchTimeline({ events, momentum }: { events: any[], mom
                         </div>
                     </div>
                     <div className="flex justify-between text-[10px] text-slate-500 font-bold uppercase mt-3">
-                        <span>0'</span><span>HT</span><span>FT</span>
+                        <span>0'</span><span>Hết H1</span><span>Hết trận</span>
                     </div>
                 </div>
             )}
@@ -40,7 +51,7 @@ export default function MatchTimeline({ events, momentum }: { events: any[], mom
                                 return (
                                     <div key={idx} className="flex justify-center relative z-10 py-4">
                                         <span className="bg-slate-800 text-white text-xs font-bold px-4 py-1.5 rounded-full border border-slate-700 shadow-md">
-                                            {ev.halfStrShort} {ev.homeScore} - {ev.awayScore}
+                                            {ev.halfStrShort === "HT" ? "Hết H1" : ev.halfStrShort === "FT" ? "Hết trận" : ev.halfStrShort} {ev.homeScore} - {ev.awayScore}
                                         </span>
                                     </div>
                                 );
@@ -60,6 +71,9 @@ export default function MatchTimeline({ events, momentum }: { events: any[], mom
                             if (ev.type === "Card" && ev.card === "Red") icon = "🟥";
                             if (ev.type === "Substitution") icon = "🔄";
 
+                            let assistText = ev.assistStr?.replace("assist by", "Kiến tạo bởi") || "";
+                            let goalDesc = ev.goalDescription ? (GOAL_DESC_MAP[ev.goalDescription] || ev.goalDescription) : "";
+
                             return (
                                 <div key={idx} className={`flex items-center gap-4 relative z-10 ${ev.isHome ? 'flex-row' : 'flex-row-reverse'}`}>
                                     <div className="w-10 text-xs font-black text-slate-400 text-center shrink-0">{ev.timeStr}'</div>
@@ -75,8 +89,8 @@ export default function MatchTimeline({ events, momentum }: { events: any[], mom
                                                 {ev.nameStr || ev.player?.name}
                                                 {ev.type === "Goal" && <span className="ml-2 text-xs font-black text-slate-500">({ev.newScore[0]} - {ev.newScore[1]})</span>}
                                                 <div className={`text-xs font-normal text-slate-400 mt-1 flex gap-2 ${ev.isHome ? 'justify-start' : 'justify-end'}`}>
-                                                    {ev.goalDescription && <span>{ev.goalDescription},</span>}
-                                                    {ev.assistStr && <span>{ev.assistStr}</span>}
+                                                    {goalDesc && <span>{goalDesc},</span>}
+                                                    {assistText && <span>{assistText}</span>}
                                                 </div>
                                             </div>
                                         )}

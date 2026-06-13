@@ -2,7 +2,7 @@ import { MatchItem } from "@/lib/scraper";
 import Link from "next/link";
 
 // Map trạng thái chuẩn của Fotmob sang Tiếng Việt
-const fotmobStatusMap: Record<string, string> = {
+export const fotmobStatusMap: Record<string, string> = {
     "HT": "Nghỉ giữa hiệp",
     "FT": "Kết thúc",
     "AET": "Kết thúc (Hiệp phụ)",
@@ -17,9 +17,22 @@ export default function MatchCard({
     id, home, away, homeLogo, awayLogo, score, time, status, live, minute, rawPeriod
 }: MatchItem) {
 
-    // Nhận diện đội chưa xác định (Thắng, Thua, mã nhóm như 1A, 2B, TBD)
-    const isHomeTBD = home.toLowerCase().includes('thắng') || home.toLowerCase().includes('thua') || home.match(/^[0-9]/) || home === "TBD";
-    const isAwayTBD = away.toLowerCase().includes('thắng') || away.toLowerCase().includes('thua') || away.match(/^[0-9]/) || away === "TBD";
+    // Nhận diện đội chưa xác định (Thắng, Thua, Nhất, Nhì, Ba, TBD)
+    const checkIsTBD = (name: string) => {
+        if (!name) return true;
+        const lower = name.toLowerCase();
+        return lower.includes('thắng') ||
+            lower.includes('thua') ||
+            lower.includes('nhất') ||
+            lower.includes('nhì') ||
+            lower.includes('ba') ||
+            lower.includes('chưa xác định') ||
+            name.match(/^[0-9]/) ||
+            name === "TBD";
+    };
+
+    const isHomeTBD = checkIsTBD(home);
+    const isAwayTBD = checkIsTBD(away);
 
     // Xử lý hiển thị phút live (Nếu là "HT" -> "Nghỉ giữa hiệp", nếu là số "45" -> "45'")
     let displayMinute = fotmobStatusMap[minute || ""] || minute || 'LIVE';

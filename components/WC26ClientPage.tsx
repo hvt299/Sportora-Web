@@ -210,14 +210,14 @@ export default function WC26ClientPage({
                                         <div className="flex items-center gap-5">
                                             <img src={initialBracket.defendingChampion.logo} alt={initialBracket.defendingChampion.name} className="w-20 h-20 object-contain drop-shadow-[0_0_15px_rgba(56,189,248,0.4)]" />
                                             <div>
-                                                <p className="text-sky-400 text-xs uppercase tracking-widest font-black mb-1">Defending Champion</p>
+                                                <p className="text-sky-400 text-xs uppercase tracking-widest font-black mb-1">Đương kim vô địch</p>
                                                 <h3 className="text-3xl font-display-black italic uppercase tracking-tighter text-white">{initialBracket.defendingChampion.name}</h3>
                                             </div>
                                         </div>
                                         {initialBracket.runnerUp && (
                                             <div className="flex items-center gap-4 sm:border-l sm:border-sky-500/20 sm:pl-6 pt-4 sm:pt-0 w-full sm:w-auto border-t sm:border-t-0 border-sky-500/20">
                                                 <div className="text-left sm:text-right flex-1">
-                                                    <p className="text-slate-400 text-[10px] uppercase tracking-widest font-bold mb-1">Runner-up</p>
+                                                    <p className="text-slate-400 text-[10px] uppercase tracking-widest font-bold mb-1">Á quân</p>
                                                     <h4 className="text-xl font-display-black italic uppercase tracking-tighter text-slate-200">{initialBracket.runnerUp.name}</h4>
                                                 </div>
                                                 <img src={initialBracket.runnerUp.logo} alt={initialBracket.runnerUp.name} className="w-12 h-12 object-contain opacity-80 drop-shadow-md" />
