@@ -22,7 +22,12 @@ export interface BracketData {
     winner: string | null;
 }
 
-export default function Bracket({ data }: { data: BracketData }) {
+export default function Bracket({ data, fonts }: { data: BracketData, fonts?: { base: string; heading: string; subHeading: string } }) {
+    const currentFonts = fonts || {
+        base: "font-sans",
+        heading: "font-black",
+        subHeading: "font-bold"
+    };
     const splitData = (arr: BracketMatch[]) => {
         if (!arr || arr.length === 0) return [[], []];
         const mid = Math.ceil(arr.length / 2);
@@ -96,10 +101,10 @@ export default function Bracket({ data }: { data: BracketData }) {
                     {data.winner && (
                         <div className="flex flex-col items-center animate-bounce-slow mb-4">
                             <Trophy className="w-16 h-16 md:w-20 md:h-20 text-yellow-400 mb-2 drop-shadow-[0_0_20px_rgba(250,204,21,0.7)]" />
-                            <h3 className="font-display-black italic text-lg md:text-2xl uppercase tracking-tighter text-yellow-500">
+                            <h3 className={`${currentFonts.heading} italic text-lg md:text-2xl uppercase tracking-tighter text-yellow-500`}>
                                 NHÀ VÔ ĐỊCH
                             </h3>
-                            <p className="font-display-black text-2xl md:text-5xl uppercase text-white drop-shadow-lg tracking-tighter">
+                            <p className={`${currentFonts.heading} text-2xl md:text-5xl uppercase text-white drop-shadow-lg tracking-tighter`}>
                                 {data.winner}
                             </p>
                         </div>

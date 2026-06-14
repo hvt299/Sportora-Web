@@ -1,4 +1,4 @@
-import { MatchItem } from "@/lib/scraper";
+import { formatMatchMinute, MatchItem } from "@/lib/scraper";
 import Link from "next/link";
 
 // Map trạng thái chuẩn của Fotmob sang Tiếng Việt
@@ -14,8 +14,15 @@ export const fotmobStatusMap: Record<string, string> = {
 };
 
 export default function MatchCard({
-    id, home, away, homeLogo, awayLogo, score, time, status, live, minute, rawPeriod
-}: MatchItem) {
+    id, home, away, homeLogo, awayLogo, score, time, status, live, minute, rawPeriod, rawStatus, fonts
+}: MatchItem & { fonts?: { base: string; heading: string; subHeading: string } }) {
+
+    // Fallback an toàn nếu không có fonts truyền vào
+    const currentFonts = fonts || {
+        base: "font-sans",
+        heading: "font-black",
+        subHeading: "font-bold"
+    };
 
     // Nhận diện đội chưa xác định (Thắng, Thua, Nhất, Nhì, Ba, TBD)
     const checkIsTBD = (name: string) => {
@@ -34,11 +41,9 @@ export default function MatchCard({
     const isHomeTBD = checkIsTBD(home);
     const isAwayTBD = checkIsTBD(away);
 
-    // Xử lý hiển thị phút live (Nếu là "HT" -> "Nghỉ giữa hiệp", nếu là số "45" -> "45'")
-    let displayMinute = fotmobStatusMap[minute || ""] || minute || 'LIVE';
-    if (/^\d+$/.test(displayMinute)) {
-        displayMinute = `${displayMinute}'`; // Thêm dấu phẩy cho phút
-    }
+    // Xử lý hiển thị phút live (Sử dụng rawStatus để tính phút bù giờ chi tiết như MatchHero)
+    const detailedMinute = formatMatchMinute(rawStatus) || minute || "";
+    const displayMinute = fotmobStatusMap[detailedMinute] || detailedMinute || 'LIVE';
 
     // Xử lý hiển thị trạng thái kết thúc/hoãn (Dùng rawPeriod của Fotmob)
     const displayStatus = fotmobStatusMap[rawPeriod || ""] || status;
@@ -47,8 +52,8 @@ export default function MatchCard({
         <Link href={`/match/${id}`} className="group flex items-center justify-between p-4 bg-slate-900/40 border border-slate-800 rounded-2xl hover:border-blue-500/50 hover:bg-slate-900 transition-all cursor-pointer">
             {/* Đội nhà */}
             <div className="w-[30%] flex items-center justify-end gap-3 text-right">
-                <span className="font-display-reg text-sm md:text-base hidden sm:block truncate">{home}</span>
-                <span className="font-display-reg text-sm sm:hidden block truncate">{home.substring(0, 3).toUpperCase()}</span>
+                <span className={`${currentFonts.subHeading} text-sm md:text-base hidden sm:block truncate`}>{home}</span>
+                <span className={`${currentFonts.subHeading} text-sm sm:hidden block truncate`}>{home.substring(0, 3).toUpperCase()}</span>
                 {(!isHomeTBD && homeLogo) ? (
                     <img src={homeLogo} alt={home} className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover bg-white" />
                 ) : (
@@ -64,7 +69,7 @@ export default function MatchCard({
                             <span className="w-2 h-2 bg-red-500 rounded-full animate-ping"></span>
                             <span className="text-[10px] md:text-sm text-center">{displayMinute}</span>
                         </div>
-                        <div className="font-display-black text-2xl md:text-3xl tracking-tighter">
+                        <div className={`${currentFonts.heading} text-2xl md:text-3xl tracking-tighter`}>
                             {score}
                         </div>
                         <div className="text-[10px] uppercase font-bold text-red-400 mt-1">{status}</div>
@@ -72,11 +77,11 @@ export default function MatchCard({
                 ) : (
                     <>
                         {score !== null ? (
-                            <div className="font-display-black text-2xl md:text-3xl tracking-tighter">
+                            <div className={`${currentFonts.heading} text-2xl md:text-3xl tracking-tighter`}>
                                 {score}
                             </div>
                         ) : (
-                            <div className="font-display-reg text-lg text-blue-400 mb-1">
+                            <div className={`${currentFonts.subHeading} text-lg text-blue-400 mb-1`}>
                                 {time}
                             </div>
                         )}
@@ -94,8 +99,8 @@ export default function MatchCard({
                 ) : (
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-xs text-slate-500 font-bold">?</div>
                 )}
-                <span className="font-display-reg text-sm md:text-base hidden sm:block truncate">{away}</span>
-                <span className="font-display-reg text-sm sm:hidden block truncate">{away.substring(0, 3).toUpperCase()}</span>
+                <span className={`${currentFonts.subHeading} text-sm md:text-base hidden sm:block truncate`}>{away}</span>
+                <span className={`${currentFonts.subHeading} text-sm sm:hidden block truncate`}>{away.substring(0, 3).toUpperCase()}</span>
             </div>
         </Link>
     );
