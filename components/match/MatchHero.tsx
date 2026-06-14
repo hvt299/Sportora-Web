@@ -199,38 +199,58 @@ export default function MatchHero({ matchData, homeTeam, awayTeam, fonts }: { ma
             {/* VIDEO HIGHLIGHT HOẶC OPTA SUPERLIVE */}
             {(highlights?.url) ? (
                 <section className="mt-8">
-                    <a href={highlights.url} target="_blank" rel="noopener noreferrer" className="group block relative w-full rounded-4xl overflow-hidden border border-slate-800 bg-slate-900 aspect-21/9 md:aspect-32/9">
-                        <img src={highlights.image} alt="Highlights" className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700" />
+                    <a
+                        href={highlights.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group block relative w-full rounded-4xl overflow-hidden border border-slate-800 bg-slate-900 aspect-21/9 md:aspect-32/9"
+                    >
+                        <img
+                            src={highlights.image}
+                            alt="Highlights"
+                            className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700"
+                        />
                         <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
                         <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
                             <PlayCircle className="w-16 h-16 text-white opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all drop-shadow-xl" />
-                            <span className="text-sm font-bold uppercase tracking-widest text-white drop-shadow-md">Xem video Highlight chính thức ({highlights.source})</span>
+                            <span className="text-sm font-bold uppercase tracking-widest text-white drop-shadow-md">
+                                Xem video Highlight chính thức ({highlights.source})
+                            </span>
                         </div>
                     </a>
                 </section>
             ) : (superLive?.showSuperLive && superLive?.superLiveUrl && isLive) ? (
-                <section className="mt-8 w-full rounded-4xl overflow-hidden border border-blue-900/30 bg-linear-to-br from-blue-950/40 to-slate-900/50 relative shadow-2xl min-h-100">
-                    {/* Skeleton Loading State */}
+                <section className="mt-8 relative w-full rounded-4xl overflow-hidden border border-blue-900/30 bg-slate-950 shadow-2xl">
+
+                    {/* 🔵 BACKGROUND BLEND LAYER (fix trắng iframe) */}
+                    <div className="absolute inset-0 bg-linear-to-br from-blue-950/40 via-slate-950 to-black pointer-events-none" />
+
+                    {/* 🔵 OPTA LOADING */}
                     {!iframeLoaded && (
-                        <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-slate-900/80 z-10 backdrop-blur-sm">
+                        <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-slate-950/80 z-20 backdrop-blur-md">
                             <Loader2 className="w-8 h-8 text-blue-500 animate-spin" />
-                            <span className="text-xs font-bold uppercase tracking-widest text-slate-400 animate-pulse">Đang tải sơ đồ Opta Live...</span>
+                            <span className="text-xs font-bold uppercase tracking-widest text-slate-400 animate-pulse">
+                                Đang tải Opta Live...
+                            </span>
                         </div>
                     )}
 
-                    <div
-                        className="relative w-full overflow-hidden"
-                        style={{ height: "600px" }}
-                    >
-                        {/* Iframe Opta Live */}
+                    {/* 🔵 IFRAME WRAPPER */}
+                    <div className="relative w-full" style={{ height: "600px" }}>
                         <iframe
                             title="superLive"
                             src={`${superLive.superLiveUrl}&a=false&breakpointMin=290&dark=true&hl=vi&gdpr=0&gdpr_consent=`}
                             width="100%"
                             height="600"
                             sandbox="allow-scripts allow-same-origin allow-popups allow-modals allow-forms allow-popups-to-escape-sandbox allow-downloads allow-top-navigation-by-user-activation"
-                            className={`transition-opacity duration-1000 ${iframeLoaded ? "opacity-100" : "opacity-0"
-                                }`}
+                            className={`
+                    relative z-10 w-full
+                    transition-all duration-700
+                    ${iframeLoaded ? "opacity-95" : "opacity-0"}
+                    mix-blend-screen
+                    brightness-90
+                    contrast-125
+                `}
                             style={{
                                 border: "none",
                                 width: "calc(100% + 17px)",
@@ -239,6 +259,10 @@ export default function MatchHero({ matchData, homeTeam, awayTeam, fonts }: { ma
                             onLoad={() => setIframeLoaded(true)}
                         />
                     </div>
+
+                    {/* 🔵 EXTRA DARK OVERLAY (giúp đồng nhất UI match card) */}
+                    <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+
                 </section>
             ) : null}
         </>

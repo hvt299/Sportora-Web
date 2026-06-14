@@ -364,6 +364,23 @@ export async function getBracket(leagueId: number | string = 77, season: string 
                 const homeId = matchObj.home?.id || matchObj.homeTeamID || matchup.homeTeamId;
                 const awayId = matchObj.away?.id || matchObj.awayTeamID || matchup.awayTeamId;
 
+                // --- LOGIC LẤY ĐỘI THẮNG QUA ID TỪ FOTMOB ---
+                // Ưu tiên lấy từ matchup.winner hoặc matchup.aggregatedWinner (rất quan trọng cho các trận Penalty)
+                const winnerId = matchup.winner ?? matchup.aggregatedWinner ?? realMatchData?.status?.winner ?? realMatchData?.winner ?? matchObj.winner;
+                
+                let isHomeWinner = false;
+                let isAwayWinner = false;
+
+                if (winnerId !== undefined && winnerId !== null) {
+                    // Nếu Fotmob trả về ID đội thắng, đem so sánh với ID của đội nhà/khách
+                    if (String(winnerId) === String(homeId)) isHomeWinner = true;
+                    else if (String(winnerId) === String(awayId)) isAwayWinner = true;
+                } else {
+                    // Fallback (cho an toàn, phòng trường hợp Fotmob đổi API về true/false)
+                    isHomeWinner = realMatchData?.home?.winner === true || matchObj.home?.winner === true;
+                    isAwayWinner = realMatchData?.away?.winner === true || matchObj.away?.winner === true;
+                }
+
                 const statusSource = realMatchData?.status || matchObj.status || matchObj;
                 const started = statusSource.started ?? false;
                 const finished = statusSource.finished ?? false;
@@ -393,6 +410,8 @@ export async function getBracket(leagueId: number | string = 77, season: string 
                     awayLogo: awayId ? `https://images.fotmob.com/image_resources/logo/teamlogo/${awayId}.png` : undefined,
                     score: score,
                     time: time,
+                    isHomeWinner: isHomeWinner,
+                    isAwayWinner: isAwayWinner
                 };
             });
         };
@@ -490,5 +509,24 @@ export async function getMatchDetails(matchId: string): Promise<FotmobMatchDetai
     } catch (error) {
         console.error(`Lỗi cào dữ liệu chi tiết trận đấu ${matchId}:`, error);
         return null;
+    }
+}
+
+/**
+ * 6. LẤY CHỈ SỐ GIẢI ĐẤU (TOURNAMENT STATS)
+ */
+export async function getTournamentStats(leagueId: number | string = 77, season: string = "2026") {
+    try {
+        const url = `https://www.fotmob.com/api/data/leagues?id=${leagueId}&ccode3=VNM&season=${season}`;
+        const response = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" }, cache: "no-store" });
+        const data: any = await response.json();
+
+        return {
+            players: data?.stats?.players || [],
+            teams: data?.stats?.teams || []
+        };
+    } catch (error) {
+        console.error("Lỗi cào dữ liệu Stats:", error);
+        return { players: [], teams: [] };
     }
 }
