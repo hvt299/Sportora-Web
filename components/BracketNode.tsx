@@ -23,8 +23,26 @@ export default function BracketNode({
         }
     }
 
-    const isHomeTBD = home.toLowerCase().includes('thắng') || home.toLowerCase().includes('thua') || home.match(/^[0-9]/) || home === "TBD";
-    const isAwayTBD = away.toLowerCase().includes('thắng') || away.toLowerCase().includes('thua') || away.match(/^[0-9]/) || away === "TBD";
+    const checkIsTBD = (name: string): boolean => {
+        if (!name) return true;
+
+        const lower = name.toLowerCase();
+
+        return (
+            lower.includes('thắng') ||
+            lower.includes('thua') ||
+            lower.includes('nhất') ||
+            lower.includes('nhì') ||
+            lower.includes('ba') ||
+            lower.includes('chưa xác định') ||
+            !!name.match(/^[0-9]/) ||
+            name === "TBD" ||
+            name === "?"
+        );
+    };
+
+    const isHomeTBD = checkIsTBD(home);
+    const isAwayTBD = checkIsTBD(away);
 
     return (
         // Đã thu nhỏ xuống w-44 (176px) và giảm p-3 xuống p-2 để layout cân đối, không bị khổng lồ
@@ -44,9 +62,19 @@ export default function BracketNode({
             <div className="flex justify-between items-center mb-1.5 text-white">
                 <div className="flex items-center gap-1.5 truncate">
                     {!isHomeTBD && homeLogo ? (
-                        <img src={homeLogo} alt={home} className="w-3.5 h-3.5 rounded-full object-cover bg-white" />
+                        <img
+                            src={homeLogo}
+                            alt={home}
+                            className="w-3.5 h-3.5 rounded-full object-cover bg-white"
+                            onError={(e) => {
+                                e.currentTarget.outerHTML =
+                                    '<div class="w-3.5 h-3.5 rounded-full bg-slate-700 flex items-center justify-center text-[6px] font-bold text-slate-400 border border-slate-600">?</div>';
+                            }}
+                        />
                     ) : (
-                        <div className="w-3.5 h-3.5 rounded-full bg-slate-700 flex items-center justify-center text-[6px] font-bold text-slate-400 border border-slate-600">?</div>
+                        <div className="w-3.5 h-3.5 rounded-full bg-slate-700 flex items-center justify-center text-[6px] font-bold text-slate-400 border border-slate-600">
+                            ?
+                        </div>
                     )}
                     <span className="text-[10px] font-bold truncate max-w-22.5">{home}</span>
                 </div>
@@ -59,9 +87,19 @@ export default function BracketNode({
             <div className="flex justify-between items-center text-white">
                 <div className="flex items-center gap-1.5 truncate">
                     {!isAwayTBD && awayLogo ? (
-                        <img src={awayLogo} alt={away} className="w-3.5 h-3.5 rounded-full object-cover bg-white" />
+                        <img
+                            src={awayLogo}
+                            alt={away}
+                            className="w-3.5 h-3.5 rounded-full object-cover bg-white"
+                            onError={(e) => {
+                                e.currentTarget.outerHTML =
+                                    '<div class="w-3.5 h-3.5 rounded-full bg-slate-700 flex items-center justify-center text-[6px] font-bold text-slate-400 border border-slate-600">?</div>';
+                            }}
+                        />
                     ) : (
-                        <div className="w-3.5 h-3.5 rounded-full bg-slate-700 flex items-center justify-center text-[6px] font-bold text-slate-400 border border-slate-600">?</div>
+                        <div className="w-3.5 h-3.5 rounded-full bg-slate-700 flex items-center justify-center text-[6px] font-bold text-slate-400 border border-slate-600">
+                            ?
+                        </div>
                     )}
                     <span className="text-[10px] font-bold truncate max-w-22.5">{away}</span>
                 </div>

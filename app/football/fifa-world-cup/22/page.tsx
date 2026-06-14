@@ -1,0 +1,29 @@
+import { getFixtures, getStandings, getNews, getBracket } from '@/lib/scraper';
+import WC26ClientPage from '@/components/WC26ClientPage';
+import { tournamentDetails } from '@/data/tournament-details';
+
+export const dynamic = 'force-dynamic';
+
+export default async function Page() {
+    const { leagueId, season, query, tournamentKey } = tournamentDetails.worldCup2022.config;
+
+    const [matches, standings, news, bracket] = await Promise.all([
+        getFixtures(leagueId, season),
+        getStandings(leagueId, season),
+        getNews(query),
+        getBracket(leagueId, season)
+    ]);
+
+    return (
+        <WC26ClientPage
+            initialMatches={matches}
+            initialStandings={standings}
+            initialNews={news}
+            initialBracket={bracket}
+            leagueId={leagueId}
+            season={season}
+            query={query}
+            tournamentKey={tournamentKey}
+        />
+    );
+}

@@ -1,3 +1,4 @@
+import { useRef, useState } from "react";
 import BracketNode from "./BracketNode";
 import { Trophy } from "lucide-react";
 
@@ -36,8 +37,49 @@ export default function Bracket({ data }: { data: BracketData }) {
     const finalMatch = data.final || { id: 999, home: "TBD", away: "TBD", score: null, time: null };
     const thirdPlaceMatch = data.thirdPlace;
 
+    const scrollRef = useRef<HTMLDivElement>(null);
+
+    const [isDragging, setIsDragging] = useState(false);
+    const [startX, setStartX] = useState(0);
+    const [scrollLeft, setScrollLeft] = useState(0);
+
+    const handleMouseDown = (e: React.MouseEvent) => {
+        if (!scrollRef.current) return;
+
+        setIsDragging(true);
+        setStartX(e.pageX - scrollRef.current.offsetLeft);
+        setScrollLeft(scrollRef.current.scrollLeft);
+    };
+
+    const handleMouseLeaveOrUp = () => {
+        setIsDragging(false);
+    };
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (!isDragging || !scrollRef.current) return;
+
+        e.preventDefault();
+
+        const x = e.pageX - scrollRef.current.offsetLeft;
+        const walk = (x - startX) * 1.5;
+
+        scrollRef.current.scrollLeft = scrollLeft - walk;
+    };
+
     return (
-        <div className="overflow-x-auto overflow-y-hidden w-full scrollbar-thin scrollbar-thumb-sky-900 scrollbar-track-slate-900/50">
+        <div
+            ref={scrollRef}
+            className={`
+        overflow-x-auto overflow-y-hidden w-full
+        scrollbar-hide
+        select-none
+        ${isDragging ? "cursor-grabbing" : "cursor-grab"}
+    `}
+            onMouseDown={handleMouseDown}
+            onMouseLeave={handleMouseLeaveOrUp}
+            onMouseUp={handleMouseLeaveOrUp}
+            onMouseMove={handleMouseMove}
+        >
             {/* Sử dụng items-stretch và bỏ min-h cứng để các khối kết nối liền mạch */}
             <div className="flex justify-start md:justify-center items-stretch min-w-max px-4 py-8 mx-auto gap-3 md:gap-6">
 
