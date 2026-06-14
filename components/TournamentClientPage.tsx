@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useState, useEffect } from 'react';
-import { Trophy, CalendarDays, Table, GitBranch, ArrowLeft, Volume2, VolumeX } from 'lucide-react'; // Thêm Volume2, VolumeX
+import { Trophy, CalendarDays, Table, GitBranch, ArrowLeft, Volume2, VolumeX, Users, BarChart2, Image as ImageIcon, Video } from 'lucide-react';
 import Link from 'next/link';
 import MatchCard from '@/components/MatchCard';
 import GroupTable from '@/components/GroupTable';
@@ -9,12 +9,15 @@ import SidebarNews from '@/components/SidebarNews';
 import { NewsItem, MatchItem } from '@/lib/scraper';
 import { useRouter } from 'next/navigation';
 import { tournamentDetails } from '@/data/tournament-details';
+import StatCard from './StatCard';
 
 const TABS = [
     { id: 'overview', name: 'Tổng quan', icon: Trophy },
     { id: 'fixtures', name: 'Lịch thi đấu', icon: CalendarDays },
     { id: 'standings', name: 'Bảng xếp hạng', icon: Table },
     { id: 'bracket', name: 'Nhánh đấu', icon: GitBranch },
+    { id: 'player-stats', name: 'Chỉ số cầu thủ', icon: Users },
+    { id: 'team-stats', name: 'Chỉ số đội bóng', icon: BarChart2 },
 ];
 
 type FixturesData = Record<string, Record<string, MatchItem[]>>;
@@ -24,6 +27,7 @@ interface PageProps {
     initialStandings: Record<string, any[]>;
     initialNews: { vn: NewsItem[], global: NewsItem[] };
     initialBracket: any;
+    initialStats: { players: any[], teams: any[] };
     tournamentKey: string;
 }
 
@@ -55,6 +59,7 @@ export default function TournamentClientPage({
     initialStandings,
     initialNews,
     initialBracket,
+    initialStats,
     tournamentKey
 }: PageProps) {
     const [activeTab, setActiveTab] = useState('overview');
@@ -62,9 +67,13 @@ export default function TournamentClientPage({
     const [newsData] = useState(initialNews);
     const [selectedRound, setSelectedRound] = useState('Vòng bảng');
 
+    // --- STATE CHO BỘ LỌC TRẬN ĐẤU ---
+    const [hideFinished, setHideFinished] = useState(false);
+
     // --- STATE CHO VIDEO ---
     const [isMuted, setIsMuted] = useState(true);
     const [videoError, setVideoError] = useState(false);
+    const [preferredMode, setPreferredMode] = useState<'video' | 'image'>('video');
 
     const router = useRouter();
     useEffect(() => {
@@ -124,40 +133,80 @@ export default function TournamentClientPage({
             </Link>
 
             {/* HERO HEADER VỚI VIDEO/IMAGE TỐI ƯU */}
-            <section className="h-[40vh] relative flex items-end p-8 border-b border-slate-800 overflow-hidden">
+            <section
+                className="h-[40vh] relative flex items-end p-8 border-b border-slate-800 overflow-hidden bg-blue-950"
+            >
+                {(() => {
+                    // 1. Kiểm tra tính khả dụng của Media
+                    const hasVideo = !!details.hero.video && !videoError;
+                    const hasImage = !!details.hero.backgroundImage;
 
-                {/* Logic Xử lý Video (Ưu tiên) và Fallback Ảnh */}
-                {details.hero.video && !videoError ? (
-                    <>
-                        <video
-                            autoPlay
-                            loop
-                            muted={isMuted}
-                            playsInline
-                            className="absolute inset-0 w-full h-full object-cover z-0 opacity-80"
-                            onError={() => setVideoError(true)} // Nếu lỗi tải -> Fallback sang ảnh
-                        >
-                            <source src={details.hero.video} type="video/mp4" />
-                        </video>
+                    // 2. Quyết định chế độ hiển thị thực tế
+                    let currentDisplay: 'video' | 'image' | 'none' = 'none';
+                    if (preferredMode === 'video') {
+                        if (hasVideo) currentDisplay = 'video';
+                        else if (hasImage) currentDisplay = 'image';
+                    } else {
+                        if (hasImage) currentDisplay = 'image';
+                        else if (hasVideo) currentDisplay = 'video';
+                    }
 
-                        {/* Nút bật/tắt tiếng Video */}
-                        <button
-                            onClick={() => setIsMuted(!isMuted)}
-                            className="absolute bottom-6 right-6 z-30 p-3 bg-black/30 hover:bg-black/60 rounded-full backdrop-blur-md border border-white/20 transition text-white shadow-xl"
-                            aria-label="Toggle Volume"
-                        >
-                            {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
-                        </button>
-                    </>
-                ) : (
-                    <div
-                        className="absolute inset-0 bg-center bg-cover z-0"
-                        style={{ backgroundImage: `url('${details.hero.backgroundImage}')` }}
-                    />
-                )}
+                    // 3. Chỉ cho phép chuyển đổi nếu có CẢ 2
+                    const canToggle = hasVideo && hasImage;
 
-                <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent z-10" />
+                    return (
+                        <>
+                            {/* RENDER MEDIA */}
+                            {currentDisplay === 'video' && (
+                                <video
+                                    autoPlay
+                                    loop
+                                    muted={isMuted}
+                                    playsInline
+                                    className="absolute inset-0 w-full h-full object-cover z-0 opacity-80"
+                                    onError={() => setVideoError(true)} // Lỗi tải -> Fallback sang ảnh và mất nút toggle
+                                >
+                                    <source src={details.hero.video} type="video/mp4" />
+                                </video>
+                            )}
 
+                            {currentDisplay === 'image' && (
+                                <div
+                                    className="absolute inset-0 bg-center bg-cover z-0 opacity-80"
+                                    style={{ backgroundImage: `url('${details.hero.backgroundImage}')` }}
+                                />
+                            )}
+
+                            {/* LỚP PHỦ GRADIENT TỐI LÊN ĐỂ ĐỌC CHỮ */}
+                            <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent z-10" />
+
+                            {/* CÁC NÚT TƯƠNG TÁC */}
+                            {/* Nút Toggle Image/Video (Góc trên phải) */}
+                            {canToggle && (
+                                <button
+                                    onClick={() => setPreferredMode(prev => prev === 'video' ? 'image' : 'video')}
+                                    className="absolute top-6 right-6 z-30 p-2.5 bg-black/30 hover:bg-black/60 rounded-full backdrop-blur-md border border-white/20 transition text-white shadow-xl"
+                                    title={currentDisplay === 'video' ? "Chuyển sang Hình ảnh tĩnh" : "Chuyển sang Video động"}
+                                >
+                                    {currentDisplay === 'video' ? <ImageIcon className="w-5 h-5" /> : <Video className="w-5 h-5" />}
+                                </button>
+                            )}
+
+                            {/* Nút Mute/Unmute (Góc dưới phải) - Chỉ hiện khi đang chạy Video */}
+                            {currentDisplay === 'video' && (
+                                <button
+                                    onClick={() => setIsMuted(!isMuted)}
+                                    className="absolute bottom-6 right-6 z-30 p-3 bg-black/30 hover:bg-black/60 rounded-full backdrop-blur-md border border-white/20 transition text-white shadow-xl"
+                                    aria-label="Toggle Volume"
+                                >
+                                    {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+                                </button>
+                            )}
+                        </>
+                    );
+                })()}
+
+                {/* TEXT CONTENT */}
                 <div className="relative z-20 pointer-events-none">
                     <span className="text-blue-500 font-bold uppercase tracking-widest text-xs mb-2 block drop-shadow-md">
                         {details.hero.badge}
@@ -411,10 +460,10 @@ export default function TournamentClientPage({
 
                                 {/* Thông số giải đấu (Amber/Vàng hổ phách) */}
                                 <div className="bg-linear-to-br from-amber-900/20 to-slate-900/50 border border-amber-500/20 rounded-3xl p-8 relative overflow-hidden hover:border-amber-500/40 transition">
-                                    <div className="absolute -right-4 -bottom-4 opacity-5 pointer-events-none text-[100px] font-display-black italic leading-none text-amber-200">
+                                    <div className={`absolute -right-4 -bottom-4 opacity-5 pointer-events-none text-[100px] ${fonts.heading} italic leading-none text-amber-200`}>
                                         INFO
                                     </div>
-                                    <h3 className="text-2xl font-display-black italic uppercase tracking-tighter text-amber-400 mb-6 relative z-10">
+                                    <h3 className={`text-2xl ${fonts.heading} italic uppercase tracking-tighter text-amber-400 mb-6 relative z-10`}>
                                         Thông số giải đấu
                                     </h3>
                                     <div className="space-y-4 text-sm font-medium relative z-10">
@@ -449,52 +498,95 @@ export default function TournamentClientPage({
                     </div>
                 )}
 
-                {activeTab === 'fixtures' && (
-                    <div className="space-y-8 animate-in fade-in duration-500">
-                        {/* Đã thêm nút "Tranh hạng ba" */}
-                        <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
-                            {['Vòng bảng', 'Vòng 32 đội', 'Vòng 16 đội', 'Tứ kết', 'Bán kết', 'Tranh hạng ba', 'Chung kết'].map((round) => (
+                {activeTab === 'fixtures' && (() => {
+                    // Lọc dữ liệu: Nếu hideFinished = true, loại bỏ các trận "Kết thúc" và "Hủy"
+                    const processedRoundData = Object.keys(roundData).reduce((acc, date) => {
+                        const filteredMatches = roundData[date].filter((match: any) => {
+                            if (hideFinished) {
+                                return match.status !== "Kết thúc" && match.status !== "Hủy";
+                            }
+                            return true;
+                        });
+
+                        // Chỉ giữ lại những ngày còn có trận đấu
+                        if (filteredMatches.length > 0) {
+                            acc[date] = filteredMatches;
+                        }
+                        return acc;
+                    }, {} as Record<string, any[]>);
+
+                    return (
+                        <div className="space-y-8 animate-in fade-in duration-500">
+                            {/* Header: Thanh chọn vòng đấu + Nút Lọc */}
+                            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                                <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar w-full md:w-auto">
+                                    {['Vòng bảng', 'Vòng 32 đội', 'Vòng 16 đội', 'Tứ kết', 'Bán kết', 'Tranh hạng ba', 'Chung kết'].map((round) => (
+                                        <button
+                                            key={round}
+                                            onClick={() => setSelectedRound(round)}
+                                            className={`px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all ${selectedRound === round
+                                                ? "bg-white text-black"
+                                                : "bg-slate-900 text-slate-400 hover:bg-slate-800"
+                                                }`}
+                                        >
+                                            {round}
+                                        </button>
+                                    ))}
+                                </div>
+
+                                {/* Nút Toggle Ẩn/Hiện */}
                                 <button
-                                    key={round}
-                                    onClick={() => setSelectedRound(round)}
-                                    className={`px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all ${selectedRound === round
-                                        ? "bg-white text-black"
-                                        : "bg-slate-900 text-slate-400 hover:bg-slate-800"
+                                    onClick={() => setHideFinished(!hideFinished)}
+                                    className={`shrink-0 px-4 py-2 rounded-full text-[11px] font-bold tracking-wide transition-all border ${hideFinished
+                                        ? 'bg-blue-500/20 text-blue-400 border-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.15)]'
+                                        : 'bg-slate-900/80 text-slate-400 border-slate-700 hover:bg-slate-800'
                                         }`}
                                 >
-                                    {round}
+                                    {hideFinished ? "Hiển thị tất cả trận đấu" : "Ẩn các trận đã kết thúc"}
                                 </button>
-                            ))}
-                        </div>
+                            </div>
 
-                        {/* Danh sách trận đấu động theo ngày */}
-                        <div className="space-y-10">
-                            {Object.keys(roundData).length > 0 ? (
-                                Object.keys(roundData)
-                                    .sort((a, b) => {
-                                        const [d1, m1, y1] = a.split('/').map(Number);
-                                        const [d2, m2, y2] = b.split('/').map(Number);
-                                        return new Date(y1, m1 - 1, d1).getTime() - new Date(y2, m2 - 1, d2).getTime();
-                                    })
-                                    .map((date) => (
-                                        <div key={date} className="space-y-6">
-                                            <h4 className="text-[11px] font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
-                                                <span className="w-2 h-2 rounded-full bg-blue-500" />
-                                                {date}
-                                            </h4>
-                                            <div className="space-y-3">
-                                                {roundData[date].map((match: any, i: number) => (
-                                                    <MatchCard key={i} {...match} fonts={fonts} />
-                                                ))}
+                            {/* Danh sách trận đấu động theo ngày */}
+                            <div className="space-y-10">
+                                {Object.keys(processedRoundData).length > 0 ? (
+                                    Object.keys(processedRoundData)
+                                        .sort((a, b) => {
+                                            const [d1, m1, y1] = a.split('/').map(Number);
+                                            const [d2, m2, y2] = b.split('/').map(Number);
+                                            return new Date(y1, m1 - 1, d1).getTime() - new Date(y2, m2 - 1, d2).getTime();
+                                        })
+                                        .map((date) => (
+                                            <div key={date} className="space-y-6">
+                                                <h4 className="text-[11px] font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                                                    <span className="w-2 h-2 rounded-full bg-blue-500" />
+                                                    {date}
+                                                </h4>
+                                                <div className="space-y-3">
+                                                    {processedRoundData[date].map((match: any, i: number) => (
+                                                        // Đừng quên truyền fonts={fonts} nếu bạn đã cấu hình font động
+                                                        <MatchCard key={i} {...match} fonts={fonts} />
+                                                    ))}
+                                                </div>
                                             </div>
-                                        </div>
-                                    ))
-                            ) : (
-                                <p className="text-slate-500 text-center py-10">Chưa có lịch thi đấu cho vòng này.</p>
-                            )}
+                                        ))
+                                ) : (
+                                    // Thông báo khi không còn trận nào hiển thị do bị lọc
+                                    <div className="text-center py-12 bg-slate-900/20 rounded-3xl border border-slate-800 border-dashed">
+                                        <p className="text-slate-400 font-medium mb-3">Không có trận đấu nào đang hoặc sắp diễn ra ở vòng này.</p>
+                                        {hideFinished && (
+                                            <button
+                                                onClick={() => setHideFinished(false)}
+                                                className="text-blue-400 text-sm font-bold hover:underline"
+                                            >
+                                                Xem lại các trận đã kết thúc
+                                            </button>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
                         </div>
-                    </div>
-                )}
+                    );
+                })()}
 
                 {activeTab === 'standings' && (
                     <div className="space-y-6 animate-in fade-in duration-500">
@@ -525,7 +617,24 @@ export default function TournamentClientPage({
                         )}
                     </div>
                 )}
+
                 {activeTab === 'bracket' && (<Bracket data={initialBracket} fonts={fonts} />)}
+
+                {activeTab === 'player-stats' && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
+                        {initialStats?.players?.map((statBlock: any, idx: number) => (
+                            <StatCard key={idx} statBlock={statBlock} type="player" fonts={fonts} />
+                        ))}
+                    </div>
+                )}
+
+                {activeTab === 'team-stats' && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
+                        {initialStats?.teams?.map((statBlock: any, idx: number) => (
+                            <StatCard key={idx} statBlock={statBlock} type="team" fonts={fonts} />
+                        ))}
+                    </div>
+                )}
             </main>
         </div>
     );

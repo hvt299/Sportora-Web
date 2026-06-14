@@ -10,6 +10,8 @@ export type BracketMatch = {
     awayLogo?: string;
     score: string | null;
     time: string | null;
+    isHomeWinner?: boolean;
+    isAwayWinner?: boolean;
 };
 
 export interface BracketData {

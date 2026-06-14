@@ -114,8 +114,8 @@ export default function MatchSidebar({ matchData, homeTeam, awayTeam }: { matchD
                 <div className="space-y-5">
                     {statsTop.map((stat: any, idx: number) => {
                         if (!stat.stats || stat.stats[0] === undefined) return null;
-                        const homeStat = parseFloat(stat.stats[0]) || 0;
-                        const awayStat = parseFloat(stat.stats[1]) || 0;
+                        const homeStat = Number(stat.stats[0] ?? 0);
+                        const awayStat = Number(stat.stats[1] ?? 0);
                         const total = homeStat + awayStat;
                         const homePercent = total > 0 ? (homeStat / total) * 100 : 50;
                         const awayPercent = total > 0 ? (awayStat / total) * 100 : 50;
@@ -123,11 +123,15 @@ export default function MatchSidebar({ matchData, homeTeam, awayTeam }: { matchD
                         return (
                             <div key={idx} className="flex flex-col gap-1.5">
                                 <div className="flex justify-between items-center text-xs font-bold">
-                                    <span className={stat.highlighted === 'home' ? 'text-blue-400' : 'text-slate-400'}>{stat.stats[0]}</span>
+                                    <span className={stat.highlighted === 'home' ? 'text-blue-400' : 'text-slate-400'}>
+                                        {stat.stats[0] ?? 0}
+                                    </span>
                                     <span className="text-slate-500 text-[10px] uppercase tracking-widest text-center px-1">
                                         {STAT_MAP[stat.title] || stat.title}
                                     </span>
-                                    <span className={stat.highlighted === 'away' ? 'text-amber-400' : 'text-slate-400'}>{stat.stats[1]}</span>
+                                    <span className={stat.highlighted === 'away' ? 'text-amber-400' : 'text-slate-400'}>
+                                        {stat.stats[1] ?? 0}
+                                    </span>
                                 </div>
                                 <div className="flex h-1.5 rounded-full overflow-hidden bg-slate-800 gap-1">
                                     <div className="bg-blue-500 h-full rounded-r-full" style={{ width: `${homePercent}%` }} />
@@ -191,7 +195,7 @@ export default function MatchSidebar({ matchData, homeTeam, awayTeam }: { matchD
             {/* FORM */}
             {teamForm.length > 0 && (
                 <div className="bg-slate-900/40 border border-slate-800 rounded-3xl p-6">
-                    <h3 className="text-lg font-black italic tracking-tighter uppercase mb-4 text-slate-200 border-b border-slate-800 pb-3">Phong độ (5 trận)</h3>
+                    <h3 className="text-lg font-black italic tracking-tighter uppercase mb-4 text-slate-200 border-b border-slate-800 pb-3">Phong độ gần đây (5 trận)</h3>
                     <div className="space-y-6">
                         <div>
                             <div className="flex items-center gap-2 mb-3">
