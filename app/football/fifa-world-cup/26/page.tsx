@@ -1,5 +1,5 @@
 import { getFixtures, getStandings, getNews, getBracket } from '@/lib/scraper';
-import WC26ClientPage from '@/components/WC26ClientPage';
+import TournamentClientPage from '@/components/TournamentClientPage';
 import { tournamentDetails } from '@/data/tournament-details';
 
 export const dynamic = 'force-dynamic';
@@ -15,14 +15,11 @@ export default async function Page() {
     ]);
 
     return (
-        <WC26ClientPage
+        <TournamentClientPage
             initialMatches={matches}
             initialStandings={standings}
             initialNews={news}
             initialBracket={bracket}
-            leagueId={leagueId}
-            season={season}
-            query={query}
             tournamentKey={tournamentKey}
         />
     );

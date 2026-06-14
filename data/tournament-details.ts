@@ -7,6 +7,12 @@ export const tournamentDetails = {
             tournamentKey: "worldCup2026"
         },
 
+        fonts: {
+            base: "font-body",
+            heading: "font-wc26-black",
+            subHeading: "font-wc26-regular"
+        },
+
         hero: {
             badge: "FIFA Official Tournament",
             title: "FIFA WORLD CUP 2026",
@@ -344,11 +350,17 @@ export const tournamentDetails = {
             tournamentKey: "worldCup2022"
         },
 
+        fonts: {
+            base: "font-wc22-medium",
+            heading: "font-wc22-heavy",
+            subHeading: "font-wc22-bold"
+        },
+
         hero: {
             badge: "FIFA Official Tournament",
             title: "FIFA WORLD CUP 2022",
             backgroundImage: "/images/wc22.jpg",
-            video: ""
+            video: "/videos/wc22.mp4"
         },
 
         overview: {
@@ -402,7 +414,143 @@ export const tournamentDetails = {
             matches: 64
         },
 
-        teams: []
+        teams: [
+            {
+                name: "Qatar",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5902_xsmall.png"
+            },
+            {
+                name: "Ecuador",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6707_xsmall.png"
+            },
+            {
+                name: "Senegal",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6395_xsmall.png"
+            },
+            {
+                name: "Netherlands",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6708_xsmall.png"
+            },
+
+            {
+                name: "England",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8491_xsmall.png"
+            },
+            {
+                name: "Iran",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6711_xsmall.png"
+            },
+            {
+                name: "USA",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6713_xsmall.png"
+            },
+            {
+                name: "Wales",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5790_xsmall.png"
+            },
+
+            {
+                name: "Argentina",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6706_xsmall.png"
+            },
+            {
+                name: "Saudi Arabia",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/7795_xsmall.png"
+            },
+            {
+                name: "Mexico",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6710_xsmall.png"
+            },
+            {
+                name: "Poland",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8568_xsmall.png"
+            },
+
+            {
+                name: "France",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6723_xsmall.png"
+            },
+            {
+                name: "Australia",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6716_xsmall.png"
+            },
+            {
+                name: "Denmark",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8238_xsmall.png"
+            },
+            {
+                name: "Tunisia",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6719_xsmall.png"
+            },
+
+            {
+                name: "Spain",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6720_xsmall.png"
+            },
+            {
+                name: "Costa Rica",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6705_xsmall.png"
+            },
+            {
+                name: "Germany",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8570_xsmall.png"
+            },
+            {
+                name: "Japan",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6715_xsmall.png"
+            },
+
+            {
+                name: "Belgium",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8263_xsmall.png"
+            },
+            {
+                name: "Canada",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5810_xsmall.png"
+            },
+            {
+                name: "Morocco",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6262_xsmall.png"
+            },
+            {
+                name: "Croatia",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/10155_xsmall.png"
+            },
+
+            {
+                name: "Brazil",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8256_xsmall.png"
+            },
+            {
+                name: "Switzerland",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6717_xsmall.png"
+            },
+            {
+                name: "Cameroon",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6629_xsmall.png"
+            },
+            {
+                name: "Serbia",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8205_xsmall.png"
+            },
+
+            {
+                name: "Portugal",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8361_xsmall.png"
+            },
+            {
+                name: "Ghana",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6714_xsmall.png"
+            },
+            {
+                name: "Uruguay",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5796_xsmall.png"
+            },
+            {
+                name: "South Korea",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/7804_xsmall.png"
+            }
+        ]
     },
 
     worldCup2018: {

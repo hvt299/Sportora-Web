@@ -18,10 +18,32 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Qatar-Heavy";
+  src: url("/fonts/TVN-Qatar2022-Heavy.otf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Qatar-Bold";
+  src: url("/fonts/TVN-Qatar2022-Bold.otf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Qatar-Medium";
+  src: url("/fonts/TVN-Qatar2022-Medium.otf") format("truetype");
+  font-display: swap;
+}
+
 @theme inline {
   --font-body: "NotoSans", sans-serif;
-  --font-display-black: "FWC-Black", sans-serif;
-  --font-display-reg: "FWC-Regular", sans-serif;
+  --font-wc26-black: "FWC-Black", sans-serif;
+  --font-wc26-regular: "FWC-Regular", sans-serif;
+
+  --font-wc22-heavy: "Qatar-Heavy", sans-serif;
+  --font-wc22-bold: "Qatar-Bold", sans-serif;
+  --font-wc22-medium: "Qatar-Medium", sans-serif;
 }
 
 :root {

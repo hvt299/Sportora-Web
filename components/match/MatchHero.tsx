@@ -3,9 +3,15 @@
 import { PlayCircle, Star, Loader2 } from 'lucide-react';
 import { fotmobStatusMap } from '../MatchCard';
 import { formatMatchMinute, translateTeamName } from '@/lib/scraper';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
-export default function MatchHero({ matchData, homeTeam, awayTeam }: { matchData: any, homeTeam: any, awayTeam: any }) {
+export default function MatchHero({ matchData, homeTeam, awayTeam, fonts }: { matchData: any, homeTeam: any, awayTeam: any, fonts?: { base: string; heading: string; subHeading: string } }) {
+    const currentFonts = fonts || {
+        base: "font-sans",
+        heading: "font-black",
+        subHeading: "font-bold"
+    };
     const status = matchData.header.status;
     const infoBox = matchData.content?.matchFacts?.infoBox;
     const highlights = matchData.content?.matchFacts?.highlights;
@@ -14,6 +20,19 @@ export default function MatchHero({ matchData, homeTeam, awayTeam }: { matchData
     // Superlive Data (Dữ liệu Opta)
     const superLive = matchData.content?.superlive;
     const [iframeLoaded, setIframeLoaded] = useState(false);
+
+    // --- CƠ CHẾ REALTIME CHO TRANG CHI TIẾT ---
+    const router = useRouter();
+    useEffect(() => {
+        // Nếu trận đấu đã kết thúc hoặc bị hủy thì ngừng refresh để tối ưu hiệu suất
+        if (status.finished || status.cancelled) return;
+
+        const interval = setInterval(() => {
+            router.refresh(); // Tự động load lại dữ liệu mới nhất (gồm tỷ số, sự kiện, thời gian)
+        }, 15000); // 15 giây 1 lần
+
+        return () => clearInterval(interval);
+    }, [router, status.finished, status.cancelled]);
 
     // --- 1. XỬ LÝ TRẠNG THÁI TRẬN ĐẤU ---
     const isFinished = status.finished;
@@ -138,7 +157,7 @@ export default function MatchHero({ matchData, homeTeam, awayTeam }: { matchData
 
                     {/* TỈ SỐ */}
                     <div className="flex flex-col items-center justify-center px-4 md:px-8 shrink-0 min-w-max">
-                        <div className="relative text-5xl md:text-7xl font-display-black tracking-tighter whitespace-nowrap text-center leading-none py-6">
+                        <div className={`relative text-5xl md:text-7xl ${currentFonts.heading} tracking-tighter whitespace-nowrap text-center leading-none py-6`}>
                             <div className="bg-linear-to-b from-white to-slate-400 text-transparent bg-clip-text leading-none inline-block px-2">
                                 <span className="block leading-none pb-1">
                                     {status.scoreStr || "? - ?"}
@@ -190,7 +209,7 @@ export default function MatchHero({ matchData, homeTeam, awayTeam }: { matchData
                     </a>
                 </section>
             ) : (superLive?.showSuperLive && superLive?.superLiveUrl && isLive) ? (
-                <section className="mt-8 w-full rounded-4xl overflow-hidden border border-slate-800 bg-slate-900/50 relative shadow-2xl min-h-100">
+                <section className="mt-8 w-full rounded-4xl overflow-hidden border border-blue-900/30 bg-linear-to-br from-blue-950/40 to-slate-900/50 relative shadow-2xl min-h-100">
                     {/* Skeleton Loading State */}
                     {!iframeLoaded && (
                         <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-slate-900/80 z-10 backdrop-blur-sm">

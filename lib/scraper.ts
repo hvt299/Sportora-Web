@@ -14,6 +14,7 @@ export interface MatchItem {
     live: boolean;
     minute: string | null;
     rawPeriod: string;
+    rawStatus: any;
 }
 
 export interface FotmobMatchTeam {
@@ -142,14 +143,14 @@ export function formatMatchMinute(statusObj: any): string | null {
             let currentAddedStr = `${currentMinShort - basePeriod}'`;
 
             if (longStr && longStr.includes(":")) {
-                const [m, s] = longStr.split(":");
+                const [m] = longStr.split(":"); // Chỉ lấy phần phút, bỏ phần giây
                 const min = parseInt(m);
                 if (!isNaN(min) && min >= basePeriod) {
-                    currentAddedStr = `${min - basePeriod}:${s}`; // Output: "5:21"
+                    currentAddedStr = `${min - basePeriod}'`; // Output: "5'"
                 }
             }
 
-            // Trả về chuỗi siêu chi tiết: VD "90' + 5:21 (+10')"
+            // Trả về chuỗi chi tiết: VD "90' + 5' (+10')"
             if (addedTime !== undefined && addedTime > 0) {
                 return `${basePeriod}' + ${currentAddedStr} (+${addedTime}')`;
             } else {
@@ -248,7 +249,8 @@ export async function getFixtures(leagueId: number | string = 77, season: string
                 round: roundCategory,
                 live: live,
                 minute: minute,
-                rawPeriod: match.status?.reason?.short || ""
+                rawPeriod: match.status?.reason?.short || "",
+                rawStatus: match.status || {}
             });
         });
 
@@ -436,10 +438,10 @@ export async function getNews(query: string = "World Cup 2026"): Promise<NewsDat
         // Link lấy tin tức Quốc tế (Tiếng Anh - Mỹ)
         const globalUrl = `https://news.google.com/rss/search?q=${encodedQuery}&hl=en-US&gl=US&ceid=US:en`;
 
-        // Gọi song song 2 API bằng Promise.all để tăng tốc độ tải
+        // Gọi song song 2 API bằng Promise.all, tắt cache để tự làm mới mỗi 15s
         const [vnResponse, globalResponse] = await Promise.all([
-            fetch(vnUrl, { headers: { 'User-Agent': 'Mozilla/5.0' }, next: { revalidate: 3600 } }),
-            fetch(globalUrl, { headers: { 'User-Agent': 'Mozilla/5.0' }, next: { revalidate: 3600 } })
+            fetch(vnUrl, { headers: { 'User-Agent': 'Mozilla/5.0' }, cache: "no-store" }),
+            fetch(globalUrl, { headers: { 'User-Agent': 'Mozilla/5.0' }, cache: "no-store" })
         ]);
 
         const [vnXml, globalXml] = await Promise.all([
