@@ -1,14 +1,19 @@
-"use client"; // Thêm dòng này lên đầu tiên!
+"use client";
 
-import { PlayCircle, Star } from 'lucide-react';
+import { PlayCircle, Star, Loader2 } from 'lucide-react';
 import { fotmobStatusMap } from '../MatchCard';
-import { translateTeamName } from '@/lib/scraper';
+import { formatMatchMinute, translateTeamName } from '@/lib/scraper';
+import { useState } from 'react';
 
 export default function MatchHero({ matchData, homeTeam, awayTeam }: { matchData: any, homeTeam: any, awayTeam: any }) {
     const status = matchData.header.status;
     const infoBox = matchData.content?.matchFacts?.infoBox;
     const highlights = matchData.content?.matchFacts?.highlights;
-    const potm = matchData.content?.matchFacts?.playerOfTheMatch; // Cầu thủ xuất sắc nhất
+    const potm = matchData.content?.matchFacts?.playerOfTheMatch;
+
+    // Superlive Data (Dữ liệu Opta)
+    const superLive = matchData.content?.superlive;
+    const [iframeLoaded, setIframeLoaded] = useState(false);
 
     // --- 1. XỬ LÝ TRẠNG THÁI TRẬN ĐẤU ---
     const isFinished = status.finished;
@@ -21,7 +26,10 @@ export default function MatchHero({ matchData, homeTeam, awayTeam }: { matchData
     let showPulse = false;
 
     if (isLive) {
-        displayStatus = fotmobStatusMap[reasonShort] || reasonShort || "ĐANG DIỄN RA";
+        // Lấy số phút đã được format sạch sẽ (VD: "45'+4", "32'")
+        const liveTime = formatMatchMinute(status) || status.scoreStr?.split(" - ")[0] || "";
+
+        displayStatus = fotmobStatusMap[liveTime] || liveTime || "ĐANG DIỄN RA";
         statusColor = "text-red-400";
         showPulse = true;
     } else if (isCancelled || ["Canc", "Postp", "Abd"].includes(reasonShort)) {
@@ -71,7 +79,6 @@ export default function MatchHero({ matchData, homeTeam, awayTeam }: { matchData
     const isHomeTBD = checkIsTBD(homeNameTranslated);
     const isAwayTBD = checkIsTBD(awayNameTranslated);
 
-    // Helper render Logo
     const renderLogo = (team: any, isTBD: boolean, teamNameTranslated: string) => {
         if (isTBD || !team?.imageUrl) {
             return (
@@ -170,7 +177,8 @@ export default function MatchHero({ matchData, homeTeam, awayTeam }: { matchData
                 )}
             </section>
 
-            {highlights && highlights.url && (
+            {/* VIDEO HIGHLIGHT HOẶC OPTA SUPERLIVE */}
+            {(highlights?.url) ? (
                 <section className="mt-8">
                     <a href={highlights.url} target="_blank" rel="noopener noreferrer" className="group block relative w-full rounded-4xl overflow-hidden border border-slate-800 bg-slate-900 aspect-21/9 md:aspect-32/9">
                         <img src={highlights.image} alt="Highlights" className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700" />
@@ -181,7 +189,39 @@ export default function MatchHero({ matchData, homeTeam, awayTeam }: { matchData
                         </div>
                     </a>
                 </section>
-            )}
+            ) : (superLive?.showSuperLive && superLive?.superLiveUrl && isLive) ? (
+                <section className="mt-8 w-full rounded-4xl overflow-hidden border border-slate-800 bg-slate-900/50 relative shadow-2xl min-h-100">
+                    {/* Skeleton Loading State */}
+                    {!iframeLoaded && (
+                        <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-slate-900/80 z-10 backdrop-blur-sm">
+                            <Loader2 className="w-8 h-8 text-blue-500 animate-spin" />
+                            <span className="text-xs font-bold uppercase tracking-widest text-slate-400 animate-pulse">Đang tải sơ đồ Opta Live...</span>
+                        </div>
+                    )}
+
+                    <div
+                        className="relative w-full overflow-hidden"
+                        style={{ height: "600px" }}
+                    >
+                        {/* Iframe Opta Live */}
+                        <iframe
+                            title="superLive"
+                            src={`${superLive.superLiveUrl}&a=false&breakpointMin=290&dark=true&hl=vi&gdpr=0&gdpr_consent=`}
+                            width="100%"
+                            height="600"
+                            sandbox="allow-scripts allow-same-origin allow-popups allow-modals allow-forms allow-popups-to-escape-sandbox allow-downloads allow-top-navigation-by-user-activation"
+                            className={`transition-opacity duration-1000 ${iframeLoaded ? "opacity-100" : "opacity-0"
+                                }`}
+                            style={{
+                                border: "none",
+                                width: "calc(100% + 17px)",
+                                clipPath: "inset(0 17px 0 0)",
+                            }}
+                            onLoad={() => setIframeLoaded(true)}
+                        />
+                    </div>
+                </section>
+            ) : null}
         </>
     );
 }

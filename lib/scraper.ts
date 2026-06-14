@@ -106,13 +106,84 @@ export function translateTeamName(name: string) {
         .replace(/TBD/g, "Chưa xác định");
 }
 
+// Hàm xử lý định dạng phút thi đấu chuẩn xác (Tích hợp Live Time chuyên sâu)
+export function formatMatchMinute(statusObj: any): string | null {
+    if (!statusObj) return null;
+
+    const liveTime = statusObj.liveTime;
+
+    // 1. Fallback nếu API không trả về block liveTime
+    if (!liveTime) {
+        let short = statusObj.reason?.short || null;
+        if (short) {
+            short = short.replace(/[\u200E\u200F\u202A-\u202E]/g, "").replace(/'/g, "").trim();
+            if (/^\d+$/.test(short)) return `${short}'`;
+            if (/^(\d+)\s*\+\s*(\d+)$/.test(short)) return short.replace(/^(\d+)\s*\+\s*(\d+)$/, "$1'+$2'");
+            return short;
+        }
+        return null;
+    }
+
+    let shortStr = liveTime.short || "";
+    shortStr = shortStr.replace(/[\u200E\u200F\u202A-\u202E]/g, "").replace(/'/g, "").trim();
+
+    const basePeriod = liveTime.basePeriod; // Phút hiệp chính (VD: 45, 90, 105, 120)
+    const addedTime = liveTime.addedTime;   // Tổng phút bù giờ (VD: 10)
+    const longStr = liveTime.long;          // Phút thực tế đang chạy (VD: "95:21")
+
+    // 2. Xử lý kịch bản trận đấu đang lọt vào thời gian bù giờ
+    if (basePeriod && shortStr) {
+        const currentMinShort = parseInt(shortStr);
+
+        // Nếu đã qua phút thi đấu chính thức (VD: đang ở phút 96, base là 90)
+        if (!isNaN(currentMinShort) && currentMinShort >= basePeriod) {
+
+            // Tính số phút:giây bù giờ đang trôi qua thực tế
+            let currentAddedStr = `${currentMinShort - basePeriod}'`;
+
+            if (longStr && longStr.includes(":")) {
+                const [m, s] = longStr.split(":");
+                const min = parseInt(m);
+                if (!isNaN(min) && min >= basePeriod) {
+                    currentAddedStr = `${min - basePeriod}:${s}`; // Output: "5:21"
+                }
+            }
+
+            // Trả về chuỗi siêu chi tiết: VD "90' + 5:21 (+10')"
+            if (addedTime !== undefined && addedTime > 0) {
+                return `${basePeriod}' + ${currentAddedStr} (+${addedTime}')`;
+            } else {
+                return `${basePeriod}' + ${currentAddedStr}`;
+            }
+        }
+
+        // Nếu trận đấu ở đúng phút cuối (VD: 90) và trọng tài vừa giơ biển báo bù giờ
+        if (!isNaN(currentMinShort) && currentMinShort <= basePeriod && addedTime > 0 && (basePeriod - currentMinShort <= 1)) {
+            return `${shortStr}' (+${addedTime}')`;
+        }
+    }
+
+    // 3. Xử lý các case bình thường (Đang đá giữa hiệp, chưa tới phút bù giờ)
+    if (/^\d+$/.test(shortStr)) {
+        return `${shortStr}'`;
+    }
+    if (/^(\d+)\s*\+\s*(\d+)$/.test(shortStr)) {
+        return shortStr.replace(/^(\d+)\s*\+\s*(\d+)$/, "$1'+$2'");
+    }
+
+    return shortStr || null; // Trả về các text dạng "HT", "FT"
+}
+
 /**
  * 1. LẤY LỊCH THI ĐẤU (FIXTURES)
  */
 export async function getFixtures(leagueId: number | string = 77, season: string = "2026") {
     try {
         const url = `https://www.fotmob.com/api/data/leagues?id=${leagueId}&ccode3=VNM&season=${season}`;
-        const response = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" }, next: { revalidate: 60 } });
+        const response = await fetch(url, {
+            headers: { "User-Agent": "Mozilla/5.0" },
+            cache: "no-store" // Vô hiệu hóa cache hoàn toàn, luôn lấy dữ liệu tươi (fresh data)
+        });
         const data: any = await response.json();
 
         const nestedFixtures: Record<string, Record<string, MatchItem[]>> = {};
@@ -144,8 +215,8 @@ export async function getFixtures(leagueId: number | string = 77, season: string
 
             let live = false;
             let mappedStatus = "Chưa diễn ra";
-            let minute = null;
-            let score = null; // Mặc định là null để UI hiện thời gian
+            let minute = formatMatchMinute(match.status); // <-- Gọi hàm xử lý phút chuẩn ở đây
+            let score = null;
 
             if (isCancelled) {
                 mappedStatus = "Hủy";
@@ -154,7 +225,7 @@ export async function getFixtures(leagueId: number | string = 77, season: string
             } else if (isStarted && !isFinished) {
                 live = true;
                 mappedStatus = "Đang diễn ra";
-                minute = match.status?.liveTime?.short || match.status?.reason?.short || "LIVE";
+                if (!minute) minute = match.status?.reason?.short || "LIVE"; // Fallback nếu hàm trên không trả về được phút
             }
 
             // BẢO MẬT HIỂN THỊ: Chỉ gán điểm số nếu trận đấu thực sự đã bắt đầu hoặc kết thúc
@@ -194,7 +265,10 @@ export async function getFixtures(leagueId: number | string = 77, season: string
 export async function getStandings(leagueId: number | string = 77, season: string = "2026") {
     try {
         const url = `https://www.fotmob.com/api/data/leagues?id=${leagueId}&ccode3=VNM&season=${season}`;
-        const response = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" }, next: { revalidate: 60 } });
+        const response = await fetch(url, {
+            headers: { "User-Agent": "Mozilla/5.0" },
+            cache: "no-store" // Vô hiệu hóa cache hoàn toàn, luôn lấy dữ liệu tươi (fresh data)
+        });
         const data: any = await response.json();
         const standings: Record<string, any[]> = {};
 
@@ -237,7 +311,10 @@ export async function getStandings(leagueId: number | string = 77, season: strin
 export async function getBracket(leagueId: number | string = 77, season: string = "2026") {
     try {
         const url = `https://www.fotmob.com/api/data/leagues?id=${leagueId}&ccode3=VNM&season=${season}`;
-        const response = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" }, next: { revalidate: 60 } });
+        const response = await fetch(url, {
+            headers: { "User-Agent": "Mozilla/5.0" },
+            cache: "no-store" // Vô hiệu hóa cache hoàn toàn, luôn lấy dữ liệu tươi (fresh data)
+        });
         const data: any = await response.json();
 
         const rounds = data?.playoff?.rounds || [];
@@ -401,7 +478,10 @@ export async function getNews(query: string = "World Cup 2026"): Promise<NewsDat
 export async function getMatchDetails(matchId: string): Promise<FotmobMatchDetails | null> {
     try {
         const url = `https://www.fotmob.com/api/data/matchDetails?matchId=${matchId}&ccode3=VNM`;
-        const response = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" }, next: { revalidate: 30 } });
+        const response = await fetch(url, {
+            headers: { "User-Agent": "Mozilla/5.0" },
+            cache: "no-store" // Vô hiệu hóa cache hoàn toàn, luôn lấy dữ liệu tươi (fresh data)
+        });
         const data = await response.json();
 
         return data;

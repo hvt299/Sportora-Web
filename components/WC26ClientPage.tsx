@@ -1,6 +1,7 @@
 "use client";
-import { useEffect, useState } from 'react';
-import { Trophy, CalendarDays, Table, GitBranch } from 'lucide-react';
+import { useRef, useState, useEffect } from 'react';
+import { Trophy, CalendarDays, Table, GitBranch, ArrowLeft, Volume2, VolumeX } from 'lucide-react'; // Thêm Volume2, VolumeX
+import Link from 'next/link';
 import MatchCard from '@/components/MatchCard';
 import GroupTable from '@/components/GroupTable';
 import Bracket from '@/components/Bracket';
@@ -22,28 +23,61 @@ interface PageProps {
     initialMatches: FixturesData;
     initialStandings: Record<string, any[]>;
     initialNews: { vn: NewsItem[], global: NewsItem[] };
-    initialBracket: any; // Bổ sung dòng này
+    initialBracket: any;
+    leagueId: number | string;
+    season: string;
+    query: string;
+    tournamentKey: string;
 }
+
+// Thêm Type định nghĩa cấu trúc dữ liệu cho Giải đấu
+type TournamentDetailType = {
+    config: { leagueId: number; season: string; query: string; tournamentKey: string };
+    hero: { badge: string; title: string; backgroundImage: string; video: string };
+    overview: {
+        title: string;
+        description: string;
+        stats: {
+            teams: number;
+            matches: number;
+            cities?: number;   // Dấu ? nghĩa là có thể có hoặc không
+            stadiums?: number; // Dấu ? nghĩa là có thể có hoặc không
+        };
+    };
+    message?: { title: string; description: string };
+    hosts?: { name: string; code: string; logo: string }[];
+    hostCities?: { city: string; country: string }[];
+    format: { title: string; description: string };
+    tournamentInfo: { startDate: string; endDate: string; teams: number; matches: number };
+    teams?: { name: string; logo: string }[];
+};
 
 export default function WC26ClientPage({
     initialMatches,
     initialStandings,
     initialNews,
     initialBracket,
+    leagueId,
+    season,
+    query,
+    tournamentKey
 }: PageProps) {
     const [activeTab, setActiveTab] = useState('overview');
     const [activeGroup, setActiveGroup] = useState(() => Object.keys(initialStandings)[0]);
     const [newsData] = useState(initialNews);
     const [selectedRound, setSelectedRound] = useState('Vòng bảng');
 
+    // --- STATE CHO VIDEO ---
+    const [isMuted, setIsMuted] = useState(true);
+    const [videoError, setVideoError] = useState(false);
+
     const router = useRouter();
     useEffect(() => {
         const interval = setInterval(() => {
             router.refresh();
-        }, 60000);
+        }, 15000);
         return () => clearInterval(interval);
     }, [router]);
-
 
     const formatGroupName = (name: string) => {
         if (name.toLowerCase().includes('best 3rd')) return 'Các đội hạng 3 tốt nhất';
@@ -51,21 +85,80 @@ export default function WC26ClientPage({
     };
 
     const roundData = initialMatches[selectedRound] || {};
-    const details = tournamentDetails.worldCup2026; // Gọi data từ file ngoài
+
+    // Ép kiểu cho details để TypeScript hiểu các trường bị thiếu là hợp lệ
+    const details = (tournamentDetails[tournamentKey as keyof typeof tournamentDetails] || tournamentDetails.worldCup2026) as TournamentDetailType;
+
+    const hostCitiesRef = useRef<HTMLDivElement>(null);
+    const [isDraggingCities, setIsDraggingCities] = useState(false);
+    const [startXCities, setStartXCities] = useState(0);
+    const [scrollLeftCities, setScrollLeftCities] = useState(0);
+
+    const handleCitiesMouseDown = (e: React.MouseEvent) => {
+        if (!hostCitiesRef.current) return;
+        setIsDraggingCities(true);
+        setStartXCities(e.pageX - hostCitiesRef.current.offsetLeft);
+        setScrollLeftCities(hostCitiesRef.current.scrollLeft);
+    };
+
+    const handleCitiesMouseLeaveOrUp = () => setIsDraggingCities(false);
+
+    const handleCitiesMouseMove = (e: React.MouseEvent) => {
+        if (!isDraggingCities || !hostCitiesRef.current) return;
+        e.preventDefault();
+        const x = e.pageX - hostCitiesRef.current.offsetLeft;
+        const walk = (x - startXCities) * 1.5;
+        hostCitiesRef.current.scrollLeft = scrollLeftCities - walk;
+    };
 
     return (
-        <div className="min-h-screen bg-black text-white font-wc26">
-            {/* Hero Header riêng của WC26 */}
-            <section
-                className="h-[40vh] relative flex items-end p-8 border-b border-slate-800 bg-center bg-cover"
-                style={{ backgroundImage: `url('${details.hero.backgroundImage}')` }}
-            >
-                {/* Overlay tối để chữ dễ đọc hơn */}
-                <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent" />
+        <div className="min-h-screen bg-black text-white font-wc26 relative">
 
-                {/* Nội dung */}
-                <div className="relative z-10">
-                    <span className="text-blue-500 font-bold uppercase tracking-widest text-xs mb-2 block">
+            <Link
+                href="/tournaments"
+                className="absolute top-6 left-6 z-50 flex items-center gap-2 text-white/80 hover:text-white transition-colors bg-black/40 hover:bg-black/60 px-4 py-2 rounded-full backdrop-blur-md border border-white/10"
+            >
+                <ArrowLeft className="w-5 h-5" />
+                <span className="font-bold uppercase tracking-widest text-xs hidden sm:block">Các giải đấu</span>
+            </Link>
+
+            {/* HERO HEADER VỚI VIDEO/IMAGE TỐI ƯU */}
+            <section className="h-[40vh] relative flex items-end p-8 border-b border-slate-800 overflow-hidden">
+
+                {/* Logic Xử lý Video (Ưu tiên) và Fallback Ảnh */}
+                {details.hero.video && !videoError ? (
+                    <>
+                        <video
+                            autoPlay
+                            loop
+                            muted={isMuted}
+                            playsInline
+                            className="absolute inset-0 w-full h-full object-cover z-0 opacity-80"
+                            onError={() => setVideoError(true)} // Nếu lỗi tải -> Fallback sang ảnh
+                        >
+                            <source src={details.hero.video} type="video/mp4" />
+                        </video>
+
+                        {/* Nút bật/tắt tiếng Video */}
+                        <button
+                            onClick={() => setIsMuted(!isMuted)}
+                            className="absolute bottom-6 right-6 z-30 p-3 bg-black/30 hover:bg-black/60 rounded-full backdrop-blur-md border border-white/20 transition text-white shadow-xl"
+                            aria-label="Toggle Volume"
+                        >
+                            {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+                        </button>
+                    </>
+                ) : (
+                    <div
+                        className="absolute inset-0 bg-center bg-cover z-0"
+                        style={{ backgroundImage: `url('${details.hero.backgroundImage}')` }}
+                    />
+                )}
+
+                <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent z-10" />
+
+                <div className="relative z-20 pointer-events-none">
+                    <span className="text-blue-500 font-bold uppercase tracking-widest text-xs mb-2 block drop-shadow-md">
                         {details.hero.badge}
                     </span>
                     <h1 className="font-display-black text-5xl md:text-7xl italic uppercase tracking-tighter drop-shadow-lg">
@@ -75,7 +168,7 @@ export default function WC26ClientPage({
             </section>
 
             {/* Tab Navigation (Responsive) */}
-            <div className="border-b border-slate-800 bg-black/50 sticky top-0 z-40">
+            <div className="border-b border-slate-800 bg-black/50 sticky top-0 z-40 backdrop-blur-xl">
 
                 {/* Desktop */}
                 <div className="hidden md:flex">
@@ -146,59 +239,70 @@ export default function WC26ClientPage({
                                         <p className="text-[10px] uppercase text-slate-400 font-bold mb-1">Trận đấu</p>
                                         <p className="text-3xl font-bold font-mono text-blue-400">{details.overview.stats.matches}</p>
                                     </div>
-                                    <div className="bg-slate-950/60 border border-slate-800/80 rounded-xl p-4 backdrop-blur-md hover:border-blue-500/50 transition">
-                                        <p className="text-[10px] uppercase text-slate-400 font-bold mb-1">Thành phố</p>
-                                        <p className="text-3xl font-bold font-mono text-blue-400">{details.overview.stats.cities}</p>
-                                    </div>
-                                    <div className="bg-slate-950/60 border border-slate-800/80 rounded-xl p-4 backdrop-blur-md hover:border-blue-500/50 transition">
-                                        <p className="text-[10px] uppercase text-slate-400 font-bold mb-1">Sân vận động</p>
-                                        <p className="text-3xl font-bold font-mono text-blue-400">{details.overview.stats.stadiums}</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* TOURNAMENT MESSAGE (Indigo) */}
-                            <div className="bg-linear-to-br from-indigo-900/30 to-slate-900/50 border border-indigo-500/20 rounded-3xl p-8 relative overflow-hidden">
-                                <div className="absolute -right-4 -bottom-6 opacity-5 pointer-events-none text-[180px] font-display-black italic leading-none text-indigo-300">
-                                    26
-                                </div>
-                                <h3 className="text-sm font-black text-indigo-400 uppercase tracking-widest mb-2 relative z-10">
-                                    Thông điệp chính thức
-                                </h3>
-                                <h2 className="text-4xl font-display-black italic tracking-tighter mb-4 text-white relative z-10">
-                                    {details.message.title}
-                                </h2>
-                                <p className="text-slate-300 leading-relaxed relative z-10 max-w-2xl">
-                                    {details.message.description}
-                                </p>
-                            </div>
-
-                            {/* 48 PARTICIPATING TEAMS (Teal) */}
-                            <div className="bg-linear-to-br from-teal-900/30 to-slate-900/50 border border-teal-500/20 rounded-3xl p-8 relative overflow-hidden">
-                                <div className="absolute -right-4 -bottom-6 opacity-5 pointer-events-none text-[140px] font-display-black italic leading-none text-teal-200">
-                                    TEAMS
-                                </div>
-                                <div className="flex justify-between items-center mb-8 relative z-10 border-b border-teal-500/20 pb-4">
-                                    <h3 className="text-2xl md:text-3xl font-display-black italic uppercase tracking-tighter text-teal-400">
-                                        {details.overview.stats.teams} Đội tuyển tham dự
-                                    </h3>
-                                    <span className="text-xs uppercase text-teal-200 font-bold bg-teal-900/50 px-3 py-1 rounded-full border border-teal-500/30 hidden sm:block">
-                                        Danh sách chính thức
-                                    </span>
-                                </div>
-                                <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-12 gap-3 relative z-10">
-                                    {details.teams.map((team, idx) => (
-                                        <div key={idx} className="group relative flex justify-center">
-                                            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-slate-950/60 backdrop-blur-md rounded-full p-2 border border-slate-700/80 group-hover:border-teal-400 group-hover:scale-110 group-hover:bg-slate-50 transition-all duration-300 z-10 cursor-pointer shadow-sm shadow-black">
-                                                <img src={team.logo} alt={team.name} className="w-full h-full object-contain" />
-                                            </div>
-                                            <div className="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity bg-black border border-teal-500/50 text-teal-50 text-[10px] font-bold px-2 py-1 rounded whitespace-nowrap z-20 pointer-events-none">
-                                                {team.name}
-                                            </div>
+                                    {/* Ẩn nếu giải đấu không có thông số cities (VD: Giải CLB) */}
+                                    {details.overview.stats.cities && (
+                                        <div className="bg-slate-950/60 border border-slate-800/80 rounded-xl p-4 backdrop-blur-md hover:border-blue-500/50 transition">
+                                            <p className="text-[10px] uppercase text-slate-400 font-bold mb-1">Thành phố</p>
+                                            <p className="text-3xl font-bold font-mono text-blue-400">{details.overview.stats.cities}</p>
                                         </div>
-                                    ))}
+                                    )}
+                                    {/* Ẩn nếu giải đấu không có thông số stadiums */}
+                                    {details.overview.stats.stadiums && (
+                                        <div className="bg-slate-950/60 border border-slate-800/80 rounded-xl p-4 backdrop-blur-md hover:border-blue-500/50 transition">
+                                            <p className="text-[10px] uppercase text-slate-400 font-bold mb-1">Sân vận động</p>
+                                            <p className="text-3xl font-bold font-mono text-blue-400">{details.overview.stats.stadiums}</p>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
+
+                            {/* TOURNAMENT MESSAGE (Indigo) - Chỉ hiện nếu có thông điệp */}
+                            {details.message && (
+                                <div className="bg-linear-to-br from-indigo-900/30 to-slate-900/50 border border-indigo-500/20 rounded-3xl p-8 relative overflow-hidden">
+                                    <div className="absolute -right-4 -bottom-6 opacity-5 pointer-events-none text-[180px] font-display-black italic leading-none text-indigo-300">
+                                        {/* Tự động cắt 2 số cuối của mùa giải, VD: 2026 -> 26, 2022 -> 22 */}
+                                        {details.config?.season?.slice(-2)}
+                                    </div>
+                                    <h3 className="text-sm font-black text-indigo-400 uppercase tracking-widest mb-2 relative z-10">
+                                        Thông điệp chính thức
+                                    </h3>
+                                    <h2 className="text-4xl font-display-black italic tracking-tighter mb-4 text-white relative z-10">
+                                        {details.message.title}
+                                    </h2>
+                                    <p className="text-slate-300 leading-relaxed relative z-10 max-w-2xl">
+                                        {details.message.description}
+                                    </p>
+                                </div>
+                            )}
+
+                            {/* 48 PARTICIPATING TEAMS (Teal) - Chỉ hiện nếu có mảng teams */}
+                            {details.teams && details.teams.length > 0 && (
+                                <div className="bg-linear-to-br from-teal-900/30 to-slate-900/50 border border-teal-500/20 rounded-3xl p-8 relative overflow-hidden">
+                                    <div className="absolute -right-4 -bottom-6 opacity-5 pointer-events-none text-[140px] font-display-black italic leading-none text-teal-200">
+                                        TEAMS
+                                    </div>
+                                    <div className="flex justify-between items-center mb-8 relative z-10 border-b border-teal-500/20 pb-4">
+                                        <h3 className="text-2xl md:text-3xl font-display-black italic uppercase tracking-tighter text-teal-400">
+                                            {details.overview.stats.teams} Đội tuyển tham dự
+                                        </h3>
+                                        <span className="text-xs uppercase text-teal-200 font-bold bg-teal-900/50 px-3 py-1 rounded-full border border-teal-500/30 hidden sm:block">
+                                            Danh sách chính thức
+                                        </span>
+                                    </div>
+                                    <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-12 gap-3 relative z-10">
+                                        {details.teams.map((team, idx) => (
+                                            <div key={idx} className="group relative flex justify-center">
+                                                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-slate-950/60 backdrop-blur-md rounded-full p-2 border border-slate-700/80 group-hover:border-teal-400 group-hover:scale-110 group-hover:bg-slate-50 transition-all duration-300 z-10 cursor-pointer shadow-sm shadow-black">
+                                                    <img src={team.logo} alt={team.name} className="w-full h-full object-contain" />
+                                                </div>
+                                                <div className="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity bg-black border border-teal-500/50 text-teal-50 text-[10px] font-bold px-2 py-1 rounded whitespace-nowrap z-20 pointer-events-none">
+                                                    {team.name}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
 
                             {/* DEFENDING CHAMPION & RUNNER-UP (Động qua API Fotmob) */}
                             {initialBracket?.defendingChampion && (
@@ -227,53 +331,67 @@ export default function WC26ClientPage({
                                 </div>
                             )}
 
-                            {/* HOST NATIONS (Purple/Tím) */}
-                            <div className="bg-linear-to-br from-purple-900/30 to-slate-900/50 border border-purple-500/20 rounded-3xl p-8 relative overflow-hidden">
-                                <div className="absolute -right-4 -bottom-6 opacity-5 pointer-events-none text-[150px] font-display-black italic leading-none text-purple-200">
-                                    HOSTS
-                                </div>
-                                <h3 className="text-2xl md:text-3xl font-display-black italic uppercase tracking-tighter text-purple-400 mb-6 relative z-10 border-b border-purple-500/20 pb-4">
-                                    Quốc gia đăng cai
-                                </h3>
-                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 relative z-10">
-                                    {details.hosts.map(host => (
-                                        <div key={host.code} className="bg-slate-950/60 backdrop-blur-md border border-slate-800/80 rounded-2xl p-6 text-center hover:border-purple-500/50 transition">
-                                            <img src={host.logo} alt={host.code} className="w-20 h-20 mx-auto mb-4 object-contain" />
-                                            <h4 className="font-display-black italic tracking-tighter text-xl text-white uppercase">{host.name}</h4>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* HOST CITIES (Sky/Xanh da trời nhạt) */}
-                            <div className="bg-linear-to-br from-sky-900/30 to-slate-900/50 border border-sky-500/20 rounded-3xl p-8 relative overflow-hidden">
-                                <div className="absolute -right-4 -bottom-6 opacity-5 pointer-events-none text-[150px] font-display-black italic leading-none text-sky-200">
-                                    CITIES
-                                </div>
-                                <div className="flex items-center justify-between mb-6 relative z-10 border-b border-sky-500/20 pb-4">
-                                    <h3 className="text-2xl md:text-3xl font-display-black italic uppercase tracking-tighter text-sky-400">
-                                        Các thành phố đăng cai
+                            {/* HOST NATIONS (Purple/Tím) - Chỉ hiện nếu có mảng hosts */}
+                            {details.hosts && details.hosts.length > 0 && (
+                                <div className="bg-linear-to-br from-purple-900/30 to-slate-900/50 border border-purple-500/20 rounded-3xl p-8 relative overflow-hidden">
+                                    <div className="absolute -right-4 -bottom-6 opacity-5 pointer-events-none text-[150px] font-display-black italic leading-none text-purple-200">
+                                        HOSTS
+                                    </div>
+                                    <h3 className="text-2xl md:text-3xl font-display-black italic uppercase tracking-tighter text-purple-400 mb-6 relative z-10 border-b border-purple-500/20 pb-4">
+                                        Quốc gia đăng cai
                                     </h3>
-                                    <span className="text-xs uppercase text-sky-200 font-bold bg-sky-900/50 px-3 py-1 rounded-full border border-sky-500/30">
-                                        {details.overview.stats.cities} Thành phố
-                                    </span>
-                                </div>
-                                <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-sky-900 relative z-10">
-                                    {details.hostCities.map((city) => {
-                                        // Tìm kiếm logo tương ứng của quốc gia chứa thành phố đó trong mảng hosts
-                                        const hostCountry = details.hosts.find(h => h.code === city.country);
-                                        return (
-                                            <div key={city.city} className="min-w-45 bg-slate-950/60 backdrop-blur-md border border-slate-800/80 rounded-2xl p-4 hover:border-sky-400/50 transition flex flex-col items-start justify-center">
-                                                <div className="w-8 h-8 mb-3 drop-shadow-md">
-                                                    {hostCountry?.logo && <img src={hostCountry.logo} alt={city.country} className="w-full h-full object-contain" />}
-                                                </div>
-                                                <h4 className="font-bold text-white">{city.city}</h4>
-                                                <p className="text-xs text-sky-200/60 mt-1 uppercase font-bold">{city.country}</p>
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 relative z-10">
+                                        {details.hosts.map((host: any) => (
+                                            <div key={host.code} className="bg-slate-950/60 backdrop-blur-md border border-slate-800/80 rounded-2xl p-6 text-center hover:border-purple-500/50 transition">
+                                                <img src={host.logo} alt={host.code} className="w-20 h-20 mx-auto mb-4 object-contain" />
+                                                <h4 className="font-display-black italic tracking-tighter text-xl text-white uppercase">{host.name}</h4>
                                             </div>
-                                        );
-                                    })}
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
+                            )}
+
+                            {/* HOST CITIES (Sky/Xanh da trời nhạt) - Chỉ hiện nếu có mảng hostCities */}
+                            {details.hostCities && details.hostCities.length > 0 && (
+                                <div className="bg-linear-to-br from-sky-900/30 to-slate-900/50 border border-sky-500/20 rounded-3xl p-8 relative overflow-hidden">
+                                    <div className="absolute -right-4 -bottom-6 opacity-5 pointer-events-none text-[150px] font-display-black italic leading-none text-sky-200">
+                                        CITIES
+                                    </div>
+                                    <div className="flex items-center justify-between mb-6 relative z-10 border-b border-sky-500/20 pb-4">
+                                        <h3 className="text-2xl md:text-3xl font-display-black italic uppercase tracking-tighter text-sky-400">
+                                            Các thành phố đăng cai
+                                        </h3>
+                                        <span className="text-xs uppercase text-sky-200 font-bold bg-sky-900/50 px-3 py-1 rounded-full border border-sky-500/30">
+                                            {details.overview.stats.cities} Thành phố
+                                        </span>
+                                    </div>
+                                    <div
+                                        ref={hostCitiesRef}
+                                        className={`
+                                            flex gap-4 overflow-x-auto pb-4 relative z-10
+                                            scrollbar-hide select-none
+                                            ${isDraggingCities ? "cursor-grabbing" : "cursor-grab"}
+                                        `}
+                                        onMouseDown={handleCitiesMouseDown}
+                                        onMouseLeave={handleCitiesMouseLeaveOrUp}
+                                        onMouseUp={handleCitiesMouseLeaveOrUp}
+                                        onMouseMove={handleCitiesMouseMove}
+                                    >
+                                        {details.hostCities.map((city: any) => {
+                                            const hostCountry = details.hosts?.find((h: any) => h.code === city.country);
+                                            return (
+                                                <div key={city.city} className="min-w-45 shrink-0 bg-slate-950/60 backdrop-blur-md border border-slate-800/80 rounded-2xl p-4 hover:border-sky-400/50 transition flex flex-col items-start justify-center">
+                                                    <div className="w-8 h-8 mb-3 drop-shadow-md">
+                                                        {hostCountry?.logo && <img src={hostCountry.logo} alt={city.country} className="w-full h-full object-contain" />}
+                                                    </div>
+                                                    <h4 className="font-bold text-white">{city.city}</h4>
+                                                    <p className="text-xs text-sky-200/60 mt-1 uppercase font-bold">{city.country}</p>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                            )}
 
                             {/* TOURNAMENT FORMAT & INFO (Chia 2 cột) */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
