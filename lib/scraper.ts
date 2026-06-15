@@ -367,7 +367,7 @@ export async function getBracket(leagueId: number | string = 77, season: string 
                 // --- LOGIC LẤY ĐỘI THẮNG QUA ID TỪ FOTMOB ---
                 // Ưu tiên lấy từ matchup.winner hoặc matchup.aggregatedWinner (rất quan trọng cho các trận Penalty)
                 const winnerId = matchup.winner ?? matchup.aggregatedWinner ?? realMatchData?.status?.winner ?? realMatchData?.winner ?? matchObj.winner;
-                
+
                 let isHomeWinner = false;
                 let isAwayWinner = false;
 
@@ -498,12 +498,22 @@ export async function getNews(query: string = "World Cup 2026"): Promise<NewsDat
  */
 export async function getMatchDetails(matchId: string): Promise<FotmobMatchDetails | null> {
     try {
-        const url = `https://www.fotmob.com/api/data/matchDetails?matchId=${matchId}&ccode3=VNM`;
-        const response = await fetch(url, {
-            headers: { "User-Agent": "Mozilla/5.0" },
-            cache: "no-store" // Vô hiệu hóa cache hoàn toàn, luôn lấy dữ liệu tươi (fresh data)
-        });
-        const data = await response.json();
+        const detailsUrl = `https://www.fotmob.com/api/data/matchDetails?matchId=${matchId}&ccode3=VNM`;
+        const votesUrl = `https://www.fotmob.com/api/data/vote?matchId=${matchId}&ccode3=VNM`;
+
+        // Fetch song song cả 2 API, tuyệt đối không cache
+        const [detailsRes, votesRes] = await Promise.all([
+            fetch(detailsUrl, { headers: { "User-Agent": "Mozilla/5.0" }, cache: "no-store" }),
+            fetch(votesUrl, { headers: { "User-Agent": "Mozilla/5.0" }, cache: "no-store" })
+        ]);
+
+        const data = await detailsRes.json();
+        const votesData = await votesRes.json().catch(() => null); // Bắt lỗi an toàn nếu API vote sập
+
+        // Gắn dữ liệu vote vào trong data để truyền xuống component
+        if (data?.content?.matchFacts?.poll) {
+            data.content.matchFacts.poll.voteData = votesData;
+        }
 
         return data;
     } catch (error) {

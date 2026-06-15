@@ -1,5 +1,4 @@
 import { getMatchDetails } from '@/lib/scraper';
-import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import BackButton from '@/components/BackButton';
 
@@ -52,11 +51,6 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ id
 
     const homeTeam = matchData.header.teams[0];
     const awayTeam = matchData.header.teams[1];
-    const events = matchData.content?.matchFacts?.events?.events || [];
-    const rawMomentum = matchData.content?.momentum;
-    const momentum = (rawMomentum && rawMomentum.main && Array.isArray(rawMomentum.main.data))
-        ? rawMomentum.main.data
-        : [];
     const lineup = matchData.content?.lineup;
 
     return (
@@ -76,7 +70,8 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ id
             {/* Layout 2 Cột: Main & Sidebar */}
             <div className="max-w-6xl mx-auto px-4 sm:px-6 mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
                 <div className="lg:col-span-8 space-y-8">
-                    <MatchTimeline events={events} momentum={momentum} />
+                    {/* TRUYỀN TOÀN BỘ matchData, homeTeam, awayTeam ĐỂ MatchTimeline CÓ ĐỦ DỮ LIỆU */}
+                    <MatchTimeline matchData={matchData} homeTeam={homeTeam} awayTeam={awayTeam} />
                     <MatchLineups lineup={lineup} homeTeam={homeTeam} awayTeam={awayTeam} />
                 </div>
                 <div className="lg:col-span-4">
