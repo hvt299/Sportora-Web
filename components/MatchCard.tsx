@@ -45,8 +45,14 @@ export default function MatchCard({
     const detailedMinute = formatMatchMinute(rawStatus) || minute || "";
     const displayMinute = fotmobStatusMap[detailedMinute] || detailedMinute || 'LIVE';
 
-    // Xử lý hiển thị trạng thái kết thúc/hoãn (Dùng rawPeriod của Fotmob)
-    const displayStatus = fotmobStatusMap[rawPeriod || ""] || status;
+    // XỬ LÝ HIỂN THỊ TRẠNG THÁI KẾT THÚC/HOÃN (Xử lý triệt để logic "Luân lưu" khi đã kết thúc)
+    let displayStatus = fotmobStatusMap[rawPeriod || ""] || status;
+
+    if (rawStatus?.finished) {
+        if (rawPeriod === "Pen") displayStatus = "Kết thúc (Luân lưu)";
+        else if (rawPeriod === "AET") displayStatus = "Kết thúc (Hiệp phụ)";
+        else displayStatus = "Kết thúc";
+    }
 
     return (
         <Link href={`/match/${id}`} className="group flex items-center justify-between p-4 bg-slate-900/40 border border-slate-800 rounded-2xl hover:border-blue-500/50 hover:bg-slate-900 transition-all cursor-pointer">
@@ -85,7 +91,7 @@ export default function MatchCard({
                                 {time}
                             </div>
                         )}
-                        <div className={`text-[10px] uppercase font-bold mt-1 ${displayStatus === 'Kết thúc' ? 'text-slate-500' : 'text-slate-400'}`}>
+                        <div className={`text-[10px] uppercase font-bold mt-1 ${displayStatus.includes('Kết thúc') ? 'text-slate-500' : 'text-slate-400'}`}>
                             {displayStatus}
                         </div>
                     </>

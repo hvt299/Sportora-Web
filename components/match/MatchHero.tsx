@@ -1,6 +1,6 @@
 "use client";
 
-import { PlayCircle, Star, Loader2 } from 'lucide-react';
+import { PlayCircle, Star, Loader2, CircleDot, Square, Calendar, MapPin, User } from 'lucide-react';
 import { fotmobStatusMap } from '../MatchCard';
 import { formatMatchMinute, translateTeamName } from '@/lib/scraper';
 import { useState, useEffect } from 'react';
@@ -17,24 +17,16 @@ export default function MatchHero({ matchData, homeTeam, awayTeam, fonts }: { ma
     const highlights = matchData.content?.matchFacts?.highlights;
     const potm = matchData.content?.matchFacts?.playerOfTheMatch;
 
-    // Superlive Data (Dữ liệu Opta)
     const superLive = matchData.content?.superlive;
     const [iframeLoaded, setIframeLoaded] = useState(false);
 
-    // --- CƠ CHẾ REALTIME CHO TRANG CHI TIẾT ---
     const router = useRouter();
     useEffect(() => {
-        // Nếu trận đấu đã kết thúc hoặc bị hủy thì ngừng refresh để tối ưu hiệu suất
         if (status.finished || status.cancelled) return;
-
-        const interval = setInterval(() => {
-            router.refresh(); // Tự động load lại dữ liệu mới nhất (gồm tỷ số, sự kiện, thời gian)
-        }, 15000); // 15 giây 1 lần
-
+        const interval = setInterval(() => { router.refresh(); }, 15000);
         return () => clearInterval(interval);
     }, [router, status.finished, status.cancelled]);
 
-    // --- 1. XỬ LÝ TRẠNG THÁI TRẬN ĐẤU ---
     const isFinished = status.finished;
     const isCancelled = status.cancelled;
     const isLive = status.started && !status.finished && !status.cancelled;
@@ -44,10 +36,9 @@ export default function MatchHero({ matchData, homeTeam, awayTeam, fonts }: { ma
     let statusColor = "text-blue-400";
     let showPulse = false;
 
+    // XỬ LÝ TRẠNG THÁI TRẬN ĐẤU CHUẨN XÁC HƠN
     if (isLive) {
-        // Lấy số phút đã được format sạch sẽ (VD: "45'+4", "32'")
         const liveTime = formatMatchMinute(status) || status.scoreStr?.split(" - ")[0] || "";
-
         displayStatus = fotmobStatusMap[liveTime] || liveTime || "ĐANG DIỄN RA";
         statusColor = "text-red-400";
         showPulse = true;
@@ -55,11 +46,17 @@ export default function MatchHero({ matchData, homeTeam, awayTeam, fonts }: { ma
         displayStatus = fotmobStatusMap[reasonShort] || "Bị hoãn / Hủy";
         statusColor = "text-slate-400";
     } else if (isFinished) {
-        displayStatus = fotmobStatusMap[reasonShort] || "Kết thúc";
+        // Đã kết thúc thì chặn luôn không hiển thị "Luân lưu" trống không
+        if (reasonShort === "Pen") {
+            displayStatus = "Kết thúc (Luân lưu)";
+        } else if (reasonShort === "AET") {
+            displayStatus = "Kết thúc (Hiệp phụ)";
+        } else {
+            displayStatus = "Kết thúc";
+        }
         statusColor = "text-slate-300";
     }
 
-    // --- 2. FORMAT THỜI GIAN TIẾNG VIỆT ---
     let displayTime = "";
     if (infoBox?.['Match Date']?.utcTime) {
         const d = new Date(infoBox['Match Date'].utcTime);
@@ -68,7 +65,6 @@ export default function MatchHero({ matchData, homeTeam, awayTeam, fonts }: { ma
         displayTime = `${timeStr} • ${dateStr}`;
     }
 
-    // --- 3. HELPER TÌM SỰ KIỆN GHI BÀN / THẺ ĐỎ ---
     const getTeamSummaryEvents = (goalsObj: any, cardsObj: any) => {
         const evs = [...Object.values(goalsObj || {}).flat(), ...Object.values(cardsObj || {}).flat()] as any[];
         return evs.sort((a, b) => a.time - b.time);
@@ -76,23 +72,13 @@ export default function MatchHero({ matchData, homeTeam, awayTeam, fonts }: { ma
     const homeSummaryEvents = getTeamSummaryEvents(matchData.header.events?.homeTeamGoals, matchData.header.events?.homeTeamRedCards);
     const awaySummaryEvents = getTeamSummaryEvents(matchData.header.events?.awayTeamGoals, matchData.header.events?.awayTeamRedCards);
 
-    // --- 4. ĐỒNG BỘ DỊCH TÊN ĐỘI BÓNG ---
     const homeNameTranslated = translateTeamName(homeTeam?.name);
     const awayNameTranslated = translateTeamName(awayTeam?.name);
 
-    // --- 5. TBD CHECK & XỬ LÝ ẢNH MẶC ĐỊNH ---
     const checkIsTBD = (name: string): boolean => {
         if (!name) return true;
         const lower = name.toLowerCase();
-        return lower.includes('thắng') ||
-            lower.includes('thua') ||
-            lower.includes('nhất') ||
-            lower.includes('nhì') ||
-            lower.includes('ba') ||
-            lower.includes('chưa xác định') ||
-            !!name.match(/^[0-9]/) ||
-            name === "TBD" ||
-            name === "?";
+        return lower.includes('thắng') || lower.includes('thua') || lower.includes('nhất') || lower.includes('nhì') || lower.includes('ba') || lower.includes('chưa xác định') || !!name.match(/^[0-9]/) || name === "TBD" || name === "?";
     };
 
     const isHomeTBD = checkIsTBD(homeNameTranslated);
@@ -101,12 +87,9 @@ export default function MatchHero({ matchData, homeTeam, awayTeam, fonts }: { ma
     const renderLogo = (team: any, isTBD: boolean, teamNameTranslated: string) => {
         if (isTBD || !team?.imageUrl) {
             return (
-                <div className="w-20 h-20 md:w-32 md:h-32 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-4xl text-slate-500 font-bold mb-4 drop-shadow-2xl">
-                    ?
-                </div>
+                <div className="w-20 h-20 md:w-32 md:h-32 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-4xl text-slate-500 font-bold mb-4 drop-shadow-2xl">?</div>
             );
         }
-
         return (
             <img
                 src={team.imageUrl}
@@ -120,17 +103,33 @@ export default function MatchHero({ matchData, homeTeam, awayTeam, fonts }: { ma
         );
     };
 
+    // HÀM HELPER ĐỂ KÝ HIỆU PEN HOẶC PHẢN LƯỚI NHÀ
+    const renderGoalAnnotation = (ev: any) => {
+        if (ev.type !== "Goal") return null;
+        const isPen = ev.goalDescription === "Penalty" || ev.suffix === "Pen";
+        const isOG = ev.ownGoal || ev.goalDescription === "Own goal" || ev.suffix === "OG";
+
+        if (isOG) return <span className="text-[10px] text-red-400 font-bold ml-1 tracking-tighter">(OG)</span>;
+        if (isPen) return <span className="text-[10px] text-blue-400 font-bold ml-1 tracking-tighter">(PEN)</span>;
+        return null;
+    };
+
     return (
         <>
             <section className="bg-slate-900/50 border border-slate-800 rounded-4xl p-6 md:p-10 relative overflow-hidden flex flex-col items-center shadow-2xl">
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.15),transparent_70%)] pointer-events-none" />
 
-                <div className="text-slate-400 text-xs md:text-sm font-medium mb-6 text-center z-10 flex flex-col items-center gap-1">
-                    <span className="capitalize">{displayTime}</span>
-                    <span>{infoBox?.Stadium?.name} • Trọng tài: {infoBox?.Referee?.text}</span>
+                {/* THÔNG TIN CHUNG VỚI LUCIDE ICONS */}
+                <div className="flex flex-col items-center gap-2 mb-6 z-10 text-slate-400 text-xs md:text-sm font-medium">
+                    <div className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5 text-blue-400" /> <span className="capitalize">{displayTime}</span></div>
+                    <div className="flex items-center gap-3">
+                        <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-emerald-400" /> {infoBox?.Stadium?.name || 'Đang cập nhật'}</span>
+                        <span className="w-1 h-1 bg-slate-700 rounded-full" />
+                        <span className="flex items-center gap-1.5"><User className="w-3.5 h-3.5 text-amber-400" /> Trọng tài chính: {infoBox?.Referee?.text || 'Đang cập nhật'}</span>
+                    </div>
                 </div>
 
-                <div className="bg-black/50 border border-slate-700 backdrop-blur-md px-4 py-1.5 rounded-full mb-6 z-10 flex items-center gap-2">
+                <div className="bg-black/50 border border-slate-700 backdrop-blur-md px-4 py-1.5 rounded-full mb-6 z-10 flex items-center gap-2 shadow-lg">
                     {showPulse && <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />}
                     <span className={`${statusColor} text-xs font-bold uppercase tracking-widest`}>
                         {displayStatus}
@@ -147,22 +146,36 @@ export default function MatchHero({ matchData, homeTeam, awayTeam, fonts }: { ma
                         <div className="mt-4 flex flex-col items-center gap-1.5 text-xs text-slate-300">
                             {homeSummaryEvents.map((ev, i) => (
                                 <div key={i} className="flex items-center gap-1.5">
-                                    <span className="text-right">{ev.nameStr} {ev.timeStr}'</span>
-                                    {ev.type === "Goal" && <span className="text-blue-400">⚽</span>}
-                                    {ev.type === "Card" && ev.card === "Red" && <span className="text-red-500">🟥</span>}
+                                    <span className="text-right flex items-center justify-end">
+                                        <span>{ev.nameStr}</span>
+                                        {renderGoalAnnotation(ev)}
+                                        <span className="text-slate-500 font-medium ml-1.5">{ev.timeStr}'</span>
+                                    </span>
+                                    {ev.type === "Goal" && <CircleDot className="w-3.5 h-3.5 text-blue-400 fill-blue-400/20" />}
+                                    {ev.type === "Card" && ev.card === "Red" && <Square className="w-3.5 h-3.5 text-red-500 fill-red-500" />}
                                 </div>
                             ))}
                         </div>
                     </div>
 
                     {/* TỈ SỐ */}
-                    <div className="flex flex-col items-center justify-center px-4 md:px-8 shrink-0 min-w-max">
-                        <div className={`relative text-5xl md:text-7xl ${currentFonts.heading} tracking-tighter whitespace-nowrap text-center leading-none py-6`}>
+                    <div className="flex flex-col items-center justify-center px-4 md:px-8 shrink-0 min-w-max pt-2">
+                        <div className={`relative text-5xl md:text-7xl ${currentFonts.heading} tracking-tighter whitespace-nowrap text-center leading-none flex flex-col items-center`}>
                             <div className="bg-linear-to-b from-white to-slate-400 text-transparent bg-clip-text leading-none inline-block px-2">
                                 <span className="block leading-none pb-1">
                                     {status.scoreStr || "? - ?"}
                                 </span>
                             </div>
+
+                            {/* HIỂN THỊ TỈ SỐ LUÂN LƯU (NẾU CÓ) */}
+                            {status.reason?.penalties?.length === 2 && (
+                                <div className="mt-3 bg-amber-500/10 border border-amber-500/20 rounded-full px-3 py-1 flex items-center gap-2 shadow-lg">
+                                    <span className="text-[10px] uppercase tracking-widest text-amber-500 font-black">PEN</span>
+                                    <span className="text-sm md:text-base text-amber-400 font-black tracking-widest">
+                                        {status.reason.penalties[0]} - {status.reason.penalties[1]}
+                                    </span>
+                                </div>
+                            )}
                         </div>
                     </div>
 
@@ -175,9 +188,13 @@ export default function MatchHero({ matchData, homeTeam, awayTeam, fonts }: { ma
                         <div className="mt-4 flex flex-col items-center gap-1.5 text-xs text-slate-300">
                             {awaySummaryEvents.map((ev, i) => (
                                 <div key={i} className="flex items-center gap-1.5">
-                                    {ev.type === "Goal" && <span className="text-amber-400">⚽</span>}
-                                    {ev.type === "Card" && ev.card === "Red" && <span className="text-red-500">🟥</span>}
-                                    <span className="text-left">{ev.nameStr} {ev.timeStr}'</span>
+                                    {ev.type === "Goal" && <CircleDot className="w-3.5 h-3.5 text-amber-400 fill-amber-400/20" />}
+                                    {ev.type === "Card" && ev.card === "Red" && <Square className="w-3.5 h-3.5 text-red-500 fill-red-500" />}
+                                    <span className="text-left flex items-center justify-start">
+                                        <span className="text-slate-500 font-medium mr-1.5">{ev.timeStr}'</span>
+                                        <span>{ev.nameStr}</span>
+                                        {renderGoalAnnotation(ev)}
+                                    </span>
                                 </div>
                             ))}
                         </div>
@@ -203,7 +220,7 @@ export default function MatchHero({ matchData, homeTeam, awayTeam, fonts }: { ma
                         href={highlights.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group block relative w-full rounded-4xl overflow-hidden border border-slate-800 bg-slate-900 aspect-21/9 md:aspect-32/9"
+                        className="group block relative w-full rounded-4xl overflow-hidden border border-slate-800 bg-slate-900 aspect-video md:aspect-32/9"
                     >
                         <img
                             src={highlights.image}
@@ -221,11 +238,7 @@ export default function MatchHero({ matchData, homeTeam, awayTeam, fonts }: { ma
                 </section>
             ) : (superLive?.showSuperLive && superLive?.superLiveUrl && isLive) ? (
                 <section className="mt-8 relative w-full rounded-4xl overflow-hidden border border-blue-900/30 bg-slate-950 shadow-2xl">
-
-                    {/* 🔵 BACKGROUND BLEND LAYER (fix trắng iframe) */}
                     <div className="absolute inset-0 bg-linear-to-br from-blue-950/40 via-slate-950 to-black pointer-events-none" />
-
-                    {/* 🔵 OPTA LOADING */}
                     {!iframeLoaded && (
                         <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-slate-950/80 z-20 backdrop-blur-md">
                             <Loader2 className="w-8 h-8 text-blue-500 animate-spin" />
@@ -234,8 +247,6 @@ export default function MatchHero({ matchData, homeTeam, awayTeam, fonts }: { ma
                             </span>
                         </div>
                     )}
-
-                    {/* 🔵 IFRAME WRAPPER */}
                     <div className="relative w-full" style={{ height: "600px" }}>
                         <iframe
                             title="superLive"
@@ -243,26 +254,12 @@ export default function MatchHero({ matchData, homeTeam, awayTeam, fonts }: { ma
                             width="100%"
                             height="600"
                             sandbox="allow-scripts allow-same-origin allow-popups allow-modals allow-forms allow-popups-to-escape-sandbox allow-downloads allow-top-navigation-by-user-activation"
-                            className={`
-                    relative z-10 w-full
-                    transition-all duration-700
-                    ${iframeLoaded ? "opacity-95" : "opacity-0"}
-                    mix-blend-screen
-                    brightness-90
-                    contrast-125
-                `}
-                            style={{
-                                border: "none",
-                                width: "calc(100% + 17px)",
-                                clipPath: "inset(0 17px 0 0)",
-                            }}
+                            className={`relative z-10 w-full transition-all duration-700 ${iframeLoaded ? "opacity-95" : "opacity-0"} mix-blend-screen brightness-90 contrast-125`}
+                            style={{ border: "none", width: "calc(100% + 17px)", clipPath: "inset(0 17px 0 0)" }}
                             onLoad={() => setIframeLoaded(true)}
                         />
                     </div>
-
-                    {/* 🔵 EXTRA DARK OVERLAY (giúp đồng nhất UI match card) */}
                     <div className="absolute inset-0 bg-black/20 pointer-events-none" />
-
                 </section>
             ) : null}
         </>

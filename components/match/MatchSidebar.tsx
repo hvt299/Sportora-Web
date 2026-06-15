@@ -1,4 +1,4 @@
-import { Activity, MapPin, Thermometer, Wind, UserCheck, History } from 'lucide-react';
+import { Activity, MapPin, Thermometer, Wind, UserCheck, History, Info, PieChart, TrendingUp } from 'lucide-react';
 
 const STAT_MAP: Record<string, string> = {
     "Ball possession": "Kiểm soát bóng",
@@ -41,6 +41,7 @@ const WEATHER_MAP: Record<string, string> = {
     "Cloudy": "Mây mù",
     "Overcast": "Âm u",
     "Rain": "Có mưa",
+    "Light Rain": "Mưa nhỏ",
     "Showers": "Mưa rào",
     "Thunderstorm": "Có sấm sét",
     "Snow": "Có tuyết",
@@ -52,24 +53,65 @@ export default function MatchSidebar({ matchData, homeTeam, awayTeam }: { matchD
     const weather = matchData.content?.weather;
     const statsTop = matchData.content?.stats?.Periods?.All?.stats?.[0]?.stats || [];
     const h2h = matchData.content?.h2h;
-    const poll = matchData.content?.matchFacts?.poll?.oddspoll;
+
+    // Trích xuất Dữ liệu Vote động từ FotMob API
+    const voteData = matchData.content?.matchFacts?.poll?.voteData?.Votes?.find((v: any) => v.Name === "1x2")?.Votes;
+
     const teamForm = matchData.content?.matchFacts?.teamForm || [];
 
     const renderFormBadge = (resultStr: string) => {
         const resultMap: any = { W: "Thắng", D: "Hòa", L: "Thua" };
-        const colors: any = { W: 'bg-green-500 text-green-950', D: 'bg-slate-500 text-white', L: 'bg-red-500 text-white' };
-        return <span className={`w-6 h-6 flex items-center justify-center rounded text-xs font-bold ${colors[resultStr]}`} title={resultMap[resultStr]}>{resultStr}</span>;
+        const colors: any = { W: 'bg-emerald-500 text-emerald-950', D: 'bg-slate-500 text-white', L: 'bg-rose-500 text-white' };
+        return (
+            <span className={`w-6 h-6 shrink-0 flex items-center justify-center rounded text-xs font-bold ${colors[resultStr]}`} title={resultMap[resultStr]}>
+                {resultStr}
+            </span>
+        );
+    };
+
+    // Hàm render danh sách phong độ cực kỳ chi tiết
+    const renderDetailedForm = (formArray: any[]) => {
+        if (!formArray || formArray.length === 0) return <p className="text-xs text-slate-500">Chưa có dữ liệu</p>;
+
+        return (
+            <div className="flex flex-col gap-2 mt-3">
+                {formArray.map((m: any, i: number) => {
+                    const isHome = m.home.isOurTeam;
+                    const opponent = isHome ? m.away : m.home;
+                    const dateObj = new Date(m.date?.utcTime || m.tooltipText?.utcTime || Date.now());
+                    const dateStr = dateObj.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' });
+
+                    return (
+                        <div key={i} className="flex items-center justify-between bg-slate-950/80 border border-slate-800/50 p-2.5 rounded-xl hover:border-slate-700 transition">
+                            <div className="flex items-center gap-3 flex-1 overflow-hidden">
+                                {renderFormBadge(m.resultString)}
+                                <span className="text-[10px] text-slate-500 font-medium w-10 shrink-0">{dateStr}</span>
+                                <div className="flex items-center gap-1.5 flex-1 min-w-0">
+                                    <img src={m.imageUrl} alt={opponent.name} className="w-4 h-4 object-contain shrink-0" />
+                                    <span className="text-xs text-slate-300 truncate font-medium">{opponent.name}</span>
+                                </div>
+                            </div>
+                            <div className="text-xs font-black text-white bg-slate-800 px-2 py-1 rounded shrink-0 ml-2 shadow-inner">
+                                {m.score}
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+        );
     };
 
     return (
         <div className="space-y-8">
             {/* MATCH INFO */}
             <div className="bg-slate-900/40 border border-slate-800 rounded-3xl p-6">
-                <h3 className="text-lg font-black italic tracking-tighter uppercase mb-4 text-slate-200 border-b border-slate-800 pb-3">Thông tin trận đấu</h3>
+                <h3 className="text-lg font-black italic tracking-tighter uppercase mb-4 text-slate-200 border-b border-slate-800 pb-3 flex items-center gap-2">
+                    <Info className="w-5 h-5 text-sky-500" /> Thông tin trận đấu
+                </h3>
                 <div className="space-y-4 text-sm">
                     {infoBox?.Stadium && (
                         <div>
-                            <div className="flex items-center gap-2 text-slate-300 font-bold mb-1"><MapPin className="w-4 h-4 text-red-400" /> {infoBox.Stadium.name}</div>
+                            <div className="flex items-center gap-2 text-slate-300 font-bold mb-1"><MapPin className="w-4 h-4 text-emerald-400" /> {infoBox.Stadium.name}</div>
                             <p className="text-xs text-slate-500 pl-6">{infoBox.Stadium.city}, {infoBox.Stadium.country}</p>
                             <div className="pl-6 mt-2 text-xs text-slate-400 space-y-1">
                                 <p>Sức chứa: <span className="text-white font-mono">{infoBox.Stadium.capacity?.toLocaleString() || '?'}</span></p>
@@ -174,42 +216,63 @@ export default function MatchSidebar({ matchData, homeTeam, awayTeam }: { matchD
                 </div>
             )}
 
-            {/* POLL */}
-            {poll && (
+            {/* POLL (DỰ ĐOÁN KẾT QUẢ ĐỘNG TỪ API) */}
+            {voteData && voteData.length === 3 && (
                 <div className="bg-slate-900/40 border border-slate-800 rounded-3xl p-6 text-center">
-                    <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Dự đoán kết quả</h3>
-                    <div className="flex h-8 rounded-lg overflow-hidden font-bold text-xs mb-3 shadow-inner">
-                        <div className="bg-blue-600 flex items-center justify-center text-white" style={{ width: '73%' }}>73%</div>
-                        <div className="bg-slate-500 flex items-center justify-center text-white" style={{ width: '13%' }}>Hòa 13%</div>
-                        <div className="bg-amber-600 flex items-center justify-center text-black" style={{ width: '14%' }}>14%</div>
-                    </div>
-                    <div className="flex justify-between text-[10px] text-slate-500 font-bold uppercase px-1">
-                        <span className="text-blue-400 truncate w-1/3 text-left">{homeTeam.name}</span>
-                        <span className="w-1/3">Hòa</span>
-                        <span className="text-amber-400 truncate w-1/3 text-right">{awayTeam.name}</span>
-                    </div>
-                    <p className="text-[10px] text-slate-600 mt-4">Tổng lượt bình chọn: 671,970</p>
+                    <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center justify-center gap-2">
+                        <PieChart className="w-4 h-4 text-amber-500" /> Dự đoán kết quả
+                    </h3>
+                    {(() => {
+                        const [homeVotes, drawVotes, awayVotes] = voteData;
+                        const totalVotes = homeVotes + drawVotes + awayVotes;
+
+                        if (totalVotes === 0) return <p className="text-slate-500 text-xs">Chưa có dữ liệu bình chọn</p>;
+
+                        const homePct = Math.round((homeVotes / totalVotes) * 100);
+                        const drawPct = Math.round((drawVotes / totalVotes) * 100);
+                        const awayPct = 100 - homePct - drawPct; // Đảm bảo tổng tròn 100%
+
+                        return (
+                            <>
+                                <div className="flex h-8 rounded-lg overflow-hidden font-bold text-xs mb-3 shadow-inner">
+                                    {homePct > 0 && <div className="bg-blue-600 flex items-center justify-center text-white transition-all duration-500" style={{ width: `${homePct}%` }}>{homePct}%</div>}
+                                    {drawPct > 0 && <div className="bg-slate-500 flex items-center justify-center text-white transition-all duration-500" style={{ width: `${drawPct}%` }}>{drawPct}%</div>}
+                                    {awayPct > 0 && <div className="bg-amber-600 flex items-center justify-center text-black transition-all duration-500" style={{ width: `${awayPct}%` }}>{awayPct}%</div>}
+                                </div>
+                                <div className="flex justify-between text-[10px] text-slate-500 font-bold uppercase px-1">
+                                    <span className="text-blue-400 truncate w-1/3 text-left">{homeTeam.name}</span>
+                                    <span className="w-1/3">Hòa</span>
+                                    <span className="text-amber-400 truncate w-1/3 text-right">{awayTeam.name}</span>
+                                </div>
+                                <p className="text-[10px] text-slate-600 mt-4">
+                                    Tổng lượt bình chọn: <span className="font-bold text-slate-400">{totalVotes.toLocaleString('vi-VN')}</span>
+                                </p>
+                            </>
+                        );
+                    })()}
                 </div>
             )}
 
-            {/* FORM */}
+            {/* TEAM FORM TỐI ƯU HIỂN THỊ CHI TIẾT */}
             {teamForm.length > 0 && (
                 <div className="bg-slate-900/40 border border-slate-800 rounded-3xl p-6">
-                    <h3 className="text-lg font-black italic tracking-tighter uppercase mb-4 text-slate-200 border-b border-slate-800 pb-3">Phong độ gần đây (5 trận)</h3>
+                    <h3 className="text-lg font-black italic tracking-tighter uppercase mb-4 text-slate-200 border-b border-slate-800 pb-3 flex items-center gap-2">
+                        <TrendingUp className="w-5 h-5 text-purple-500" /> Phong độ gần đây
+                    </h3>
                     <div className="space-y-6">
                         <div>
-                            <div className="flex items-center gap-2 mb-3">
+                            <div className="flex items-center gap-2 mb-1">
                                 <img src={homeTeam.imageUrl} alt="" className="w-5 h-5 object-contain" />
                                 <span className="font-bold text-sm text-slate-300 truncate">{homeTeam.name}</span>
                             </div>
-                            <div className="flex gap-2">{teamForm[0].map((m: any, i: number) => <div key={i} title={`${m.home.name} ${m.score} ${m.away.name}`}>{renderFormBadge(m.resultString)}</div>)}</div>
+                            {renderDetailedForm(teamForm[0])}
                         </div>
                         <div>
-                            <div className="flex items-center gap-2 mb-3">
+                            <div className="flex items-center gap-2 mb-1">
                                 <img src={awayTeam.imageUrl} alt="" className="w-5 h-5 object-contain" />
                                 <span className="font-bold text-sm text-slate-300 truncate">{awayTeam.name}</span>
                             </div>
-                            <div className="flex gap-2">{teamForm[1].map((m: any, i: number) => <div key={i} title={`${m.home.name} ${m.score} ${m.away.name}`}>{renderFormBadge(m.resultString)}</div>)}</div>
+                            {renderDetailedForm(teamForm[1])}
                         </div>
                     </div>
                 </div>
