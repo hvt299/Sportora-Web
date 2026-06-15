@@ -7,6 +7,12 @@
 }
 
 @font-face {
+  font-family: "FIFA-26";
+  src: url("/fonts/FIFA-26.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "FWC-Black";
   src: url("/fonts/FWC2026-UltraCondensedBlack.8e6ba053.ttf") format("truetype");
   font-display: swap;
@@ -36,14 +42,48 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Dusha-FWC2018";
+  src: url("/fonts/Dusha-FWC2018.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Brasil-WorldCup-2014";
+  src: url("/fonts/Brasil-WorldCup-2014.otf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "South-Africa-2010";
+  src: url("/fonts/South-Africa-2010.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ReGermany2006";
+  src: url("/fonts/ReGermany2006.ttf") format("truetype");
+  font-display: swap;
+}
+
 @theme inline {
   --font-body: "NotoSans", sans-serif;
+
+  --font-wc26: "FIFA-26", sans-serif;
   --font-wc26-black: "FWC-Black", sans-serif;
   --font-wc26-regular: "FWC-Regular", sans-serif;
 
   --font-wc22-heavy: "Qatar-Heavy", sans-serif;
   --font-wc22-bold: "Qatar-Bold", sans-serif;
   --font-wc22-medium: "Qatar-Medium", sans-serif;
+
+  --font-wc18: "Dusha-FWC2018", sans-serif;
+
+  --font-wc14: "Brasil-WorldCup-2014", sans-serif;
+
+  --font-wc10: "South-Africa-2010", sans-serif;
+
+  --font-wc06: "ReGermany2006", sans-serif;
 }
 
 :root {

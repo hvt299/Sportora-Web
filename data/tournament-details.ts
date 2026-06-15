@@ -8,9 +8,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
-            base: "font-body",
+            base: "font-wc26-regular",
             heading: "font-wc26-black",
-            subHeading: "font-wc26-regular"
+            subHeading: "font-wc26-black"
         },
 
         hero: {
@@ -561,18 +561,24 @@ export const tournamentDetails = {
             tournamentKey: "worldCup2018"
         },
 
+        fonts: {
+            base: "font-wc18",
+            heading: "font-wc18",
+            subHeading: "font-wc18"
+        },
+
         hero: {
             badge: "FIFA Official Tournament",
             title: "FIFA WORLD CUP 2018",
-            backgroundImage: "/images/world-cup-2018.jpg",
-            video: ""
+            backgroundImage: "/images/wc18.jpg",
+            video: "/videos/wc18.mp4"
         },
 
         overview: {
             title: "FIFA World Cup 2018",
 
             description:
-                "FIFA World Cup 2018 được tổ chức tại Nga và là kỳ World Cup đầu tiên diễn ra ở Đông Âu. Giải đấu chứng kiến đội tuyển Pháp với thế hệ cầu thủ trẻ tài năng đăng quang sau chiến thắng thuyết phục trước Croatia trong trận chung kết tại Moscow.",
+                "FIFA World Cup 2018 là kỳ World Cup đầu tiên được tổ chức tại Đông Âu và diễn ra trên lãnh thổ Nga. Giải đấu chứng kiến sự lên ngôi của đội tuyển Pháp với thế hệ cầu thủ tài năng, đồng thời ghi dấu hành trình lịch sử của Croatia khi lần đầu tiên góp mặt trong trận chung kết World Cup.",
 
             stats: {
                 teams: 32,
@@ -583,17 +589,17 @@ export const tournamentDetails = {
         },
 
         message: {
-            title: "READY FOR GREATNESS",
+            title: "LIGHT UP THE DREAM",
 
             description:
-                "World Cup 2018 mang đến nhiều bất ngờ và cảm xúc với những cuộc đối đầu đỉnh cao, sự bùng nổ của các ngôi sao trẻ và hành trình lịch sử của Croatia. Đây cũng là giải đấu khẳng định vị thế của thế hệ vàng bóng đá Pháp."
+                "World Cup 2018 mang đến những bất ngờ lớn và những màn trình diễn đỉnh cao. Từ chiến tích của Croatia, sự bùng nổ của Kylian Mbappé cho đến chức vô địch đầy thuyết phục của Pháp, giải đấu đã mở ra một thế hệ mới của bóng đá thế giới."
         },
 
         hosts: [
             {
                 name: "Nga",
                 code: "RUS",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/7718_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8713_xsmall.png"
             }
         ],
 
@@ -615,12 +621,255 @@ export const tournamentDetails = {
             title: "Thể thức thi đấu",
 
             description:
-                "32 đội được chia thành 8 bảng, mỗi bảng 4 đội. Hai đội dẫn đầu mỗi bảng giành quyền vào vòng 16 đội. Từ đó các đội thi đấu loại trực tiếp qua các vòng đấu để xác định nhà vô địch thế giới."
+                "32 đội được chia thành 8 bảng, mỗi bảng 4 đội. Hai đội đứng đầu mỗi bảng giành quyền vào vòng 16 đội. Từ đây giải đấu tiếp tục theo thể thức loại trực tiếp cho đến trận chung kết."
         },
 
         tournamentInfo: {
             startDate: "2018-06-14",
             endDate: "2018-07-15",
+            teams: 32,
+            matches: 64
+        },
+
+        teams: []
+    },
+
+    worldCup2014: {
+        config: {
+            leagueId: 77,
+            season: "2014",
+            query: "World Cup 2014",
+            tournamentKey: "worldCup2014"
+        },
+
+        fonts: {
+            // base: "font-wc14",
+            heading: "font-wc14",
+            subHeading: "font-wc14"
+        },
+
+        hero: {
+            badge: "FIFA Official Tournament",
+            title: "FIFA WORLD CUP 2014",
+            backgroundImage: "/images/wc14.jpg",
+            video: "/videos/wc14.mp4"
+        },
+
+        overview: {
+            title: "FIFA World Cup 2014",
+
+            description:
+                "FIFA World Cup 2014 được tổ chức tại Brazil, quê hương của bóng đá nghệ thuật. Giải đấu chứng kiến đội tuyển Đức lên ngôi vô địch sau chiến thắng trước Argentina trong trận chung kết, đồng thời ghi dấu với nhiều trận đấu giàu cảm xúc và những khoảnh khắc khó quên.",
+
+            stats: {
+                teams: 32,
+                matches: 64,
+                cities: 12,
+                stadiums: 12
+            }
+        },
+
+        message: {
+            title: "ALL IN ONE RHYTHM",
+
+            description:
+                "World Cup 2014 mang đến bầu không khí cuồng nhiệt của Brazil cùng hàng loạt trận cầu hấp dẫn. Từ chiến thắng lịch sử 7-1 của Đức trước Brazil đến bàn thắng quyết định của Mario Götze trong trận chung kết, giải đấu đã trở thành một trong những kỳ World Cup đáng nhớ nhất."
+        },
+
+        hosts: [
+            {
+                name: "Brazil",
+                code: "BRA",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8256_xsmall.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "Rio de Janeiro", country: "BRA" },
+            { city: "São Paulo", country: "BRA" },
+            { city: "Brasília", country: "BRA" },
+            { city: "Belo Horizonte", country: "BRA" },
+            { city: "Salvador", country: "BRA" },
+            { city: "Fortaleza", country: "BRA" },
+            { city: "Recife", country: "BRA" },
+            { city: "Porto Alegre", country: "BRA" },
+            { city: "Curitiba", country: "BRA" },
+            { city: "Manaus", country: "BRA" },
+            { city: "Natal", country: "BRA" },
+            { city: "Cuiabá", country: "BRA" }
+        ],
+
+        format: {
+            title: "Thể thức thi đấu",
+
+            description:
+                "32 đội được chia thành 8 bảng, mỗi bảng 4 đội. Hai đội đứng đầu mỗi bảng giành quyền vào vòng 16 đội. Từ đây giải đấu tiếp tục theo thể thức loại trực tiếp cho đến trận chung kết."
+        },
+
+        tournamentInfo: {
+            startDate: "2014-06-12",
+            endDate: "2014-07-13",
+            teams: 32,
+            matches: 64
+        },
+
+        teams: []
+    },
+
+    worldCup2010: {
+        config: {
+            leagueId: 77,
+            season: "2010",
+            query: "World Cup 2010",
+            tournamentKey: "worldCup2010"
+        },
+
+        fonts: {
+            // base: "font-wc10",
+            heading: "font-wc10",
+            subHeading: "font-wc10"
+        },
+
+        hero: {
+            badge: "FIFA Official Tournament",
+            title: "FIFA WORLD CUP 2010",
+            backgroundImage: "/images/wc10.jpg",
+            video: "/videos/wc10.mp4"
+        },
+
+        overview: {
+            title: "FIFA World Cup 2010",
+
+            description:
+                "FIFA World Cup 2010 là kỳ World Cup đầu tiên được tổ chức tại châu Phi. Giải đấu tại Nam Phi đánh dấu chức vô địch thế giới đầu tiên của Tây Ban Nha sau khi đánh bại Hà Lan trong trận chung kết, khép lại thời kỳ thống trị của lối chơi tiki-taka huyền thoại.",
+
+            stats: {
+                teams: 32,
+                matches: 64,
+                cities: 9,
+                stadiums: 10
+            }
+        },
+
+        message: {
+            title: "KE NAKO. CELEBRATE AFRICA'S HUMANITY",
+
+            description:
+                "World Cup 2010 mang đến những âm thanh vuvuzela đặc trưng và bầu không khí sôi động trên khắp Nam Phi. Đây là giải đấu ghi dấu đỉnh cao của thế hệ vàng Tây Ban Nha cùng khoảnh khắc lịch sử khi Andrés Iniesta ghi bàn thắng quyết định trong trận chung kết."
+        },
+
+        hosts: [
+            {
+                name: "Nam Phi",
+                code: "RSA",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6316_xsmall.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "Johannesburg", country: "RSA" },
+            { city: "Cape Town", country: "RSA" },
+            { city: "Durban", country: "RSA" },
+            { city: "Pretoria", country: "RSA" },
+            { city: "Port Elizabeth", country: "RSA" },
+            { city: "Bloemfontein", country: "RSA" },
+            { city: "Polokwane", country: "RSA" },
+            { city: "Rustenburg", country: "RSA" },
+            { city: "Nelspruit", country: "RSA" }
+        ],
+
+        format: {
+            title: "Thể thức thi đấu",
+
+            description:
+                "32 đội được chia thành 8 bảng, mỗi bảng 4 đội. Hai đội đứng đầu mỗi bảng giành quyền vào vòng 16 đội. Từ đây giải đấu tiếp tục theo thể thức loại trực tiếp cho đến trận chung kết."
+        },
+
+        tournamentInfo: {
+            startDate: "2010-06-11",
+            endDate: "2010-07-11",
+            teams: 32,
+            matches: 64
+        },
+
+        teams: []
+    },
+
+    worldCup2006: {
+        config: {
+            leagueId: 77,
+            season: "2006",
+            query: "World Cup 2006",
+            tournamentKey: "worldCup2006"
+        },
+
+        fonts: {
+            base: "font-wc06",
+            heading: "font-wc06",
+            subHeading: "font-wc06"
+        },
+
+        hero: {
+            badge: "FIFA Official Tournament",
+            title: "FIFA WORLD CUP 2006",
+            backgroundImage: "/images/wc06.jpg",
+            video: "/videos/wc06.mp4"
+        },
+
+        overview: {
+            title: "FIFA World Cup 2006",
+
+            description:
+                "FIFA World Cup 2006 được tổ chức tại Đức và là một trong những kỳ World Cup thành công nhất về chuyên môn lẫn sức hút toàn cầu. Giải đấu khép lại với chức vô địch thế giới lần thứ tư của Italia sau chiến thắng trước Pháp trên chấm luân lưu trong trận chung kết tại Berlin.",
+
+            stats: {
+                teams: 32,
+                matches: 64,
+                cities: 12,
+                stadiums: 12
+            }
+        },
+
+        message: {
+            title: "A TIME TO MAKE FRIENDS",
+
+            description:
+                "World Cup 2006 mang đến những cuộc đối đầu đỉnh cao cùng nhiều khoảnh khắc đáng nhớ. Từ hành trình vô địch của Italia đến trận đấu cuối cùng trong sự nghiệp World Cup của Zinedine Zidane, giải đấu đã để lại dấu ấn sâu đậm trong lịch sử bóng đá thế giới."
+        },
+
+        hosts: [
+            {
+                name: "Đức",
+                code: "GER",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8570_xsmall.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "Berlin", country: "GER" },
+            { city: "Munich", country: "GER" },
+            { city: "Hamburg", country: "GER" },
+            { city: "Dortmund", country: "GER" },
+            { city: "Frankfurt", country: "GER" },
+            { city: "Stuttgart", country: "GER" },
+            { city: "Cologne", country: "GER" },
+            { city: "Leipzig", country: "GER" },
+            { city: "Nuremberg", country: "GER" },
+            { city: "Gelsenkirchen", country: "GER" },
+            { city: "Kaiserslautern", country: "GER" },
+            { city: "Hanover", country: "GER" }
+        ],
+
+        format: {
+            title: "Thể thức thi đấu",
+
+            description:
+                "32 đội được chia thành 8 bảng, mỗi bảng 4 đội. Hai đội đứng đầu mỗi bảng giành quyền vào vòng 16 đội. Từ đây giải đấu tiếp tục theo thể thức loại trực tiếp cho đến trận chung kết."
+        },
+
+        tournamentInfo: {
+            startDate: "2006-06-09",
+            endDate: "2006-07-09",
             teams: 32,
             matches: 64
         },
