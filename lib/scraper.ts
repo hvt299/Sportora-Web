@@ -183,14 +183,15 @@ export async function getFixtures(leagueId: number | string = 77, season: string
         const url = `https://www.fotmob.com/api/data/leagues?id=${leagueId}&ccode3=VNM&season=${season}`;
         const response = await fetch(url, {
             headers: { "User-Agent": "Mozilla/5.0" },
-            cache: "no-store" // Vô hiệu hóa cache hoàn toàn, luôn lấy dữ liệu tươi (fresh data)
+            cache: "no-store"
         });
         const data: any = await response.json();
 
         const nestedFixtures: Record<string, Record<string, MatchItem[]>> = {};
         const allMatches = data?.fixtures?.allMatches || data?.overview?.matches?.allMatches || [];
 
-        allMatches.forEach((match: any) => {
+        // DÙNG PROMISE.ALL ĐỂ XỬ LÝ SONG SONG CÁC TRẬN ĐẤU GIÚP WEB TẢI SIÊU TỐC
+        const processedMatches = await Promise.all(allMatches.map(async (match: any) => {
             let roundCategory = "Vòng bảng";
             if (match.round === "1/16") roundCategory = "Vòng 32 đội";
             else if (match.round === "1/8") roundCategory = "Vòng 16 đội";
@@ -199,16 +200,11 @@ export async function getFixtures(leagueId: number | string = 77, season: string
             else if (match.round === "bronze") roundCategory = "Tranh hạng ba";
             else if (match.round === "final") roundCategory = "Chung kết";
 
-            if (!nestedFixtures[roundCategory]) nestedFixtures[roundCategory] = {};
-
-            // Fallback thời gian phòng hờ Fotmob đổi key
             const utcTime = match.status?.utcTime || match.matchDate;
             const dateObj = new Date(utcTime);
 
             const dateKey = dateObj.toLocaleString("en-GB", { timeZone: "Asia/Ho_Chi_Minh", day: "2-digit", month: "2-digit", year: "numeric" });
             const timeStr = dateObj.toLocaleTimeString("en-GB", { timeZone: "Asia/Ho_Chi_Minh", hour: "2-digit", minute: "2-digit" });
-
-            if (!nestedFixtures[roundCategory][dateKey]) nestedFixtures[roundCategory][dateKey] = [];
 
             const isStarted = match.status?.started ?? false;
             const isFinished = match.status?.finished ?? false;
@@ -216,42 +212,67 @@ export async function getFixtures(leagueId: number | string = 77, season: string
 
             let live = false;
             let mappedStatus = "Chưa diễn ra";
-            let minute = formatMatchMinute(match.status); // <-- Gọi hàm xử lý phút chuẩn ở đây
-            let score = null;
+            let rawStatus = match.status || {};
 
-            if (isCancelled) {
+            // BÍ QUYẾT TỐI ƯU CỦA BẠN: CHỈ FETCH THÊM DỮ LIỆU NẾU TRẬN ĐÓ ĐANG ĐÁ
+            if (isStarted && !isFinished && !isCancelled) {
+                live = true;
+                mappedStatus = "Đang diễn ra";
+                try {
+                    const detailUrl = `https://www.fotmob.com/api/data/matchDetails?matchId=${match.id}&ccode3=VNM`;
+                    const detailRes = await fetch(detailUrl, { cache: "no-store", headers: { "User-Agent": "Mozilla/5.0" } });
+                    if (detailRes.ok) {
+                        const detailData = await detailRes.json();
+                        if (detailData?.header?.status?.liveTime) {
+                            // Bơm trực tiếp cục liveTime đầy đủ (có addedTime) vào rawStatus
+                            rawStatus.liveTime = detailData.header.status.liveTime;
+                        }
+                    }
+                } catch (e) {
+                    console.error(`Lỗi fetch live time trận ${match.id}:`, e);
+                }
+            } else if (isCancelled) {
                 mappedStatus = "Hủy";
             } else if (isFinished) {
                 mappedStatus = "Kết thúc";
-            } else if (isStarted && !isFinished) {
-                live = true;
-                mappedStatus = "Đang diễn ra";
-                if (!minute) minute = match.status?.reason?.short || "LIVE"; // Fallback nếu hàm trên không trả về được phút
             }
 
-            // BẢO MẬT HIỂN THỊ: Chỉ gán điểm số nếu trận đấu thực sự đã bắt đầu hoặc kết thúc
+            let minute = formatMatchMinute(rawStatus);
+            if (live && !minute) minute = rawStatus?.reason?.short || "LIVE";
+
+            let score = null;
             if (isStarted || isFinished) {
-                // Ưu tiên lấy scoreStr (ví dụ: "2 - 1"), nếu không có thì tự ghép từ điểm 2 đội
-                score = match.status?.scoreStr ??
+                score = rawStatus?.scoreStr ??
                     (match.home?.score != null && match.away?.score != null ? `${match.home.score} - ${match.away.score}` : null);
             }
 
-            nestedFixtures[roundCategory][dateKey].push({
-                id: match.id.toString(),
-                home: translateTeamName(match.home?.name),
-                away: translateTeamName(match.away?.name),
-                homeLogo: match.home?.id ? `https://images.fotmob.com/image_resources/logo/teamlogo/${match.home.id}.png` : undefined,
-                awayLogo: match.away?.id ? `https://images.fotmob.com/image_resources/logo/teamlogo/${match.away.id}.png` : undefined,
-                time: timeStr,
-                date: dateKey,
-                status: mappedStatus,
-                score: score,
-                round: roundCategory,
-                live: live,
-                minute: minute,
-                rawPeriod: match.status?.reason?.short || "",
-                rawStatus: match.status || {}
-            });
+            return {
+                roundCategory,
+                dateKey,
+                item: {
+                    id: match.id.toString(),
+                    home: translateTeamName(match.home?.name),
+                    away: translateTeamName(match.away?.name),
+                    homeLogo: match.home?.id ? `https://images.fotmob.com/image_resources/logo/teamlogo/${match.home.id}.png` : undefined,
+                    awayLogo: match.away?.id ? `https://images.fotmob.com/image_resources/logo/teamlogo/${match.away.id}.png` : undefined,
+                    time: timeStr,
+                    date: dateKey,
+                    status: mappedStatus,
+                    score: score,
+                    round: roundCategory,
+                    live: live,
+                    minute: minute,
+                    rawPeriod: match.status?.reason?.short || "",
+                    rawStatus: rawStatus // Bây giờ rawStatus của các trận Live đã chứa đủ 100% thời gian!
+                }
+            };
+        }));
+
+        // Gộp data đã xử lý xong vào nestedFixtures
+        processedMatches.forEach((data: any) => {
+            if (!nestedFixtures[data.roundCategory]) nestedFixtures[data.roundCategory] = {};
+            if (!nestedFixtures[data.roundCategory][data.dateKey]) nestedFixtures[data.roundCategory][data.dateKey] = [];
+            nestedFixtures[data.roundCategory][data.dateKey].push(data.item);
         });
 
         return nestedFixtures;
