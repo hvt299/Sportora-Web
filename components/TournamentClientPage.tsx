@@ -11,15 +11,6 @@ import { useRouter } from 'next/navigation';
 import { tournamentDetails } from '@/data/tournament-details';
 import StatCard from './StatCard';
 
-const TABS = [
-    { id: 'overview', name: 'Tổng quan', icon: Trophy },
-    { id: 'fixtures', name: 'Lịch thi đấu', icon: CalendarDays },
-    { id: 'standings', name: 'Bảng xếp hạng', icon: Table },
-    { id: 'bracket', name: 'Nhánh đấu', icon: GitBranch },
-    { id: 'player-stats', name: 'Chỉ số cầu thủ', icon: Users },
-    { id: 'team-stats', name: 'Chỉ số đội bóng', icon: BarChart2 },
-];
-
 type FixturesData = Record<string, Record<string, MatchItem[]>>;
 
 interface PageProps {
@@ -31,7 +22,6 @@ interface PageProps {
     tournamentKey: string;
 }
 
-// Thêm Type định nghĩa cấu trúc dữ liệu cho Giải đấu
 type TournamentDetailType = {
     config: { leagueId: number; season: string; query: string; tournamentKey: string };
     fonts?: { base: string; heading: string; subHeading: string };
@@ -39,12 +29,7 @@ type TournamentDetailType = {
     overview: {
         title: string;
         description: string;
-        stats: {
-            teams: number;
-            matches: number;
-            cities?: number;   // Dấu ? nghĩa là có thể có hoặc không
-            stadiums?: number; // Dấu ? nghĩa là có thể có hoặc không
-        };
+        stats: { teams: number; matches: number; cities?: number; stadiums?: number; };
     };
     message?: { title: string; description: string };
     hosts?: { name: string; code: string; logo: string }[];
@@ -65,39 +50,65 @@ export default function TournamentClientPage({
     const [activeTab, setActiveTab] = useState('overview');
     const [activeGroup, setActiveGroup] = useState(() => Object.keys(initialStandings)[0]);
     const [newsData] = useState(initialNews);
-    const [selectedRound, setSelectedRound] = useState('Vòng bảng');
 
-    // --- STATE CHO BỘ LỌC TRẬN ĐẤU ---
+    // DYNAMIC TABS: Kiểm tra xem giải đấu có dữ liệu Nhánh đấu không
+    const hasBracket = initialBracket && (
+        initialBracket.final ||
+        (initialBracket.semiFinals && initialBracket.semiFinals.length > 0) ||
+        (initialBracket.quarterFinals && initialBracket.quarterFinals.length > 0) ||
+        (initialBracket.roundOf16 && initialBracket.roundOf16.length > 0) ||
+        (initialBracket.roundOf32 && initialBracket.roundOf32.length > 0)
+    );
+
+    const TABS = [
+        { id: 'overview', name: 'Tổng quan', icon: Trophy },
+        { id: 'fixtures', name: 'Lịch thi đấu', icon: CalendarDays },
+        { id: 'standings', name: 'Bảng xếp hạng', icon: Table },
+        ...(hasBracket ? [{ id: 'bracket', name: 'Nhánh đấu', icon: GitBranch }] : []),
+        { id: 'player-stats', name: 'Chỉ số cầu thủ', icon: Users },
+        { id: 'team-stats', name: 'Chỉ số đội bóng', icon: BarChart2 },
+    ];
+
+    // DYNAMIC ROUNDS: Lấy danh sách Vòng đấu hiện có và sắp xếp thông minh
+    const sortedRounds = Object.keys(initialMatches).sort((a, b) => {
+        const cupOrder = ['Vòng bảng', 'Vòng 32 đội', 'Vòng 16 đội', 'Tứ kết', 'Bán kết', 'Tranh hạng ba', 'Chung kết'];
+        const idxA = cupOrder.indexOf(a);
+        const idxB = cupOrder.indexOf(b);
+        if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+
+        const matchA = a.match(/Vòng (\d+)/);
+        const matchB = b.match(/Vòng (\d+)/);
+        if (matchA && matchB) {
+            return parseInt(matchA[1]) - parseInt(matchB[1]);
+        }
+        return 0;
+    });
+
+    const [selectedRound, setSelectedRound] = useState(() => sortedRounds[0] || '');
     const [hideFinished, setHideFinished] = useState(false);
 
-    // --- STATE CHO VIDEO ---
+    // VIDEO STATE
     const [isMuted, setIsMuted] = useState(true);
     const [videoError, setVideoError] = useState(false);
     const [preferredMode, setPreferredMode] = useState<'video' | 'image'>('video');
 
     const router = useRouter();
     useEffect(() => {
-        const interval = setInterval(() => {
-            router.refresh();
-        }, 15000);
+        const interval = setInterval(() => { router.refresh(); }, 15000);
         return () => clearInterval(interval);
     }, [router]);
 
     const formatGroupName = (name: string) => {
         if (name.toLowerCase().includes('best 3rd')) return 'Các đội hạng 3 tốt nhất';
+        // Nếu chỉ có 1 bảng (Giải League) thì giữ nguyên tên
+        if (Object.keys(initialStandings).length === 1) return name;
         return `Bảng ${name}`;
     };
 
     const roundData = initialMatches[selectedRound] || {};
-
-    // Ép kiểu cho details để TypeScript hiểu các trường bị thiếu là hợp lệ
     const details = (tournamentDetails[tournamentKey as keyof typeof tournamentDetails] || tournamentDetails.worldCup2026) as TournamentDetailType;
 
-    const fonts = details.fonts || {
-        base: "font-sans",
-        heading: "font-black",
-        subHeading: "font-bold"
-    };
+    const fonts = details.fonts || { base: "font-sans", heading: "font-black", subHeading: "font-bold" };
 
     const hostCitiesRef = useRef<HTMLDivElement>(null);
     const [isDraggingCities, setIsDraggingCities] = useState(false);
@@ -110,9 +121,7 @@ export default function TournamentClientPage({
         setStartXCities(e.pageX - hostCitiesRef.current.offsetLeft);
         setScrollLeftCities(hostCitiesRef.current.scrollLeft);
     };
-
     const handleCitiesMouseLeaveOrUp = () => setIsDraggingCities(false);
-
     const handleCitiesMouseMove = (e: React.MouseEvent) => {
         if (!isDraggingCities || !hostCitiesRef.current) return;
         e.preventDefault();
@@ -137,12 +146,10 @@ export default function TournamentClientPage({
                 className="h-[40vh] relative flex items-end p-8 border-b border-slate-800 overflow-hidden bg-blue-950"
             >
                 {(() => {
-                    // 1. Kiểm tra tính khả dụng của Media
                     const hasVideo = !!details.hero.video && !videoError;
                     const hasImage = !!details.hero.backgroundImage;
-
-                    // 2. Quyết định chế độ hiển thị thực tế
                     let currentDisplay: 'video' | 'image' | 'none' = 'none';
+
                     if (preferredMode === 'video') {
                         if (hasVideo) currentDisplay = 'video';
                         else if (hasImage) currentDisplay = 'image';
@@ -151,37 +158,27 @@ export default function TournamentClientPage({
                         else if (hasVideo) currentDisplay = 'video';
                     }
 
-                    // 3. Chỉ cho phép chuyển đổi nếu có CẢ 2
                     const canToggle = hasVideo && hasImage;
 
                     return (
                         <>
-                            {/* RENDER MEDIA */}
                             {currentDisplay === 'video' && (
                                 <video
-                                    autoPlay
-                                    loop
-                                    muted={isMuted}
-                                    playsInline
+                                    autoPlay loop muted={isMuted} playsInline
                                     className="absolute inset-0 w-full h-full object-cover z-0 opacity-80"
-                                    onError={() => setVideoError(true)} // Lỗi tải -> Fallback sang ảnh và mất nút toggle
+                                    onError={() => setVideoError(true)}
                                 >
                                     <source src={details.hero.video} type="video/mp4" />
                                 </video>
                             )}
-
                             {currentDisplay === 'image' && (
                                 <div
                                     className="absolute inset-0 bg-center bg-cover z-0 opacity-80"
                                     style={{ backgroundImage: `url('${details.hero.backgroundImage}')` }}
                                 />
                             )}
-
-                            {/* LỚP PHỦ GRADIENT TỐI LÊN ĐỂ ĐỌC CHỮ */}
                             <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent z-10" />
 
-                            {/* CÁC NÚT TƯƠNG TÁC */}
-                            {/* Nút Toggle Image/Video (Góc trên phải) */}
                             {canToggle && (
                                 <button
                                     onClick={() => setPreferredMode(prev => prev === 'video' ? 'image' : 'video')}
@@ -192,12 +189,10 @@ export default function TournamentClientPage({
                                 </button>
                             )}
 
-                            {/* Nút Mute/Unmute (Góc dưới phải) - Chỉ hiện khi đang chạy Video */}
                             {currentDisplay === 'video' && (
                                 <button
                                     onClick={() => setIsMuted(!isMuted)}
                                     className="absolute bottom-6 right-6 z-30 p-3 bg-black/30 hover:bg-black/60 rounded-full backdrop-blur-md border border-white/20 transition text-white shadow-xl"
-                                    aria-label="Toggle Volume"
                                 >
                                     {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
                                 </button>
@@ -206,7 +201,6 @@ export default function TournamentClientPage({
                     );
                 })()}
 
-                {/* TEXT CONTENT */}
                 <div className="relative z-20 pointer-events-none">
                     <span className="text-blue-500 font-bold uppercase tracking-widest text-xs mb-2 block drop-shadow-md">
                         {details.hero.badge}
@@ -219,8 +213,6 @@ export default function TournamentClientPage({
 
             {/* Tab Navigation (Responsive) */}
             <div className="border-b border-slate-800 bg-black/50 sticky top-0 z-40 backdrop-blur-xl">
-
-                {/* Desktop */}
                 <div className="hidden md:flex">
                     {TABS.map((tab) => {
                         const Icon = tab.icon;
@@ -239,8 +231,6 @@ export default function TournamentClientPage({
                         );
                     })}
                 </div>
-
-                {/* Mobile */}
                 <div className="md:hidden overflow-x-auto scrollbar-hide flex gap-2 px-3 py-3">
                     {TABS.map((tab) => {
                         const Icon = tab.icon;
@@ -265,11 +255,8 @@ export default function TournamentClientPage({
             <main className="p-8">
                 {activeTab === "overview" && (
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 relative">
-
-                        {/* LEFT COLUMN: Thông tin giải đấu */}
                         <div className="lg:col-span-8 space-y-8">
-
-                            {/* HERO (Xanh dương đậm) */}
+                            {/* Khối Hero Overview */}
                             <div className="bg-linear-to-br from-blue-900/40 to-slate-900/50 border border-blue-500/20 rounded-3xl p-8 relative overflow-hidden">
                                 <div className={`absolute -right-4 -bottom-6 opacity-5 pointer-events-none text-[180px] ${fonts.heading} italic leading-none`}>
                                     FIFA
@@ -289,14 +276,12 @@ export default function TournamentClientPage({
                                         <p className="text-[10px] uppercase text-slate-400 font-bold mb-1">Trận đấu</p>
                                         <p className="text-3xl font-bold font-mono text-blue-400">{details.overview.stats.matches}</p>
                                     </div>
-                                    {/* Ẩn nếu giải đấu không có thông số cities (VD: Giải CLB) */}
                                     {details.overview.stats.cities && (
                                         <div className="bg-slate-950/60 border border-slate-800/80 rounded-xl p-4 backdrop-blur-md hover:border-blue-500/50 transition">
                                             <p className="text-[10px] uppercase text-slate-400 font-bold mb-1">Thành phố</p>
                                             <p className="text-3xl font-bold font-mono text-blue-400">{details.overview.stats.cities}</p>
                                         </div>
                                     )}
-                                    {/* Ẩn nếu giải đấu không có thông số stadiums */}
                                     {details.overview.stats.stadiums && (
                                         <div className="bg-slate-950/60 border border-slate-800/80 rounded-xl p-4 backdrop-blur-md hover:border-blue-500/50 transition">
                                             <p className="text-[10px] uppercase text-slate-400 font-bold mb-1">Sân vận động</p>
@@ -306,11 +291,10 @@ export default function TournamentClientPage({
                                 </div>
                             </div>
 
-                            {/* TOURNAMENT MESSAGE (Indigo) - Chỉ hiện nếu có thông điệp */}
+                            {/* Thông điệp */}
                             {details.message && (
                                 <div className="bg-linear-to-br from-indigo-900/30 to-slate-900/50 border border-indigo-500/20 rounded-3xl p-8 relative overflow-hidden">
                                     <div className={`absolute -right-4 -bottom-6 opacity-5 pointer-events-none text-[180px] ${fonts.heading} italic leading-none text-indigo-300`}>
-                                        {/* Tự động cắt 2 số cuối của mùa giải, VD: 2026 -> 26, 2022 -> 22 */}
                                         {details.config?.season?.slice(-2)}
                                     </div>
                                     <h3 className="text-sm font-black text-indigo-400 uppercase tracking-widest mb-2 relative z-10">
@@ -325,7 +309,7 @@ export default function TournamentClientPage({
                                 </div>
                             )}
 
-                            {/* 48 PARTICIPATING TEAMS (Teal) - Chỉ hiện nếu có mảng teams */}
+                            {/* Đội tuyển tham gia */}
                             {details.teams && details.teams.length > 0 && (
                                 <div className="bg-linear-to-br from-teal-900/30 to-slate-900/50 border border-teal-500/20 rounded-3xl p-8 relative overflow-hidden">
                                     <div className={`absolute -right-4 -bottom-6 opacity-5 pointer-events-none text-[140px] ${fonts.heading} italic leading-none text-teal-200`}>
@@ -354,7 +338,7 @@ export default function TournamentClientPage({
                                 </div>
                             )}
 
-                            {/* DEFENDING CHAMPION & RUNNER-UP (Động qua API Fotmob) */}
+                            {/* Đương kim vô địch */}
                             {initialBracket?.defendingChampion && (
                                 <div className="bg-linear-to-r from-sky-500/10 via-cyan-500/10 to-blue-500/10 border border-sky-500/20 rounded-3xl p-6 relative overflow-hidden hover:border-sky-400/40 transition">
                                     <div className={`absolute -right-4 -bottom-4 opacity-5 pointer-events-none text-[120px] ${fonts.heading} italic leading-none text-sky-200`}>
@@ -381,7 +365,7 @@ export default function TournamentClientPage({
                                 </div>
                             )}
 
-                            {/* HOST NATIONS (Purple/Tím) - Chỉ hiện nếu có mảng hosts */}
+                            {/* HOST NATIONS */}
                             {details.hosts && details.hosts.length > 0 && (
                                 <div className="bg-linear-to-br from-purple-900/30 to-slate-900/50 border border-purple-500/20 rounded-3xl p-8 relative overflow-hidden">
                                     <div className={`absolute -right-4 -bottom-6 opacity-5 pointer-events-none text-[150px] ${fonts.heading} italic leading-none text-purple-200`}>
@@ -401,7 +385,7 @@ export default function TournamentClientPage({
                                 </div>
                             )}
 
-                            {/* HOST CITIES (Sky/Xanh da trời nhạt) - Chỉ hiện nếu có mảng hostCities */}
+                            {/* HOST CITIES */}
                             {details.hostCities && details.hostCities.length > 0 && (
                                 <div className="bg-linear-to-br from-sky-900/30 to-slate-900/50 border border-sky-500/20 rounded-3xl p-8 relative overflow-hidden">
                                     <div className={`absolute -right-4 -bottom-6 opacity-5 pointer-events-none text-[150px] ${fonts.heading} italic leading-none text-sky-200`}>
@@ -417,11 +401,7 @@ export default function TournamentClientPage({
                                     </div>
                                     <div
                                         ref={hostCitiesRef}
-                                        className={`
-                                            flex gap-4 overflow-x-auto pb-4 relative z-10
-                                            scrollbar-hide select-none
-                                            ${isDraggingCities ? "cursor-grabbing" : "cursor-grab"}
-                                        `}
+                                        className={`flex gap-4 overflow-x-auto pb-4 relative z-10 scrollbar-hide select-none ${isDraggingCities ? "cursor-grabbing" : "cursor-grab"}`}
                                         onMouseDown={handleCitiesMouseDown}
                                         onMouseLeave={handleCitiesMouseLeaveOrUp}
                                         onMouseUp={handleCitiesMouseLeaveOrUp}
@@ -443,9 +423,8 @@ export default function TournamentClientPage({
                                 </div>
                             )}
 
-                            {/* TOURNAMENT FORMAT & INFO (Chia 2 cột) */}
+                            {/* Thể thức thi đấu & Info */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                {/* Thể thức thi đấu (Rose/Hồng đỏ) */}
                                 <div className="bg-linear-to-br from-rose-900/20 to-slate-900/50 border border-rose-500/20 rounded-3xl p-8 relative overflow-hidden hover:border-rose-500/40 transition">
                                     <div className={`absolute -right-4 -bottom-4 opacity-5 pointer-events-none text-[100px] ${fonts.heading} italic leading-none text-rose-200`}>
                                         RULE
@@ -457,8 +436,6 @@ export default function TournamentClientPage({
                                         {details.format.description}
                                     </p>
                                 </div>
-
-                                {/* Thông số giải đấu (Amber/Vàng hổ phách) */}
                                 <div className="bg-linear-to-br from-amber-900/20 to-slate-900/50 border border-amber-500/20 rounded-3xl p-8 relative overflow-hidden hover:border-amber-500/40 transition">
                                     <div className={`absolute -right-4 -bottom-4 opacity-5 pointer-events-none text-[100px] ${fonts.heading} italic leading-none text-amber-200`}>
                                         INFO
@@ -484,43 +461,34 @@ export default function TournamentClientPage({
                                     </div>
                                 </div>
                             </div>
-
                         </div>
 
-                        {/* RIGHT COLUMN (SIDEBAR): Tích hợp Sticky cho News */}
+                        {/* RIGHT COLUMN: Sidebar News */}
                         <div className="lg:col-span-4">
-                            <div className="sticky top-22"> {/* top-24 (88px) giữ khoảng cách khi cuộn */}
+                            <div className="sticky top-22">
                                 <h3 className="font-bold text-lg mb-4 text-slate-200">Tin tức mới nhất</h3>
                                 <SidebarNews news={newsData} />
                             </div>
                         </div>
-
                     </div>
                 )}
 
                 {activeTab === 'fixtures' && (() => {
-                    // Lọc dữ liệu: Nếu hideFinished = true, loại bỏ các trận "Kết thúc" và "Hủy"
                     const processedRoundData = Object.keys(roundData).reduce((acc, date) => {
                         const filteredMatches = roundData[date].filter((match: any) => {
-                            if (hideFinished) {
-                                return match.status !== "Kết thúc" && match.status !== "Hủy";
-                            }
+                            if (hideFinished) return match.status !== "Kết thúc" && match.status !== "Hủy";
                             return true;
                         });
-
-                        // Chỉ giữ lại những ngày còn có trận đấu
-                        if (filteredMatches.length > 0) {
-                            acc[date] = filteredMatches;
-                        }
+                        if (filteredMatches.length > 0) acc[date] = filteredMatches;
                         return acc;
                     }, {} as Record<string, any[]>);
 
                     return (
                         <div className="space-y-8 animate-in fade-in duration-500">
-                            {/* Header: Thanh chọn vòng đấu + Nút Lọc */}
+                            {/* DYNAMIC ROUND SELECTOR */}
                             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                                <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar w-full md:w-auto">
-                                    {['Vòng bảng', 'Vòng 32 đội', 'Vòng 16 đội', 'Tứ kết', 'Bán kết', 'Tranh hạng ba', 'Chung kết'].map((round) => (
+                                <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide w-full md:w-auto">
+                                    {sortedRounds.map((round) => (
                                         <button
                                             key={round}
                                             onClick={() => setSelectedRound(round)}
@@ -533,8 +501,6 @@ export default function TournamentClientPage({
                                         </button>
                                     ))}
                                 </div>
-
-                                {/* Nút Toggle Ẩn/Hiện */}
                                 <button
                                     onClick={() => setHideFinished(!hideFinished)}
                                     className={`shrink-0 px-4 py-2 rounded-full text-[11px] font-bold tracking-wide transition-all border ${hideFinished
@@ -546,7 +512,6 @@ export default function TournamentClientPage({
                                 </button>
                             </div>
 
-                            {/* Danh sách trận đấu động theo ngày */}
                             <div className="space-y-10">
                                 {Object.keys(processedRoundData).length > 0 ? (
                                     Object.keys(processedRoundData)
@@ -563,21 +528,16 @@ export default function TournamentClientPage({
                                                 </h4>
                                                 <div className="space-y-3">
                                                     {processedRoundData[date].map((match: any, i: number) => (
-                                                        // Đừng quên truyền fonts={fonts} nếu bạn đã cấu hình font động
                                                         <MatchCard key={i} {...match} fonts={fonts} />
                                                     ))}
                                                 </div>
                                             </div>
                                         ))
                                 ) : (
-                                    // Thông báo khi không còn trận nào hiển thị do bị lọc
                                     <div className="text-center py-12 bg-slate-900/20 rounded-3xl border border-slate-800 border-dashed">
                                         <p className="text-slate-400 font-medium mb-3">Không có trận đấu nào đang hoặc sắp diễn ra ở vòng này.</p>
                                         {hideFinished && (
-                                            <button
-                                                onClick={() => setHideFinished(false)}
-                                                className="text-blue-400 text-sm font-bold hover:underline"
-                                            >
+                                            <button onClick={() => setHideFinished(false)} className="text-blue-400 text-sm font-bold hover:underline">
                                                 Xem lại các trận đã kết thúc
                                             </button>
                                         )}
@@ -590,28 +550,26 @@ export default function TournamentClientPage({
 
                 {activeTab === 'standings' && (
                     <div className="space-y-6 animate-in fade-in duration-500">
-                        {/* Group Selector */}
-                        <div className="flex gap-6 overflow-x-auto no-scrollbar border-b border-slate-800">
-                            {Object.keys(initialStandings).map((groupName) => (
-                                <button
-                                    key={groupName}
-                                    onClick={() => setActiveGroup(groupName)}
-                                    className={`pb-3 text-xs font-bold border-b-2 transition-all whitespace-nowrap ${activeGroup === groupName
-                                        ? "border-blue-500 text-white"
-                                        : "border-transparent text-slate-500 hover:border-slate-500"
-                                        }`}
-                                >
-                                    {formatGroupName(groupName).toUpperCase()}
-                                </button>
-                            ))}
-                        </div>
+                        {/* CONDITIONAL RENDER: Chỉ hiện nếu giải đấu có nhiều hơn 1 bảng */}
+                        {Object.keys(initialStandings).length > 1 && (
+                            <div className="flex gap-6 overflow-x-auto scrollbar-hide border-b border-slate-800">
+                                {Object.keys(initialStandings).map((groupName) => (
+                                    <button
+                                        key={groupName}
+                                        onClick={() => setActiveGroup(groupName)}
+                                        className={`pb-3 text-xs font-bold border-b-2 transition-all whitespace-nowrap ${activeGroup === groupName
+                                            ? "border-blue-500 text-white"
+                                            : "border-transparent text-slate-500 hover:border-slate-500"
+                                            }`}
+                                    >
+                                        {formatGroupName(groupName).toUpperCase()}
+                                    </button>
+                                ))}
+                            </div>
+                        )}
 
-                        {/* Table: Lấy dữ liệu theo bảng đang chọn */}
                         {initialStandings[activeGroup] ? (
-                            <GroupTable
-                                data={initialStandings[activeGroup]}
-                                groupName={activeGroup}
-                            />
+                            <GroupTable data={initialStandings[activeGroup]} groupName={activeGroup} />
                         ) : (
                             <p className="text-slate-500 text-center py-10">Đang tải dữ liệu bảng này...</p>
                         )}

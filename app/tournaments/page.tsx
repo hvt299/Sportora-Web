@@ -1,11 +1,18 @@
 "use client";
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { tournaments } from "@/data/tournaments";
 import { getTournamentLabel } from "@/lib/tournament";
 import { Trophy, Search, Bell, Menu, CalendarDays, ArrowRight, Clock, ChevronLeft, ChevronRight } from "lucide-react";
 
-// Hàm gom nhóm các mùa giải vào chung 1 giải đấu gốc
+// Hàm map Icon
+const getCategoryIcon = (category: string, className: string = "w-4 h-4") => {
+    switch (category) {
+        case "Bóng đá": return <Trophy className={className} />;
+        default: return <Trophy className={className} />;
+    }
+};
+
 const groupEventsByFranchise = (events: any[]) => {
     const grouped: Record<string, any[]> = {};
     events.forEach((event) => {
@@ -18,7 +25,6 @@ const groupEventsByFranchise = (events: any[]) => {
     return grouped;
 };
 
-// Hàm tính số ngày còn lại
 const getDaysLeft = (startDate: string) => {
     if (!startDate) return 0;
     const diff = new Date(startDate).getTime() - new Date().getTime();
@@ -26,19 +32,70 @@ const getDaysLeft = (startDate: string) => {
     return Math.ceil(diff / (1000 * 3600 * 24));
 };
 
-// Component hiển thị từng hàng giải đấu (Có nút cuộn, vuốt cảm ứng & kéo chuột)
+function MiniCountdown({ startDate, endDate }: { startDate: string; endDate?: string }) {
+    const [status, setStatus] = useState<'upcoming' | 'live' | 'finished'>('upcoming');
+    const [timeLeft, setTimeLeft] = useState({ d: 0, h: 0, m: 0, s: 0 });
+
+    useEffect(() => {
+        const update = () => {
+            const now = Date.now();
+            const start = new Date(startDate).getTime();
+            const end = endDate ? new Date(endDate).getTime() : start;
+
+            if (now < start) {
+                setStatus('upcoming');
+                const diff = start - now;
+                setTimeLeft({
+                    d: Math.floor(diff / 86400000),
+                    h: Math.floor((diff % 86400000) / 3600000),
+                    m: Math.floor((diff % 3600000) / 60000),
+                    s: Math.floor((diff % 60000) / 1000),
+                });
+            } else if (now <= end) {
+                setStatus('live');
+                const diff = end - now;
+                setTimeLeft({
+                    d: Math.floor(diff / 86400000),
+                    h: Math.floor((diff % 86400000) / 3600000),
+                    m: Math.floor((diff % 3600000) / 60000),
+                    s: Math.floor((diff % 60000) / 1000),
+                });
+            } else {
+                setStatus('finished');
+            }
+        };
+
+        update();
+        const interval = setInterval(update, 1000);
+        return () => clearInterval(interval);
+    }, [startDate, endDate]);
+
+    if (status === 'finished') return null;
+
+    return (
+        <div className="flex items-center gap-1 text-[10px] font-mono font-bold tracking-tight">
+            <div className="bg-black/60 px-1.5 py-0.5 rounded border border-white/20 text-white">{timeLeft.d}d</div>
+            <span className="text-slate-500 opacity-50">:</span>
+            <div className="bg-black/60 px-1.5 py-0.5 rounded border border-white/20 text-white">{String(timeLeft.h).padStart(2, '0')}h</div>
+            <span className="text-slate-500 opacity-50">:</span>
+            <div className="bg-black/60 px-1.5 py-0.5 rounded border border-white/20 text-white">{String(timeLeft.m).padStart(2, '0')}m</div>
+            <span className="text-slate-500 opacity-50">:</span>
+            <div className="bg-black/60 px-1.5 py-0.5 rounded border border-white/20 text-white w-6.5 text-center">{String(timeLeft.s).padStart(2, '0')}s</div>
+        </div>
+    );
+}
+
 function FranchiseRow({ franchiseName, events }: { franchiseName: string, events: any[] }) {
     const scrollRef = useRef<HTMLDivElement>(null);
     const [isDragging, setIsDragging] = useState(false);
-    const [isDragged, setIsDragged] = useState(false); // Dùng để phân biệt giữa click và kéo chuột
+    const [isDragged, setIsDragged] = useState(false);
     const [startX, setStartX] = useState(0);
     const [scrollLeft, setScrollLeft] = useState(0);
 
-    // 1. Xử lý sự kiện bấm nút cuộn mũi tên
     const scroll = (direction: 'left' | 'right') => {
         if (scrollRef.current && scrollRef.current.firstElementChild) {
             const cardWidth = scrollRef.current.firstElementChild.getBoundingClientRect().width;
-            const scrollAmount = cardWidth + 24;
+            const scrollAmount = cardWidth + 16;
             scrollRef.current.scrollBy({
                 left: direction === 'left' ? -scrollAmount : scrollAmount,
                 behavior: 'smooth'
@@ -46,69 +103,82 @@ function FranchiseRow({ franchiseName, events }: { franchiseName: string, events
         }
     };
 
-    // 2. Xử lý sự kiện vuốt/kéo bằng chuột trên PC
     const handleMouseDown = (e: React.MouseEvent) => {
         if (!scrollRef.current) return;
         setIsDragging(true);
-        setIsDragged(false); // Đặt lại trạng thái kéo
+        setIsDragged(false);
         setStartX(e.pageX - scrollRef.current.offsetLeft);
         setScrollLeft(scrollRef.current.scrollLeft);
     };
 
     const handleMouseLeaveOrUp = () => {
         setIsDragging(false);
-        // Đợi 1 chút trước khi reset cờ để tránh click nhầm sau khi thả chuột
         setTimeout(() => setIsDragged(false), 50);
     };
 
     const handleMouseMove = (e: React.MouseEvent) => {
         if (!isDragging || !scrollRef.current) return;
         e.preventDefault();
-        setIsDragged(true); // Ghi nhận là người dùng đang kéo chuột
+        setIsDragged(true);
         const x = e.pageX - scrollRef.current.offsetLeft;
-        const walk = (x - startX) * 1.5; // Tốc độ trượt (Tăng/giảm hệ số để điều chỉnh)
+        const walk = (x - startX) * 1.5;
         scrollRef.current.scrollLeft = scrollLeft - walk;
     };
 
-    const sortedEvents = [...events].sort(
-        (a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
-    );
+    const formatDate = (dateStr: string) => {
+        if (!dateStr) return '';
+        return dateStr.split('T')[0].split('-').reverse().join('/');
+    };
+
+    const sortedEvents = [...events].sort((a, b) => {
+        const labelA = getTournamentLabel(a.startDate, a.endDate);
+        const labelB = getTournamentLabel(b.startDate, b.endDate);
+
+        const priority: Record<string, number> = {
+            "Đang diễn ra": 1,
+            "Sắp diễn ra": 2,
+            "Đã kết thúc": 3
+        };
+
+        const weightA = priority[labelA] || 4;
+        const weightB = priority[labelB] || 4;
+
+        if (weightA !== weightB) return weightA - weightB;
+        return new Date(b.startDate).getTime() - new Date(a.startDate).getTime();
+    });
 
     return (
-        <div className="border-t border-slate-900 pt-8">
-            {/* Header của Giải đấu gốc */}
-            <div className="flex items-center justify-between mb-6">
-                <h3 className="text-xl md:text-2xl font-bold flex items-center gap-3">
-                    <span className="w-2 h-8 bg-blue-500 rounded-full block"></span>
+        <div className="border-t border-slate-900 pt-6">
+            <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg md:text-xl font-bold flex items-center gap-2">
+                    <span className="w-1.5 h-6 bg-blue-500 rounded-full block"></span>
                     {franchiseName}
                 </h3>
 
-                {/* Khu vực nút điều hướng */}
-                <div className="flex items-center gap-4">
-                    <span className="text-sm font-bold text-slate-500 bg-slate-900 px-3 py-1 rounded-full hidden sm:block">
-                        {sortedEvents.length} mùa giải
+                <div className="flex items-center gap-3">
+                    <span className="text-xs font-bold text-slate-500 bg-slate-900/50 px-2.5 py-1 rounded-full hidden sm:block">
+                        {sortedEvents.length} giải đấu
                     </span>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1.5">
                         <button
                             onClick={() => scroll('left')}
-                            className="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 hover:border-slate-600 transition active:scale-95"
+                            className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95"
                         >
-                            <ChevronLeft className="w-5 h-5" />
+                            <ChevronLeft className="w-4 h-4" />
                         </button>
                         <button
                             onClick={() => scroll('right')}
-                            className="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 hover:border-slate-600 transition active:scale-95"
+                            className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95"
                         >
-                            <ChevronRight className="w-5 h-5" />
+                            <ChevronRight className="w-4 h-4" />
                         </button>
                     </div>
                 </div>
             </div>
 
-            {/* Danh sách thẻ trượt ngang (Carousel) tích hợp kéo thả */}
             <div
                 ref={scrollRef}
-                className={`flex gap-6 overflow-x-auto pb-8 -mx-6 px-6 md:mx-0 md:px-0 transition-all scrollbar-hide ${isDragging ? "cursor-grabbing snap-none" : "cursor-grab snap-x snap-mandatory"}`}
+                className={`flex gap-4 overflow-x-auto pb-6 -mx-6 px-6 md:mx-0 md:px-0 transition-all scrollbar-hide ${isDragging ? "cursor-grabbing snap-none" : "cursor-grab snap-x snap-mandatory"}`}
                 onMouseDown={handleMouseDown}
                 onMouseLeave={handleMouseLeaveOrUp}
                 onMouseUp={handleMouseLeaveOrUp}
@@ -118,84 +188,77 @@ function FranchiseRow({ franchiseName, events }: { franchiseName: string, events
                     const label = getTournamentLabel(event.startDate, event.endDate);
                     const isFinished = label === "Đã kết thúc";
                     const isOngoing = label === "Đang diễn ra";
-                    const daysLeft = getDaysLeft(event.startDate);
 
                     return (
                         <a
                             key={event.id}
                             href={event.path}
                             onClick={(e) => {
-                                // Ngăn chuyển trang nếu người dùng chỉ đang vuốt/kéo
                                 if (isDragged) e.preventDefault();
                             }}
-                            className="group relative w-[85vw] sm:w-100 md:w-115 lg:w-130 h-120 md:h-130 shrink-0 rounded-4xl overflow-hidden border border-slate-800 hover:border-slate-500 snap-center flex flex-col justify-end transition-all shadow-xl shadow-black/50"
+                            className={`group relative w-[75vw] sm:w-64 md:w-72 h-52 md:h-56 shrink-0 rounded-2xl overflow-hidden border snap-center flex flex-col justify-between transition-all duration-300 ${isOngoing
+                                ? "border-red-500/50 hover:border-red-400 shadow-[0_0_15px_rgba(239,68,68,0.15)]"
+                                : isFinished
+                                    ? "border-slate-800 opacity-60 hover:opacity-100 hover:border-slate-600 grayscale-[0.3]"
+                                    : "border-slate-700/50 hover:border-blue-500/50"
+                                }`}
                             style={{ '--theme-color': event.themeColor } as React.CSSProperties}
                         >
-                            {/* Bỏ thuộc tính draggable của hình nền để không bị lỗi bóng mờ khi vuốt */}
                             <div
                                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 pointer-events-none"
                                 style={{ backgroundImage: `url(${event.image})` }}
                             />
-                            {/* Overlay tối để dễ đọc chữ */}
-                            <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent opacity-90 pointer-events-none" />
-                            {/* Lớp gradient màu chủ đạo khi hover */}
+                            <div className="absolute inset-0 bg-linear-to-t from-black via-black/80 to-black/30 pointer-events-none" />
                             <div
                                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                                style={{ backgroundImage: `linear-gradient(to top, ${event.themeColor}80, transparent)` }}
+                                style={{ backgroundImage: `linear-gradient(to top, ${event.themeColor}60, transparent)` }}
                             />
 
-                            {/* TOP: Logo & Trạng thái */}
-                            <div className="absolute top-6 left-6 right-6 flex justify-between items-start z-10 pointer-events-none">
+                            <div className="relative p-4 flex justify-between items-start z-10 pointer-events-none">
                                 {event.logo ? (
-                                    <div className="w-16 h-16 bg-black/40 backdrop-blur-md rounded-2xl p-3 border border-white/10 shadow-lg">
-                                        <img src={event.logo} alt={event.shortName} draggable={false} className="w-full h-full object-contain drop-shadow-md" />
+                                    <div className="w-10 h-10 bg-white/10 backdrop-blur-md rounded-lg p-1.5 border border-white/10 shadow-sm">
+                                        <img src={event.logo} alt={event.shortName} draggable={false} className="w-full h-full object-contain" />
                                     </div>
                                 ) : (
-                                    <div className="w-16 h-16 bg-black/40 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/10">
-                                        <Trophy className="w-6 h-6 text-slate-400" />
+                                    <div className="w-10 h-10 bg-white/10 backdrop-blur-md rounded-lg flex items-center justify-center border border-white/10">
+                                        <Trophy className="w-5 h-5 text-slate-300" />
                                     </div>
                                 )}
 
-                                <span className={`px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest backdrop-blur-md border shadow-lg ${isOngoing ? "bg-red-500/20 text-red-300 border-red-500/30" :
-                                    isFinished ? "bg-slate-500/80 text-slate-200 border-slate-400/30" :
-                                        "bg-blue-500/20 text-blue-300 border-blue-500/30"
+                                <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[9px] font-bold uppercase tracking-wider backdrop-blur-md border shadow-sm ${isOngoing ? "bg-red-500/20 text-red-400 border-red-500/30" :
+                                    isFinished ? "bg-slate-800/80 text-slate-400 border-slate-700/50" :
+                                        "bg-blue-500/20 text-blue-400 border-blue-500/30"
                                     }`}>
+                                    {isOngoing && <span className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>}
                                     {label}
-                                </span>
+                                </div>
                             </div>
 
-                            {/* BOTTOM: Thông tin chi tiết */}
-                            <div className="relative p-6 md:p-8 z-10 w-full pointer-events-none">
-                                <h4 className="text-3xl font-black italic uppercase tracking-tighter mb-3 drop-shadow-lg leading-none text-white">
+                            <div className="relative p-4 z-10 w-full pointer-events-none flex flex-col gap-2">
+                                <h4 className="text-lg md:text-xl font-black italic uppercase tracking-tight leading-tight text-white line-clamp-2">
                                     {event.name}
                                 </h4>
 
-                                {/* Ngày tháng */}
-                                <div className="flex items-center gap-3 text-slate-300 text-sm font-medium mb-6">
-                                    <CalendarDays className="w-4 h-4 text-slate-400" />
-                                    <span>
-                                        {event.startDate ? event.startDate.split('T')[0].split('-').reverse().join('/') : ''}
-                                        {event.endDate ? ` - ${event.endDate.split('T')[0].split('-').reverse().join('/')}` : ''}
+                                <div className="flex items-center gap-1.5 text-slate-300 text-[10px] md:text-xs font-medium">
+                                    <CalendarDays className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                                    <span className="truncate">
+                                        {formatDate(event.startDate)} {event.endDate ? `- ${formatDate(event.endDate)}` : ''}
                                     </span>
                                 </div>
 
-                                {/* Button & Mini Countdown */}
-                                <div className="flex items-center justify-between gap-4">
-                                    <div className="flex-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 flex items-center justify-between group-hover:bg-white/20 group-hover:border-white/40 transition-all">
-                                        <span className="text-sm font-bold text-white">
-                                            {isFinished ? "Xem lại kết quả" : isOngoing ? "Theo dõi trực tiếp" : "Xem chi tiết"}
-                                        </span>
-                                        <ArrowRight className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform" />
-                                    </div>
-
-                                    {/* Số ngày đếm ngược */}
-                                    {!isFinished && !isOngoing && daysLeft > 0 && (
-                                        <div className="shrink-0 bg-black/50 backdrop-blur-md border border-slate-700 rounded-2xl p-3 flex flex-col items-center justify-center min-w-17.5">
-                                            <Clock className="w-4 h-4 text-blue-400 mb-1" />
-                                            <span className="text-xs text-slate-400 font-bold uppercase">Còn</span>
-                                            <span className="text-lg font-black text-white leading-none">{daysLeft}</span>
+                                <div className="flex items-center justify-between mt-1">
+                                    {!isFinished ? (
+                                        <div className="flex flex-col gap-0.5">
+                                            <span className="text-[8px] uppercase tracking-widest font-bold text-slate-400">
+                                                {isOngoing ? "Kết thúc sau" : "Bắt đầu sau"}
+                                            </span>
+                                            <MiniCountdown startDate={event.startDate} endDate={event.endDate} />
                                         </div>
+                                    ) : (
+                                        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-2">Đã kết thúc</span>
                                     )}
+
+                                    <ArrowRight className={`w-4 h-4 transition-transform group-hover:translate-x-1 shrink-0 mt-auto ${isFinished ? 'text-slate-500' : 'text-white'}`} />
                                 </div>
                             </div>
                         </a>
@@ -207,9 +270,14 @@ function FranchiseRow({ franchiseName, events }: { franchiseName: string, events
 }
 
 export default function TournamentsPage() {
+    const [selectedSport, setSelectedSport] = useState<string>("All");
+
+    const filteredGroups = selectedSport === "All"
+        ? tournaments
+        : tournaments.filter(g => g.category === selectedSport);
+
     return (
         <main className="min-h-screen bg-black text-white flex flex-col overflow-x-hidden">
-            {/* HEADER */}
             <header className="sticky top-0 z-50 border-b border-slate-800 bg-black/70 backdrop-blur-xl">
                 <div className="flex items-center justify-between px-6 py-4 max-w-350 mx-auto w-full">
                     <a href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
@@ -233,45 +301,73 @@ export default function TournamentsPage() {
                 </div>
             </header>
 
-            {/* CONTENT */}
-            <div className="flex-1 max-w-350 mx-auto w-full px-6 py-12">
-                <div className="mb-16">
-                    <span className="text-blue-500 font-bold uppercase tracking-widest text-xs mb-2 block">
+            <div className="flex-1 max-w-350 mx-auto w-full px-6 py-8 md:py-12">
+                <div className="mb-8 md:mb-12 text-center md:text-left">
+                    <span className="text-blue-500 font-bold uppercase tracking-widest text-xs mb-1 md:mb-2 block">
                         Khám phá thế giới thể thao
                     </span>
-                    <h1 className="text-4xl md:text-6xl font-bold italic uppercase tracking-tighter drop-shadow-lg">
+                    <h1 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter drop-shadow-lg">
                         Hệ Thống Giải Đấu
                     </h1>
                 </div>
 
-                {/* Lặp qua từng môn thể thao */}
-                {tournaments.map((sportCategory, idx) => {
-                    const groupedEvents = groupEventsByFranchise(sportCategory.events);
+                <div className="w-full flex mb-10 border-b border-slate-900 pb-2">
+                    <div className="flex items-center gap-3 overflow-x-auto scrollbar-hide pb-2 px-1 max-w-full">
+                        <button
+                            onClick={() => setSelectedSport("All")}
+                            className={`shrink-0 px-6 py-2.5 rounded-full font-bold text-sm transition-all border ${selectedSport === "All"
+                                ? "bg-white text-black border-white shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+                                : "bg-black/50 backdrop-blur-md text-slate-400 border-slate-800 hover:text-white hover:bg-slate-900"
+                                }`}
+                        >
+                            Tất cả
+                        </button>
+                        {tournaments.map((group) => (
+                            <button
+                                key={group.category}
+                                onClick={() => setSelectedSport(group.category)}
+                                className={`shrink-0 flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-sm transition-all border ${selectedSport === group.category
+                                    ? "bg-white text-black border-white shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+                                    : "bg-black/50 backdrop-blur-md text-slate-400 border-slate-800 hover:text-white hover:bg-slate-900"
+                                    }`}
+                            >
+                                {getCategoryIcon(group.category, "w-5 h-5")}
+                                {group.category}
+                            </button>
+                        ))}
+                    </div>
+                </div>
 
-                    return (
-                        <section key={idx} className="mb-20">
-                            {/* Tiêu đề môn thể thao */}
-                            <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-tighter mb-10 flex items-center gap-4 text-white">
-                                <span className="p-3 bg-slate-900 rounded-2xl border border-slate-800">
-                                    {sportCategory.icon}
-                                </span>
-                                {sportCategory.category}
-                            </h2>
+                {filteredGroups.length > 0 ? (
+                    filteredGroups.map((sportCategory, idx) => {
+                        const groupedEvents = groupEventsByFranchise(sportCategory.events);
 
-                            <div className="space-y-16">
-                                {/* Dùng Component con FranchiseRow để Render từng nhóm giải và có nút trượt */}
-                                {Object.entries(groupedEvents).map(([franchiseName, events]) => (
-                                    <FranchiseRow key={franchiseName} franchiseName={franchiseName} events={events} />
-                                ))}
-                            </div>
-                        </section>
-                    );
-                })}
+                        return (
+                            <section key={idx} className="mb-12 md:mb-16">
+                                <h2 className="text-xl md:text-2xl font-black uppercase tracking-tighter mb-6 flex items-center gap-3 text-white">
+                                    <span className="p-2.5 bg-slate-900 rounded-xl border border-slate-800 shadow-inner">
+                                        {getCategoryIcon(sportCategory.category, "w-6 h-6 text-blue-400")}
+                                    </span>
+                                    {sportCategory.category}
+                                </h2>
+
+                                <div className="space-y-8">
+                                    {Object.entries(groupedEvents).map(([franchiseName, events]) => (
+                                        <FranchiseRow key={franchiseName} franchiseName={franchiseName} events={events} />
+                                    ))}
+                                </div>
+                            </section>
+                        );
+                    })
+                ) : (
+                    <div className="py-20 text-center text-slate-500 font-medium">
+                        Không có dữ liệu cho môn thể thao này.
+                    </div>
+                )}
             </div>
 
-            {/* FOOTER */}
-            <footer className="border-t border-slate-900 px-6 py-8 bg-black mt-auto">
-                <div className="max-w-350uto flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+            <footer className="border-t border-slate-900 px-6 py-6 bg-black mt-auto">
+                <div className="max-w-350 mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
                     <p>© 2026 Sportora. Countdown to Greatness.</p>
 
                     <div className="flex gap-6">

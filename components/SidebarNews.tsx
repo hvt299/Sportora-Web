@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { NewsItem } from '@/lib/scraper';
 
 interface SidebarNewsProps {
@@ -10,11 +10,28 @@ interface SidebarNewsProps {
 }
 
 export default function SidebarNews({ news }: SidebarNewsProps) {
-    // State quản lý tab đang được chọn
     const [activeTab, setActiveTab] = useState<'vn' | 'global'>('vn');
+    const scrollRef = useRef<HTMLDivElement>(null);
 
-    // Dữ liệu sẽ hiển thị tùy thuộc vào tab
     const currentNews = activeTab === 'vn' ? news.vn : news.global;
+
+    // Logic tự động trượt (Dừng lại khi hover chuột vào)
+    useEffect(() => {
+        const autoScroll = () => {
+            if (scrollRef.current && !scrollRef.current.matches(':hover')) {
+                scrollRef.current.scrollBy({ top: 1, behavior: 'auto' });
+
+                // Nếu cuộn chạm đáy, tự động quay lại đầu
+                if (scrollRef.current.scrollTop + scrollRef.current.clientHeight >= scrollRef.current.scrollHeight - 1) {
+                    scrollRef.current.scrollTop = 0;
+                }
+            }
+        };
+
+        // Tốc độ cuộn: 40ms/pixel
+        const interval = setInterval(autoScroll, 40);
+        return () => clearInterval(interval);
+    }, [activeTab]); // Reset cuộn khi đổi tab
 
     return (
         <div className="bg-slate-900/50 border border-slate-800 p-6 rounded-3xl h-full flex flex-col">
@@ -28,13 +45,13 @@ export default function SidebarNews({ news }: SidebarNewsProps) {
                 {/* Nút Toggle UI */}
                 <div className="flex bg-slate-950 rounded-lg p-1 border border-slate-800 w-full xl:w-auto">
                     <button
-                        onClick={() => setActiveTab('vn')}
+                        onClick={() => { setActiveTab('vn'); if (scrollRef.current) scrollRef.current.scrollTop = 0; }}
                         className={`flex-1 xl:flex-none text-[9px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-md transition-colors ${activeTab === 'vn' ? 'bg-blue-500 text-white shadow-sm' : 'text-slate-500 hover:text-slate-300'}`}
                     >
                         Việt Nam
                     </button>
                     <button
-                        onClick={() => setActiveTab('global')}
+                        onClick={() => { setActiveTab('global'); if (scrollRef.current) scrollRef.current.scrollTop = 0; }}
                         className={`flex-1 xl:flex-none text-[9px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-md transition-colors ${activeTab === 'global' ? 'bg-teal-500 text-white shadow-sm' : 'text-slate-500 hover:text-slate-300'}`}
                     >
                         Quốc tế
@@ -42,8 +59,11 @@ export default function SidebarNews({ news }: SidebarNewsProps) {
                 </div>
             </div>
 
-            {/* Danh sách tin tức (Có thanh cuộn bên trong để giới hạn chiều cao) */}
-            <div className="space-y-6 overflow-y-auto pr-2 max-h-150 scrollbar-thin scrollbar-thumb-slate-800">
+            {/* Danh sách tin tức (Đã gắn ref và đổi thành scrollbar-hide) */}
+            <div
+                ref={scrollRef}
+                className="space-y-6 overflow-y-auto pr-2 max-h-150 scrollbar-hide"
+            >
                 {currentNews && currentNews.length > 0 ? currentNews.map((item, i) => (
                     <a
                         key={i}
@@ -54,8 +74,8 @@ export default function SidebarNews({ news }: SidebarNewsProps) {
                     >
                         {/* Tag tin tức (Đổi màu theo Tab) */}
                         <span className={`shrink-0 text-[9px] font-black mt-1 uppercase border px-2 py-0.5 rounded transition-colors ${activeTab === 'vn'
-                                ? 'text-blue-500 border-blue-500/20 group-hover:bg-blue-500/10'
-                                : 'text-teal-500 border-teal-500/20 group-hover:bg-teal-500/10'
+                            ? 'text-blue-500 border-blue-500/20 group-hover:bg-blue-500/10'
+                            : 'text-teal-500 border-teal-500/20 group-hover:bg-teal-500/10'
                             }`}>
                             {item.tag}
                         </span>

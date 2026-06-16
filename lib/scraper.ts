@@ -192,13 +192,37 @@ export async function getFixtures(leagueId: number | string = 77, season: string
 
         // DÙNG PROMISE.ALL ĐỂ XỬ LÝ SONG SONG CÁC TRẬN ĐẤU GIÚP WEB TẢI SIÊU TỐC
         const processedMatches = await Promise.all(allMatches.map(async (match: any) => {
-            let roundCategory = "Vòng bảng";
-            if (match.round === "1/16") roundCategory = "Vòng 32 đội";
-            else if (match.round === "1/8") roundCategory = "Vòng 16 đội";
-            else if (match.round === "1/4") roundCategory = "Tứ kết";
-            else if (match.round === "1/2") roundCategory = "Bán kết";
-            else if (match.round === "bronze") roundCategory = "Tranh hạng ba";
-            else if (match.round === "final") roundCategory = "Chung kết";
+
+            // --- THUẬT TOÁN NHẬN DIỆN VÒNG ĐẤU ĐỘNG (DYNAMIC ROUNDS) ---
+            let roundCategory = match.roundName || match.round || "Vòng bảng";
+
+            // Nếu FotMob trả về số nguyên (VD: "1", "38") -> Giải League
+            if (/^\d+$/.test(roundCategory.toString())) {
+                roundCategory = `Vòng ${roundCategory}`;
+            } else {
+                // Mở rộng bộ Map để bắt luôn cả các chuỗi tiếng Anh từ API
+                const roundMap: Record<string, string> = {
+                    "1/16": "Vòng 32 đội",
+                    "Round of 32": "Vòng 32 đội",
+                    "1/8": "Vòng 16 đội",
+                    "Round of 16": "Vòng 16 đội",
+                    "1/4": "Tứ kết",
+                    "Quarter-Finals": "Tứ kết",
+                    "Quarter-final": "Tứ kết",
+                    "1/2": "Bán kết",
+                    "Semi-Finals": "Bán kết",
+                    "Semi-final": "Bán kết",
+                    "bronze": "Tranh hạng ba",
+                    "Bronze Final": "Tranh hạng ba",
+                    "3rd Place Final": "Tranh hạng ba",
+                    "final": "Chung kết",
+                    "Final": "Chung kết",
+                    "Group Stage": "Vòng bảng"
+                };
+                if (roundMap[roundCategory]) {
+                    roundCategory = roundMap[roundCategory];
+                }
+            }
 
             const utcTime = match.status?.utcTime || match.matchDate;
             const dateObj = new Date(utcTime);
