@@ -57,8 +57,8 @@ export default function Countdown({ startDate, endDate }: CountdownProps) {
     if (status === 'finished') return null;
 
     return (
-        <div className="flex flex-col items-center gap-5">
-            <div className="flex gap-3 md:gap-5">
+        <div className="flex flex-col items-center gap-4 md:gap-5">
+            <div className="flex gap-2 sm:gap-3 md:gap-5">
                 {[
                     ['Ngày', timeLeft.days],
                     ['Giờ', timeLeft.hours],
@@ -66,10 +66,10 @@ export default function Countdown({ startDate, endDate }: CountdownProps) {
                     ['Giây', timeLeft.seconds],
                 ].map(([label, value]) => (
                     <div key={label} className="text-center">
-                        <div className="w-18 h-18 md:w-24 md:h-24 rounded-3xl bg-black/40 backdrop-blur-xl border border-white/10 flex items-center justify-center text-2xl md:text-4xl font-black text-white">
+                        <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-24 md:h-24 rounded-2xl md:rounded-3xl bg-black/40 backdrop-blur-xl border border-white/10 flex items-center justify-center text-xl sm:text-2xl md:text-4xl font-black text-white shadow-lg">
                             {String(value).padStart(2, '0')}
                         </div>
-                        <div className="mt-2 text-[10px] md:text-xs uppercase tracking-widest text-slate-500 font-bold">
+                        <div className="mt-1.5 md:mt-2 text-[9px] md:text-xs uppercase tracking-widest text-slate-400 font-bold">
                             {label}
                         </div>
                     </div>

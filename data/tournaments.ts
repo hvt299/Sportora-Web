@@ -1,7 +1,7 @@
 export const tournaments = [
     {
         category: "Bóng đá",
-        icon: "⚽",
+        icon: "Trophy",
         events: [
             {
                 id: "fifa-world-cup-2026",
@@ -418,7 +418,7 @@ export const tournaments = [
                 slug: "premier-league-25-26",
                 season: "25-26",
                 path: "/football/premier-league/25-26",
-                image: "/images/premier-league.jpg",
+                image: "/images/premier-league-2.jpg",
                 logo: "/images/premier-league-logo.png",
                 gradient: "from-slate-950 via-slate-900/80 to-transparent",
                 themeColor: "#3F1052",
@@ -434,7 +434,7 @@ export const tournaments = [
                 slug: "premier-league-24-25",
                 season: "24-25",
                 path: "/football/premier-league/24-25",
-                image: "/images/premier-league.jpg",
+                image: "/images/premier-league-2.jpg",
                 logo: "/images/premier-league-logo.png",
                 gradient: "from-slate-950 via-slate-900/80 to-transparent",
                 themeColor: "#3F1052",
@@ -450,7 +450,7 @@ export const tournaments = [
                 slug: "premier-league-23-24",
                 season: "23-24",
                 path: "/football/premier-league/23-24",
-                image: "/images/premier-league.jpg",
+                image: "/images/premier-league-2.jpg",
                 logo: "/images/premier-league-logo.png",
                 gradient: "from-slate-950 via-slate-900/80 to-transparent",
                 themeColor: "#3F1052",
@@ -466,8 +466,8 @@ export const tournaments = [
                 slug: "premier-league-22-23",
                 season: "22-23",
                 path: "/football/premier-league/22-23",
-                image: "/images/premier-league.jpg",
-                logo: "/images/premier-league-logo.png",
+                image: "/images/premier-league-2.jpg",
+                logo: "/images/premier-league-logo-19-23.png",
                 gradient: "from-slate-950 via-slate-900/80 to-transparent",
                 themeColor: "#3F1052",
                 startDate: "2022-08-05T00:00:00+07:00",
@@ -477,30 +477,30 @@ export const tournaments = [
 
             // ===================== BUNDESLIGA =====================
             {
-                id: "bundesliga-25-26", category: "football", name: "Bundesliga 25/26", shortName: "BL 25/26", slug: "bundesliga-25-26", season: "25-26", path: "/football/bundesliga/25-26", image: "/images/bundesliga.jpg", logo: "/images/bundesliga-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#D20515", startDate: "2025-08-22T00:00:00+07:00", endDate: "2026-05-23T23:59:59+07:00", detailKey: "bundesliga2526"
+                id: "bundesliga-25-26", category: "football", name: "Bundesliga 25/26", shortName: "BL 25/26", slug: "bundesliga-25-26", season: "25-26", path: "/football/bundesliga/25-26", image: "/images/bundesliga-2.jpg", logo: "/images/bundesliga-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#D20515", startDate: "2025-08-22T00:00:00+07:00", endDate: "2026-05-23T23:59:59+07:00", detailKey: "bundesliga2526"
             },
             {
-                id: "bundesliga-24-25", category: "football", name: "Bundesliga 24/25", shortName: "BL 24/25", slug: "bundesliga-24-25", season: "24-25", path: "/football/bundesliga/24-25", image: "/images/bundesliga.jpg", logo: "/images/bundesliga-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#D20515", startDate: "2024-08-23T00:00:00+07:00", endDate: "2025-05-24T23:59:59+07:00", detailKey: "bundesliga2425"
+                id: "bundesliga-24-25", category: "football", name: "Bundesliga 24/25", shortName: "BL 24/25", slug: "bundesliga-24-25", season: "24-25", path: "/football/bundesliga/24-25", image: "/images/bundesliga-2.jpg", logo: "/images/bundesliga-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#D20515", startDate: "2024-08-23T00:00:00+07:00", endDate: "2025-05-24T23:59:59+07:00", detailKey: "bundesliga2425"
             },
             {
-                id: "bundesliga-23-24", category: "football", name: "Bundesliga 23/24", shortName: "BL 23/24", slug: "bundesliga-23-24", season: "23-24", path: "/football/bundesliga/23-24", image: "/images/bundesliga.jpg", logo: "/images/bundesliga-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#D20515", startDate: "2023-08-18T00:00:00+07:00", endDate: "2024-05-18T23:59:59+07:00", detailKey: "bundesliga2324"
+                id: "bundesliga-23-24", category: "football", name: "Bundesliga 23/24", shortName: "BL 23/24", slug: "bundesliga-23-24", season: "23-24", path: "/football/bundesliga/23-24", image: "/images/bundesliga-2.jpg", logo: "/images/bundesliga-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#D20515", startDate: "2023-08-18T00:00:00+07:00", endDate: "2024-05-18T23:59:59+07:00", detailKey: "bundesliga2324"
             },
             {
-                id: "bundesliga-22-23", category: "football", name: "Bundesliga 22/23", shortName: "BL 22/23", slug: "bundesliga-22-23", season: "22-23", path: "/football/bundesliga/22-23", image: "/images/bundesliga.jpg", logo: "/images/bundesliga-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#D20515", startDate: "2022-08-05T00:00:00+07:00", endDate: "2023-05-27T23:59:59+07:00", detailKey: "bundesliga2223"
+                id: "bundesliga-22-23", category: "football", name: "Bundesliga 22/23", shortName: "BL 22/23", slug: "bundesliga-22-23", season: "22-23", path: "/football/bundesliga/22-23", image: "/images/bundesliga-2.jpg", logo: "/images/bundesliga-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#D20515", startDate: "2022-08-05T00:00:00+07:00", endDate: "2023-05-27T23:59:59+07:00", detailKey: "bundesliga2223"
             },
 
             // ===================== LA LIGA =====================
             {
-                id: "la-liga-25-26", category: "football", name: "La Liga 25/26", shortName: "LL 25/26", slug: "la-liga-25-26", season: "25-26", path: "/football/la-liga/25-26", image: "/images/laliga.jpg", logo: "/images/laliga-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#EE1C25", startDate: "2025-08-15T00:00:00+07:00", endDate: "2026-05-24T23:59:59+07:00", detailKey: "laLiga2526"
+                id: "la-liga-25-26", category: "football", name: "La Liga 25/26", shortName: "LL 25/26", slug: "la-liga-25-26", season: "25-26", path: "/football/la-liga/25-26", image: "/images/laliga-2.jpg", logo: "/images/laliga-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#EE1C25", startDate: "2025-08-15T00:00:00+07:00", endDate: "2026-05-24T23:59:59+07:00", detailKey: "laLiga2526"
             },
             {
-                id: "la-liga-24-25", category: "football", name: "La Liga 24/25", shortName: "LL 24/25", slug: "la-liga-24-25", season: "24-25", path: "/football/la-liga/24-25", image: "/images/laliga.jpg", logo: "/images/laliga-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#EE1C25", startDate: "2024-08-15T00:00:00+07:00", endDate: "2025-05-25T23:59:59+07:00", detailKey: "laLiga2425"
+                id: "la-liga-24-25", category: "football", name: "La Liga 24/25", shortName: "LL 24/25", slug: "la-liga-24-25", season: "24-25", path: "/football/la-liga/24-25", image: "/images/laliga-2.jpg", logo: "/images/laliga-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#EE1C25", startDate: "2024-08-15T00:00:00+07:00", endDate: "2025-05-25T23:59:59+07:00", detailKey: "laLiga2425"
             },
             {
-                id: "la-liga-23-24", category: "football", name: "La Liga 23/24", shortName: "LL 23/24", slug: "la-liga-23-24", season: "23-24", path: "/football/la-liga/23-24", image: "/images/laliga.jpg", logo: "/images/laliga-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#EE1C25", startDate: "2023-08-11T00:00:00+07:00", endDate: "2024-05-26T23:59:59+07:00", detailKey: "laLiga2324"
+                id: "la-liga-23-24", category: "football", name: "La Liga 23/24", shortName: "LL 23/24", slug: "la-liga-23-24", season: "23-24", path: "/football/la-liga/23-24", image: "/images/laliga-2.jpg", logo: "/images/laliga-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#EE1C25", startDate: "2023-08-11T00:00:00+07:00", endDate: "2024-05-26T23:59:59+07:00", detailKey: "laLiga2324"
             },
             {
-                id: "la-liga-22-23", category: "football", name: "La Liga 22/23", shortName: "LL 22/23", slug: "la-liga-22-23", season: "22-23", path: "/football/la-liga/22-23", image: "/images/laliga.jpg", logo: "/images/laliga-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#EE1C25", startDate: "2022-08-12T00:00:00+07:00", endDate: "2023-06-04T23:59:59+07:00", detailKey: "laLiga2223"
+                id: "la-liga-22-23", category: "football", name: "La Liga 22/23", shortName: "LL 22/23", slug: "la-liga-22-23", season: "22-23", path: "/football/la-liga/22-23", image: "/images/laliga-3.jpg", logo: "/images/laliga-logo-16-23.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#EE1C25", startDate: "2022-08-12T00:00:00+07:00", endDate: "2023-06-04T23:59:59+07:00", detailKey: "laLiga2223"
             },
 
             // ===================== LIGUE 1 =====================
@@ -511,80 +511,80 @@ export const tournaments = [
                 id: "ligue-1-24-25", category: "football", name: "Ligue 1 24/25", shortName: "L1 24/25", slug: "ligue-1-24-25", season: "24-25", path: "/football/ligue-1/24-25", image: "/images/ligue1.jpg", logo: "/images/ligue1-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#091C3E", startDate: "2024-08-16T00:00:00+07:00", endDate: "2025-05-18T23:59:59+07:00", detailKey: "ligue12425"
             },
             {
-                id: "ligue-1-23-24", category: "football", name: "Ligue 1 23/24", shortName: "L1 23/24", slug: "ligue-1-23-24", season: "23-24", path: "/football/ligue-1/23-24", image: "/images/ligue1.jpg", logo: "/images/ligue1-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#091C3E", startDate: "2023-08-11T00:00:00+07:00", endDate: "2024-05-19T23:59:59+07:00", detailKey: "ligue12324"
+                id: "ligue-1-23-24", category: "football", name: "Ligue 1 23/24", shortName: "L1 23/24", slug: "ligue-1-23-24", season: "23-24", path: "/football/ligue-1/23-24", image: "/images/ligue1-2.jpg", logo: "/images/ligue1-logo-20-24.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#091C3E", startDate: "2023-08-11T00:00:00+07:00", endDate: "2024-05-19T23:59:59+07:00", detailKey: "ligue12324"
             },
             {
-                id: "ligue-1-22-23", category: "football", name: "Ligue 1 22/23", shortName: "L1 22/23", slug: "ligue-1-22-23", season: "22-23", path: "/football/ligue-1/22-23", image: "/images/ligue1.jpg", logo: "/images/ligue1-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#091C3E", startDate: "2022-08-05T00:00:00+07:00", endDate: "2023-06-03T23:59:59+07:00", detailKey: "ligue12223"
+                id: "ligue-1-22-23", category: "football", name: "Ligue 1 22/23", shortName: "L1 22/23", slug: "ligue-1-22-23", season: "22-23", path: "/football/ligue-1/22-23", image: "/images/ligue1-2.jpg", logo: "/images/ligue1-logo-20-24.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#091C3E", startDate: "2022-08-05T00:00:00+07:00", endDate: "2023-06-03T23:59:59+07:00", detailKey: "ligue12223"
             },
 
             // ===================== SERIE A =====================
             {
-                id: "serie-a-25-26", category: "football", name: "Serie A 25/26", shortName: "SA 25/26", slug: "serie-a-25-26", season: "25-26", path: "/football/serie-a/25-26", image: "/images/serie-a.jpg", logo: "/images/serie-a-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#0072CE", startDate: "2025-08-23T00:00:00+07:00", endDate: "2026-05-24T23:59:59+07:00", detailKey: "serieA2526"
+                id: "serie-a-25-26", category: "football", name: "Serie A 25/26", shortName: "SA 25/26", slug: "serie-a-25-26", season: "25-26", path: "/football/serie-a/25-26", image: "/images/serie-a-2.jpg", logo: "/images/serie-a-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#0072CE", startDate: "2025-08-23T00:00:00+07:00", endDate: "2026-05-24T23:59:59+07:00", detailKey: "serieA2526"
             },
             {
-                id: "serie-a-24-25", category: "football", name: "Serie A 24/25", shortName: "SA 24/25", slug: "serie-a-24-25", season: "24-25", path: "/football/serie-a/24-25", image: "/images/serie-a.jpg", logo: "/images/serie-a-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#0072CE", startDate: "2024-08-17T00:00:00+07:00", endDate: "2025-05-25T23:59:59+07:00", detailKey: "serieA2425"
+                id: "serie-a-24-25", category: "football", name: "Serie A 24/25", shortName: "SA 24/25", slug: "serie-a-24-25", season: "24-25", path: "/football/serie-a/24-25", image: "/images/serie-a-2.jpg", logo: "/images/serie-a-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#0072CE", startDate: "2024-08-17T00:00:00+07:00", endDate: "2025-05-25T23:59:59+07:00", detailKey: "serieA2425"
             },
             {
-                id: "serie-a-23-24", category: "football", name: "Serie A 23/24", shortName: "SA 23/24", slug: "serie-a-23-24", season: "23-24", path: "/football/serie-a/23-24", image: "/images/serie-a.jpg", logo: "/images/serie-a-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#0072CE", startDate: "2023-08-19T00:00:00+07:00", endDate: "2024-05-26T23:59:59+07:00", detailKey: "serieA2324"
+                id: "serie-a-23-24", category: "football", name: "Serie A 23/24", shortName: "SA 23/24", slug: "serie-a-23-24", season: "23-24", path: "/football/serie-a/23-24", image: "/images/serie-a-2.jpg", logo: "/images/serie-a-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#0072CE", startDate: "2023-08-19T00:00:00+07:00", endDate: "2024-05-26T23:59:59+07:00", detailKey: "serieA2324"
             },
             {
-                id: "serie-a-22-23", category: "football", name: "Serie A 22/23", shortName: "SA 22/23", slug: "serie-a-22-23", season: "22-23", path: "/football/serie-a/22-23", image: "/images/serie-a.jpg", logo: "/images/serie-a-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#0072CE", startDate: "2022-08-13T00:00:00+07:00", endDate: "2023-06-04T23:59:59+07:00", detailKey: "serieA2223"
+                id: "serie-a-22-23", category: "football", name: "Serie A 22/23", shortName: "SA 22/23", slug: "serie-a-22-23", season: "22-23", path: "/football/serie-a/22-23", image: "/images/serie-a-2.jpg", logo: "/images/serie-a-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#0072CE", startDate: "2022-08-13T00:00:00+07:00", endDate: "2023-06-04T23:59:59+07:00", detailKey: "serieA2223"
             },
 
             // ===================== CHAMPIONS LEAGUE =====================
             {
-                id: "champions-league-25-26", category: "football", name: "UEFA Champions League 25/26", shortName: "C1 25/26", slug: "champions-league-25-26", season: "25-26", path: "/football/champions-league/25-26", image: "/images/ucl.jpg", logo: "/images/ucl-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#1E3A8A", startDate: "2025-09-16T00:00:00+07:00", endDate: "2026-05-30T23:59:59+07:00", detailKey: "ucl2526"
+                id: "champions-league-25-26", category: "football", name: "UEFA Champions League 25/26", shortName: "C1 25/26", slug: "champions-league-25-26", season: "25-26", path: "/football/champions-league/25-26", image: "/images/ucl-2.jpg", logo: "/images/ucl-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#1E3A8A", startDate: "2025-09-16T00:00:00+07:00", endDate: "2026-05-30T23:59:59+07:00", detailKey: "ucl2526"
             },
             {
-                id: "champions-league-24-25", category: "football", name: "UEFA Champions League 24/25", shortName: "C1 24/25", slug: "champions-league-24-25", season: "24-25", path: "/football/champions-league/24-25", image: "/images/ucl.jpg", logo: "/images/ucl-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#1E3A8A", startDate: "2024-09-17T00:00:00+07:00", endDate: "2025-05-31T23:59:59+07:00", detailKey: "ucl2425"
+                id: "champions-league-24-25", category: "football", name: "UEFA Champions League 24/25", shortName: "C1 24/25", slug: "champions-league-24-25", season: "24-25", path: "/football/champions-league/24-25", image: "/images/ucl-2.jpg", logo: "/images/ucl-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#1E3A8A", startDate: "2024-09-17T00:00:00+07:00", endDate: "2025-05-31T23:59:59+07:00", detailKey: "ucl2425"
             },
             {
-                id: "champions-league-23-24", category: "football", name: "UEFA Champions League 23/24", shortName: "C1 23/24", slug: "champions-league-23-24", season: "23-24", path: "/football/champions-league/23-24", image: "/images/ucl.jpg", logo: "/images/ucl-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#1E3A8A", startDate: "2023-09-19T00:00:00+07:00", endDate: "2024-06-01T23:59:59+07:00", detailKey: "ucl2324"
+                id: "champions-league-23-24", category: "football", name: "UEFA Champions League 23/24", shortName: "C1 23/24", slug: "champions-league-23-24", season: "23-24", path: "/football/champions-league/23-24", image: "/images/ucl-2.jpg", logo: "/images/ucl-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#1E3A8A", startDate: "2023-09-19T00:00:00+07:00", endDate: "2024-06-01T23:59:59+07:00", detailKey: "ucl2324"
             },
             {
-                id: "champions-league-22-23", category: "football", name: "UEFA Champions League 22/23", shortName: "C1 22/23", slug: "champions-league-22-23", season: "22-23", path: "/football/champions-league/22-23", image: "/images/ucl.jpg", logo: "/images/ucl-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#1E3A8A", startDate: "2022-09-06T00:00:00+07:00", endDate: "2023-06-10T23:59:59+07:00", detailKey: "ucl2223"
+                id: "champions-league-22-23", category: "football", name: "UEFA Champions League 22/23", shortName: "C1 22/23", slug: "champions-league-22-23", season: "22-23", path: "/football/champions-league/22-23", image: "/images/ucl-2.jpg", logo: "/images/ucl-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#1E3A8A", startDate: "2022-09-06T00:00:00+07:00", endDate: "2023-06-10T23:59:59+07:00", detailKey: "ucl2223"
             },
 
             // ===================== EUROPA LEAGUE =====================
             {
-                id: "europa-league-25-26", category: "football", name: "UEFA Europa League 25/26", shortName: "C2 25/26", slug: "europa-league-25-26", season: "25-26", path: "/football/europa-league/25-26", image: "/images/uel.jpg", logo: "/images/uel-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#F59E0B", startDate: "2025-09-24T00:00:00+07:00", endDate: "2026-05-20T23:59:59+07:00", detailKey: "uel2526"
+                id: "europa-league-25-26", category: "football", name: "UEFA Europa League 25/26", shortName: "C2 25/26", slug: "europa-league-25-26", season: "25-26", path: "/football/europa-league/25-26", image: "/images/uel-2.jpg", logo: "/images/uel-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#F59E0B", startDate: "2025-09-24T00:00:00+07:00", endDate: "2026-05-20T23:59:59+07:00", detailKey: "uel2526"
             },
             {
-                id: "europa-league-24-25", category: "football", name: "UEFA Europa League 24/25", shortName: "C2 24/25", slug: "europa-league-24-25", season: "24-25", path: "/football/europa-league/24-25", image: "/images/uel.jpg", logo: "/images/uel-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#F59E0B", startDate: "2024-09-25T00:00:00+07:00", endDate: "2025-05-21T23:59:59+07:00", detailKey: "uel2425"
+                id: "europa-league-24-25", category: "football", name: "UEFA Europa League 24/25", shortName: "C2 24/25", slug: "europa-league-24-25", season: "24-25", path: "/football/europa-league/24-25", image: "/images/uel-2.jpg", logo: "/images/uel-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#F59E0B", startDate: "2024-09-25T00:00:00+07:00", endDate: "2025-05-21T23:59:59+07:00", detailKey: "uel2425"
             },
             {
-                id: "europa-league-23-24", category: "football", name: "UEFA Europa League 23/24", shortName: "C2 23/24", slug: "europa-league-23-24", season: "23-24", path: "/football/europa-league/23-24", image: "/images/uel.jpg", logo: "/images/uel-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#F59E0B", startDate: "2023-09-21T00:00:00+07:00", endDate: "2024-05-22T23:59:59+07:00", detailKey: "uel2324"
+                id: "europa-league-23-24", category: "football", name: "UEFA Europa League 23/24", shortName: "C2 23/24", slug: "europa-league-23-24", season: "23-24", path: "/football/europa-league/23-24", image: "/images/uel-3.jpg", logo: "/images/uel-logo-21-24.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#F59E0B", startDate: "2023-09-21T00:00:00+07:00", endDate: "2024-05-22T23:59:59+07:00", detailKey: "uel2324"
             },
             {
-                id: "europa-league-22-23", category: "football", name: "UEFA Europa League 22/23", shortName: "C2 22/23", slug: "europa-league-22-23", season: "22-23", path: "/football/europa-league/22-23", image: "/images/uel.jpg", logo: "/images/uel-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#F59E0B", startDate: "2022-09-08T00:00:00+07:00", endDate: "2023-05-31T23:59:59+07:00", detailKey: "uel2223"
+                id: "europa-league-22-23", category: "football", name: "UEFA Europa League 22/23", shortName: "C2 22/23", slug: "europa-league-22-23", season: "22-23", path: "/football/europa-league/22-23", image: "/images/uel-3.jpg", logo: "/images/uel-logo-21-24.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#F59E0B", startDate: "2022-09-08T00:00:00+07:00", endDate: "2023-05-31T23:59:59+07:00", detailKey: "uel2223"
             },
 
             // ===================== CONFERENCE LEAGUE =====================
             {
-                id: "conference-league-25-26", category: "football", name: "UEFA Conference League 25/26", shortName: "C3 25/26", slug: "conference-league-25-26", season: "25-26", path: "/football/conference-league/25-26", image: "/images/ucl3.jpg", logo: "/images/ucl3-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#22C55E", startDate: "2025-10-02T00:00:00+07:00", endDate: "2026-05-27T23:59:59+07:00", detailKey: "ucl32526"
+                id: "conference-league-25-26", category: "football", name: "UEFA Conference League 25/26", shortName: "C3 25/26", slug: "conference-league-25-26", season: "25-26", path: "/football/conference-league/25-26", image: "/images/ucl3-2.jpg", logo: "/images/ucl3-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#22C55E", startDate: "2025-10-02T00:00:00+07:00", endDate: "2026-05-27T23:59:59+07:00", detailKey: "ucl32526"
             },
             {
-                id: "conference-league-24-25", category: "football", name: "UEFA Conference League 24/25", shortName: "C3 24/25", slug: "conference-league-24-25", season: "24-25", path: "/football/conference-league/24-25", image: "/images/ucl3.jpg", logo: "/images/ucl3-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#22C55E", startDate: "2024-10-03T00:00:00+07:00", endDate: "2025-05-28T23:59:59+07:00", detailKey: "ucl32425"
+                id: "conference-league-24-25", category: "football", name: "UEFA Conference League 24/25", shortName: "C3 24/25", slug: "conference-league-24-25", season: "24-25", path: "/football/conference-league/24-25", image: "/images/ucl3-2.jpg", logo: "/images/ucl3-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#22C55E", startDate: "2024-10-03T00:00:00+07:00", endDate: "2025-05-28T23:59:59+07:00", detailKey: "ucl32425"
             },
             {
-                id: "conference-league-23-24", category: "football", name: "UEFA Conference League 23/24", shortName: "C3 23/24", slug: "conference-league-23-24", season: "23-24", path: "/football/conference-league/23-24", image: "/images/ucl3.jpg", logo: "/images/ucl3-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#22C55E", startDate: "2023-09-21T00:00:00+07:00", endDate: "2024-05-29T23:59:59+07:00", detailKey: "ucl32324"
+                id: "conference-league-23-24", category: "football", name: "UEFA Conference League 23/24", shortName: "C3 23/24", slug: "conference-league-23-24", season: "23-24", path: "/football/conference-league/23-24", image: "/images/ucl3-2.jpg", logo: "/images/ucl3-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#22C55E", startDate: "2023-09-21T00:00:00+07:00", endDate: "2024-05-29T23:59:59+07:00", detailKey: "ucl32324"
             },
             {
-                id: "conference-league-22-23", category: "football", name: "UEFA Conference League 22/23", shortName: "C3 22/23", slug: "conference-league-22-23", season: "22-23", path: "/football/conference-league/22-23", image: "/images/ucl3.jpg", logo: "/images/ucl3-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#22C55E", startDate: "2022-09-08T00:00:00+07:00", endDate: "2023-06-07T23:59:59+07:00", detailKey: "ucl32223"
+                id: "conference-league-22-23", category: "football", name: "UEFA Conference League 22/23", shortName: "C3 22/23", slug: "conference-league-22-23", season: "22-23", path: "/football/conference-league/22-23", image: "/images/ucl3-2.jpg", logo: "/images/ucl3-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#22C55E", startDate: "2022-09-08T00:00:00+07:00", endDate: "2023-06-07T23:59:59+07:00", detailKey: "ucl32223"
             },
 
             // ===================== FA CUP =====================
             {
-                id: "fa-cup-25-26", category: "football", name: "FA Cup 25/26", shortName: "FA Cup", slug: "fa-cup-25-26", season: "25-26", path: "/football/fa-cup/25-26", image: "/images/fa-cup.jpg", logo: "/images/fa-cup-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#EF4444", startDate: "2025-08-02T00:00:00+07:00", endDate: "2026-05-16T23:59:59+07:00", detailKey: "facup2526"
+                id: "fa-cup-25-26", category: "football", name: "FA Cup 25/26", shortName: "FA Cup", slug: "fa-cup-25-26", season: "25-26", path: "/football/fa-cup/25-26", image: "/images/fa-cup-2.jpg", logo: "/images/fa-cup-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#EF4444", startDate: "2025-08-02T00:00:00+07:00", endDate: "2026-05-16T23:59:59+07:00", detailKey: "facup2526"
             },
             {
-                id: "fa-cup-24-25", category: "football", name: "FA Cup 24/25", shortName: "FA Cup", slug: "fa-cup-24-25", season: "24-25", path: "/football/fa-cup/24-25", image: "/images/fa-cup.jpg", logo: "/images/fa-cup-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#EF4444", startDate: "2024-08-03T00:00:00+07:00", endDate: "2025-05-17T23:59:59+07:00", detailKey: "facup2425"
+                id: "fa-cup-24-25", category: "football", name: "FA Cup 24/25", shortName: "FA Cup", slug: "fa-cup-24-25", season: "24-25", path: "/football/fa-cup/24-25", image: "/images/fa-cup-2.jpg", logo: "/images/fa-cup-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#EF4444", startDate: "2024-08-03T00:00:00+07:00", endDate: "2025-05-17T23:59:59+07:00", detailKey: "facup2425"
             },
             {
-                id: "fa-cup-23-24", category: "football", name: "FA Cup 23/24", shortName: "FA Cup", slug: "fa-cup-23-24", season: "23-24", path: "/football/fa-cup/23-24", image: "/images/fa-cup.jpg", logo: "/images/fa-cup-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#EF4444", startDate: "2023-08-04T00:00:00+07:00", endDate: "2024-05-25T23:59:59+07:00", detailKey: "facup2324"
+                id: "fa-cup-23-24", category: "football", name: "FA Cup 23/24", shortName: "FA Cup", slug: "fa-cup-23-24", season: "23-24", path: "/football/fa-cup/23-24", image: "/images/fa-cup-2.jpg", logo: "/images/fa-cup-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#EF4444", startDate: "2023-08-04T00:00:00+07:00", endDate: "2024-05-25T23:59:59+07:00", detailKey: "facup2324"
             },
             {
-                id: "fa-cup-22-23", category: "football", name: "FA Cup 22/23", shortName: "FA Cup", slug: "fa-cup-22-23", season: "22-23", path: "/football/fa-cup/22-23", image: "/images/fa-cup.jpg", logo: "/images/fa-cup-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#EF4444", startDate: "2022-08-05T00:00:00+07:00", endDate: "2023-06-03T23:59:59+07:00", detailKey: "facup2223"
+                id: "fa-cup-22-23", category: "football", name: "FA Cup 22/23", shortName: "FA Cup", slug: "fa-cup-22-23", season: "22-23", path: "/football/fa-cup/22-23", image: "/images/fa-cup-2.jpg", logo: "/images/fa-cup-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#EF4444", startDate: "2022-08-05T00:00:00+07:00", endDate: "2023-06-03T23:59:59+07:00", detailKey: "facup2223"
             },
         ],
     },
