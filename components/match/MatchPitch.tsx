@@ -79,7 +79,7 @@ export default function MatchPitch({ homeData, awayData, homeTeamBasic, awayTeam
                     )}
 
                     {p.isCaptain && (
-                        <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-blue-600 border border-white text-white flex items-center justify-center text-[8px] font-black shadow-sm" title="Đội trưởng">
+                        <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-red-600 border border-white text-white flex items-center justify-center text-[8px] font-black shadow-sm" title="Đội trưởng">
                             C
                         </div>
                     )}

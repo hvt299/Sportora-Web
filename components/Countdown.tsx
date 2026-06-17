@@ -66,10 +66,10 @@ export default function Countdown({ startDate, endDate }: CountdownProps) {
                     ['Giây', timeLeft.seconds],
                 ].map(([label, value]) => (
                     <div key={label} className="text-center">
-                        <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-24 md:h-24 rounded-2xl md:rounded-3xl bg-black/40 backdrop-blur-xl border border-white/10 flex items-center justify-center text-xl sm:text-2xl md:text-4xl font-black text-white shadow-lg">
+                        <div className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl bg-black/40 backdrop-blur-xl border border-white/10 flex items-center justify-center text-2xl md:text-3xl lg:text-4xl font-black text-white shadow-lg">
                             {String(value).padStart(2, '0')}
                         </div>
-                        <div className="mt-1.5 md:mt-2 text-[9px] md:text-xs uppercase tracking-widest text-slate-400 font-bold">
+                        <div className="mt-1.5 md:mt-2 text-[9px] md:text-[10px] lg:text-xs uppercase tracking-widest text-slate-400 font-bold">
                             {label}
                         </div>
                     </div>

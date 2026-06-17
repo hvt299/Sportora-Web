@@ -3,19 +3,15 @@
 import { useEffect, useState, useMemo, useRef } from "react";
 import { tournaments } from "@/data/tournaments";
 import Countdown from "@/components/Countdown";
+import * as LucideIcons from "lucide-react";
 import {
   Bell, Menu, Search, Trophy, ChevronLeft, ChevronRight, AlertCircle, CalendarDays, PanelLeftClose, PanelRightClose, Clock, CheckCircle2,
   ArrowRight
 } from "lucide-react";
-import { getTournamentLabel } from "@/lib/tournament";
 
-const getCategoryIcon = (category: string, className: string = "w-4 h-4") => {
-  switch (category) {
-    case "Bóng đá":
-      return <Trophy className={className} />;
-    default:
-      return <Trophy className={className} />;
-  }
+const DynamicIcon = ({ name, className = "w-4 h-4" }: { name: string, className?: string }) => {
+  const IconComponent = (LucideIcons as any)[name] || LucideIcons.Trophy;
+  return <IconComponent className={className} />;
 };
 
 function CompactCountdown({ startDate, endDate }: { startDate: string; endDate?: string }) {
@@ -184,13 +180,16 @@ export default function HomePage() {
             <h1 className="text-lg md:text-xl font-black italic tracking-tighter">SPORTORA</h1>
           </a>
 
-          <div className="flex items-center gap-3 md:gap-4">
+          <div className="flex items-center gap-4 md:gap-5">
             <button className="text-slate-400 hover:text-white transition-colors">
               <Search className="w-5 h-5" />
             </button>
-            <a href="/tournaments" className="text-slate-400 hover:text-white transition-colors hidden md:block text-sm font-bold uppercase">
+            <a href="/tournaments" className="text-slate-400 hover:text-white transition-colors text-[11px] md:text-sm font-bold uppercase tracking-widest">
               Giải đấu
             </a>
+            <button className="text-slate-400 hover:text-white transition-colors hidden sm:block">
+              <Bell className="w-5 h-5" />
+            </button>
             <button className="md:hidden text-slate-400 hover:text-white transition-colors">
               <Menu className="w-5 h-5" />
             </button>
@@ -201,8 +200,8 @@ export default function HomePage() {
       {/* VÙNG TRUNG TÂM (CENTER) */}
       <div className="flex-1 relative w-full h-[calc(100dvh-73px)] mt-18.25">
 
-        {/* BỘ LỌC THỂ THAO NỔI (Đưa vào giữa để không tràn viền) */}
-        <div className="absolute top-4 left-0 w-full z-20 flex justify-center px-4">
+        {/* BỘ LỌC THỂ THAO NỔI (Nâng z-30 để luôn nổi lên trên) */}
+        <div className="absolute top-4 md:top-6 left-0 w-full z-30 flex justify-center px-4">
           <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide py-2 px-1 max-w-full w-max">
             <button
               onClick={() => setSelectedSport("All")}
@@ -216,7 +215,7 @@ export default function HomePage() {
                 onClick={() => setSelectedSport(group.category)}
                 className={`shrink-0 flex items-center gap-1.5 px-4 py-1.5 rounded-full font-bold text-[11px] md:text-xs transition-all border shadow-lg whitespace-nowrap ${selectedSport === group.category ? "bg-white text-black border-white" : "bg-black/60 backdrop-blur-md text-slate-400 border-slate-700 hover:text-white"}`}
               >
-                {getCategoryIcon(group.category, "w-3.5 h-3.5")} {group.category}
+                <DynamicIcon name={group.icon} className="w-3.5 h-3.5" /> {group.category}
               </button>
             ))}
           </div>
@@ -232,28 +231,35 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-black/60" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.25),transparent_70%)]" />
 
-            <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 pb-24 pt-24 md:pb-20 md:pt-16">
-              <div className="max-w-4xl mx-auto text-center w-full">
-                <div className="mb-4 md:mb-6 flex justify-center">
+            {/* THAY ĐỔI LỚN NHẤT Ở ĐÂY: Biến vùng chứa thành thẻ có thể cuộn (overflow-y-auto) */}
+            <div className="relative z-10 h-full w-full flex flex-col items-center justify-start px-4 overflow-y-auto scrollbar-hide">
+
+              {/* Spacer Top: Khối vô hình cao 70px để hứng chỗ cho Bộ lọc Thể thao */}
+              <div className="w-full min-h-17.5 mdmd:min-h-22.5hrink-0"></div>
+
+              <div className="max-w-4xl mx-auto text-center w-full flex flex-col items-center justify-center my-auto">
+
+                {/* Đã giảm nhẹ margin-bottom trên mobile để tiết kiệm diện tích (mb-3 thay vì mb-4) */}
+                <div className="mb-3 md:mb-5 flex justify-center">
                   <span className={`px-4 py-1 md:py-1.5 rounded-full border text-[10px] md:text-xs uppercase tracking-widest font-black flex items-center gap-2 shadow-[0_0_20px_rgba(0,0,0,0.5)] ${activeEvent.uiStatus === 'live' ? 'bg-red-500/20 border-red-500/50 text-red-400' : 'bg-amber-500/20 border-amber-500/50 text-amber-400'}`}>
                     {activeEvent.uiStatus === 'live' ? <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" /> : <Clock className="w-3.5 h-3.5" />}
                     {activeEvent.uiStatus === 'live' ? "Đang diễn ra" : "Tâm điểm sắp tới"}
                   </span>
                 </div>
 
-                <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6 mb-6 md:mb-8 w-full">
+                <div className="flex flex-col lg:flex-row items-center justify-center gap-3 lg:gap-6 mb-4 lg:mb-8 w-full px-2">
                   {activeEvent.logo && (
-                    <div className="bg-white/10 backdrop-blur-sm p-3 md:p-4 rounded-2xl md:rounded-3xl border border-white/20 shadow-2xl shrink-0">
-                      <img src={activeEvent.logo} alt={activeEvent.shortName} className="w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 object-contain drop-shadow-2xl" />
+                    <div className="bg-white/10 backdrop-blur-sm p-3 lg:p-4 rounded-2xl lg:rounded-3xl border border-white/20 shadow-2xl shrink-0">
+                      <img src={activeEvent.logo} alt={activeEvent.shortName} className="w-16 h-16 sm:w-20 sm:h-20 lg:w-28 lg:h-28 object-contain drop-shadow-2xl" />
                     </div>
                   )}
-                  <h2 className="text-3xl sm:text-5xl md:text-7xl font-black tracking-tighter drop-shadow-2xl text-center md:text-left leading-tight line-clamp-3">
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter drop-shadow-2xl text-center lg:text-left leading-tight line-clamp-3">
                     {activeEvent.name}
                   </h2>
                 </div>
 
                 {/* ĐẾM NGƯỢC CHÍNH */}
-                <div className="mb-8 md:mb-10 flex flex-col items-center">
+                <div className="mb-6 md:mb-8 flex flex-col items-center">
                   <span className="text-[9px] md:text-xs uppercase tracking-widest font-bold text-slate-300 mb-2 md:mb-3 bg-black/40 px-4 py-1 rounded-full border border-white/10 shadow-sm">
                     {activeEvent.uiStatus === 'live' ? "Kết thúc sau:" : "Bắt đầu sau:"}
                   </span>
@@ -262,7 +268,7 @@ export default function HomePage() {
 
                 <a
                   href={activeEvent.path}
-                  className="inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-3.5 rounded-full bg-white text-black font-black transition-all hover:scale-105 group relative overflow-hidden text-[11px] md:text-sm uppercase tracking-widest shadow-xl shadow-white/10"
+                  className="inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-3.5 rounded-full bg-white text-black font-black transition-all hover:scale-105 group relative overflow-hidden text-[11px] md:text-sm uppercase tracking-widest shadow-xl shadow-white/10 shrink-0"
                   style={{ '--theme-color': activeEvent.themeColor } as React.CSSProperties}
                 >
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ backgroundColor: activeEvent.themeColor }}></div>
@@ -270,11 +276,15 @@ export default function HomePage() {
                   <span className="relative z-10 group-hover:text-white">Truy cập giải đấu</span>
                 </a>
               </div>
+
+              {/* Spacer Bottom: Khối vô hình cao 80px để hứng chỗ cho Thanh trượt Pagination < > */}
+              <div className="w-full min-h-20 md:min-h-25 shrink-0"></div>
+
             </div>
 
-            {/* Pagination Nút Bấm Center */}
+            {/* Pagination Nút Bấm Center (Nâng z-30 để luôn bấm được) */}
             {centerEvents.length > 1 && (
-              <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
+              <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
                 <button onClick={prevEvent} className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all"><ChevronLeft className="w-4 h-4 md:w-5 md:h-5" /></button>
                 <div className="flex gap-1.5 bg-black/50 p-1.5 md:p-2 rounded-full backdrop-blur-md border border-white/10">
                   {centerEvents.map((_, i) => (

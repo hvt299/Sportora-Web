@@ -314,37 +314,59 @@ export async function getStandings(leagueId: number | string = 77, season: strin
         const url = `https://www.fotmob.com/api/data/leagues?id=${leagueId}&ccode3=VNM&season=${season}`;
         const response = await fetch(url, {
             headers: { "User-Agent": "Mozilla/5.0" },
-            cache: "no-store" // Vô hiệu hóa cache hoàn toàn, luôn lấy dữ liệu tươi (fresh data)
+            cache: "no-store"
         });
         const data: any = await response.json();
         const standings: Record<string, any[]> = {};
 
-        if (data?.table?.[0]?.data?.tables) {
-            data.table[0].data.tables.forEach((groupData: any) => {
+        // Lấy gốc dữ liệu bảng xếp hạng
+        const tableRoot = data?.table?.[0]?.data;
+        if (!tableRoot) return standings;
+
+        // TRƯỜNG HỢP 1: GIẢI CÚP (Có nhiều bảng con, nằm trong mảng `tables` CÓ 'S')
+        if (tableRoot.tables && Array.isArray(tableRoot.tables)) {
+            tableRoot.tables.forEach((groupData: any) => {
                 const rawName = groupData.leagueName || "";
                 if (!rawName) return;
 
                 const groupName = rawName.replace(/Grp\.\s*/i, "").trim();
-                if (!standings[groupName]) standings[groupName] = [];
-
                 const rows = groupData.table?.all || [];
-                rows.forEach((row: any) => {
-                    standings[groupName].push({
-                        pos: row.idx || 0,
-                        team: row.name || "Unknown",
-                        logo: `https://images.fotmob.com/image_resources/logo/teamlogo/${row.id}.png`,
-                        pl: row.played || 0,
-                        w: row.wins || 0,
-                        d: row.draws || 0,
-                        l: row.losses || 0,
-                        scoresStr: row.scoresStr || "0-0",
-                        gd: row.goalConDiff ?? 0,
-                        pts: row.pts || 0,
-                        qualColor: row.qualColor || null
-                    });
-                });
+
+                standings[groupName] = rows.map((row: any) => ({
+                    pos: row.idx || 0,
+                    team: row.shortName || row.name || "Unknown",
+                    logo: `https://images.fotmob.com/image_resources/logo/teamlogo/${row.id}.png`,
+                    pl: row.played || 0,
+                    w: row.wins || 0,
+                    d: row.draws || 0,
+                    l: row.losses || 0,
+                    scoresStr: row.scoresStr || "0-0",
+                    gd: row.goalConDiff ?? 0,
+                    pts: row.pts || 0,
+                    qualColor: row.qualColor || null
+                }));
             });
         }
+        // TRƯỜNG HỢP 2: GIẢI VĐQG (Chỉ có 1 bảng duy nhất, nằm trong Object `table` KHÔNG 'S')
+        else if (tableRoot.table && tableRoot.table.all) {
+            const groupName = tableRoot.leagueName || "Bảng xếp hạng";
+            const rows = tableRoot.table.all || [];
+
+            standings[groupName] = rows.map((row: any) => ({
+                pos: row.idx || 0,
+                team: row.shortName || row.name || "Unknown",
+                logo: `https://images.fotmob.com/image_resources/logo/teamlogo/${row.id}.png`,
+                pl: row.played || 0,
+                w: row.wins || 0,
+                d: row.draws || 0,
+                l: row.losses || 0,
+                scoresStr: row.scoresStr || "0-0",
+                gd: row.goalConDiff ?? 0,
+                pts: row.pts || 0,
+                qualColor: row.qualColor || null
+            }));
+        }
+
         return standings;
     } catch (error) {
         console.error("Lỗi cào dữ liệu Standings:", error);

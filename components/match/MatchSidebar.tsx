@@ -114,7 +114,7 @@ export default function MatchSidebar({ matchData, homeTeam, awayTeam }: { matchD
                             <div className="flex items-center gap-2 text-slate-300 font-bold mb-1"><MapPin className="w-4 h-4 text-emerald-400" /> {infoBox.Stadium.name}</div>
                             <p className="text-xs text-slate-500 pl-6">{infoBox.Stadium.city}, {infoBox.Stadium.country}</p>
                             <div className="pl-6 mt-2 text-xs text-slate-400 space-y-1">
-                                <p>Sức chứa: <span className="text-white font-mono">{infoBox.Stadium.capacity?.toLocaleString() || '?'}</span></p>
+                                <p>Sức chứa: <span className="text-white capitalize">{infoBox.Stadium.capacity?.toLocaleString() || '?'}</span></p>
                                 <p>Mặt sân: <span className="text-white capitalize">{infoBox.Stadium.surface || '?'}</span></p>
                             </div>
                         </div>
