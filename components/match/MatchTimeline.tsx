@@ -20,7 +20,8 @@ const VAR_DESC_MAP: Record<string, string> = {
     "Penalty cancelled": "Hủy phạt đền",
     "Card upgrade": "Nâng thành thẻ đỏ",
     "Card cancelled": "Hủy thẻ",
-    "Goal confirmed": "Công nhận bàn thắng"
+    "Goal confirmed": "Công nhận bàn thắng",
+    "Missed penalty - to be retaken": "Đá hỏng phạt đền - Cho đá lại"
 };
 
 const renderEventIcon = (type: string, cardType?: string, isHome?: boolean) => {

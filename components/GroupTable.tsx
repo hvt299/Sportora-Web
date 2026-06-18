@@ -82,7 +82,7 @@ export default function GroupTable({ data, groupName }: { data: TeamData[], grou
                             </span>
 
                             <div className="flex items-center gap-3 truncate">
-                                <img src={row.logo} alt={row.team} className="w-6 h-6 rounded-full object-cover bg-white" />
+                                <img src={row.logo} alt={row.team} className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover bg-white/5 drop-shadow-2xl" />
                                 <span className="font-display-reg truncate text-white">{row.team}</span>
                             </div>
 

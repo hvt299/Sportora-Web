@@ -128,7 +128,7 @@ export default function MatchCard({
 
             <div className="w-[30%] flex items-center justify-start gap-3">
                 {(!isAwayTBD && awayLogo) ? (
-                    <img src={awayLogo} alt={away} className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover" />
+                    <img src={awayLogo} alt={away} className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover bg-white/5 drop-shadow-2xl" />
                 ) : (
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-xs text-slate-500 font-bold">?</div>
                 )}

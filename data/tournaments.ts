@@ -422,7 +422,7 @@ export const tournaments = [
                 logo: "/images/premier-league-logo.png",
                 gradient: "from-slate-950 via-slate-900/80 to-transparent",
                 themeColor: "#3F1052",
-                startDate: "2025-08-16T00:00:00+07:00",
+                startDate: "2025-08-16T02:00:00+07:00",
                 endDate: "2026-05-24T23:59:59+07:00",
                 detailKey: "premierLeague2526",
             },
