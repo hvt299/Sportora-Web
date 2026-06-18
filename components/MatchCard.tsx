@@ -98,7 +98,7 @@ export default function MatchCard({
                 <span className={`${currentFonts.subHeading} text-sm md:text-base hidden sm:block truncate`}>{home}</span>
                 <span className={`${currentFonts.subHeading} text-sm sm:hidden block truncate`}>{home.substring(0, 3).toUpperCase()}</span>
                 {(!isHomeTBD && homeLogo) ? (
-                    <img src={homeLogo} alt={home} className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover bg-white" />
+                    <img src={homeLogo} alt={home} className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover" />
                 ) : (
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-xs text-slate-500 font-bold">?</div>
                 )}
@@ -128,7 +128,7 @@ export default function MatchCard({
 
             <div className="w-[30%] flex items-center justify-start gap-3">
                 {(!isAwayTBD && awayLogo) ? (
-                    <img src={awayLogo} alt={away} className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover bg-white" />
+                    <img src={awayLogo} alt={away} className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover bg-white/5 drop-shadow-2xl" />
                 ) : (
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-xs text-slate-500 font-bold">?</div>
                 )}

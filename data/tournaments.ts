@@ -1,7 +1,7 @@
 export const tournaments = [
     {
         category: "Bóng đá",
-        icon: "Trophy",
+        icon: "Goal",
         events: [
             {
                 id: "fifa-world-cup-2026",
@@ -336,8 +336,8 @@ export const tournaments = [
                 slug: "copa-america-2028",
                 season: "28",
                 path: "/football/copa-america/2028",
-                image: "/images/ca2028.jpg",
-                logo: "/images/ca2028-logo.png",
+                image: "/images/copa-america-2028.jpg",
+                logo: "/images/copa-america-2028-logo.png",
                 gradient: "from-slate-950 via-slate-900/80 to-transparent",
                 themeColor: "#E30613",
                 startDate: "2028-06-14T00:00:00+07:00",
@@ -352,8 +352,8 @@ export const tournaments = [
                 slug: "copa-america-2024",
                 season: "24",
                 path: "/football/copa-america/2024",
-                image: "/images/ca2024.jpg",
-                logo: "/images/ca2024-logo.png",
+                image: "/images/copa-america-2024.jpg",
+                logo: "/images/copa-america-2024-logo.png",
                 gradient: "from-slate-950 via-slate-900/80 to-transparent",
                 themeColor: "#1B365D",
                 startDate: "2024-06-20T00:00:00+07:00",
@@ -368,8 +368,8 @@ export const tournaments = [
                 slug: "copa-america-2021",
                 season: "21",
                 path: "/football/copa-america/2021",
-                image: "/images/ca2021.jpg",
-                logo: "/images/ca2021-logo.png",
+                image: "/images/copa-america-2021.jpg",
+                logo: "/images/copa-america-2021-logo.png",
                 gradient: "from-slate-950 via-slate-900/80 to-transparent",
                 themeColor: "#009B77",
                 startDate: "2021-06-13T00:00:00+07:00",
@@ -384,8 +384,8 @@ export const tournaments = [
                 slug: "copa-america-2019",
                 season: "19",
                 path: "/football/copa-america/2019",
-                image: "/images/ca2019.jpg",
-                logo: "/images/ca2019-logo.png",
+                image: "/images/copa-america-2019.jpg",
+                logo: "/images/copa-america-2019-logo.png",
                 gradient: "from-slate-950 via-slate-900/80 to-transparent",
                 themeColor: "#FFD100",
                 startDate: "2019-06-14T00:00:00+07:00",
@@ -400,8 +400,8 @@ export const tournaments = [
                 slug: "copa-america-2016",
                 season: "16",
                 path: "/football/copa-america/2016",
-                image: "/images/ca2016.jpg",
-                logo: "/images/ca2016-logo.png",
+                image: "/images/copa-america-2016.jpg",
+                logo: "/images/copa-america-2016-logo.png",
                 gradient: "from-slate-950 via-slate-900/80 to-transparent",
                 themeColor: "#C8102E",
                 startDate: "2016-06-03T00:00:00+07:00",
@@ -422,7 +422,7 @@ export const tournaments = [
                 logo: "/images/premier-league-logo.png",
                 gradient: "from-slate-950 via-slate-900/80 to-transparent",
                 themeColor: "#3F1052",
-                startDate: "2025-08-16T00:00:00+07:00",
+                startDate: "2025-08-16T02:00:00+07:00",
                 endDate: "2026-05-24T23:59:59+07:00",
                 detailKey: "premierLeague2526",
             },
@@ -588,4 +588,325 @@ export const tournaments = [
             },
         ],
     },
+
+    {
+        "category": "Tennis",
+        "icon": "CircleDot",
+        "events": [
+            {
+                "id": "australian-open-2026",
+                "category": "tennis",
+                "name": "Australian Open 2026",
+                "shortName": "AO 2026",
+                "slug": "australian-open",
+                "season": "2026",
+                "path": "/tennis/australian-open/2026",
+                "image": "/images/australian-open.jpg",
+                "logo": "/images/australian-open-logo.png",
+                "gradient": "from-blue-950 via-cyan-900/80 to-transparent",
+                "themeColor": "#0057FF",
+                "startDate": "2026-01-18T00:00:00+07:00",
+                "endDate": "2026-02-01T23:59:59+07:00",
+                "detailKey": "australianOpen2026"
+            },
+            {
+                "id": "wimbledon-2026",
+                "category": "tennis",
+                "name": "Wimbledon Championships 2026",
+                "shortName": "Wimbledon 2026",
+                "slug": "wimbledon",
+                "season": "2026",
+                "path": "/tennis/wimbledon/2026",
+                "image": "/images/wimbledon.jpg",
+                "logo": "/images/wimbledon-logo.png",
+                "gradient": "from-green-950 via-emerald-900/80 to-transparent",
+                "themeColor": "#006633",
+                "startDate": "2026-06-29T00:00:00+07:00",
+                "endDate": "2026-07-12T23:59:59+07:00",
+                "detailKey": "wimbledon2026"
+            }
+        ]
+    },
+
+    {
+        "category": "Cầu lông",
+        "icon": "Feather",
+        "events": [
+            {
+                "id": "all-england-2026",
+                "category": "badminton",
+                "name": "YONEX All England Open 2026",
+                "shortName": "All England 2026",
+                "slug": "all-england",
+                "season": "2026",
+                "path": "/badminton/all-england/2026",
+                "image": "/images/all-england.jpg",
+                "logo": "/images/all-england-logo.png",
+                "gradient": "from-slate-900 via-gray-800/80 to-transparent",
+                "themeColor": "#1F2937",
+                "startDate": "2026-03-03T00:00:00+07:00",
+                "endDate": "2026-03-08T23:59:59+07:00",
+                "detailKey": "allEngland2026"
+            },
+            {
+                "id": "bwf-world-championships-2026",
+                "category": "badminton",
+                "name": "BWF World Championships 2026",
+                "shortName": "BWF Worlds 2026",
+                "slug": "bwf-world-championships",
+                "season": "2026",
+                "path": "/badminton/bwf-world-championships/2026",
+                "image": "/images/bwf-worlds.jpg",
+                "logo": "/images/bwf-logo.png",
+                "gradient": "from-red-950 via-rose-900/80 to-transparent",
+                "themeColor": "#E60012",
+                "startDate": "2026-08-17T00:00:00+07:00",
+                "endDate": "2026-08-23T23:59:59+07:00",
+                "detailKey": "bwfWorlds2026"
+            }
+        ]
+    },
+
+    {
+        "category": "Bóng chuyền",
+        "icon": "Volleyball",
+        "events": [
+            {
+                "id": "vnl-2026",
+                "category": "volleyball",
+                "name": "Volleyball Nations League 2026",
+                "shortName": "VNL 2026",
+                "slug": "volleyball-nations-league",
+                "season": "2026",
+                "path": "/volleyball/vnl/2026",
+                "image": "/images/vnl.jpg",
+                "logo": "/images/vnl-logo.png",
+                "gradient": "from-blue-950 via-sky-900/80 to-transparent",
+                "themeColor": "#0284C7",
+                "startDate": "2026-05-27T00:00:00+07:00",
+                "endDate": "2026-07-27T23:59:59+07:00",
+                "detailKey": "vnl2026"
+            },
+            {
+                "id": "fivb-volleyball-world-championship-2026",
+                "category": "volleyball",
+                "name": "FIVB Volleyball Men's World Championship 2026",
+                "shortName": "World Championship 2026",
+                "slug": "volleyball-world-championship",
+                "season": "2026",
+                "path": "/volleyball/world-championship/2026",
+                "image": "/images/volleyball-worlds.jpg",
+                "logo": "/images/fivb-logo.png",
+                "gradient": "from-orange-950 via-amber-900/80 to-transparent",
+                "themeColor": "#F97316",
+                "startDate": "2026-09-12T00:00:00+07:00",
+                "endDate": "2026-09-28T23:59:59+07:00",
+                "detailKey": "volleyballWorlds2026"
+            }
+        ]
+    },
+
+    {
+        "category": "Bóng rổ",
+        "icon": "Basketball",
+        "events": [
+            {
+                "id": "nba-2025-26",
+                "category": "basketball",
+                "name": "NBA 2025-26",
+                "shortName": "NBA 25-26",
+                "slug": "nba",
+                "season": "2025-26",
+                "path": "/basketball/nba/25-26",
+                "image": "/images/nba.jpg",
+                "logo": "/images/nba-logo.png",
+                "gradient": "from-blue-950 via-red-900/80 to-transparent",
+                "themeColor": "#17408B",
+                "startDate": "2025-10-21T00:00:00+07:00",
+                "endDate": "2026-06-22T23:59:59+07:00",
+                "detailKey": "nba202526"
+            }
+        ]
+    },
+
+    {
+        "category": "Đua xe",
+        "icon": "FlagTriangleRight",
+        "events": [
+            {
+                "id": "formula-one-2026",
+                "category": "motorsport",
+                "name": "Formula 1 World Championship 2026",
+                "shortName": "F1 2026",
+                "slug": "formula-1",
+                "season": "2026",
+                "path": "/motorsport/formula-1/2026",
+                "image": "/images/f1.jpg",
+                "logo": "/images/f1-logo.png",
+                "gradient": "from-red-950 via-red-800/80 to-transparent",
+                "themeColor": "#E10600",
+                "startDate": "2026-03-06T00:00:00+07:00",
+                "endDate": "2026-12-06T23:59:59+07:00",
+                "detailKey": "formulaOne2026"
+            }
+        ]
+    },
+
+    {
+        "category": "MMA",
+        "icon": "Swords",
+        "events": [
+            {
+                "id": "ufc-2026",
+                "category": "mma",
+                "name": "UFC 2026",
+                "shortName": "UFC 2026",
+                "slug": "ufc",
+                "season": "2026",
+                "path": "/mma/ufc/2026",
+                "image": "/images/ufc.jpg",
+                "logo": "/images/ufc-logo.png",
+                "gradient": "from-neutral-950 via-zinc-900/80 to-transparent",
+                "themeColor": "#D20A11",
+                "startDate": "2026-01-01T00:00:00+07:00",
+                "endDate": "2026-12-31T23:59:59+07:00",
+                "detailKey": "ufc2026"
+            }
+        ]
+    },
+
+    {
+        "category": "Esports",
+        "icon": "Gamepad2",
+        "events": [
+            {
+                "id": "lol-worlds-2026",
+                "category": "esports",
+                "name": "League of Legends World Championship 2026",
+                "shortName": "Worlds 2026",
+                "slug": "lol-worlds",
+                "season": "2026",
+                "path": "/esports/lol-worlds/2026",
+                "image": "/images/lol-worlds.jpg",
+                "logo": "/images/lol-worlds-logo.png",
+                "gradient": "from-yellow-950 via-amber-900/80 to-transparent",
+                "themeColor": "#C89B3C",
+                "startDate": "2026-09-25T00:00:00+07:00",
+                "endDate": "2026-11-01T23:59:59+07:00",
+                "detailKey": "lolWorlds2026"
+            },
+            {
+                "id": "valorant-champions-2026",
+                "category": "esports",
+                "name": "VALORANT Champions 2026",
+                "shortName": "Champions 2026",
+                "slug": "valorant-champions",
+                "season": "2026",
+                "path": "/esports/valorant-champions/2026",
+                "image": "/images/valorant-champions.jpg",
+                "logo": "/images/valorant-champions-logo.png",
+                "gradient": "from-red-950 via-pink-900/80 to-transparent",
+                "themeColor": "#FF4655",
+                "startDate": "2026-08-14T00:00:00+07:00",
+                "endDate": "2026-08-30T23:59:59+07:00",
+                "detailKey": "valorantChampions2026"
+            },
+            {
+                "id": "msi-2026",
+                "category": "esports",
+                "name": "Mid-Season Invitational 2026",
+                "shortName": "MSI 2026",
+                "slug": "msi",
+                "season": "2026",
+                "path": "/esports/msi/2026",
+                "image": "/images/lol-msi.jpg",
+                "logo": "/images/lol-msi-logo.png",
+                "gradient": "from-blue-950 via-cyan-900/80 to-transparent",
+                "themeColor": "#0AC8FF",
+                "startDate": "2026-06-28T00:00:00+07:00",
+                "endDate": "2026-07-12T23:59:59+07:00",
+                "detailKey": "msi2026"
+            },
+            {
+                "id": "vct-masters-2026",
+                "category": "esports",
+                "name": "VCT Masters 2026",
+                "shortName": "Masters 2026",
+                "slug": "vct-masters",
+                "season": "2026",
+                "path": "/esports/vct-masters/2026",
+                "image": "/images/vct-masters.jpg",
+                "logo": "/images/vct-masters-logo.png",
+                "gradient": "from-red-950 via-orange-900/80 to-transparent",
+                "themeColor": "#FF4655",
+                "startDate": "2026-02-28T00:00:00+07:00",
+                "endDate": "2026-03-15T23:59:59+07:00",
+                "detailKey": "vctMasters2026"
+            },
+            {
+                "id": "the-international-2026",
+                "category": "esports",
+                "name": "The International 2026",
+                "shortName": "TI 2026",
+                "slug": "the-international",
+                "season": "2026",
+                "path": "/esports/the-international/2026",
+                "image": "/images/dota2-ti.jpg",
+                "logo": "/images/dota2-ti-logo.png",
+                "gradient": "from-red-950 via-red-900/80 to-transparent",
+                "themeColor": "#D32F2F",
+                "startDate": "2026-09-01T00:00:00+07:00",
+                "endDate": "2026-09-15T23:59:59+07:00",
+                "detailKey": "theInternational2026"
+            },
+            {
+                "id": "m-series-2026",
+                "category": "esports",
+                "name": "MLBB M-Series World Championship 2026",
+                "shortName": "M-Series 2026",
+                "slug": "m-series",
+                "season": "2026",
+                "path": "/esports/mlbb-m-series/2026",
+                "image": "/images/mlbb-m-series.jpg",
+                "logo": "/images/mlbb-m-series-logo.png",
+                "gradient": "from-blue-950 via-indigo-900/80 to-transparent",
+                "themeColor": "#2196F3",
+                "startDate": "2026-12-01T00:00:00+07:00",
+                "endDate": "2026-12-20T23:59:59+07:00",
+                "detailKey": "mSeries2026"
+            },
+            {
+                "id": "pmgc-2026",
+                "category": "esports",
+                "name": "PUBG Mobile Global Championship 2026",
+                "shortName": "PMGC 2026",
+                "slug": "pmgc",
+                "season": "2026",
+                "path": "/esports/pmgc/2026",
+                "image": "/images/pmgc.jpg",
+                "logo": "/images/pmgc-logo.png",
+                "gradient": "from-orange-950 via-yellow-900/80 to-transparent",
+                "themeColor": "#F2A900",
+                "startDate": "2026-11-01T00:00:00+07:00",
+                "endDate": "2026-11-30T23:59:59+07:00",
+                "detailKey": "pmgc2026"
+            },
+            {
+                "id": "fc-pro-champions-cup-2026",
+                "category": "esports",
+                "name": "FC Pro Champions Cup 2026",
+                "shortName": "FC Pro 2026",
+                "slug": "fc-pro-champions-cup",
+                "season": "2026",
+                "path": "/esports/fc-pro-champions-cup/2026",
+                "image": "/images/fc-pro.jpg",
+                "logo": "/images/fc-pro-logo.png",
+                "gradient": "from-green-950 via-emerald-900/80 to-transparent",
+                "themeColor": "#00C853",
+                "startDate": "2026-04-01T00:00:00+07:00",
+                "endDate": "2026-04-10T23:59:59+07:00",
+                "detailKey": "fcProChampionsCup2026"
+            }
+        ]
+    }
 ];

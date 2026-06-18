@@ -46,19 +46,19 @@ export const tournamentDetails = {
                 name: "Hoa Kỳ",
                 code: "USA",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/6713_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6713.png"
             },
             {
                 name: "Canada",
                 code: "CAN",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/5810_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/5810.png"
             },
             {
                 name: "Mexico",
                 code: "MEX",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/6710_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6710.png"
             }
         ],
 
@@ -99,242 +99,242 @@ export const tournamentDetails = {
             {
                 name: "Mexico",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/6710_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6710.png"
             },
             {
                 name: "South Korea",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/7804_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/7804.png"
             },
             {
                 name: "Czechia",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/8496_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8496.png"
             },
             {
                 name: "South Africa",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/6316_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6316.png"
             },
             {
                 name: "Bosnia & Herzegovina",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/10106_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10106.png"
             },
             {
                 name: "Canada",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/5810_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/5810.png"
             },
             {
                 name: "Qatar",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/5902_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/5902.png"
             },
             {
                 name: "Switzerland",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/6717_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6717.png"
             },
             {
                 name: "Brazil",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/8256_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8256.png"
             },
             {
                 name: "Haiti",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/5934_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/5934.png"
             },
             {
                 name: "Morocco",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/6262_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6262.png"
             },
             {
                 name: "Scotland",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/8498_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8498.png"
             },
             {
                 name: "Australia",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/6716_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6716.png"
             },
             {
                 name: "Paraguay",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/6724_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6724.png"
             },
             {
                 name: "Türkiye",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/6595_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6595.png"
             },
             {
                 name: "USA",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/6713_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6713.png"
             },
             {
                 name: "Curaçao",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/287981_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/287981.png"
             },
             {
                 name: "Ecuador",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/6707_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6707.png"
             },
             {
                 name: "Germany",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/8570_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8570.png"
             },
             {
                 name: "Côte d'Ivoire",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/6709_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6709.png"
             },
             {
                 name: "Japan",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/6715_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6715.png"
             },
             {
                 name: "Netherlands",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/6708_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6708.png"
             },
             {
                 name: "Sweden",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/8520_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8520.png"
             },
             {
                 name: "Tunisia",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/6719_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6719.png"
             },
             {
                 name: "Belgium",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/8263_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8263.png"
             },
             {
                 name: "Egypt",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/10255_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10255.png"
             },
             {
                 name: "Iran",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/6711_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6711.png"
             },
             {
                 name: "New Zealand",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/5820_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/5820.png"
             },
             {
                 name: "Cape Verde",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/5888_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/5888.png"
             },
             {
                 name: "Saudi Arabia",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/7795_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/7795.png"
             },
             {
                 name: "Spain",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/6720_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6720.png"
             },
             {
                 name: "Uruguay",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/5796_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/5796.png"
             },
             {
                 name: "France",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/6723_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6723.png"
             },
             {
                 name: "Iraq",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/5819_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/5819.png"
             },
             {
                 name: "Norway",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/8492_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8492.png"
             },
             {
                 name: "Senegal",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/6395_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6395.png"
             },
             {
                 name: "Algeria",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/6317_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6317.png"
             },
             {
                 name: "Argentina",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/6706_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6706.png"
             },
             {
                 name: "Austria",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/8255_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8255.png"
             },
             {
                 name: "Jordan",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/5816_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/5816.png"
             },
             {
                 name: "Colombia",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/8258_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8258.png"
             },
             {
                 name: "DR Congo",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/6321_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6321.png"
             },
             {
                 name: "Portugal",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/8361_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8361.png"
             },
             {
                 name: "Uzbekistan",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/8700_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8700.png"
             },
             {
                 name: "Croatia",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/10155_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10155.png"
             },
             {
                 name: "England",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/8491_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8491.png"
             },
             {
                 name: "Ghana",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/6714_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6714.png"
             },
             {
                 name: "Panama",
                 logo:
-                    "https://images.fotmob.com/image_resources/logo/teamlogo/5922_xsmall.png"
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/5922.png"
             }
         ]
     },
@@ -388,7 +388,7 @@ export const tournamentDetails = {
             {
                 name: "Qatar",
                 code: "QAT",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5902_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5902.png"
             }
         ],
 
@@ -417,138 +417,136 @@ export const tournamentDetails = {
         teams: [
             {
                 name: "Qatar",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5902_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5902.png"
             },
             {
                 name: "Ecuador",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6707_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6707.png"
             },
             {
                 name: "Senegal",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6395_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6395.png"
             },
             {
                 name: "Netherlands",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6708_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6708.png"
             },
 
             {
                 name: "England",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8491_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8491.png"
             },
             {
                 name: "Iran",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6711_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6711.png"
             },
             {
                 name: "USA",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6713_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6713.png"
             },
             {
                 name: "Wales",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5790_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5790.png"
             },
 
             {
                 name: "Argentina",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6706_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6706.png"
             },
             {
                 name: "Saudi Arabia",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/7795_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/7795.png"
             },
             {
                 name: "Mexico",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6710_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6710.png"
             },
             {
                 name: "Poland",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8568_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8568.png"
             },
-
             {
                 name: "France",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6723_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6723.png"
             },
             {
                 name: "Australia",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6716_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6716.png"
             },
             {
                 name: "Denmark",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8238_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8238.png"
             },
             {
                 name: "Tunisia",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6719_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6719.png"
             },
 
             {
                 name: "Spain",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6720_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6720.png"
             },
             {
                 name: "Costa Rica",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6705_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6705.png"
             },
             {
                 name: "Germany",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8570_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8570.png"
             },
             {
                 name: "Japan",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6715_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6715.png"
             },
 
             {
                 name: "Belgium",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8263_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8263.png"
             },
             {
                 name: "Canada",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5810_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5810.png"
             },
             {
                 name: "Morocco",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6262_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6262.png"
             },
             {
                 name: "Croatia",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/10155_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/10155.png"
             },
 
             {
                 name: "Brazil",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8256_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8256.png"
             },
             {
                 name: "Switzerland",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6717_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6717.png"
             },
             {
                 name: "Cameroon",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6629_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6629.png"
             },
             {
                 name: "Serbia",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8205_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8205.png"
             },
-
             {
                 name: "Portugal",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8361_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8361.png"
             },
             {
                 name: "Ghana",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6714_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6714.png"
             },
             {
                 name: "Uruguay",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5796_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/5796.png"
             },
             {
                 name: "South Korea",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/7804_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/7804.png"
             }
         ]
     },
@@ -599,7 +597,7 @@ export const tournamentDetails = {
             {
                 name: "Nga",
                 code: "RUS",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8713_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8713.png"
             }
         ],
 
@@ -631,7 +629,168 @@ export const tournamentDetails = {
             matches: 64
         },
 
-        teams: []
+        teams: [
+            {
+                name: "Russia",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8713.png"
+            },
+            {
+                name: "Saudi Arabia",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/7795.png"
+            },
+            {
+                name: "Egypt",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10255.png"
+            },
+            {
+                name: "Uruguay",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/5796.png"
+            },
+            {
+                name: "Portugal",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8361.png"
+            },
+            {
+                name: "Spain",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6720.png"
+            },
+            {
+                name: "Morocco",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6262.png"
+            },
+            {
+                name: "Iran",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6711.png"
+            },
+            {
+                name: "France",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6723.png"
+            },
+            {
+                name: "Australia",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6716.png"
+            },
+            {
+                name: "Peru",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/5798.png"
+            },
+            {
+                name: "Denmark",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8238.png"
+            },
+            {
+                name: "Argentina",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6706.png"
+            },
+            {
+                name: "Iceland",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8536.png"
+            },
+            {
+                name: "Croatia",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10155.png"
+            },
+            {
+                name: "Nigeria",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6346.png"
+            },
+            {
+                name: "Brazil",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8256.png"
+            },
+            {
+                name: "Switzerland",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6717.png"
+            },
+            {
+                name: "Costa Rica",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6705.png"
+            },
+            {
+                name: "Serbia",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8205.png"
+            },
+            {
+                name: "Germany",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8570.png"
+            },
+            {
+                name: "Mexico",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6710.png"
+            },
+            {
+                name: "Sweden",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8520.png"
+            },
+            {
+                name: "South Korea",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/7804.png"
+            },
+            {
+                name: "Belgium",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8263.png"
+            },
+            {
+                name: "Panama",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/5922.png"
+            },
+            {
+                name: "Tunisia",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6719.png"
+            },
+            {
+                name: "England",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8491.png"
+            },
+            {
+                name: "Poland",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8568.png"
+            },
+            {
+                name: "Senegal",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6395.png"
+            },
+            {
+                name: "Colombia",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8258.png"
+            },
+            {
+                name: "Japan",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6715.png"
+            },
+        ]
     },
 
     worldCup2014: {
@@ -680,7 +839,7 @@ export const tournamentDetails = {
             {
                 name: "Brazil",
                 code: "BRA",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8256_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8256.png"
             }
         ],
 
@@ -713,7 +872,166 @@ export const tournamentDetails = {
             matches: 64
         },
 
-        teams: []
+        teams: [
+            {
+                name: "Brazil",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8256.png"
+            },
+            {
+                name: "Croatia",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10155.png"
+            },
+            {
+                name: "Mexico",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6710.png"
+            },
+            {
+                name: "Cameroon",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6629.png"
+            },
+            {
+                name: "Spain",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6720.png"
+            },
+            {
+                name: "Netherlands",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6708.png"
+            },
+            {
+                name: "Chile",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/9762.png"
+            },
+            {
+                name: "Australia",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6716.png"
+            },
+            {
+                name: "Colombia",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8258.png"
+            },
+            {
+                name: "Greece",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6383.png"
+            },
+            {
+                name: "Ivory Coast",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6709.png"
+            },
+            {
+                name: "Japan",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6715.png"
+            },
+            {
+                name: "Uruguay",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/5796.png"
+            },
+            {
+                name: "Costa Rica",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6705.png"
+            },
+            {
+                name: "England",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8491.png"
+            },
+            {
+                name: "Italy",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8204.png"
+            },
+            {
+                name: "Switzerland",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6717.png"
+            },
+            {
+                name: "Ecuador",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6707.png"
+            },
+            {
+                name: "France",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6723.png"
+            },
+            {
+                name: "Honduras",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/5808.png"
+            },
+            {
+                name: "Argentina",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6706.png"
+            },
+            {
+                name: "Bosnia and Herzegovina",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10106.png"
+            },
+            {
+                name: "Iran",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6711.png"
+            },
+            {
+                name: "Nigeria",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6346.png"
+            },
+            {
+                name: "Germany",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8570.png"
+            },
+            {
+                name: "Portugal",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8361.png"
+            },
+            {
+                name: "Ghana",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6714.png"
+            },
+            {
+                name: "USA",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6713.png"
+            },
+            {
+                name: "Belgium",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8263.png"
+            },
+            {
+                name: "Algeria",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6317.png"
+            },
+            {
+                name: "Russia",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8713.png"
+            },
+            {
+                name: "South Korea",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/7804.png"
+            },
+        ]
     },
 
     worldCup2010: {
@@ -762,7 +1080,7 @@ export const tournamentDetails = {
             {
                 name: "Nam Phi",
                 code: "RSA",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6316_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6316.png"
             }
         ],
 
@@ -792,7 +1110,164 @@ export const tournamentDetails = {
             matches: 64
         },
 
-        teams: []
+        teams: [
+            {
+                name: "South Africa",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6316.png"
+            },
+            {
+                name: "Mexico",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6710.png"
+            },
+            {
+                name: "Uruguay",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/5796.png"
+            },
+            {
+                name: "France",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6723.png"
+            },
+            {
+                name: "Argentina",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6706.png"
+            },
+            {
+                name: "Nigeria",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6346.png"
+            },
+            {
+                name: "South Korea",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/7804.png"
+            },
+            {
+                name: "Greece",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6383.png"
+            },
+            {
+                name: "England",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8491.png"
+            },
+            {
+                name: "USA",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6713.png"
+            },
+            {
+                name: "Algeria",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6317.png"
+            },
+            {
+                name: "Slovenia",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/5787.png"
+            },
+            {
+                name: "Germany",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8570.png"
+            },
+            {
+                name: "Australia",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6716.png"
+            },
+            {
+                name: "Serbia",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8205.png"
+            },
+            {
+                name: "Ghana",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6714.png"
+            },
+            {
+                name: "Netherlands",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6708.png"
+            },
+            {
+                name: "Denmark",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8238.png"
+            },
+            {
+                name: "Japan",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6715.png"
+            },
+            {
+                name: "Cameroon",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6629.png"
+            },
+            {
+                name: "Italy",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8204.png"
+            },
+            {
+                name: "Paraguay",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6724.png"
+            },
+            {
+                name: "New Zealand",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/5820.png"
+            },
+            {
+                name: "Slovakia",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8497.png"
+            },
+            {
+                name: "Brazil",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8256.png"
+            },
+            {
+                name: "North Korea",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6330.png"
+            },
+            {
+                name: "Ivory Coast",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6709.png"
+            },
+            {
+                name: "Portugal",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8361.png"
+            },
+            {
+                name: "Spain",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6720.png"
+            },
+            {
+                name: "Switzerland",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6717.png"
+            },
+            {
+                name: "Honduras",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/5808.png"
+            },
+            {
+                name: "Chile",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/9762.png"
+            },
+        ]
     },
 
     worldCup2006: {
@@ -841,7 +1316,7 @@ export const tournamentDetails = {
             {
                 name: "Đức",
                 code: "GER",
-                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8570_xsmall.png"
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8570.png"
             }
         ],
 
@@ -874,85 +1349,591 @@ export const tournamentDetails = {
             matches: 64
         },
 
-        teams: []
+        teams: [
+            {
+                name: "Germany",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8570.png"
+            },
+            {
+                name: "Costa Rica",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6705.png"
+            },
+            {
+                name: "Poland",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8568.png"
+            },
+            {
+                name: "Ecuador",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6707.png"
+            },
+            {
+                name: "England",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8491.png"
+            },
+            {
+                name: "Paraguay",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6724.png"
+            },
+            {
+                name: "Trinidad and Tobago",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/7724.png"
+            },
+            {
+                name: "Sweden",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8520.png"
+            },
+            {
+                name: "Argentina",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6706.png"
+            },
+            {
+                name: "Ivory Coast",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6709.png"
+            },
+            {
+                name: "Serbia",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8205.png"
+            },
+            {
+                name: "Netherlands",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6708.png"
+            },
+            {
+                name: "Mexico",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6710.png"
+            },
+            {
+                name: "Iran",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6711.png"
+            },
+            {
+                name: "Angola",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6712.png"
+            },
+            {
+                name: "Portugal",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8361.png"
+            },
+            {
+                name: "Italy",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8204.png"
+            },
+            {
+                name: "Ghana",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6714.png"
+            },
+            {
+                name: "USA",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6713.png"
+            },
+            {
+                name: "Czechia",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8496.png"
+            },
+            {
+                name: "Brazil",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8256.png"
+            },
+            {
+                name: "Croatia",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10155.png"
+            },
+            {
+                name: "Australia",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6716.png"
+            },
+            {
+                name: "Japan",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6715.png"
+            },
+            {
+                name: "France",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6723.png"
+            },
+            {
+                name: "Switzerland",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6717.png"
+            },
+            {
+                name: "South Korea",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/7804.png"
+            },
+            {
+                name: "Togo",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/7740.png"
+            },
+            {
+                name: "Spain",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6720.png"
+            },
+            {
+                name: "Ukraine",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6718.png"
+            },
+            {
+                name: "Tunisia",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/6719.png"
+            },
+            {
+                name: "Saudi Arabia",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/7795.png"
+            },
+        ]
     },
 
     // ==========================================
     // PREMIER LEAGUE (NGOẠI HẠNG ANH)
     // ==========================================
     premierLeague2627: {
-        config: { leagueId: 47, season: "2026/2027", query: "Premier League 2026 2027", tournamentKey: "premierLeague2627" },
-        hero: { badge: "English Football", title: "PREMIER LEAGUE 26/27", backgroundImage: "/images/premier-league.jpg", video: "" },
+        config: {
+            leagueId: 47,
+            season: "2026/2027",
+            query: "Premier League 2026 2027",
+            tournamentKey: "premierLeague2627"
+        },
+
+        fonts: {},
+
+        hero: {
+            badge: "English Football League",
+            title: "PREMIER LEAGUE 26/27",
+            backgroundImage: "/images/premier-league.jpg",
+            video: ""
+        },
+
         overview: {
             title: "Premier League 2026/27",
-            description: "Giải bóng đá Ngoại hạng Anh mùa giải 2026/27 là mùa giải thứ 35 của Premier League, giải đấu bóng đá cấp cao nhất của hệ thống các giải bóng đá Anh. Cuộc đua khốc liệt nhất hành tinh quy tụ những câu lạc bộ hàng đầu.",
-            stats: { teams: 20, matches: 380 }
+
+            description:
+                "Premier League 2026/27 là mùa giải thứ 35 của kỷ nguyên Premier League, giải đấu bóng đá cấp cao nhất nước Anh. Với sự góp mặt của 20 câu lạc bộ hàng đầu, mùa giải tiếp tục mang đến những cuộc cạnh tranh khốc liệt cho chức vô địch, suất tham dự cúp châu Âu và cuộc chiến trụ hạng đầy căng thẳng.",
+
+            stats: {
+                teams: 20,
+                matches: 760
+            }
         },
+
+        message: {
+            title: "THE BEST LEAGUE IN THE WORLD",
+
+            description:
+                "Premier League là nơi hội tụ những ngôi sao hàng đầu, các huấn luyện viên xuất sắc và bầu không khí bóng đá cuồng nhiệt bậc nhất hành tinh. Mỗi vòng đấu đều mang đến những trận cầu đỉnh cao, những khoảnh khắc lịch sử và cảm xúc khó quên cho người hâm mộ trên toàn thế giới."
+        },
+
+        hosts: [],
+
+        hostCities: [],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "20 câu lạc bộ thi đấu vòng tròn 2 lượt (sân nhà và sân khách), mỗi đội thi đấu 38 trận. Đội giành nhiều điểm nhất sẽ lên ngôi vô địch. 3 đội đứng cuối bảng sẽ xuống hạng thi đấu tại EFL Championship mùa sau."
+
+            description:
+                "20 câu lạc bộ thi đấu vòng tròn hai lượt sân nhà và sân khách, mỗi đội thi đấu tổng cộng 38 trận. Đội giành nhiều điểm nhất sau 38 vòng đấu sẽ trở thành nhà vô địch. Ba đội đứng cuối bảng xếp hạng sẽ xuống hạng và nhường chỗ cho ba đội thăng hạng từ EFL Championship."
         },
-        tournamentInfo: { startDate: "2026-08-22", endDate: "2027-05-30", teams: 20, matches: 380 },
+
+        tournamentInfo: {
+            startDate: "2026-08-22",
+            endDate: "2027-05-30",
+            teams: 20,
+            matches: 760
+        },
+
         teams: []
+
     },
+
     premierLeague2526: {
-        config: { leagueId: 47, season: "2025/2026", query: "Premier League 2025 2026", tournamentKey: "premierLeague2526" },
-        hero: { badge: "English Football", title: "PREMIER LEAGUE 25/26", backgroundImage: "/images/premier-league-2526.jpg", video: "" },
+        config: {
+            leagueId: 47,
+            season: "2025/2026",
+            query: "Premier League 2025 2026",
+            tournamentKey: "premierLeague2526"
+        },
+
+        fonts: {
+            base: "font-pl-25-26",
+            heading: "font-pl-25-26",
+            subHeading: "font-pl-25-26"
+        },
+
+        hero: {
+            badge: "English Football League",
+            title: "PREMIER LEAGUE 25/26",
+            backgroundImage: "/images/premier-league-2.jpg",
+            video: "/videos/premier-league-25-26.mp4"
+        },
+
         overview: {
             title: "Premier League 2025/26",
-            description: "Giải bóng đá Ngoại hạng Anh mùa giải 2025/26. Một mùa giải hứa hẹn những trận cầu rực lửa với sự tham dự của các đại diện xuất sắc nhất nước Anh.",
-            stats: { teams: 20, matches: 380 }
+
+            description:
+                "Premier League 2025/26 tiếp tục khẳng định vị thế là giải vô địch quốc gia hấp dẫn nhất thế giới. Những câu lạc bộ giàu truyền thống cùng các đội bóng đang vươn lên mạnh mẽ tạo nên một mùa giải đầy kịch tính từ cuộc đua vô địch cho đến cuộc chiến trụ hạng.",
+
+            stats: {
+                teams: 20,
+                matches: 760,
+                cities: 12,
+                stadiums: 20
+            }
         },
+
+        message: {
+            title: "PASSION NEVER STOPS",
+
+            description:
+                "Mỗi mùa giải Premier League là một hành trình đầy cảm xúc với những trận derby nảy lửa, các cuộc lội ngược dòng ngoạn mục và sự cạnh tranh không khoan nhượng. Đây là nơi mọi điểm số đều có thể thay đổi cục diện của cả mùa giải."
+        },
+
+        hosts: [
+            {
+                name: "Anh",
+                code: "ENG",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8491.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "London", country: "ENG" },      // Arsenal, Chelsea, Brentford, Crystal Palace, Fulham, Tottenham, West Ham
+            { city: "Birmingham", country: "ENG" },  // Aston Villa
+            { city: "Bournemouth", country: "ENG" }, // Bournemouth
+            { city: "Brighton", country: "ENG" },    // Brighton & Hove Albion
+            { city: "Burnley", country: "ENG" },     // Burnley
+            { city: "Liverpool", country: "ENG" },   // Liverpool, Everton
+            { city: "Leeds", country: "ENG" },       // Leeds United
+            { city: "Manchester", country: "ENG" },  // Man City, Man United
+            { city: "Newcastle", country: "ENG" },   // Newcastle United
+            { city: "Nottingham", country: "ENG" },  // Nottingham Forest
+            { city: "Sunderland", country: "ENG" },  // Sunderland
+            { city: "Wolverhampton", country: "ENG" } // Wolves
+        ],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "20 đội thi đấu vòng tròn 38 vòng. Hệ thống thăng/xuống hạng gồm 3 vị trí cuối bảng sẽ rớt xuống Championship."
+
+            description:
+                "20 đội bóng thi đấu vòng tròn hai lượt trong 38 vòng đấu. Đội dẫn đầu bảng xếp hạng sau khi mùa giải kết thúc sẽ giành chức vô địch. Ba đội cuối bảng xuống hạng và được thay thế bởi ba đội thăng hạng từ Championship."
         },
-        tournamentInfo: { startDate: "2025-08-16", endDate: "2026-05-24", teams: 20, matches: 380 },
-        teams: []
+
+        tournamentInfo: {
+            startDate: "2025-08-16",
+            endDate: "2026-05-24",
+            teams: 20,
+            matches: 760
+        },
+
+        teams: [
+            {
+                name: "Arsenal",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/9825.png"
+            },
+            {
+                name: "Aston Villa",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10252.png"
+            },
+            {
+                name: "AFC Bournemouth",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8678.png"
+            },
+            {
+                name: "Brentford",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/9937.png"
+            },
+            {
+                name: "Brighton & Hove Albion",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10204.png"
+            },
+            {
+                name: "Burnley",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8191.png"
+            },
+            {
+                name: "Chelsea",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8455.png"
+            },
+            {
+                name: "Crystal Palace",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/9826.png"
+            },
+            {
+                name: "Everton",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8668.png"
+            },
+            {
+                name: "Fulham",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/9879.png"
+            },
+            {
+                name: "Leeds United",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8463.png"
+            },
+            {
+                name: "Liverpool",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8650.png"
+            },
+            {
+
+                name: "Manchester City",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8456.png"
+            },
+            {
+
+                name: "Manchester United",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10260.png"
+            },
+            {
+
+                name: "Newcastle United",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10261.png"
+            },
+            {
+
+                name: "Nottingham Forest",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10203.png"
+            },
+            {
+
+                name: "Sunderland",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8472.png"
+            },
+            {
+
+                name: "Tottenham Hotspur",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8586.png"
+            },
+            {
+
+                name: "West Ham United",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8654.png"
+            },
+            {
+
+                name: "Wolverhampton Wanderers",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8602.png"
+            },
+        ]
+
     },
+
     premierLeague2425: {
-        config: { leagueId: 47, season: "2024/2025", query: "Premier League 2024 2025", tournamentKey: "premierLeague2425" },
-        hero: { badge: "English Football", title: "PREMIER LEAGUE 24/25", backgroundImage: "/images/premier-league-2425.jpg", video: "" },
+        config: {
+            leagueId: 47,
+            season: "2024/2025",
+            query: "Premier League 2024 2025",
+            tournamentKey: "premierLeague2425"
+        },
+
+        fonts: {},
+
+        hero: {
+            badge: "English Football League",
+            title: "PREMIER LEAGUE 24/25",
+            backgroundImage: "/images/premier-league-2.jpg",
+            video: ""
+        },
+
         overview: {
             title: "Premier League 2024/25",
-            description: "Mùa giải thứ 33 của giải Ngoại hạng Anh. Mùa giải chứng kiến sự áp đảo của các thế lực lâu năm cùng sự trỗi dậy của các đội bóng mới thăng hạng.",
-            stats: { teams: 20, matches: 380 }
+
+            description:
+                "Premier League 2024/25 đánh dấu một mùa giải sôi động của bóng đá Anh với sự góp mặt của những câu lạc bộ hàng đầu. Cuộc đua vô địch, các suất dự cúp châu Âu và cuộc chiến trụ hạng tạo nên sức hút đặc biệt xuyên suốt mùa giải.",
+
+            stats: {
+                teams: 20,
+                matches: 760
+            }
         },
+
+        message: {
+            title: "WHERE LEGENDS COMPETE",
+
+            description:
+                "Premier League là sân khấu của những huyền thoại bóng đá, nơi các đội bóng lớn cạnh tranh từng điểm số và các tài năng trẻ có cơ hội khẳng định tên tuổi. Mỗi trận đấu đều mang ý nghĩa quan trọng trong hành trình chinh phục đỉnh cao."
+        },
+
+        hosts: [],
+
+        hostCities: [],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "20 đội thi đấu vòng tròn 38 vòng. 4 vị trí dẫn đầu giành quyền tham dự UEFA Champions League."
+
+            description:
+                "20 đội thi đấu vòng tròn hai lượt với tổng cộng 760 trận đấu. Các đội được xếp hạng dựa trên điểm số, hiệu số bàn thắng bại và số bàn thắng ghi được. Những vị trí dẫn đầu sẽ giành vé tham dự các giải đấu cấp câu lạc bộ châu Âu."
         },
-        tournamentInfo: { startDate: "2024-08-16", endDate: "2025-05-25", teams: 20, matches: 380 },
+
+        tournamentInfo: {
+            startDate: "2024-08-16",
+            endDate: "2025-05-25",
+            teams: 20,
+            matches: 760
+        },
+
         teams: []
+
     },
+
     premierLeague2324: {
-        config: { leagueId: 47, season: "2023/2024", query: "Premier League 2023 2024", tournamentKey: "premierLeague2324" },
-        hero: { badge: "English Football", title: "PREMIER LEAGUE 23/24", backgroundImage: "/images/premier-league-2324.jpg", video: "" },
+        config: {
+            leagueId: 47,
+            season: "2023/2024",
+            query: "Premier League 2023 2024",
+            tournamentKey: "premierLeague2324"
+        },
+
+        fonts: {},
+
+        hero: {
+            badge: "English Football League",
+            title: "PREMIER LEAGUE 23/24",
+            backgroundImage: "/images/premier-league-2.jpg",
+            video: ""
+        },
+
         overview: {
             title: "Premier League 2023/24",
-            description: "Mùa giải bùng nổ của bóng đá Anh, nơi các chiến thuật hiện đại lên ngôi và định hình lại vị thế của các Big 6.",
-            stats: { teams: 20, matches: 380 }
+
+            description:
+                "Premier League 2023/24 mang đến những cuộc đối đầu đỉnh cao giữa các thế lực truyền thống và những đội bóng đang nổi lên mạnh mẽ. Chất lượng chuyên môn cao cùng bầu không khí cuồng nhiệt tiếp tục làm nên sức hấp dẫn đặc biệt của giải đấu.",
+
+            stats: {
+                teams: 20,
+                matches: 760
+            }
         },
+
+        message: {
+            title: "EVERY MATCH MATTERS",
+
+            description:
+                "Trong Premier League, mọi trận đấu đều có thể tạo nên bước ngoặt cho cả mùa giải. Sự cạnh tranh quyết liệt từ nhóm đầu bảng đến nhóm cuối bảng khiến giải đấu luôn khó lường và đầy cảm xúc."
+        },
+
+        hosts: [],
+
+        hostCities: [],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "Gồm 20 đội, đá vòng tròn 2 lượt (tổng cộng 380 trận). Chế độ phân thứ hạng dựa trên Điểm, Hiệu số bàn thắng, và Tổng số bàn thắng."
+
+            description:
+                "Giải đấu gồm 20 đội bóng thi đấu vòng tròn hai lượt sân nhà và sân khách. Các tiêu chí xếp hạng lần lượt là điểm số, hiệu số bàn thắng bại và tổng số bàn thắng ghi được. Ba đội cuối bảng sẽ xuống hạng."
         },
-        tournamentInfo: { startDate: "2023-08-11", endDate: "2024-05-19", teams: 20, matches: 380 },
+
+        tournamentInfo: {
+            startDate: "2023-08-11",
+            endDate: "2024-05-19",
+            teams: 20,
+            matches: 760
+        },
+
         teams: []
+
+
     },
+
     premierLeague2223: {
-        config: { leagueId: 47, season: "2022/2023", query: "Premier League 2022 2023", tournamentKey: "premierLeague2223" },
-        hero: { badge: "English Football", title: "PREMIER LEAGUE 22/23", backgroundImage: "/images/premier-league-2223.jpg", video: "" },
+        config: {
+            leagueId: 47,
+            season: "2022/2023",
+            query: "Premier League 2022 2023",
+            tournamentKey: "premierLeague2223"
+        },
+
+        fonts: {},
+
+        hero: {
+            badge: "English Football League",
+            title: "PREMIER LEAGUE 22/23",
+            backgroundImage: "/images/premier-league-2.jpg",
+            video: ""
+        },
+
         overview: {
             title: "Premier League 2022/23",
-            description: "Mùa giải đặc biệt bị gián đoạn vào mùa Đông để nhường chỗ cho kỳ World Cup 2022 tại Qatar, tạo nên một cuộc đua thể lực vô tiền khoáng hậu.",
-            stats: { teams: 20, matches: 380 }
+
+            description:
+                "Premier League 2022/23 là mùa giải đặc biệt khi lịch thi đấu bị điều chỉnh để nhường chỗ cho FIFA World Cup 2022 vào giữa mùa. Dù vậy, giải đấu vẫn duy trì sự hấp dẫn với những cuộc cạnh tranh quyết liệt ở mọi vị trí trên bảng xếp hạng.",
+
+            stats: {
+                teams: 20,
+                matches: 760
+            }
         },
+
+        message: {
+            title: "UNMATCHED INTENSITY",
+
+            description:
+                "Không giải đấu nào mang đến nhịp độ thi đấu và mức độ cạnh tranh khốc liệt như Premier League. Mỗi vòng đấu đều chứng kiến những bất ngờ, những trận cầu kinh điển và những khoảnh khắc đáng nhớ của bóng đá Anh."
+        },
+
+        hosts: [],
+
+        hostCities: [],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "Thi đấu vòng tròn 38 vòng. 3 đội chót bảng xuống hạng, top 4 dự Champions League."
+
+            description:
+                "20 đội bóng thi đấu vòng tròn hai lượt trong suốt mùa giải. Đội có số điểm cao nhất giành chức vô địch, trong khi ba đội xếp cuối bảng sẽ xuống hạng. Các vị trí dẫn đầu giành quyền tham dự các cúp châu Âu mùa giải kế tiếp."
         },
-        tournamentInfo: { startDate: "2022-08-05", endDate: "2023-05-28", teams: 20, matches: 380 },
+
+        tournamentInfo: {
+            startDate: "2022-08-05",
+            endDate: "2023-05-28",
+            teams: 20,
+            matches: 760
+        },
+
         teams: []
     },
 
@@ -1514,7 +2495,7 @@ export const tournamentDetails = {
     // ==========================================
     facup2526: {
         config: { leagueId: 132, season: "2025/2026", query: "FA Cup 2025 2026", tournamentKey: "facup2526" },
-        hero: { badge: "English Football", title: "FA CUP 25/26", backgroundImage: "/images/fa-cup.jpg", video: "" },
+        hero: { badge: "English Football League", title: "FA CUP 25/26", backgroundImage: "/images/fa-cup.jpg", video: "" },
         overview: {
             title: "FA Cup 2025/26",
             description: "Giải bóng đá lâu đời nhất thế giới, nơi những câu chuyện cổ tích và những cơn địa chấn do các đội bóng nhỏ tạo ra trước các ông lớn luôn là đặc sản.",
@@ -1529,7 +2510,7 @@ export const tournamentDetails = {
     },
     facup2425: {
         config: { leagueId: 132, season: "2024/2025", query: "FA Cup 2024 2025", tournamentKey: "facup2425" },
-        hero: { badge: "English Football", title: "FA CUP 24/25", backgroundImage: "/images/fa-cup.jpg", video: "" },
+        hero: { badge: "English Football League", title: "FA CUP 24/25", backgroundImage: "/images/fa-cup.jpg", video: "" },
         overview: {
             title: "FA Cup 2024/25",
             description: "Mùa giải đánh dấu bước ngoặt lớn khi LĐBĐ Anh chính thức khai tử thể thức đá lại (replay) từ vòng 1 để nhường chỗ cho cúp châu Âu mở rộng.",
@@ -1544,7 +2525,7 @@ export const tournamentDetails = {
     },
     facup2324: {
         config: { leagueId: 132, season: "2023/2024", query: "FA Cup 2023 2024", tournamentKey: "facup2324" },
-        hero: { badge: "English Football", title: "FA CUP 23/24", backgroundImage: "/images/fa-cup.jpg", video: "" },
+        hero: { badge: "English Football League", title: "FA CUP 23/24", backgroundImage: "/images/fa-cup.jpg", video: "" },
         overview: {
             title: "FA Cup 2023/24",
             description: "Mùa giải chứng kiến trận Derby Manchester rực lửa ở chung kết, bảo vệ sự danh giá và truyền thống của bóng đá Anh.",
@@ -1559,7 +2540,7 @@ export const tournamentDetails = {
     },
     facup2223: {
         config: { leagueId: 132, season: "2022/2023", query: "FA Cup 2022 2023", tournamentKey: "facup2223" },
-        hero: { badge: "English Football", title: "FA CUP 22/23", backgroundImage: "/images/fa-cup.jpg", video: "" },
+        hero: { badge: "English Football League", title: "FA CUP 22/23", backgroundImage: "/images/fa-cup.jpg", video: "" },
         overview: {
             title: "FA Cup 2022/23",
             description: "Mùa giải là một phần trong cú ăn ba lịch sử của nhà vô địch, vượt qua hàng loạt đối thủ sừng sỏ trên con đường tiến đến Wembley.",

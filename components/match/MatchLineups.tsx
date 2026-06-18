@@ -72,7 +72,7 @@ export default function MatchLineups({ lineup, homeTeam, awayTeam }: { lineup: a
                             {isHighest && <Star className="w-3 h-3 text-yellow-400 fill-yellow-400 shrink-0 drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]" />}
 
                             {p.isCaptain && (
-                                <span className="text-[9px] bg-blue-600 text-white px-1.5 rounded font-black shrink-0 shadow-sm">
+                                <span className="text-[9px] bg-red-600 text-white px-1.5 rounded font-black shrink-0 shadow-sm">
                                     C
                                 </span>
                             )}

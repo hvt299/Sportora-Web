@@ -66,6 +66,12 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Premier-League-2025-2026";
+  src: url("/fonts/Premier-League-2025-2026.ttf") format("truetype");
+  font-display: swap;
+}
+
 @theme inline {
   --font-body: "NotoSans", sans-serif;
 
@@ -84,6 +90,8 @@
   --font-wc10: "South-Africa-2010", sans-serif;
 
   --font-wc06: "ReGermany2006", sans-serif;
+
+  --font-pl-25-26: "Premier-League-2025-2026", sans-serif;
 }
 
 :root {

@@ -1,4 +1,4 @@
-import { Clock, BarChart2, CircleDot, Square, ArrowRightLeft, Flag, Bandage, Target, CheckCircle, XCircle } from 'lucide-react';
+import { Clock, BarChart2, CircleDot, Square, ArrowRightLeft, Flag, Bandage, Target, CheckCircle, XCircle, Monitor } from 'lucide-react';
 
 const GOAL_DESC_MAP: Record<string, string> = {
     "Header": "Đánh đầu",
@@ -11,14 +11,33 @@ const GOAL_DESC_MAP: Record<string, string> = {
     "LeftFoot": "Chân trái"
 };
 
-const renderEventIcon = (type: string, cardType?: string) => {
+const VAR_DESC_MAP: Record<string, string> = {
+    "Goal ruled out": "Hủy bàn thắng",
+    "foul": "Phạm lỗi",
+    "offside": "Việt vị",
+    "handball": "Chạm tay",
+    "Penalty awarded": "Cho hưởng phạt đền",
+    "Penalty cancelled": "Hủy phạt đền",
+    "Card upgrade": "Nâng thành thẻ đỏ",
+    "Card cancelled": "Hủy thẻ",
+    "Goal confirmed": "Công nhận bàn thắng",
+    "Missed penalty - to be retaken": "Đá hỏng phạt đền - Cho đá lại"
+};
+
+const renderEventIcon = (type: string, cardType?: string, isHome?: boolean) => {
+    // Xác định màu theo đội
+    const teamColor = isHome === true ? "text-blue-400 fill-blue-400/30" : isHome === false ? "text-amber-400 fill-amber-400/30" : "text-slate-400";
+    const iconColor = isHome === true ? "text-blue-400" : isHome === false ? "text-amber-400" : "text-slate-400";
+
     switch (type) {
-        case "Goal": return <CircleDot className="w-3 h-3 text-yellow-400 fill-yellow-400/30" />;
+        case "Goal": return <CircleDot className={`w-3 h-3 ${teamColor}`} />;
+        case "Substitution": return <ArrowRightLeft className={`w-3 h-3 ${iconColor}`} />;
+        // Các sự kiện đặc thù giữ màu riêng (Đỏ, Vàng, Tím)
         case "Card":
             if (cardType === "Red") return <Square className="w-3 h-3 text-red-500 fill-red-500" />;
             return <Square className="w-3 h-3 text-yellow-500 fill-yellow-500" />;
-        case "Substitution": return <ArrowRightLeft className="w-3 h-3 text-blue-400" />;
-        default: return <CircleDot className="w-3 h-3 text-slate-400" />;
+        case "VAR": return <Monitor className="w-3 h-3 text-purple-400" />;
+        default: return <CircleDot className={`w-3 h-3 ${teamColor}`} />;
     }
 };
 
@@ -28,7 +47,7 @@ export default function MatchTimeline({ matchData, homeTeam, awayTeam }: { match
     const rawMomentum = matchData.content?.momentum?.main?.data || [];
 
     const hasPenalties = penaltyShootoutEvents.length > 0;
-    const importantEvents = events.filter((e: any) => e.type === "Goal" || (e.type === "Card" && e.card === "Red") || e.type === "RedCard");
+    const importantEvents = events.filter((e: any) => e.type === "Goal" || (e.type === "Card" && e.card === "Red") || e.type === "RedCard" || e.type === "VAR");
 
     // Đồng bộ biểu đồ áp lực với thời gian thực của trận đấu
     const maxMinute = Math.max(90, rawMomentum.reduce((max: number, m: any) => Math.max(max, m.minute), 0));
@@ -92,7 +111,12 @@ export default function MatchTimeline({ matchData, homeTeam, awayTeam }: { match
 
         const assistText = ev.assistStr?.replace("assist by", "Kiến tạo bởi") || "";
         const goalDesc = ev.goalDescription ? (GOAL_DESC_MAP[ev.goalDescription] || ev.goalDescription) : "";
-        const combinedDesc = [goalDesc, assistText].filter(Boolean).join(", ");
+        let combinedDesc = [goalDesc, assistText].filter(Boolean).join(", ");
+
+        // Xử lý chuỗi text cho sự kiện VAR
+        if (ev.type === "VAR" && ev.VAR?.decision?.value) {
+            combinedDesc = ev.VAR.decision.value.map((v: string) => VAR_DESC_MAP[v] || v).join(" - ");
+        }
 
         return (
             <div key={index} className="text-sm font-bold text-white flex flex-col">
@@ -201,8 +225,36 @@ export default function MatchTimeline({ matchData, homeTeam, awayTeam }: { match
                     <h3 className="text-xl font-black italic tracking-tighter uppercase mb-8 flex items-center gap-3 text-slate-200 border-b border-slate-800 pb-4">
                         <BarChart2 className="w-5 h-5 text-indigo-500" /> Áp lực trận đấu
                     </h3>
-                    <div className="relative w-full h-32 flex flex-col mt-6 mb-4">
-                        <div className="absolute inset-y-0 left-0 w-full h-px bg-slate-700 top-1/2 -translate-y-1/2 z-0" />
+                    {/* KHÔNG DÙNG overflow-hidden ở thẻ cha để các icon không bị cắt mất */}
+                    <div className="relative w-full h-32 flex flex-col mt-8 mb-6">
+
+                        {/* 1. LỚP NỀN LƯỚI Ô VUÔNG (Nằm dưới cùng, bọc viền và ẩn tràn riêng lẻ) */}
+                        <div className="absolute inset-0 border border-slate-800/50 rounded-sm overflow-hidden bg-slate-950/30 z-0 pointer-events-none">
+                            <div
+                                className="absolute inset-0 opacity-30"
+                                style={{
+                                    backgroundImage: 'linear-gradient(to right, #334155 1px, transparent 1px), linear-gradient(to bottom, #334155 1px, transparent 1px)',
+                                    backgroundSize: '12px 12px'
+                                }}
+                            />
+                        </div>
+
+                        {/* 2. Trục ngang 0 */}
+                        <div className="absolute inset-y-0 left-0 w-full h-0.5 bg-slate-600 top-1/2 -translate-y-1/2 z-0" />
+
+                        {/* 3. CÁC ĐƯỜNG NÉT ĐỨT MỐC THỜI GIAN CHÍNH (Đậm hơn một chút) */}
+                        <div className="absolute inset-0 z-0 pointer-events-none">
+                            {[15, 30, 45, 60, 75, 90, 97, 105, 112].map((min) => {
+                                if (min >= maxMinute) return null;
+                                return (
+                                    <div
+                                        key={min}
+                                        className="absolute top-0 bottom-0 border-l border-dashed border-slate-500/50"
+                                        style={{ left: pct(min) }}
+                                    />
+                                );
+                            })}
+                        </div>
 
                         <div className="flex-1 flex items-end justify-between gap-px z-10">
                             {momentumBars.map((m: any, i: number) => (
@@ -225,11 +277,8 @@ export default function MatchTimeline({ matchData, homeTeam, awayTeam }: { match
                             return (
                                 <div key={`pin-${i}`} className={`absolute ${verticalPos} -translate-x-1/2 z-20`} style={{ left: `${leftPerc}%` }}>
                                     <div className={`bg-slate-950 rounded-full p-0.75 shadow-lg border ${isHomeEvent ? 'border-blue-500/50' : 'border-amber-500/50'}`}>
-                                        {isGoal ? (
-                                            <CircleDot className="w-3 h-3 text-yellow-400 fill-yellow-400/50" />
-                                        ) : (
-                                            <Square className="w-3 h-3 text-red-500 fill-red-500" />
-                                        )}
+                                        {/* Tái sử dụng hàm renderEventIcon để đồng bộ màu */}
+                                        {renderEventIcon(ev.type, ev.card, isHomeEvent)}
                                     </div>
                                 </div>
                             );
@@ -237,11 +286,19 @@ export default function MatchTimeline({ matchData, homeTeam, awayTeam }: { match
                     </div>
                     {/* Chú thích mốc thời gian căn theo tỷ lệ chính xác */}
                     <div className="relative w-full h-4 mt-4 text-[10px] text-slate-500 font-bold uppercase">
-                        <span className="absolute left-0 translate-x-0">0'</span>
+                        <span className="absolute left-0 translate-x-0">Đầu trận</span>
+                        <span className="absolute -translate-x-1/2 hidden sm:block" style={{ left: pct(15) }}>15'</span>
+                        <span className="absolute -translate-x-1/2 hidden sm:block" style={{ left: pct(30) }}>30'</span>
                         <span className="absolute -translate-x-1/2" style={{ left: pct(45) }}>Hết H1</span>
+                        <span className="absolute -translate-x-1/2 hidden sm:block" style={{ left: pct(60) }}>60'</span>
+                        <span className="absolute -translate-x-1/2 hidden sm:block" style={{ left: pct(75) }}>75'</span>
+
                         {hasExtraTime ? (
                             <>
                                 <span className="absolute -translate-x-1/2" style={{ left: pct(90) }}>Hết H2</span>
+                                {maxMinute >= 97 && <span className="absolute -translate-x-1/2 hidden md:block" style={{ left: pct(97) }}>97'</span>}
+                                {maxMinute >= 105 && <span className="absolute -translate-x-1/2" style={{ left: pct(105) }}>Hết HP1</span>}
+                                {maxMinute >= 112 && <span className="absolute -translate-x-1/2 hidden md:block" style={{ left: pct(112) }}>112'</span>}
                                 <span className="absolute right-0 translate-x-0">{hasPenalties ? "Hết HP" : "Hết trận"}</span>
                             </>
                         ) : (
@@ -325,7 +382,8 @@ export default function MatchTimeline({ matchData, homeTeam, awayTeam }: { match
                                         <div className="absolute left-1/2 -translate-x-1/2 min-w-8 w-auto px-2 h-8 rounded-full bg-slate-950 border border-slate-700 flex items-center justify-center text-[11px] font-black text-slate-300 shadow-md z-20 whitespace-nowrap">
                                             {timeStr}'
                                             <div className="absolute -top-1 -right-1.5 bg-slate-900 rounded-full border border-slate-700 shadow-sm p-0.5">
-                                                {renderEventIcon(eventType, sampleEvent.card)}
+                                                {/* Bổ sung thêm isHome để tô màu icon */}
+                                                {renderEventIcon(eventType, sampleEvent.card, sampleEvent.isHome)}
                                             </div>
                                         </div>
 
