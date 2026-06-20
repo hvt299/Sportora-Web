@@ -1521,10 +1521,14 @@ export const tournamentDetails = {
             tournamentKey: "premierLeague2627"
         },
 
-        fonts: {},
+        fonts: {
+            base: "font-pl-bold",
+            heading: "font-pl-23-24",
+            subHeading: "font-pl-regular"
+        },
 
         hero: {
-            badge: "English Football League",
+            badge: "English Football",
             title: "PREMIER LEAGUE 26/27",
             backgroundImage: "/images/premier-league.jpg",
             video: ""
@@ -1532,85 +1536,21 @@ export const tournamentDetails = {
 
         overview: {
             title: "Premier League 2026/27",
-
             description:
-                "Premier League 2026/27 là mùa giải thứ 35 của kỷ nguyên Premier League, giải đấu bóng đá cấp cao nhất nước Anh. Với sự góp mặt của 20 câu lạc bộ hàng đầu, mùa giải tiếp tục mang đến những cuộc cạnh tranh khốc liệt cho chức vô địch, suất tham dự cúp châu Âu và cuộc chiến trụ hạng đầy căng thẳng.",
-
+                "Premier League 2026/27 mở ra một chương mới của bóng đá Anh với sự hiện diện của những câu lạc bộ giàu truyền thống và các đội bóng đầy khát vọng. Cuộc cạnh tranh khốc liệt ở mọi vị trí trên bảng xếp hạng tiếp tục tạo nên một mùa giải hấp dẫn, nơi mỗi vòng đấu đều có thể làm thay đổi cục diện cuộc đua.",
             stats: {
                 teams: 20,
-                matches: 760
-            }
-        },
-
-        message: {
-            title: "THE BEST LEAGUE IN THE WORLD",
-
-            description:
-                "Premier League là nơi hội tụ những ngôi sao hàng đầu, các huấn luyện viên xuất sắc và bầu không khí bóng đá cuồng nhiệt bậc nhất hành tinh. Mỗi vòng đấu đều mang đến những trận cầu đỉnh cao, những khoảnh khắc lịch sử và cảm xúc khó quên cho người hâm mộ trên toàn thế giới."
-        },
-
-        hosts: [],
-
-        hostCities: [],
-
-        format: {
-            title: "Thể thức thi đấu",
-
-            description:
-                "20 câu lạc bộ thi đấu vòng tròn hai lượt sân nhà và sân khách, mỗi đội thi đấu tổng cộng 38 trận. Đội giành nhiều điểm nhất sau 38 vòng đấu sẽ trở thành nhà vô địch. Ba đội đứng cuối bảng xếp hạng sẽ xuống hạng và nhường chỗ cho ba đội thăng hạng từ EFL Championship."
-        },
-
-        tournamentInfo: {
-            startDate: "2026-08-22",
-            endDate: "2027-05-30",
-            teams: 20,
-            matches: 760
-        },
-
-        teams: []
-
-    },
-
-    premierLeague2526: {
-        config: {
-            leagueId: 47,
-            season: "2025/2026",
-            query: "Premier League 2025 2026",
-            tournamentKey: "premierLeague2526"
-        },
-
-        fonts: {
-            base: "font-pl-25-26",
-            heading: "font-pl-25-26",
-            subHeading: "font-pl-25-26"
-        },
-
-        hero: {
-            badge: "English Football League",
-            title: "PREMIER LEAGUE 25/26",
-            backgroundImage: "/images/premier-league-2.jpg",
-            video: "/videos/premier-league-25-26.mp4"
-        },
-
-        overview: {
-            title: "Premier League 2025/26",
-
-            description:
-                "Premier League 2025/26 tiếp tục khẳng định vị thế là giải vô địch quốc gia hấp dẫn nhất thế giới. Những câu lạc bộ giàu truyền thống cùng các đội bóng đang vươn lên mạnh mẽ tạo nên một mùa giải đầy kịch tính từ cuộc đua vô địch cho đến cuộc chiến trụ hạng.",
-
-            stats: {
-                teams: 20,
-                matches: 760,
-                cities: 12,
+                matches: 380,
+                cities: 13,
                 stadiums: 20
             }
         },
 
         message: {
-            title: "PASSION NEVER STOPS",
-
+            title: "THE BEST LEAGUE IN THE WORLD",
             description:
-                "Mỗi mùa giải Premier League là một hành trình đầy cảm xúc với những trận derby nảy lửa, các cuộc lội ngược dòng ngoạn mục và sự cạnh tranh không khoan nhượng. Đây là nơi mọi điểm số đều có thể thay đổi cục diện của cả mùa giải."
+                "Nơi quy tụ những cầu thủ xuất sắc, những huấn luyện viên tài năng và bầu không khí cuồng nhiệt bậc nhất hành tinh. Premier League luôn mang đến các trận cầu đỉnh cao, những bất ngờ khó lường và những khoảnh khắc đáng nhớ cho hàng triệu người hâm mộ trên toàn thế giới."
+
         },
 
         hosts: [
@@ -1622,18 +1562,203 @@ export const tournamentDetails = {
         ],
 
         hostCities: [
-            { city: "London", country: "ENG" },      // Arsenal, Chelsea, Brentford, Crystal Palace, Fulham, Tottenham, West Ham
-            { city: "Birmingham", country: "ENG" },  // Aston Villa
-            { city: "Bournemouth", country: "ENG" }, // Bournemouth
-            { city: "Brighton", country: "ENG" },    // Brighton & Hove Albion
-            { city: "Burnley", country: "ENG" },     // Burnley
-            { city: "Liverpool", country: "ENG" },   // Liverpool, Everton
-            { city: "Leeds", country: "ENG" },       // Leeds United
-            { city: "Manchester", country: "ENG" },  // Man City, Man United
-            { city: "Newcastle", country: "ENG" },   // Newcastle United
-            { city: "Nottingham", country: "ENG" },  // Nottingham Forest
-            { city: "Sunderland", country: "ENG" },  // Sunderland
-            { city: "Wolverhampton", country: "ENG" } // Wolves
+            { city: "London", country: "ENG" },
+            { city: "Birmingham", country: "ENG" },
+            { city: "Bournemouth", country: "ENG" },
+            { city: "Brighton", country: "ENG" },
+            { city: "Coventry", country: "ENG" },
+            { city: "Hull", country: "ENG" },
+            { city: "Ipswich", country: "ENG" },
+            { city: "Leeds", country: "ENG" },
+            { city: "Liverpool", country: "ENG" },
+            { city: "Manchester", country: "ENG" },
+            { city: "Newcastle", country: "ENG" },
+            { city: "Nottingham", country: "ENG" },
+            { city: "Sunderland", country: "ENG" }
+        ],
+
+        format: {
+            title: "Thể thức thi đấu",
+            description:
+                "20 đội bóng thi đấu vòng tròn hai lượt sân nhà và sân khách trong 38 vòng đấu. Đội dẫn đầu bảng xếp hạng sau khi mùa giải kết thúc sẽ giành chức vô địch. Ba đội cuối bảng sẽ xuống hạng và được thay thế bởi ba đội thăng hạng từ Championship."
+        },
+
+        tournamentInfo: {
+            startDate: "2026-08-22",
+            endDate: "2027-05-30",
+            teams: 20,
+            matches: 380
+        },
+
+        teams: [
+            {
+                name: "Arsenal",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/9825.png"
+            },
+            {
+                name: "Aston Villa",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10252.png"
+            },
+            {
+                name: "AFC Bournemouth",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8678.png"
+            },
+            {
+                name: "Brentford",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/9937.png"
+            },
+            {
+                name: "Brighton & Hove Albion",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10204.png"
+            },
+            {
+                name: "Chelsea",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8455.png"
+            },
+            {
+                name: "Coventry City",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8669.png"
+            },
+            {
+                name: "Crystal Palace",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/9826.png"
+            },
+            {
+                name: "Everton",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8668.png"
+            },
+            {
+                name: "Fulham",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/9879.png"
+            },
+            {
+                name: "Hull City",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8667.png"
+            },
+            {
+                name: "Ipswich Town",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/9902.png"
+            },
+            {
+                name: "Leeds United",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8463.png"
+            },
+            {
+                name: "Liverpool",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8650.png"
+            },
+            {
+                name: "Manchester City",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8456.png"
+            },
+            {
+
+                name: "Manchester United",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10260.png"
+            },
+            {
+
+                name: "Newcastle United",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10261.png"
+            },
+            {
+
+                name: "Nottingham Forest",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10203.png"
+            },
+            {
+
+                name: "Sunderland",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8472.png"
+            },
+            {
+
+                name: "Tottenham Hotspur",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8586.png"
+            },
+        ]
+    },
+
+    premierLeague2526: {
+        config: {
+            leagueId: 47,
+            season: "2025/2026",
+            query: "Premier League 2025 2026",
+            tournamentKey: "premierLeague2526"
+        },
+
+        fonts: {
+            base: "font-pl-bold",
+            heading: "font-pl-23-24",
+            subHeading: "font-pl-regular"
+        },
+
+        hero: {
+            badge: "English Football",
+            title: "PREMIER LEAGUE 25/26",
+            backgroundImage: "/images/premier-league-2.jpg",
+            video: "/videos/premier-league-25-26.mp4"
+        },
+
+        overview: {
+            title: "Premier League 2025/26",
+            description:
+                "Premier League 2025/26 tiếp tục mang đến những màn so tài đỉnh cao giữa các câu lạc bộ hàng đầu nước Anh. Với sự cạnh tranh quyết liệt ở cả nhóm dẫn đầu lẫn nhóm cuối bảng, mùa giải hứa hẹn sẽ tạo nên những câu chuyện đáng nhớ và những khoảnh khắc giàu cảm xúc xuyên suốt 38 vòng đấu.",
+            stats: {
+                teams: 20,
+                matches: 380,
+                cities: 12,
+                stadiums: 20
+            }
+        },
+
+        message: {
+            title: "PASSION NEVER STOPS",
+            description:
+                "Đam mê bóng đá luôn cháy bỏng trên mọi khán đài và trong từng trận đấu của Premier League. Từ những cuộc đối đầu kinh điển đến các màn bứt phá ngoạn mục, mỗi vòng đấu đều góp phần tạo nên sức hấp dẫn đặc biệt của giải đấu."
+        },
+
+        hosts: [
+            {
+                name: "Anh",
+                code: "ENG",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8491.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "London", country: "ENG" },
+            { city: "Birmingham", country: "ENG" },
+            { city: "Bournemouth", country: "ENG" },
+            { city: "Brighton", country: "ENG" },
+            { city: "Burnley", country: "ENG" },
+            { city: "Liverpool", country: "ENG" },
+            { city: "Leeds", country: "ENG" },
+            { city: "Manchester", country: "ENG" },
+            { city: "Newcastle", country: "ENG" },
+            { city: "Nottingham", country: "ENG" },
+            { city: "Sunderland", country: "ENG" },
+            { city: "Wolverhampton", country: "ENG" }
         ],
 
         format: {
@@ -1647,7 +1772,7 @@ export const tournamentDetails = {
             startDate: "2025-08-16",
             endDate: "2026-05-24",
             teams: 20,
-            matches: 760
+            matches: 380
         },
 
         teams: [
@@ -1771,55 +1896,185 @@ export const tournamentDetails = {
             tournamentKey: "premierLeague2425"
         },
 
-        fonts: {},
+        fonts: {
+            base: "font-pl-bold",
+            heading: "font-pl-23-24",
+            subHeading: "font-pl-regular"
+        },
 
         hero: {
-            badge: "English Football League",
+            badge: "English Football",
             title: "PREMIER LEAGUE 24/25",
             backgroundImage: "/images/premier-league-2.jpg",
-            video: ""
+            video: "/videos/premier-league-24-25.mp4"
         },
 
         overview: {
             title: "Premier League 2024/25",
-
             description:
-                "Premier League 2024/25 đánh dấu một mùa giải sôi động của bóng đá Anh với sự góp mặt của những câu lạc bộ hàng đầu. Cuộc đua vô địch, các suất dự cúp châu Âu và cuộc chiến trụ hạng tạo nên sức hút đặc biệt xuyên suốt mùa giải.",
-
+                "Premier League 2024/25 tiếp tục mang đến những màn trình diễn đỉnh cao và bầu không khí cuồng nhiệt đặc trưng của bóng đá Anh. Với sự góp mặt của những câu lạc bộ giàu truyền thống cùng các đội bóng giàu tham vọng, mùa giải hứa hẹn những cuộc cạnh tranh hấp dẫn ở mọi vị trí trên bảng xếp hạng.",
             stats: {
                 teams: 20,
-                matches: 760
+                matches: 380,
+                cities: 11,
+                stadiums: 20
             }
         },
 
         message: {
             title: "WHERE LEGENDS COMPETE",
-
             description:
-                "Premier League là sân khấu của những huyền thoại bóng đá, nơi các đội bóng lớn cạnh tranh từng điểm số và các tài năng trẻ có cơ hội khẳng định tên tuổi. Mỗi trận đấu đều mang ý nghĩa quan trọng trong hành trình chinh phục đỉnh cao."
+                "Nơi những ngôi sao hàng đầu và các tài năng trẻ cùng tranh tài trên sân khấu lớn nhất của bóng đá Anh. Mỗi trận đấu là một thử thách, mỗi chiến thắng là một bước tiến trên hành trình hướng tới vinh quang."
         },
 
-        hosts: [],
+        hosts: [
+            {
+                name: "Anh",
+                code: "ENG",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8491.png"
+            }
+        ],
 
-        hostCities: [],
+        hostCities: [
+            { city: "London", country: "ENG" },
+            { city: "Liverpool", country: "ENG" },
+            { city: "Manchester", country: "ENG" },
+            { city: "Newcastle", country: "ENG" },
+            { city: "Birmingham", country: "ENG" },
+            { city: "Nottingham", country: "ENG" },
+            { city: "Brighton", country: "ENG" },
+            { city: "Bournemouth", country: "ENG" },
+            { city: "Leicester", country: "ENG" },
+            { city: "Ipswich", country: "ENG" },
+            { city: "Southampton", country: "ENG" }
+        ],
 
         format: {
             title: "Thể thức thi đấu",
 
             description:
-                "20 đội thi đấu vòng tròn hai lượt với tổng cộng 760 trận đấu. Các đội được xếp hạng dựa trên điểm số, hiệu số bàn thắng bại và số bàn thắng ghi được. Những vị trí dẫn đầu sẽ giành vé tham dự các giải đấu cấp câu lạc bộ châu Âu."
+                "20 đội thi đấu vòng tròn hai lượt với tổng cộng 380 trận đấu. Các đội được xếp hạng dựa trên điểm số, hiệu số bàn thắng bại và số bàn thắng ghi được. Những vị trí dẫn đầu sẽ giành vé tham dự các giải đấu cấp câu lạc bộ châu Âu."
         },
 
         tournamentInfo: {
             startDate: "2024-08-16",
             endDate: "2025-05-25",
             teams: 20,
-            matches: 760
+            matches: 380
         },
 
-        teams: []
+        teams: [
+            {
+                name: "Arsenal",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/9825.png"
+            },
+            {
+                name: "Aston Villa",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10252.png"
+            },
+            {
+                name: "AFC Bournemouth",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8678.png"
+            },
+            {
+                name: "Brentford",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/9937.png"
+            },
+            {
+                name: "Brighton & Hove Albion",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10204.png"
+            },
+            {
+                name: "Chelsea",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8455.png"
+            },
+            {
+                name: "Crystal Palace",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/9826.png"
+            },
+            {
+                name: "Everton",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8668.png"
+            },
+            {
+                name: "Fulham",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/9879.png"
+            },
+            {
+                name: "Ipswich Town",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/9902.png"
+            },
+            {
+                name: "Leicester City",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8197.png"
+            },
+            {
+                name: "Liverpool",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8650.png"
+            },
+            {
 
+                name: "Manchester City",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8456.png"
+            },
+            {
+
+                name: "Manchester United",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10260.png"
+            },
+            {
+
+                name: "Newcastle United",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10261.png"
+            },
+            {
+
+                name: "Nottingham Forest",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10203.png"
+            },
+            {
+
+                name: "Southampton",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8466.png"
+            },
+            {
+
+                name: "Tottenham Hotspur",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8586.png"
+            },
+            {
+
+                name: "West Ham United",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8654.png"
+            },
+            {
+
+                name: "Wolverhampton Wanderers",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8602.png"
+            },
+        ]
     },
+
 
     premierLeague2324: {
         config: {
@@ -1829,37 +2084,58 @@ export const tournamentDetails = {
             tournamentKey: "premierLeague2324"
         },
 
-        fonts: {},
+        fonts: {
+            base: "font-pl-bold",
+            heading: "font-pl-23-24",
+            subHeading: "font-pl-regular"
+        },
 
         hero: {
-            badge: "English Football League",
+            badge: "English Football",
             title: "PREMIER LEAGUE 23/24",
             backgroundImage: "/images/premier-league-2.jpg",
-            video: ""
+            video: "/videos/premier-league-23-24.mp4"
         },
 
         overview: {
             title: "Premier League 2023/24",
-
             description:
-                "Premier League 2023/24 mang đến những cuộc đối đầu đỉnh cao giữa các thế lực truyền thống và những đội bóng đang nổi lên mạnh mẽ. Chất lượng chuyên môn cao cùng bầu không khí cuồng nhiệt tiếp tục làm nên sức hấp dẫn đặc biệt của giải đấu.",
-
+                "Premier League 2023/24 tiếp tục khẳng định vị thế là giải đấu hấp dẫn hàng đầu thế giới với những màn cạnh tranh quyết liệt trên mọi mặt trận. Từ cuộc đua vô địch đến cuộc chiến giành suất châu Âu và trụ hạng, mỗi vòng đấu đều mang đến những diễn biến khó lường và đầy kịch tính.",
             stats: {
                 teams: 20,
-                matches: 760
+                matches: 380,
+                cities: 11,
+                stadiums: 20
             }
         },
 
         message: {
             title: "EVERY MATCH MATTERS",
-
             description:
-                "Trong Premier League, mọi trận đấu đều có thể tạo nên bước ngoặt cho cả mùa giải. Sự cạnh tranh quyết liệt từ nhóm đầu bảng đến nhóm cuối bảng khiến giải đấu luôn khó lường và đầy cảm xúc."
+                "Không có chỗ cho sự chủ quan trong Premier League. Mỗi điểm số đều có giá trị, mỗi trận đấu đều có thể thay đổi cục diện mùa giải. Chính sự cân bằng và cạnh tranh khốc liệt đã tạo nên sức hút đặc biệt của giải đấu."
         },
 
-        hosts: [],
+        hosts: [
+            {
+                name: "Anh",
+                code: "ENG",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8491.png"
+            }
+        ],
 
-        hostCities: [],
+        hostCities: [
+            { city: "London", country: "ENG" },
+            { city: "Manchester", country: "ENG" },
+            { city: "Liverpool", country: "ENG" },
+            { city: "Birmingham", country: "ENG" },
+            { city: "Newcastle", country: "ENG" },
+            { city: "Brighton", country: "ENG" },
+            { city: "Bournemouth", country: "ENG" },
+            { city: "Wolverhampton", country: "ENG" },
+            { city: "Nottingham", country: "ENG" },
+            { city: "Luton", country: "ENG" },
+            { city: "Sheffield", country: "ENG" }
+        ],
 
         format: {
             title: "Thể thức thi đấu",
@@ -1872,13 +2148,123 @@ export const tournamentDetails = {
             startDate: "2023-08-11",
             endDate: "2024-05-19",
             teams: 20,
-            matches: 760
+            matches: 380
         },
 
-        teams: []
+        teams: [
+            {
 
+                name: "Manchester City",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8456.png"
+            },
+            {
+                name: "Arsenal",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/9825.png"
+            },
+            {
+                name: "Liverpool",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8650.png"
+            },
+            {
+                name: "Aston Villa",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10252.png"
+            },
+            {
 
+                name: "Tottenham Hotspur",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8586.png"
+            },
+            {
+                name: "Chelsea",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8455.png"
+            },
+            {
+
+                name: "Newcastle United",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10261.png"
+            },
+            {
+
+                name: "Manchester United",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10260.png"
+            },
+            {
+
+                name: "West Ham United",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8654.png"
+            },
+            {
+                name: "Crystal Palace",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/9826.png"
+            },
+            {
+                name: "Brighton & Hove Albion",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10204.png"
+            },
+            {
+                name: "AFC Bournemouth",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8678.png"
+            },
+            {
+                name: "Fulham",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/9879.png"
+            },
+            {
+
+                name: "Wolverhampton Wanderers",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8602.png"
+            },
+            {
+                name: "Everton",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8668.png"
+            },
+            {
+                name: "Brentford",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/9937.png"
+            },
+            {
+
+                name: "Nottingham Forest",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10203.png"
+            },
+            {
+
+                name: "Luton Town",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8346.png"
+            },
+            {
+
+                name: "Burnley",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8191.png"
+            },
+            {
+
+                name: "Sheffield United",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8657.png"
+            },
+        ]
     },
+
 
     premierLeague2223: {
         config: {
@@ -1888,37 +2274,59 @@ export const tournamentDetails = {
             tournamentKey: "premierLeague2223"
         },
 
-        fonts: {},
+        fonts: {
+            base: "font-pl-bold",
+            heading: "font-pl-23-24",
+            subHeading: "font-pl-regular"
+        },
 
         hero: {
-            badge: "English Football League",
+            badge: "English Football",
             title: "PREMIER LEAGUE 22/23",
             backgroundImage: "/images/premier-league-2.jpg",
-            video: ""
+            video: "/videos/premier-league-22-23.mp4"
         },
 
         overview: {
             title: "Premier League 2022/23",
-
             description:
-                "Premier League 2022/23 là mùa giải đặc biệt khi lịch thi đấu bị điều chỉnh để nhường chỗ cho FIFA World Cup 2022 vào giữa mùa. Dù vậy, giải đấu vẫn duy trì sự hấp dẫn với những cuộc cạnh tranh quyết liệt ở mọi vị trí trên bảng xếp hạng.",
-
+                "Premier League 2022/23 đánh dấu một mùa giải đầy cảm xúc với những cuộc đua hấp dẫn từ ngôi vô địch đến cuộc chiến trụ hạng. Xuyên suốt 38 vòng đấu, các câu lạc bộ đã cống hiến những màn trình diễn đỉnh cao, tạo nên một trong những mùa giải đáng nhớ của bóng đá Anh.",
             stats: {
                 teams: 20,
-                matches: 760
+                matches: 380,
+                cities: 11,
+                stadiums: 20
             }
         },
 
         message: {
-            title: "UNMATCHED INTENSITY",
-
+            title: "THE PINNACLE OF ENGLISH FOOTBALL",
             description:
-                "Không giải đấu nào mang đến nhịp độ thi đấu và mức độ cạnh tranh khốc liệt như Premier League. Mỗi vòng đấu đều chứng kiến những bất ngờ, những trận cầu kinh điển và những khoảnh khắc đáng nhớ của bóng đá Anh."
+                "Nơi quy tụ những câu lạc bộ hàng đầu, những cầu thủ xuất sắc và bầu không khí cuồng nhiệt bậc nhất thế giới. Premier League luôn mang đến sự cạnh tranh không khoan nhượng và những khoảnh khắc khiến người hâm mộ không thể rời mắt."
         },
 
-        hosts: [],
+        hosts: [
+            {
+                name: "Anh",
+                code: "ENG",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8491.png"
+            }
+        ],
 
-        hostCities: [],
+        hostCities: [
+            { city: "London", country: "ENG" },
+            { city: "Manchester", country: "ENG" },
+            { city: "Liverpool", country: "ENG" },
+            { city: "Birmingham", country: "ENG" },
+            { city: "Newcastle", country: "ENG" },
+            { city: "Brighton", country: "ENG" },
+            { city: "Bournemouth", country: "ENG" },
+            { city: "Wolverhampton", country: "ENG" },
+            { city: "Nottingham", country: "ENG" },
+            { city: "Leeds", country: "ENG" },
+            { city: "Leicester", country: "ENG" },
+            { city: "Southampton", country: "ENG" }
+        ],
 
         format: {
             title: "Thể thức thi đấu",
@@ -1931,11 +2339,121 @@ export const tournamentDetails = {
             startDate: "2022-08-05",
             endDate: "2023-05-28",
             teams: 20,
-            matches: 760
+            matches: 380
         },
 
-        teams: []
+        teams: [
+            {
+                name: "Arsenal",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/9825.png"
+            },
+            {
+                name: "Aston Villa",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10252.png"
+            },
+            {
+                name: "AFC Bournemouth",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8678.png"
+            },
+            {
+                name: "Brentford",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/9937.png"
+            },
+            {
+                name: "Brighton & Hove Albion",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10204.png"
+            },
+            {
+                name: "Chelsea",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8455.png"
+            },
+            {
+                name: "Crystal Palace",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/9826.png"
+            },
+            {
+                name: "Everton",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8668.png"
+            },
+            {
+                name: "Fulham",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/9879.png"
+            },
+            {
+                name: "Leeds United",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8463.png"
+            },
+            {
+                name: "Leicester City",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8197.png"
+            },
+            {
+                name: "Liverpool",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8650.png"
+            },
+            {
+
+                name: "Manchester City",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8456.png"
+            },
+            {
+
+                name: "Manchester United",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10260.png"
+            },
+            {
+
+                name: "Newcastle United",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10261.png"
+            },
+            {
+
+                name: "Nottingham Forest",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/10203.png"
+            },
+            {
+
+                name: "Southampton",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8466.png"
+            },
+            {
+
+                name: "Tottenham Hotspur",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8586.png"
+            },
+            {
+
+                name: "West Ham United",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8654.png"
+            },
+            {
+
+                name: "Wolverhampton Wanderers",
+                logo:
+                    "https://images.fotmob.com/image_resources/logo/teamlogo/8602.png"
+            },
+        ]
     },
+
 
     // ==========================================
     // BUNDESLIGA (ĐỨC)
@@ -2495,7 +3013,7 @@ export const tournamentDetails = {
     // ==========================================
     facup2526: {
         config: { leagueId: 132, season: "2025/2026", query: "FA Cup 2025 2026", tournamentKey: "facup2526" },
-        hero: { badge: "English Football League", title: "FA CUP 25/26", backgroundImage: "/images/fa-cup.jpg", video: "" },
+        hero: { badge: "English Football", title: "FA CUP 25/26", backgroundImage: "/images/fa-cup.jpg", video: "" },
         overview: {
             title: "FA Cup 2025/26",
             description: "Giải bóng đá lâu đời nhất thế giới, nơi những câu chuyện cổ tích và những cơn địa chấn do các đội bóng nhỏ tạo ra trước các ông lớn luôn là đặc sản.",
@@ -2510,7 +3028,7 @@ export const tournamentDetails = {
     },
     facup2425: {
         config: { leagueId: 132, season: "2024/2025", query: "FA Cup 2024 2025", tournamentKey: "facup2425" },
-        hero: { badge: "English Football League", title: "FA CUP 24/25", backgroundImage: "/images/fa-cup.jpg", video: "" },
+        hero: { badge: "English Football", title: "FA CUP 24/25", backgroundImage: "/images/fa-cup.jpg", video: "" },
         overview: {
             title: "FA Cup 2024/25",
             description: "Mùa giải đánh dấu bước ngoặt lớn khi LĐBĐ Anh chính thức khai tử thể thức đá lại (replay) từ vòng 1 để nhường chỗ cho cúp châu Âu mở rộng.",
@@ -2525,7 +3043,7 @@ export const tournamentDetails = {
     },
     facup2324: {
         config: { leagueId: 132, season: "2023/2024", query: "FA Cup 2023 2024", tournamentKey: "facup2324" },
-        hero: { badge: "English Football League", title: "FA CUP 23/24", backgroundImage: "/images/fa-cup.jpg", video: "" },
+        hero: { badge: "English Football", title: "FA CUP 23/24", backgroundImage: "/images/fa-cup.jpg", video: "" },
         overview: {
             title: "FA Cup 2023/24",
             description: "Mùa giải chứng kiến trận Derby Manchester rực lửa ở chung kết, bảo vệ sự danh giá và truyền thống của bóng đá Anh.",
@@ -2540,7 +3058,7 @@ export const tournamentDetails = {
     },
     facup2223: {
         config: { leagueId: 132, season: "2022/2023", query: "FA Cup 2022 2023", tournamentKey: "facup2223" },
-        hero: { badge: "English Football League", title: "FA CUP 22/23", backgroundImage: "/images/fa-cup.jpg", video: "" },
+        hero: { badge: "English Football", title: "FA CUP 22/23", backgroundImage: "/images/fa-cup.jpg", video: "" },
         overview: {
             title: "FA Cup 2022/23",
             description: "Mùa giải là một phần trong cú ăn ba lịch sử của nhà vô địch, vượt qua hàng loạt đối thủ sừng sỏ trên con đường tiến đến Wembley.",

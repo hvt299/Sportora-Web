@@ -72,6 +72,18 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "FVH-PremierLeagueW01-Bold";
+  src: url("/fonts/FVH-PremierLeagueW01-Bold.otf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FVH-PremierLeagueW01-Regular";
+  src: url("/fonts/FVH-PremierLeagueW01-Regular.otf") format("truetype");
+  font-display: swap;
+}
+
 @theme inline {
   --font-body: "NotoSans", sans-serif;
 
@@ -91,7 +103,9 @@
 
   --font-wc06: "ReGermany2006", sans-serif;
 
-  --font-pl-25-26: "Premier-League-2025-2026", sans-serif;
+  --font-pl-23-24: "Premier-League-2025-2026", sans-serif;
+  --font-pl-bold: "FVH-PremierLeagueW01-Bold", sans-serif;
+  --font-pl-regular: "FVH-PremierLeagueW01-Regular", sans-serif;
 }
 
 :root {
