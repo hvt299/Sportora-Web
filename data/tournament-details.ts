@@ -4105,78 +4105,313 @@ export const tournamentDetails = {
     // UEFA CHAMPIONS LEAGUE (C1)
     // ==========================================
     ucl2627: {
-        config: { leagueId: 42, season: "2026/2027", query: "Champions League 2026 2027", tournamentKey: "ucl2627" },
-        hero: { badge: "European Football", title: "CHAMPIONS LEAGUE 26/27", backgroundImage: "/images/ucl.jpg", video: "" },
+        config: {
+            leagueId: 42,
+            season: "2026/2027",
+            query: "Champions League 2026 2027",
+            tournamentKey: "ucl2627"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "European Football",
+            title: "CHAMPIONS LEAGUE 26/27",
+            backgroundImage: "/images/ucl.jpg",
+            video: ""
+        },
+
         overview: {
             title: "UEFA Champions League 2026/27",
-            description: "Giải đấu danh giá nhất lục địa già cấp câu lạc bộ. Nơi những nhà vô địch và các siêu sao hàng đầu thế giới phân tài cao thấp để giành lấy chiếc cúp tai voi huyền thoại.",
-            stats: { teams: 36, matches: 189 }
+            description:
+                "UEFA Champions League 2026/27 là đỉnh cao của bóng đá cấp câu lạc bộ châu Âu, nơi quy tụ những đội bóng mạnh nhất từ khắp các giải đấu hàng đầu. Mỗi trận đấu đều mang tính chất sống còn trong hành trình chinh phục chiếc cúp tai voi danh giá.",
+            stats: {
+                teams: 36,
+                matches: 189,
+                cities: 0,
+                stadiums: 0
+            }
         },
+
+        message: {
+            title: "THE GREATEST STAGE OF CLUB FOOTBALL",
+            description:
+                "Champions League là nơi hội tụ của tinh hoa bóng đá châu Âu, nơi chiến thuật, bản lĩnh và đẳng cấp cá nhân được đặt lên mức cao nhất trong những đêm châu Âu huyền thoại."
+        },
+
+        hosts: [
+            {
+                name: "Châu Âu",
+                code: "UEFA",
+                logo: "https://images.fotmob.com/image_resources/logo/leaguelogo/42.png"
+            }
+        ],
+
+        hostCities: [],
+
         format: {
             title: "Thể thức Thụy Sĩ (Swiss Model)",
-            description: "36 đội chung một bảng xếp hạng. Mỗi đội đá 8 trận với 8 đối thủ khác nhau. Top 8 vào thẳng vòng 16 đội, các đội từ hạng 9 đến 24 đá play-off để tranh 8 vé còn lại."
+
+            description:
+                "36 đội thi đấu trong một bảng xếp hạng chung. Mỗi đội đá 8 trận với các đối thủ khác nhau. Top 8 vào thẳng vòng 16 đội, các đội từ hạng 9 đến 24 đá play-off để tranh 8 suất còn lại vào vòng knock-out."
         },
-        tournamentInfo: { startDate: "2026-09-10", endDate: "2027-05-29", teams: 36, matches: 189 },
+
+        tournamentInfo: {
+            startDate: "2026-09-10",
+            endDate: "2027-05-29",
+            teams: 36,
+            matches: 189
+        },
+
         teams: []
     },
     ucl2526: {
-        config: { leagueId: 42, season: "2025/2026", query: "Champions League 2025 2026", tournamentKey: "ucl2526" },
-        hero: { badge: "European Football", title: "CHAMPIONS LEAGUE 25/26", backgroundImage: "/images/ucl.jpg", video: "" },
+        config: {
+            leagueId: 42,
+            season: "2025/2026",
+            query: "Champions League 2025 2026",
+            tournamentKey: "ucl2526"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "European Football",
+            title: "CHAMPIONS LEAGUE 25/26",
+            backgroundImage: "/images/ucl.jpg",
+            video: ""
+        },
+
         overview: {
             title: "UEFA Champions League 2025/26",
-            description: "Mùa giải thứ hai áp dụng thể thức League Phase mới, mang đến nhiều hơn những cuộc đối đầu đỉnh cao ngay từ giai đoạn đầu mùa.",
-            stats: { teams: 36, matches: 189 }
+            description:
+                "UEFA Champions League 2025/26 tiếp tục vận hành theo thể thức League Phase mới, mang đến nhiều cuộc đối đầu chất lượng ngay từ giai đoạn đầu và tăng tính cạnh tranh xuyên suốt giải đấu.",
+            stats: {
+                teams: 36,
+                matches: 189,
+                cities: 0,
+                stadiums: 0
+            }
         },
+
+        message: {
+            title: "THE GREATEST STAGE OF CLUB FOOTBALL",
+            description:
+                "Giải đấu cấp CLB danh giá nhất châu Âu, nơi những đội bóng hàng đầu cạnh tranh trong hệ thống mới đầy khốc liệt và khó lường."
+        },
+
+        hosts: [
+            {
+                name: "Châu Âu",
+                code: "UEFA",
+                logo: "https://images.fotmob.com/image_resources/logo/leaguelogo/42.png"
+            }
+        ],
+
+        hostCities: [],
+
         format: {
-            title: "Thể thức thi đấu",
-            description: "36 đội thi đấu theo hệ thống Thụy Sĩ (8 lượt trận). Không còn việc các đội rớt xuống Europa League sau vòng bảng như trước đây."
+            title: "Thể thức League Phase",
+
+            description:
+                "36 đội thi đấu theo hệ thống Thụy Sĩ, mỗi đội đá 8 trận. Không còn vòng bảng truyền thống, bảng xếp hạng chung quyết định toàn bộ cục diện giai đoạn đầu."
         },
-        tournamentInfo: { startDate: "2025-09-16", endDate: "2026-05-30", teams: 36, matches: 189 },
+
+        tournamentInfo: {
+            startDate: "2025-09-16",
+            endDate: "2026-05-30",
+            teams: 36,
+            matches: 189
+        },
+
         teams: []
     },
     ucl2425: {
-        config: { leagueId: 42, season: "2024/2025", query: "Champions League 2024 2025", tournamentKey: "ucl2425" },
-        hero: { badge: "European Football", title: "CHAMPIONS LEAGUE 24/25", backgroundImage: "/images/ucl.jpg", video: "" },
+        config: {
+            leagueId: 42,
+            season: "2024/2025",
+            query: "Champions League 2024 2025",
+            tournamentKey: "ucl2425"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "European Football",
+            title: "CHAMPIONS LEAGUE 24/25",
+            backgroundImage: "/images/ucl.jpg",
+            video: ""
+        },
+
         overview: {
             title: "UEFA Champions League 2024/25",
-            description: "Mùa giải mang tính bước ngoặt lịch sử của UEFA khi thay đổi toàn diện cấu trúc giải đấu kéo dài suốt nhiều thập kỷ.",
-            stats: { teams: 36, matches: 189 }
+            description:
+                "Mùa giải đánh dấu bước chuyển mình lịch sử của UEFA Champions League khi chính thức mở rộng và thay đổi cấu trúc thi đấu sang mô hình League Phase hiện đại.",
+            stats: {
+                teams: 36,
+                matches: 189,
+                cities: 0,
+                stadiums: 0
+            }
         },
+
+        message: {
+            title: "THE GREATEST STAGE OF CLUB FOOTBALL",
+            description:
+                "Champions League bước vào kỷ nguyên mới với thể thức cạnh tranh khốc liệt hơn, nơi mỗi trận đấu đều ảnh hưởng trực tiếp đến thứ hạng chung cuộc."
+        },
+
+        hosts: [
+            {
+                name: "Châu Âu",
+                code: "UEFA",
+                logo: "https://images.fotmob.com/image_resources/logo/leaguelogo/42.png"
+            }
+        ],
+
+        hostCities: [],
+
         format: {
-            title: "Thể thức mới (League Phase)",
-            description: "Mở rộng từ 32 lên 36 đội. Bảng xếp hạng duy nhất, mỗi đội đá 8 trận ngẫu nhiên được bốc thăm từ 4 nhóm hạt giống."
+            title: "Thể thức League Phase",
+
+            description:
+                "36 đội bóng tham dự, mỗi đội đá 8 trận với các đối thủ khác nhau. Bảng xếp hạng chung quyết định suất vào vòng knock-out."
         },
-        tournamentInfo: { startDate: "2024-09-17", endDate: "2025-05-31", teams: 36, matches: 189 },
+
+        tournamentInfo: {
+            startDate: "2024-09-17",
+            endDate: "2025-05-31",
+            teams: 36,
+            matches: 189
+        },
+
         teams: []
     },
     ucl2324: {
-        config: { leagueId: 42, season: "2023/2024", query: "Champions League 2023 2024", tournamentKey: "ucl2324" },
-        hero: { badge: "European Football", title: "CHAMPIONS LEAGUE 23/24", backgroundImage: "/images/ucl.jpg", video: "" },
+        config: {
+            leagueId: 42,
+            season: "2023/2024",
+            query: "Champions League 2023 2024",
+            tournamentKey: "ucl2324"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "European Football",
+            title: "CHAMPIONS LEAGUE 23/24",
+            backgroundImage: "/images/ucl.jpg",
+            video: ""
+        },
+
         overview: {
             title: "UEFA Champions League 2023/24",
-            description: "Mùa giải cuối cùng theo thể thức vòng bảng 32 đội truyền thống, khép lại một kỷ nguyên rực rỡ của bóng đá châu Âu.",
-            stats: { teams: 32, matches: 125 }
+            description:
+                "Mùa giải cuối cùng của kỷ nguyên vòng bảng truyền thống 32 đội, khép lại một giai đoạn lịch sử của bóng đá châu Âu cấp câu lạc bộ.",
+            stats: {
+                teams: 32,
+                matches: 125,
+                cities: 0,
+                stadiums: 0
+            }
         },
+
+        message: {
+            title: "THE GREATEST STAGE OF CLUB FOOTBALL",
+            description:
+                "Champions League 2023/24 vẫn giữ nguyên cấu trúc quen thuộc, nơi các đội bóng phải vượt qua vòng bảng trước khi bước vào loạt knock-out khốc liệt."
+        },
+
+        hosts: [
+            {
+                name: "Châu Âu",
+                code: "UEFA",
+                logo: "https://images.fotmob.com/image_resources/logo/leaguelogo/42.png"
+            }
+        ],
+
+        hostCities: [],
+
         format: {
             title: "Thể thức vòng bảng (Cũ)",
-            description: "32 đội chia thành 8 bảng, mỗi bảng 4 đội đá vòng tròn 2 lượt. Top 2 đi tiếp vào vòng knock-out, đội hạng 3 xuống đá Europa League."
+
+            description:
+                "32 đội chia thành 8 bảng, mỗi bảng 4 đội thi đấu vòng tròn 2 lượt. Hai đội đầu bảng vào vòng knock-out, đội thứ ba xuống Europa League."
         },
-        tournamentInfo: { startDate: "2023-09-19", endDate: "2024-06-01", teams: 32, matches: 125 },
+
+        tournamentInfo: {
+            startDate: "2023-09-19",
+            endDate: "2024-06-01",
+            teams: 32,
+            matches: 125
+        },
+
         teams: []
     },
     ucl2223: {
-        config: { leagueId: 42, season: "2022/2023", query: "Champions League 2022 2023", tournamentKey: "ucl2223" },
-        hero: { badge: "European Football", title: "CHAMPIONS LEAGUE 22/23", backgroundImage: "/images/ucl.jpg", video: "" },
+        config: {
+            leagueId: 42,
+            season: "2022/2023",
+            query: "Champions League 2022 2023",
+            tournamentKey: "ucl2223"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "European Football",
+            title: "CHAMPIONS LEAGUE 22/23",
+            backgroundImage: "/images/ucl.jpg",
+            video: ""
+        },
+
         overview: {
             title: "UEFA Champions League 2022/23",
-            description: "Mùa giải chứng kiến sự lên ngôi xứng đáng để hoàn tất cú ăn ba lịch sử của một thế lực bóng đá hiện đại.",
-            stats: { teams: 32, matches: 125 }
+            description:
+                "Mùa giải chứng kiến một hành trình chinh phục đầy thuyết phục để hoàn tất cú ăn ba lịch sử của một đội bóng thống trị châu Âu.",
+            stats: {
+                teams: 32,
+                matches: 125,
+                cities: 0,
+                stadiums: 0
+            }
         },
+
+        message: {
+            title: "THE GREATEST STAGE OF CLUB FOOTBALL",
+            description:
+                "Champions League 2022/23 là sân khấu của những trận cầu đỉnh cao, nơi các đội bóng mạnh nhất châu Âu cạnh tranh cho danh hiệu danh giá nhất cấp CLB."
+        },
+
+        hosts: [
+            {
+                name: "Châu Âu",
+                code: "UEFA",
+                logo: "https://images.fotmob.com/image_resources/logo/leaguelogo/42.png"
+            }
+        ],
+
+        hostCities: [],
+
         format: {
             title: "Thể thức vòng bảng (Cũ)",
-            description: "Hệ thống 32 đội quen thuộc. Vòng bảng được đẩy nhanh tiến độ để nhường chỗ cho World Cup mùa Đông."
+
+            description:
+                "32 đội chia thành 8 bảng, mỗi bảng 4 đội thi đấu vòng tròn 2 lượt. Top 2 vào vòng knock-out, đội hạng 3 xuống Europa League."
         },
-        tournamentInfo: { startDate: "2022-09-06", endDate: "2023-06-10", teams: 32, matches: 125 },
+
+        tournamentInfo: {
+            startDate: "2022-09-06",
+            endDate: "2023-06-10",
+            teams: 32,
+            matches: 125
+        },
+
         teams: []
     },
 
@@ -4184,78 +4419,313 @@ export const tournamentDetails = {
     // UEFA EUROPA LEAGUE (C2)
     // ==========================================
     uel2627: {
-        config: { leagueId: 73, season: "2026/2027", query: "Europa League 2026 2027", tournamentKey: "uel2627" },
-        hero: { badge: "European Football", title: "EUROPA LEAGUE 26/27", backgroundImage: "/images/uel.jpg", video: "" },
+        config: {
+            leagueId: 73,
+            season: "2026/2027",
+            query: "Europa League 2026 2027",
+            tournamentKey: "uel2627"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "European Football",
+            title: "EUROPA LEAGUE 26/27",
+            backgroundImage: "/images/uel.jpg",
+            video: ""
+        },
+
         overview: {
             title: "UEFA Europa League 2026/27",
-            description: "Giải đấu cấp câu lạc bộ danh giá thứ hai châu Âu, nơi chứa đựng những bất ngờ thú vị và cơ hội vàng để giành vé dự Champions League.",
-            stats: { teams: 36, matches: 189 }
+            description:
+                "UEFA Europa League 2026/27 là sân chơi cấp câu lạc bộ danh giá thứ hai châu Âu, nơi các đội bóng giàu tham vọng cạnh tranh quyết liệt cho danh hiệu và tấm vé tham dự Champions League mùa sau.",
+            stats: {
+                teams: 36,
+                matches: 189,
+                cities: 0,
+                stadiums: 0
+            }
         },
+
+        message: {
+            title: "THE ROAD TO EUROPEAN GLORY",
+            description:
+                "Europa League là đấu trường của những cuộc đối đầu giàu cảm xúc, nơi các đội bóng không chỉ tìm kiếm danh hiệu mà còn chiến đấu cho cơ hội bước lên Champions League."
+        },
+
+        hosts: [
+            {
+                name: "Châu Âu",
+                code: "UEFA",
+                logo: "https://images.fotmob.com/image_resources/logo/leaguelogo/73.png"
+            }
+        ],
+
+        hostCities: [],
+
         format: {
             title: "Thể thức Thụy Sĩ",
-            description: "36 đội, đá 8 trận (4 sân nhà, 4 sân khách) với các đối thủ khác nhau. Top 8 vào vòng 16 đội, hạng 9-24 đá play-off."
+
+            description:
+                "36 đội thi đấu trong một bảng xếp hạng chung. Mỗi đội đá 8 trận với các đối thủ khác nhau (4 sân nhà, 4 sân khách). Top 8 vào thẳng vòng 16 đội, hạng 9-24 đá play-off để tranh vé còn lại."
         },
-        tournamentInfo: { startDate: "2026-09-17", endDate: "2027-05-26", teams: 36, matches: 189 },
+
+        tournamentInfo: {
+            startDate: "2026-09-17",
+            endDate: "2027-05-26",
+            teams: 36,
+            matches: 189
+        },
+
         teams: []
     },
     uel2526: {
-        config: { leagueId: 73, season: "2025/2026", query: "Europa League 2025 2026", tournamentKey: "uel2526" },
-        hero: { badge: "European Football", title: "EUROPA LEAGUE 25/26", backgroundImage: "/images/uel.jpg", video: "" },
+        config: {
+            leagueId: 73,
+            season: "2025/2026",
+            query: "Europa League 2025 2026",
+            tournamentKey: "uel2526"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "European Football",
+            title: "EUROPA LEAGUE 25/26",
+            backgroundImage: "/images/uel.jpg",
+            video: ""
+        },
+
         overview: {
             title: "UEFA Europa League 2025/26",
-            description: "Mùa giải quy tụ nhiều tên tuổi lớn của bóng đá châu Âu quyết tâm tìm kiếm vinh quang ở đấu trường châu lục.",
-            stats: { teams: 36, matches: 189 }
+            description:
+                "Europa League 2025/26 tiếp tục vận hành theo thể thức League Phase mới, mang đến nhiều cuộc đối đầu chất lượng cao và tăng tính cạnh tranh xuyên suốt mùa giải.",
+            stats: {
+                teams: 36,
+                matches: 189,
+                cities: 0,
+                stadiums: 0
+            }
         },
+
+        message: {
+            title: "THE ROAD TO EUROPEAN GLORY",
+            description:
+                "Giải đấu cấp hai châu Âu nơi các đội bóng giàu tham vọng tìm kiếm danh hiệu và cơ hội vươn lên Champions League."
+        },
+
+        hosts: [
+            {
+                name: "Châu Âu",
+                code: "UEFA",
+                logo: "https://images.fotmob.com/image_resources/logo/leaguelogo/73.png"
+            }
+        ],
+
+        hostCities: [],
+
         format: {
-            title: "Thể thức thi đấu",
-            description: "League phase 36 đội. Không còn nhận đội rớt xuống từ vòng bảng Champions League."
+            title: "Thể thức League Phase",
+
+            description:
+                "36 đội thi đấu theo hệ thống Thụy Sĩ, mỗi đội đá 8 trận với các đối thủ khác nhau. Bảng xếp hạng chung quyết định toàn bộ cục diện vòng đầu."
         },
-        tournamentInfo: { startDate: "2025-09-24", endDate: "2026-05-20", teams: 36, matches: 189 },
+
+        tournamentInfo: {
+            startDate: "2025-09-24",
+            endDate: "2026-05-20",
+            teams: 36,
+            matches: 189
+        },
+
         teams: []
     },
     uel2425: {
-        config: { leagueId: 73, season: "2024/2025", query: "Europa League 2024 2025", tournamentKey: "uel2425" },
-        hero: { badge: "European Football", title: "EUROPA LEAGUE 24/25", backgroundImage: "/images/uel.jpg", video: "" },
+        config: {
+            leagueId: 73,
+            season: "2024/2025",
+            query: "Europa League 2024 2025",
+            tournamentKey: "uel2425"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "European Football",
+            title: "EUROPA LEAGUE 24/25",
+            backgroundImage: "/images/uel.jpg",
+            video: ""
+        },
+
         overview: {
             title: "UEFA Europa League 2024/25",
-            description: "Bắt đầu kỷ nguyên mới với sự thay đổi về số lượng đội tham dự và cấu trúc giải đấu chung của UEFA.",
-            stats: { teams: 36, matches: 189 }
+            description:
+                "Mùa giải đánh dấu bước chuyển mình quan trọng khi Europa League bắt đầu áp dụng thể thức League Phase mới, tăng số lượng đội tham dự và nâng cao tính cạnh tranh.",
+            stats: {
+                teams: 36,
+                matches: 189,
+                cities: 0,
+                stadiums: 0
+            }
         },
+
+        message: {
+            title: "THE ROAD TO EUROPEAN GLORY",
+            description:
+                "Europa League bước vào kỷ nguyên mới với cấu trúc hiện đại hơn, nơi mỗi trận đấu đều mang ý nghĩa quan trọng trong cuộc đua vào vòng knock-out."
+        },
+
+        hosts: [
+            {
+                name: "Châu Âu",
+                code: "UEFA",
+                logo: "https://images.fotmob.com/image_resources/logo/leaguelogo/73.png"
+            }
+        ],
+
+        hostCities: [],
+
         format: {
-            title: "Thể thức mới",
-            description: "Mở rộng lên 36 đội, một bảng xếp hạng duy nhất, thi đấu 8 trận ở vòng loại."
+            title: "Thể thức League Phase",
+
+            description:
+                "36 đội, mỗi đội đá 8 trận với các đối thủ khác nhau. Không còn hệ thống bảng truyền thống và không còn đội rớt xuống từ Champions League."
         },
-        tournamentInfo: { startDate: "2024-09-25", endDate: "2025-05-21", teams: 36, matches: 189 },
+
+        tournamentInfo: {
+            startDate: "2024-09-25",
+            endDate: "2025-05-21",
+            teams: 36,
+            matches: 189
+        },
+
         teams: []
     },
     uel2324: {
-        config: { leagueId: 73, season: "2023/2024", query: "Europa League 2023 2024", tournamentKey: "uel2324" },
-        hero: { badge: "European Football", title: "EUROPA LEAGUE 23/24", backgroundImage: "/images/uel.jpg", video: "" },
+        config: {
+            leagueId: 73,
+            season: "2023/2024",
+            query: "Europa League 2023 2024",
+            tournamentKey: "uel2324"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "European Football",
+            title: "EUROPA LEAGUE 23/24",
+            backgroundImage: "/images/uel.jpg",
+            video: ""
+        },
+
         overview: {
             title: "UEFA Europa League 2023/24",
-            description: "Kịch tính rực lửa của phiên bản 32 đội truyền thống cuối cùng, với một nhà vô địch bất bại ngoạn mục ở giải quốc nội.",
-            stats: { teams: 32, matches: 141 }
+            description:
+                "Mùa giải 2023/24 là phiên bản cuối cùng của Europa League theo thể thức 32 đội truyền thống, mang đến nhiều trận cầu kịch tính và giàu cảm xúc.",
+            stats: {
+                teams: 32,
+                matches: 141,
+                cities: 0,
+                stadiums: 0
+            }
         },
+
+        message: {
+            title: "THE ROAD TO EUROPEAN GLORY",
+            description:
+                "Europa League 2023/24 là sân khấu của những đội bóng giàu kinh nghiệm châu Âu, nơi bản lĩnh và chiều sâu đội hình quyết định thành công."
+        },
+
+        hosts: [
+            {
+                name: "Châu Âu",
+                code: "UEFA",
+                logo: "https://images.fotmob.com/image_resources/logo/leaguelogo/73.png"
+            }
+        ],
+
+        hostCities: [],
+
         format: {
             title: "Thể thức vòng bảng (Cũ)",
-            description: "32 đội, 8 bảng. Đội nhất bảng vào vòng 16 đội, nhì bảng đá play-off với đội hạng 3 rớt xuống từ Champions League."
+
+            description:
+                "32 đội chia thành 8 bảng, mỗi bảng 4 đội. Đội nhất bảng vào thẳng vòng 16 đội, đội nhì đá play-off với đội rớt xuống từ Champions League."
         },
-        tournamentInfo: { startDate: "2023-09-21", endDate: "2024-05-22", teams: 32, matches: 141 },
+
+        tournamentInfo: {
+            startDate: "2023-09-21",
+            endDate: "2024-05-22",
+            teams: 32,
+            matches: 141
+        },
+
         teams: []
     },
     uel2223: {
-        config: { leagueId: 73, season: "2022/2023", query: "Europa League 2022 2023", tournamentKey: "uel2223" },
-        hero: { badge: "European Football", title: "EUROPA LEAGUE 22/23", backgroundImage: "/images/uel.jpg", video: "" },
+        config: {
+            leagueId: 73,
+            season: "2022/2023",
+            query: "Europa League 2022 2023",
+            tournamentKey: "uel2223"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "European Football",
+            title: "EUROPA LEAGUE 22/23",
+            backgroundImage: "/images/uel.jpg",
+            video: ""
+        },
+
         overview: {
             title: "UEFA Europa League 2022/23",
-            description: "Mùa giải đánh dấu sự trở lại thống trị giải đấu của ông vua Europa League đến từ Tây Ban Nha.",
-            stats: { teams: 32, matches: 141 }
+            description:
+                "Mùa giải 2022/23 chứng kiến sự trở lại mạnh mẽ của những đội bóng giàu kinh nghiệm, tạo nên một hành trình giàu cảm xúc tại đấu trường châu Âu.",
+            stats: {
+                teams: 32,
+                matches: 141,
+                cities: 0,
+                stadiums: 0
+            }
         },
+
+        message: {
+            title: "THE ROAD TO EUROPEAN GLORY",
+            description:
+                "Europa League 2022/23 là nơi các đội bóng cạnh tranh quyết liệt cho danh hiệu và cơ hội khẳng định vị thế tại châu Âu."
+        },
+
+        hosts: [
+            {
+                name: "Châu Âu",
+                code: "UEFA",
+                logo: "https://images.fotmob.com/image_resources/logo/leaguelogo/73.png"
+            }
+        ],
+
+        hostCities: [],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "Vòng bảng 32 đội. Có vòng play-off knock-out bổ sung cho các đội hạng 3 vòng bảng Champions League."
+
+            description:
+                "32 đội chia thành 8 bảng, thi đấu vòng tròn 2 lượt. Các đội tiếp tục bước vào vòng knock-out theo thể thức quen thuộc của UEFA."
         },
-        tournamentInfo: { startDate: "2022-09-08", endDate: "2023-05-31", teams: 32, matches: 141 },
+
+        tournamentInfo: {
+            startDate: "2022-09-08",
+            endDate: "2023-05-31",
+            teams: 32,
+            matches: 141
+        },
+
         teams: []
     },
 
@@ -4263,210 +4733,1193 @@ export const tournamentDetails = {
     // UEFA CONFERENCE LEAGUE (C3)
     // ==========================================
     ucl32627: {
-        config: { leagueId: 282, season: "2026/2027", query: "Conference League 2026 2027", tournamentKey: "ucl32627" },
-        hero: { badge: "European Football", title: "CONFERENCE LEAGUE 26/27", backgroundImage: "/images/ucl3.jpg", video: "" },
+        config: {
+            leagueId: 282,
+            season: "2026/2027",
+            query: "Conference League 2026 2027",
+            tournamentKey: "ucl32627"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "European Football",
+            title: "CONFERENCE LEAGUE 26/27",
+            backgroundImage: "/images/ucl3.jpg",
+            video: ""
+        },
+
         overview: {
             title: "UEFA Conference League 2026/27",
-            description: "Giải đấu mang cơ hội bước ra sân chơi châu lục đến với nhiều câu lạc bộ trên toàn châu Âu hơn.",
-            stats: { teams: 36, matches: 153 }
+            description:
+                "UEFA Conference League 2026/27 mang đến cơ hội thi đấu châu Âu rộng mở hơn cho nhiều câu lạc bộ trên khắp lục địa, tạo điều kiện cho sự phát triển và cọ xát ở cấp độ quốc tế.",
+            stats: {
+                teams: 36,
+                matches: 153,
+                cities: 0,
+                stadiums: 0
+            }
         },
+
+        message: {
+            title: "THE GATEWAY TO EUROPE",
+            description:
+                "Conference League là sân chơi giúp nhiều đội bóng lần đầu bước ra đấu trường châu Âu, nơi họ có thể tích lũy kinh nghiệm và tạo nên những bất ngờ thú vị."
+        },
+
+        hosts: [
+            {
+                name: "Châu Âu",
+                code: "UEFA",
+                logo: "https://images.fotmob.com/image_resources/logo/leaguelogo/10216.png"
+            }
+        ],
+
+        hostCities: [],
+
         format: {
-            title: "Thể thức Thụy Sĩ",
-            description: "36 đội. Điểm khác biệt so với C1 và C2 là ở vòng bảng C3, mỗi đội chỉ đá 6 trận (thay vì 8 trận)."
+            title: "Thể thức Thụy Sĩ (League Phase)",
+
+            description:
+                "36 đội thi đấu theo bảng xếp hạng chung. Mỗi đội đá 6 trận (3 sân nhà, 3 sân khách) với các đối thủ khác nhau. Top 8 vào thẳng vòng 1/8, hạng 9-24 đá play-off để tranh suất đi tiếp."
         },
-        tournamentInfo: { startDate: "2026-09-17", endDate: "2027-05-26", teams: 36, matches: 153 },
+
+        tournamentInfo: {
+            startDate: "2026-09-17",
+            endDate: "2027-05-26",
+            teams: 36,
+            matches: 153
+        },
+
         teams: []
     },
     ucl32526: {
-        config: { leagueId: 282, season: "2025/2026", query: "Conference League 2025 2026", tournamentKey: "ucl32526" },
-        hero: { badge: "European Football", title: "CONFERENCE LEAGUE 25/26", backgroundImage: "/images/ucl3.jpg", video: "" },
+        config: {
+            leagueId: 282,
+            season: "2025/2026",
+            query: "Conference League 2025 2026",
+            tournamentKey: "ucl32526"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "European Football",
+            title: "CONFERENCE LEAGUE 25/26",
+            backgroundImage: "/images/ucl3.jpg",
+            video: ""
+        },
+
         overview: {
             title: "UEFA Conference League 2025/26",
-            description: "Mùa giải đầy màu sắc với sự góp mặt của các câu lạc bộ đến từ nhiều nền bóng đá mới lạ trên bản đồ châu Âu.",
-            stats: { teams: 36, matches: 153 }
+            description:
+                "Conference League 2025/26 tiếp tục mở rộng cơ hội cho các câu lạc bộ từ nhiều nền bóng đá khác nhau, mang đến sự đa dạng và tính bất ngờ cao trong từng vòng đấu.",
+            stats: {
+                teams: 36,
+                matches: 153,
+                cities: 0,
+                stadiums: 0
+            }
         },
+
+        message: {
+            title: "THE GATEWAY TO EUROPE",
+            description:
+                "Giải đấu tạo điều kiện cho các đội bóng nhỏ hơn trải nghiệm bóng đá châu Âu, đồng thời tạo ra nhiều câu chuyện bất ngờ và giàu cảm xúc."
+        },
+
+        hosts: [
+            {
+                name: "Châu Âu",
+                code: "UEFA",
+                logo: "https://images.fotmob.com/image_resources/logo/leaguelogo/10216.png"
+            }
+        ],
+
+        hostCities: [],
+
         format: {
-            title: "Thể thức thi đấu",
-            description: "Bảng xếp hạng duy nhất 36 đội. 6 lượt trận (3 sân nhà, 3 sân khách) phân định thứ hạng."
+            title: "Thể thức League Phase",
+
+            description:
+                "36 đội thi đấu theo bảng xếp hạng chung. Mỗi đội đá 6 trận (3 sân nhà, 3 sân khách). Thứ hạng quyết định toàn bộ lộ trình vào vòng knock-out."
         },
-        tournamentInfo: { startDate: "2025-10-02", endDate: "2026-05-27", teams: 36, matches: 153 },
+
+        tournamentInfo: {
+            startDate: "2025-10-02",
+            endDate: "2026-05-27",
+            teams: 36,
+            matches: 153
+        },
+
         teams: []
     },
     ucl32425: {
-        config: { leagueId: 282, season: "2024/2025", query: "Conference League 2024 2025", tournamentKey: "ucl32425" },
-        hero: { badge: "European Football", title: "CONFERENCE LEAGUE 24/25", backgroundImage: "/images/ucl3.jpg", video: "" },
+        config: {
+            leagueId: 282,
+            season: "2024/2025",
+            query: "Conference League 2024 2025",
+            tournamentKey: "ucl32425"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "European Football",
+            title: "CONFERENCE LEAGUE 24/25",
+            backgroundImage: "/images/ucl3.jpg",
+            video: ""
+        },
+
         overview: {
             title: "UEFA Conference League 2024/25",
-            description: "Tên gọi chính thức được đổi từ 'Europa Conference League' sang 'Conference League' và bắt đầu áp dụng thể thức mới.",
-            stats: { teams: 36, matches: 153 }
+            description:
+                "UEFA Conference League 2024/25 đánh dấu sự chuyển mình quan trọng với việc áp dụng cấu trúc thi đấu hiện đại hơn, tăng tính cạnh tranh và số lượng đội tham dự.",
+            stats: {
+                teams: 36,
+                matches: 153,
+                cities: 0,
+                stadiums: 0
+            }
         },
+
+        message: {
+            title: "THE GATEWAY TO EUROPE",
+            description:
+                "Conference League bước vào giai đoạn phát triển mới, mang đến nhiều cơ hội hơn cho các câu lạc bộ tầm trung tại châu Âu."
+        },
+
+        hosts: [
+            {
+                name: "Châu Âu",
+                code: "UEFA",
+                logo: "https://images.fotmob.com/image_resources/logo/leaguelogo/10216.png"
+            }
+        ],
+
+        hostCities: [],
+
         format: {
-            title: "Thể thức mới",
-            description: "36 đội đá League Phase. Top 8 vào vòng 1/8, hạng 9-24 đá play-off để đi tiếp."
+            title: "Thể thức League Phase",
+
+            description:
+                "36 đội thi đấu theo bảng xếp hạng chung. Top 8 vào thẳng vòng 1/8, hạng 9-24 đá play-off để tranh suất đi tiếp."
         },
-        tournamentInfo: { startDate: "2024-10-03", endDate: "2025-05-28", teams: 36, matches: 153 },
+
+        tournamentInfo: {
+            startDate: "2024-10-03",
+            endDate: "2025-05-28",
+            teams: 36,
+            matches: 153
+        },
+
         teams: []
     },
     ucl32324: {
-        config: { leagueId: 282, season: "2023/2024", query: "Europa Conference League 2023 2024", tournamentKey: "ucl32324" },
-        hero: { badge: "European Football", title: "CONFERENCE LEAGUE 23/24", backgroundImage: "/images/ucl3.jpg", video: "" },
+        config: {
+            leagueId: 282,
+            season: "2023/2024",
+            query: "Europa Conference League 2023 2024",
+            tournamentKey: "ucl32324"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "European Football",
+            title: "CONFERENCE LEAGUE 23/24",
+            backgroundImage: "/images/ucl3.jpg",
+            video: ""
+        },
+
         overview: {
             title: "UEFA Europa Conference League 2023/24",
-            description: "Mùa giải cuối cùng sử dụng tên gọi đầy đủ chứa chữ 'Europa' và thể thức vòng bảng 32 đội truyền thống.",
-            stats: { teams: 32, matches: 141 }
+            description:
+                "Mùa giải 2023/24 là phiên bản cuối cùng theo thể thức cũ trước khi giải đấu chuyển sang mô hình League Phase hiện đại.",
+            stats: {
+                teams: 32,
+                matches: 141,
+                cities: 0,
+                stadiums: 0
+            }
         },
+
+        message: {
+            title: "THE GATEWAY TO EUROPE",
+            description:
+                "Conference League 2023/24 là sân chơi giàu cảm xúc, nơi nhiều đội bóng nhỏ tạo nên những hành trình đáng nhớ tại châu Âu."
+        },
+
+        hosts: [
+            {
+                name: "Châu Âu",
+                code: "UEFA",
+                logo: "https://images.fotmob.com/image_resources/logo/leaguelogo/10216.png"
+            }
+        ],
+
+        hostCities: [],
+
         format: {
             title: "Thể thức vòng bảng (Cũ)",
-            description: "32 đội, 8 bảng. Đội nhì bảng phải đá play-off với đội hạng 3 rớt xuống từ Europa League."
+
+            description:
+                "32 đội chia thành 8 bảng. Đội nhì bảng phải đá play-off với các đội rớt xuống từ Europa League để giành quyền đi tiếp."
         },
-        tournamentInfo: { startDate: "2023-09-21", endDate: "2024-05-29", teams: 32, matches: 141 },
+
+        tournamentInfo: {
+            startDate: "2023-09-21",
+            endDate: "2024-05-29",
+            teams: 32,
+            matches: 141
+        },
+
         teams: []
     },
     ucl32223: {
-        config: { leagueId: 282, season: "2022/2023", query: "Europa Conference League 2022 2023", tournamentKey: "ucl32223" },
-        hero: { badge: "European Football", title: "CONFERENCE LEAGUE 22/23", backgroundImage: "/images/ucl3.jpg", video: "" },
+        config: {
+            leagueId: 282,
+            season: "2022/2023",
+            query: "Europa Conference League 2022 2023",
+            tournamentKey: "ucl32223"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "European Football",
+            title: "CONFERENCE LEAGUE 22/23",
+            backgroundImage: "/images/ucl3.jpg",
+            video: ""
+        },
+
         overview: {
             title: "UEFA Europa Conference League 2022/23",
-            description: "Mùa giải thứ hai trong lịch sử của giải đấu, mang đến vinh quang châu Âu hiếm hoi cho đội bóng thành London.",
-            stats: { teams: 32, matches: 141 }
+            description:
+                "Mùa giải 2022/23 chứng kiến sự trưởng thành rõ rệt của giải đấu trẻ nhất UEFA, mang đến nhiều câu chuyện bất ngờ và giàu cảm xúc.",
+            stats: {
+                teams: 32,
+                matches: 141,
+                cities: 0,
+                stadiums: 0
+            }
         },
+
+        message: {
+            title: "THE GATEWAY TO EUROPE",
+            description:
+                "Conference League là nơi các đội bóng ít tên tuổi hơn có cơ hội tạo dấu ấn tại đấu trường châu Âu."
+        },
+
+        hosts: [
+            {
+                name: "Châu Âu",
+                code: "UEFA",
+                logo: "https://images.fotmob.com/image_resources/logo/leaguelogo/10216.png"
+            }
+        ],
+
+        hostCities: [],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "Vòng bảng 32 đội. Quán quân giải đấu được đảm bảo vé vào thẳng vòng bảng Europa League mùa tiếp theo."
+
+            description:
+                "32 đội chia thành các bảng đấu, sau đó bước vào giai đoạn knock-out để xác định nhà vô địch."
         },
-        tournamentInfo: { startDate: "2022-09-08", endDate: "2023-06-07", teams: 32, matches: 141 },
+
+        tournamentInfo: {
+            startDate: "2022-09-08",
+            endDate: "2023-06-07",
+            teams: 32,
+            matches: 141
+        },
+
         teams: []
     },
 
     // ==========================================
     // FA CUP (CÚP QUỐC GIA ANH)
     // ==========================================
-    facup2526: {
-        config: { leagueId: 132, season: "2025/2026", query: "FA Cup 2025 2026", tournamentKey: "facup2526" },
-        hero: { badge: "English Football", title: "FA CUP 25/26", backgroundImage: "/images/fa-cup.jpg", video: "" },
-        overview: {
-            title: "FA Cup 2025/26",
-            description: "Giải bóng đá lâu đời nhất thế giới, nơi những câu chuyện cổ tích và những cơn địa chấn do các đội bóng nhỏ tạo ra trước các ông lớn luôn là đặc sản.",
-            stats: { teams: 732, matches: 800 } // Ước tính số đội tham gia từ các vòng loại
+    facup2627: {
+        config: {
+            leagueId: 132,
+            season: "2026/2027",
+            query: "FA Cup 2026 2027",
+            tournamentKey: "facup2627"
         },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "English Football",
+            title: "FA CUP 26/27",
+            backgroundImage: "/images/fa-cup.jpg",
+            video: ""
+        },
+
+        overview: {
+            title: "FA Cup 2026/27",
+            description:
+                "FA Cup 2026/27 tiếp tục duy trì bản sắc của giải đấu cúp lâu đời nhất thế giới, nơi mọi cấp độ bóng đá Anh cùng tham gia và luôn tiềm ẩn những bất ngờ khó lường.",
+            stats: {
+                teams: 732,
+                matches: 800,
+                cities: 0,
+                stadiums: 0
+            }
+        },
+
+        message: {
+            title: "THE MAGIC OF THE CUP",
+            description:
+                "FA Cup luôn là nơi mọi giới hạn bị xóa nhòa, khi các đội bóng nhỏ có thể đối đầu và đánh bại những ông lớn trong hành trình cổ tích."
+        },
+
+        hosts: [
+            {
+                name: "England",
+                code: "ENG",
+                logo: "https://images.fotmob.com/image_resources/logo/leaguelogo/132.png"
+            }
+        ],
+
+        hostCities: [],
+
         format: {
             title: "Thể thức loại trực tiếp",
-            description: "Thi đấu loại trực tiếp một trận. Kể từ mùa giải 24/25, các trận đấu đá lại (replays) từ vòng 1 trở đi đã bị hủy bỏ để giảm tải lịch thi đấu."
+
+            description:
+                "Thi đấu loại trực tiếp một lượt trận. Nếu hòa sau 90 phút sẽ đá hiệp phụ và luân lưu. Không áp dụng đá lại (replay)."
         },
-        tournamentInfo: { startDate: "2025-08-02", endDate: "2026-05-16", teams: 732, matches: 800 },
+
+        tournamentInfo: {
+            startDate: "2026-08-01",
+            endDate: "2027-05-15",
+            teams: 732,
+            matches: 800
+        },
+
+        teams: []
+    },
+    facup2526: {
+        config: {
+            leagueId: 132,
+            season: "2025/2026",
+            query: "FA Cup 2025 2026",
+            tournamentKey: "facup2526"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "English Football",
+            title: "FA CUP 25/26",
+            backgroundImage: "/images/fa-cup.jpg",
+            video: ""
+        },
+
+        overview: {
+            title: "FA Cup 2025/26",
+            description:
+                "FA Cup 2025/26 tiếp tục giữ nguyên vị thế là giải đấu cúp lâu đời nhất thế giới, nơi các đội bóng từ mọi cấp độ của bóng đá Anh cùng nhau tạo nên những câu chuyện bất ngờ và giàu cảm xúc.",
+            stats: {
+                teams: 732,
+                matches: 800,
+                cities: 0,
+                stadiums: 0
+            }
+        },
+
+        message: {
+            title: "THE MAGIC OF THE CUP",
+            description:
+                "FA Cup luôn là nơi tinh thần bóng đá Anh được thể hiện rõ nhất: cơ hội cho đội yếu tạo địa chấn và cho các ông lớn thử thách bản lĩnh thực sự."
+        },
+
+        hosts: [
+            {
+                name: "England",
+                code: "ENG",
+                logo: "https://images.fotmob.com/image_resources/logo/leaguelogo/132.png"
+            }
+        ],
+
+        hostCities: [],
+
+        format: {
+            title: "Thể thức loại trực tiếp",
+
+            description:
+                "Các trận đấu diễn ra theo thể thức loại trực tiếp một lượt. Nếu hòa sau 90 phút sẽ đá hiệp phụ và luân lưu. Từ các mùa gần đây, không còn đá lại (replay) để giảm tải lịch thi đấu."
+        },
+
+        tournamentInfo: {
+            startDate: "2025-08-02",
+            endDate: "2026-05-16",
+            teams: 732,
+            matches: 800
+        },
+
         teams: []
     },
     facup2425: {
-        config: { leagueId: 132, season: "2024/2025", query: "FA Cup 2024 2025", tournamentKey: "facup2425" },
-        hero: { badge: "English Football", title: "FA CUP 24/25", backgroundImage: "/images/fa-cup.jpg", video: "" },
+        config: {
+            leagueId: 132,
+            season: "2024/2025",
+            query: "FA Cup 2024 2025",
+            tournamentKey: "facup2425"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "English Football",
+            title: "FA CUP 24/25",
+            backgroundImage: "/images/fa-cup.jpg",
+            video: ""
+        },
+
         overview: {
             title: "FA Cup 2024/25",
-            description: "Mùa giải đánh dấu bước ngoặt lớn khi LĐBĐ Anh chính thức khai tử thể thức đá lại (replay) từ vòng 1 để nhường chỗ cho cúp châu Âu mở rộng.",
-            stats: { teams: 732, matches: 800 }
+            description:
+                "FA Cup 2024/25 đánh dấu giai đoạn hiện đại hóa hoàn toàn thể thức thi đấu, tập trung vào việc giảm tải lịch thi đấu và tăng tính kịch tính trong từng trận đấu.",
+            stats: {
+                teams: 732,
+                matches: 800,
+                cities: 0,
+                stadiums: 0
+            }
         },
+
+        message: {
+            title: "THE MAGIC OF THE CUP",
+            description:
+                "Những thay đổi về thể thức không làm mất đi bản sắc FA Cup, mà còn khiến mỗi trận đấu trở nên quyết liệt hơn bao giờ hết."
+        },
+
+        hosts: [
+            {
+                name: "England",
+                code: "ENG",
+                logo: "https://images.fotmob.com/image_resources/logo/leaguelogo/132.png"
+            }
+        ],
+
+        hostCities: [],
+
         format: {
-            title: "Thể thức thi đấu",
-            description: "Loại trực tiếp một lượt trận. Nếu hòa trong 90 phút, hai đội sẽ đá hiệp phụ và luân lưu (không còn đá lại)."
+            title: "Thể thức loại trực tiếp",
+
+            description:
+                "Loại trực tiếp một trận. Nếu hòa trong 90 phút sẽ đá hiệp phụ và luân lưu, không còn đá lại (replay)."
         },
-        tournamentInfo: { startDate: "2024-08-03", endDate: "2025-05-17", teams: 732, matches: 800 },
+
+        tournamentInfo: {
+            startDate: "2024-08-03",
+            endDate: "2025-05-17",
+            teams: 732,
+            matches: 800
+        },
+
         teams: []
     },
     facup2324: {
-        config: { leagueId: 132, season: "2023/2024", query: "FA Cup 2023 2024", tournamentKey: "facup2324" },
-        hero: { badge: "English Football", title: "FA CUP 23/24", backgroundImage: "/images/fa-cup.jpg", video: "" },
+        config: {
+            leagueId: 132,
+            season: "2023/2024",
+            query: "FA Cup 2023 2024",
+            tournamentKey: "facup2324"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "English Football",
+            title: "FA CUP 23/24",
+            backgroundImage: "/images/fa-cup.jpg",
+            video: ""
+        },
+
         overview: {
             title: "FA Cup 2023/24",
-            description: "Mùa giải chứng kiến trận Derby Manchester rực lửa ở chung kết, bảo vệ sự danh giá và truyền thống của bóng đá Anh.",
-            stats: { teams: 732, matches: 800 }
+            description:
+                "FA Cup 2023/24 mang đến những trận cầu giàu cảm xúc, nơi truyền thống lâu đời của bóng đá Anh tiếp tục được duy trì trên sân Wembley huyền thoại.",
+            stats: {
+                teams: 732,
+                matches: 800,
+                cities: 0,
+                stadiums: 0
+            }
         },
+
+        message: {
+            title: "THE MAGIC OF THE CUP",
+            description:
+                "FA Cup tiếp tục là sân khấu của những bất ngờ, nơi các đội bóng nhỏ có thể tạo nên lịch sử trước những ông lớn."
+        },
+
+        hosts: [
+            {
+                name: "England",
+                code: "ENG",
+                logo: "https://images.fotmob.com/image_resources/logo/leaguelogo/132.png"
+            }
+        ],
+
+        hostCities: [],
+
         format: {
-            title: "Thể thức thi đấu",
-            description: "Loại trực tiếp. Thể thức đá lại (replay) vẫn được áp dụng cho đến hết vòng 4 nếu hai đội hòa nhau trong 90 phút."
+            title: "Thể thức loại trực tiếp",
+
+            description:
+                "Loại trực tiếp. Một số vòng vẫn áp dụng đá lại (replay) nếu hòa trong 90 phút trước khi chuyển hoàn toàn sang hiệp phụ và luân lưu ở các vòng sau."
         },
-        tournamentInfo: { startDate: "2023-08-04", endDate: "2024-05-25", teams: 732, matches: 800 },
+
+        tournamentInfo: {
+            startDate: "2023-08-04",
+            endDate: "2024-05-25",
+            teams: 732,
+            matches: 800
+        },
+
         teams: []
     },
     facup2223: {
-        config: { leagueId: 132, season: "2022/2023", query: "FA Cup 2022 2023", tournamentKey: "facup2223" },
-        hero: { badge: "English Football", title: "FA CUP 22/23", backgroundImage: "/images/fa-cup.jpg", video: "" },
+        config: {
+            leagueId: 132,
+            season: "2022/2023",
+            query: "FA Cup 2022 2023",
+            tournamentKey: "facup2223"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "English Football",
+            title: "FA CUP 22/23",
+            backgroundImage: "/images/fa-cup.jpg",
+            video: ""
+        },
+
         overview: {
             title: "FA Cup 2022/23",
-            description: "Mùa giải là một phần trong cú ăn ba lịch sử của nhà vô địch, vượt qua hàng loạt đối thủ sừng sỏ trên con đường tiến đến Wembley.",
-            stats: { teams: 732, matches: 800 }
+            description:
+                "FA Cup 2022/23 là một phần của hành trình lịch sử đáng nhớ của bóng đá Anh, nơi những trận đấu knock-out tạo nên nhiều khoảnh khắc kinh điển.",
+            stats: {
+                teams: 732,
+                matches: 800,
+                cities: 0,
+                stadiums: 0
+            }
         },
+
+        message: {
+            title: "THE MAGIC OF THE CUP",
+            description:
+                "FA Cup tiếp tục giữ nguyên giá trị truyền thống lâu đời nhất thế giới, nơi mọi đội bóng đều có cơ hội viết nên câu chuyện của riêng mình."
+        },
+
+        hosts: [
+            {
+                name: "England",
+                code: "ENG",
+                logo: "https://images.fotmob.com/image_resources/logo/leaguelogo/132.png"
+            }
+        ],
+
+        hostCities: [],
+
         format: {
-            title: "Thể thức thi đấu",
-            description: "Giải đấu cúp loại trực tiếp có lịch sử từ năm 1871. Trận chung kết luôn được tổ chức tại thánh địa Wembley."
+            title: "Thể thức loại trực tiếp",
+
+            description:
+                "Giải đấu cúp lâu đời nhất thế giới, thi đấu theo thể thức loại trực tiếp truyền thống tại Wembley ở vòng chung kết."
         },
-        tournamentInfo: { startDate: "2022-08-05", endDate: "2023-06-03", teams: 732, matches: 800 },
+
+        tournamentInfo: {
+            startDate: "2022-08-05",
+            endDate: "2023-06-03",
+            teams: 732,
+            matches: 800
+        },
+
         teams: []
     },
 
     // ==========================================
     // UEFA EURO (VÔ ĐỊCH CHÂU ÂU)
     // ==========================================
-    euro2024: {
-        config: { leagueId: 50, season: "2024", query: "Euro 2024", tournamentKey: "euro2024" },
-        hero: { badge: "European Championship", title: "EURO 2024", backgroundImage: "/images/euro.jpg", video: "" },
-        overview: {
-            title: "UEFA Euro 2024",
-            description: "Giải vô địch bóng đá châu Âu 2024 tổ chức tại Đức. Ngày hội lớn nhất lục địa già quy tụ 24 đội tuyển xuất sắc nhất tranh tài.",
-            stats: { teams: 24, matches: 51 }
+    euro2028: {
+        config: {
+            leagueId: 50,
+            season: "2028",
+            query: "Euro 2028",
+            tournamentKey: "euro2028"
         },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "European Championship",
+            title: "EURO 2028",
+            backgroundImage: "/images/euro.jpg",
+            video: ""
+        },
+
+        overview: {
+            title: "UEFA Euro 2028",
+            description:
+                "UEFA Euro 2028 là giải vô địch bóng đá châu Âu cấp đội tuyển, nơi các đội tuyển hàng đầu lục địa già cạnh tranh cho danh hiệu danh giá nhất châu Âu.",
+            stats: {
+                teams: 24,
+                matches: 51,
+                cities: 0,
+                stadiums: 0
+            }
+        },
+
+        message: {
+            title: "THE EUROPEAN STAGE",
+            description:
+                "Euro 2028 hứa hẹn mang đến một kỳ giải đỉnh cao với thế hệ cầu thủ mới và những cuộc đối đầu giàu tính cạnh tranh."
+        },
+
+        hosts: [
+            {
+                name: "Europe",
+                code: "UEFA",
+                logo: ""
+            }
+        ],
+
+        hostCities: [],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "24 đội chia làm 6 bảng. 2 đội đứng đầu mỗi bảng và 4 đội xếp thứ 3 có thành tích tốt nhất tiến vào vòng 16 đội."
+
+            description:
+                "24 đội chia làm 6 bảng. 2 đội đứng đầu mỗi bảng và 4 đội xếp thứ 3 tốt nhất vào vòng knock-out."
         },
-        tournamentInfo: { startDate: "2024-06-14", endDate: "2024-07-14", teams: 24, matches: 51 },
+
+        tournamentInfo: {
+            startDate: "2028-06-09",
+            endDate: "2028-07-09",
+            teams: 24,
+            matches: 51
+        },
+
+        teams: []
+    },
+    euro2024: {
+        config: {
+            leagueId: 50,
+            season: "2024",
+            query: "Euro 2024",
+            tournamentKey: "euro2024"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "European Championship",
+            title: "EURO 2024",
+            backgroundImage: "/images/euro.jpg",
+            video: ""
+        },
+
+        overview: {
+            title: "UEFA Euro 2024",
+            description:
+                "UEFA Euro 2024 là giải vô địch bóng đá châu Âu tổ chức tại Đức, nơi 24 đội tuyển quốc gia mạnh nhất lục địa già cạnh tranh cho danh hiệu cao quý nhất cấp đội tuyển.",
+            stats: {
+                teams: 24,
+                matches: 51,
+                cities: 0,
+                stadiums: 0
+            }
+        },
+
+        message: {
+            title: "THE EUROPEAN STAGE",
+            description:
+                "Euro là nơi hội tụ tinh hoa bóng đá châu Âu cấp đội tuyển, nơi chiến thuật, bản lĩnh và khoảnh khắc tỏa sáng quyết định tất cả."
+        },
+
+        hosts: [
+            {
+                name: "Germany",
+                code: "DEU",
+                logo: ""
+            }
+        ],
+
+        hostCities: [],
+
+        format: {
+            title: "Thể thức thi đấu",
+
+            description:
+                "24 đội chia làm 6 bảng. 2 đội đứng đầu mỗi bảng và 4 đội xếp thứ 3 có thành tích tốt nhất vào vòng 1/8."
+        },
+
+        tournamentInfo: {
+            startDate: "2024-06-14",
+            endDate: "2024-07-14",
+            teams: 24,
+            matches: 51
+        },
+
         teams: []
     },
     euro2020: {
-        config: { leagueId: 50, season: "2020", query: "Euro 2020", tournamentKey: "euro2020" },
-        hero: { badge: "European Championship", title: "EURO 2020", backgroundImage: "/images/euro.jpg", video: "" },
+        config: {
+            leagueId: 50,
+            season: "2020",
+            query: "Euro 2020",
+            tournamentKey: "euro2020"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "European Championship",
+            title: "EURO 2020",
+            backgroundImage: "/images/euro.jpg",
+            video: ""
+        },
+
         overview: {
             title: "UEFA Euro 2020",
-            description: "Kỳ Euro lịch sử được tổ chức trên 11 thành phố trải dài khắp châu Âu để kỷ niệm 60 năm thành lập giải đấu. (Diễn ra vào năm 2021 do đại dịch).",
-            stats: { teams: 24, matches: 51 }
+            description:
+                "Euro 2020 là giải đấu kỷ niệm 60 năm lịch sử Euro, được tổ chức tại nhiều thành phố trên khắp châu Âu và diễn ra vào năm 2021 do ảnh hưởng của đại dịch.",
+            stats: {
+                teams: 24,
+                matches: 51,
+                cities: 0,
+                stadiums: 0
+            }
         },
+
+        message: {
+            title: "THE EUROPEAN STAGE",
+            description:
+                "Một trong những kỳ Euro đặc biệt nhất lịch sử, nơi các đội tuyển phải thích nghi với lịch thi đấu và điều kiện thi đấu chưa từng có."
+        },
+
+        hosts: [
+            {
+                name: "Europe",
+                code: "UEFA",
+                logo: ""
+            }
+        ],
+
+        hostCities: [],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "Tương tự Euro 2024. Trận bán kết và chung kết được tổ chức tại SVĐ Wembley, London."
+
+            description:
+                "24 đội chia làm 6 bảng, các đội nhất bảng, nhì bảng và 4 đội thứ 3 xuất sắc nhất vào vòng 16 đội."
         },
-        tournamentInfo: { startDate: "2021-06-11", endDate: "2021-07-11", teams: 24, matches: 51 },
+
+        tournamentInfo: {
+            startDate: "2021-06-11",
+            endDate: "2021-07-11",
+            teams: 24,
+            matches: 51
+        },
+
+        teams: []
+    },
+    euro2016: {
+        config: {
+            leagueId: 50,
+            season: "2016",
+            query: "Euro 2016",
+            tournamentKey: "euro2016"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "European Championship",
+            title: "EURO 2016",
+            backgroundImage: "/images/euro.jpg",
+            video: ""
+        },
+
+        overview: {
+            title: "UEFA Euro 2016",
+            description:
+                "UEFA Euro 2016 tổ chức tại Pháp, đánh dấu kỳ Euro đầu tiên mở rộng lên 24 đội, mang đến nhiều bất ngờ và cảm xúc lớn cho người hâm mộ bóng đá châu Âu.",
+            stats: {
+                teams: 24,
+                matches: 51,
+                cities: 0,
+                stadiums: 0
+            }
+        },
+
+        message: {
+            title: "THE EUROPEAN STAGE",
+            description:
+                "Euro 2016 là giải đấu của những bất ngờ lớn, nơi các đội tuyển tầm trung tạo nên những hành trình cổ tích đáng nhớ."
+        },
+
+        hosts: [
+            {
+                name: "France",
+                code: "FRA",
+                logo: ""
+            }
+        ],
+
+        hostCities: [],
+
+        format: {
+            title: "Thể thức thi đấu",
+
+            description:
+                "24 đội chia 6 bảng. 2 đội đứng đầu mỗi bảng và 4 đội xếp thứ 3 có thành tích tốt nhất vào vòng 16 đội."
+        },
+
+        tournamentInfo: {
+            startDate: "2016-06-10",
+            endDate: "2016-07-10",
+            teams: 24,
+            matches: 51
+        },
+
         teams: []
     },
 
     // ==========================================
     // COPA AMERICA (VÔ ĐỊCH NAM MỸ)
     // ==========================================
-    copaAmerica2024: {
-        config: { leagueId: 113, season: "2024", query: "Copa America 2024", tournamentKey: "copaAmerica2024" },
-        hero: { badge: "South American Football", title: "COPA AMERICA 2024", backgroundImage: "/images/copa-america.jpg", video: "" },
-        overview: {
-            title: "Copa América 2024",
-            description: "Giải đấu được tổ chức tại Mỹ, mở rộng quy mô khi kết hợp 10 đội Nam Mỹ (CONMEBOL) và 6 đội Bắc, Trung Mỹ và Caribe (CONCACAF).",
-            stats: { teams: 16, matches: 32 }
+    copaAmerica2028: {
+        config: {
+            leagueId: 113,
+            season: "2028",
+            query: "Copa America 2028",
+            tournamentKey: "copaAmerica2028"
         },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "South American Football",
+            title: "COPA AMERICA 2028",
+            backgroundImage: "/images/copa-america.jpg",
+            video: ""
+        },
+
+        overview: {
+            title: "Copa América 2028",
+            description:
+                "Copa América 2028 là giải đấu cấp đội tuyển Nam Mỹ, nơi các thế hệ cầu thủ mới tiếp tục viết nên lịch sử cho khu vực giàu truyền thống bóng đá nhất thế giới.",
+            stats: {
+                teams: 16,
+                matches: 32,
+                cities: 0,
+                stadiums: 0
+            }
+        },
+
+        message: {
+            title: "THE SOUTH AMERICAN STAGE",
+            description:
+                "Một kỳ Copa hứa hẹn sự bùng nổ của thế hệ mới, nơi kỹ thuật và bản sắc Nam Mỹ tiếp tục được khẳng định."
+        },
+
+        hosts: [
+            {
+                name: "South America",
+                code: "CONMEBOL",
+                logo: ""
+            }
+        ],
+
+        hostCities: [],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "16 đội chia 4 bảng. Top 2 mỗi bảng vào Tứ kết. Ở các vòng knock-out (trừ chung kết), nếu hòa trong 90 phút sẽ đá luân lưu ngay, không có hiệp phụ."
+
+            description:
+                "Các đội tuyển Nam Mỹ thi đấu vòng bảng và knock-out để xác định nhà vô địch khu vực."
         },
-        tournamentInfo: { startDate: "2024-06-20", endDate: "2024-07-14", teams: 16, matches: 32 },
+
+        tournamentInfo: {
+            startDate: "2028-06-15",
+            endDate: "2028-07-10",
+            teams: 16,
+            matches: 32
+        },
+
+        teams: []
+    },
+    copaAmerica2024: {
+        config: {
+            leagueId: 113,
+            season: "2024",
+            query: "Copa America 2024",
+            tournamentKey: "copaAmerica2024"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "South American Football",
+            title: "COPA AMERICA 2024",
+            backgroundImage: "/images/copa-america.jpg",
+            video: ""
+        },
+
+        overview: {
+            title: "Copa América 2024",
+            description:
+                "Copa América 2024 được tổ chức tại Hoa Kỳ, quy tụ 16 đội tuyển gồm 10 đội Nam Mỹ (CONMEBOL) và 6 đội khách mời từ CONCACAF, tạo nên một giải đấu mở rộng giàu tính cạnh tranh.",
+            stats: {
+                teams: 16,
+                matches: 32,
+                cities: 0,
+                stadiums: 0
+            }
+        },
+
+        message: {
+            title: "THE SOUTH AMERICAN STAGE",
+            description:
+                "Copa América là nơi hội tụ bản sắc bóng đá Nam Mỹ: kỹ thuật, cảm xúc và những trận đấu giàu kịch tính đến phút cuối."
+        },
+
+        hosts: [
+            {
+                name: "United States",
+                code: "USA",
+                logo: ""
+            }
+        ],
+
+        hostCities: [],
+
+        format: {
+            title: "Thể thức thi đấu",
+
+            description:
+                "16 đội chia 4 bảng. 2 đội đứng đầu mỗi bảng vào tứ kết. Từ vòng knock-out (trừ chung kết), nếu hòa sau 90 phút sẽ đá luân lưu ngay."
+        },
+
+        tournamentInfo: {
+            startDate: "2024-06-20",
+            endDate: "2024-07-14",
+            teams: 16,
+            matches: 32
+        },
+
         teams: []
     },
     copaAmerica2021: {
-        config: { leagueId: 113, season: "2021", query: "Copa America 2021", tournamentKey: "copaAmerica2021" },
-        hero: { badge: "South American Football", title: "COPA AMERICA 2021", backgroundImage: "/images/copa-america.jpg", video: "" },
+        config: {
+            leagueId: 113,
+            season: "2021",
+            query: "Copa America 2021",
+            tournamentKey: "copaAmerica2021"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "South American Football",
+            title: "COPA AMERICA 2021",
+            backgroundImage: "/images/copa-america.jpg",
+            video: ""
+        },
+
         overview: {
             title: "Copa América 2021",
-            description: "Giải đấu được tổ chức tại Brazil, nơi chứng kiến sự lên ngôi đầy cảm xúc của La Albiceleste, chấm dứt cơn khát danh hiệu kéo dài 28 năm.",
-            stats: { teams: 10, matches: 28 }
+            description:
+                "Copa América 2021 tổ chức tại Brazil, nơi Argentina đăng quang sau hành trình giàu cảm xúc, chấm dứt cơn khát danh hiệu kéo dài nhiều năm.",
+            stats: {
+                teams: 10,
+                matches: 28,
+                cities: 0,
+                stadiums: 0
+            }
         },
+
+        message: {
+            title: "THE SOUTH AMERICAN STAGE",
+            description:
+                "Giải đấu mang đậm bản sắc Nam Mỹ với lối chơi kỹ thuật, tốc độ và những khoảnh khắc bùng nổ cảm xúc."
+        },
+
+        hosts: [
+            {
+                name: "Brazil",
+                code: "BRA",
+                logo: ""
+            }
+        ],
+
+        hostCities: [],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "10 đội Nam Mỹ chia làm 2 bảng (bắc/nam). 4 đội dẫn đầu mỗi bảng lọt vào vòng tứ kết."
+
+            description:
+                "10 đội Nam Mỹ chia làm 2 bảng. 4 đội dẫn đầu mỗi bảng vào tứ kết, sau đó thi đấu knock-out để tìm ra nhà vô địch."
         },
-        tournamentInfo: { startDate: "2021-06-13", endDate: "2021-07-10", teams: 10, matches: 28 },
+
+        tournamentInfo: {
+            startDate: "2021-06-13",
+            endDate: "2021-07-10",
+            teams: 10,
+            matches: 28
+        },
+
         teams: []
-    }
+    },
+    copaAmerica2019: {
+        config: {
+            leagueId: 113,
+            season: "2019",
+            query: "Copa America 2019",
+            tournamentKey: "copaAmerica2019"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "South American Football",
+            title: "COPA AMERICA 2019",
+            backgroundImage: "/images/copa-america.jpg",
+            video: ""
+        },
+
+        overview: {
+            title: "Copa América 2019",
+            description:
+                "Copa América 2019 được tổ chức tại Brazil, nơi đội chủ nhà giành chức vô địch sau hành trình thuyết phục và giàu cảm xúc.",
+            stats: {
+                teams: 12,
+                matches: 26,
+                cities: 0,
+                stadiums: 0
+            }
+        },
+
+        message: {
+            title: "THE SOUTH AMERICAN STAGE",
+            description:
+                "Giải đấu chứng kiến sự trở lại mạnh mẽ của các ông lớn Nam Mỹ trong một kỳ Copa giàu tính cạnh tranh."
+        },
+
+        hosts: [
+            {
+                name: "Brazil",
+                code: "BRA",
+                logo: ""
+            }
+        ],
+
+        hostCities: [],
+
+        format: {
+            title: "Thể thức thi đấu",
+
+            description:
+                "12 đội chia 3 bảng. 2 đội đứng đầu mỗi bảng và 2 đội thứ 3 tốt nhất vào tứ kết."
+        },
+
+        tournamentInfo: {
+            startDate: "2019-06-14",
+            endDate: "2019-07-07",
+            teams: 12,
+            matches: 26
+        },
+
+        teams: []
+    },
+    copaAmerica2016: {
+        config: {
+            leagueId: 113,
+            season: "2016",
+            query: "Copa America 2016",
+            tournamentKey: "copaAmerica2016"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "South American Football",
+            title: "COPA AMERICA 2016",
+            backgroundImage: "/images/copa-america.jpg",
+            video: ""
+        },
+
+        overview: {
+            title: "Copa América 2016",
+            description:
+                "Copa América 2016 (Centenario) được tổ chức tại Hoa Kỳ, đánh dấu 100 năm lịch sử giải đấu với quy mô mở rộng đặc biệt và nhiều trận cầu đỉnh cao.",
+            stats: {
+                teams: 16,
+                matches: 32,
+                cities: 0,
+                stadiums: 0
+            }
+        },
+
+        message: {
+            title: "THE SOUTH AMERICAN STAGE",
+            description:
+                "Kỳ Copa đặc biệt kỷ niệm 100 năm, nơi các đội tuyển Nam Mỹ cạnh tranh quyết liệt trong một giải đấu mang tính lịch sử."
+        },
+
+        hosts: [
+            {
+                name: "United States",
+                code: "USA",
+                logo: ""
+            }
+        ],
+
+        hostCities: [],
+
+        format: {
+            title: "Thể thức thi đấu",
+
+            description:
+                "16 đội chia 4 bảng, 2 đội đứng đầu mỗi bảng vào tứ kết. Các trận knock-out có thể giải quyết bằng luân lưu nếu hòa trong 90 phút."
+        },
+
+        tournamentInfo: {
+            startDate: "2016-06-03",
+            endDate: "2016-06-26",
+            teams: 16,
+            matches: 32
+        },
+
+        teams: []
+    },
 };
