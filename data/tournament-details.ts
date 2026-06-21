@@ -1,4 +1,7 @@
 export const tournamentDetails = {
+    // ==========================================
+    // FIFA WORLD CUP (GIẢI VÔ ĐỊCH BÓNG ĐÁ THẾ GIỚI)
+    // ==========================================
     worldCup2026: {
         config: {
             leagueId: 77,
@@ -338,10 +341,6 @@ export const tournamentDetails = {
             }
         ]
     },
-
-    // ==========================================
-    // FIFA WORLD CUP (GIẢI VÔ ĐỊCH BÓNG ĐÁ THẾ GIỚI)
-    // ==========================================
     worldCup2022: {
         config: {
             leagueId: 77,
@@ -550,7 +549,6 @@ export const tournamentDetails = {
             }
         ]
     },
-
     worldCup2018: {
         config: {
             leagueId: 77,
@@ -792,7 +790,6 @@ export const tournamentDetails = {
             },
         ]
     },
-
     worldCup2014: {
         config: {
             leagueId: 77,
@@ -1033,7 +1030,6 @@ export const tournamentDetails = {
             },
         ]
     },
-
     worldCup2010: {
         config: {
             leagueId: 77,
@@ -1269,7 +1265,6 @@ export const tournamentDetails = {
             },
         ]
     },
-
     worldCup2006: {
         config: {
             leagueId: 77,
@@ -1698,7 +1693,6 @@ export const tournamentDetails = {
             },
         ]
     },
-
     premierLeague2526: {
         config: {
             leagueId: 47,
@@ -1887,7 +1881,6 @@ export const tournamentDetails = {
         ]
 
     },
-
     premierLeague2425: {
         config: {
             leagueId: 47,
@@ -2074,8 +2067,6 @@ export const tournamentDetails = {
             },
         ]
     },
-
-
     premierLeague2324: {
         config: {
             leagueId: 47,
@@ -2264,8 +2255,6 @@ export const tournamentDetails = {
             },
         ]
     },
-
-
     premierLeague2223: {
         config: {
             leagueId: 47,
@@ -2454,83 +2443,412 @@ export const tournamentDetails = {
         ]
     },
 
-
     // ==========================================
     // BUNDESLIGA (ĐỨC)
     // ==========================================
     bundesliga2627: {
-        config: { leagueId: 54, season: "2026/2027", query: "Bundesliga 2026 2027", tournamentKey: "bundesliga2627" },
-        hero: { badge: "German Football", title: "BUNDESLIGA 26/27", backgroundImage: "/images/bundesliga.jpg", video: "" },
+        config: {
+            leagueId: 54,
+            season: "2026/2027",
+            query: "Bundesliga 2026 2027",
+            tournamentKey: "bundesliga2627"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "German Football",
+            title: "BUNDESLIGA 26/27",
+            backgroundImage: "/images/bundesliga.jpg",
+            video: ""
+        },
+
         overview: {
             title: "Bundesliga 2026/27",
-            description: "Giải vô địch quốc gia Đức mùa giải 26/27 mang đến thứ bóng đá cống hiến, tốc độ cao với các khán đài luôn chật kín cổ động viên cuồng nhiệt.",
-            stats: { teams: 18, matches: 306 }
+            description:
+                "Bundesliga 2026/27 tiếp tục mang đến những màn trình diễn giàu tốc độ, tinh thần tấn công cống hiến và bầu không khí cuồng nhiệt đặc trưng của bóng đá Đức. Với sự góp mặt của những câu lạc bộ hàng đầu cùng các tài năng trẻ triển vọng, mùa giải hứa hẹn tạo nên cuộc đua hấp dẫn từ ngôi vô địch đến cuộc chiến trụ hạng.",
+            stats: {
+                teams: 18,
+                matches: 306,
+                cities: 18,
+                stadiums: 18
+            }
         },
+
+        message: {
+            title: "THE HOME OF GERMAN FOOTBALL",
+            description:
+                "Bundesliga nổi tiếng với lượng khán giả trung bình cao nhất châu Âu, những sân vận động sôi động và triết lý bóng đá tấn công hấp dẫn. Mỗi vòng đấu đều mang đến những trận cầu chất lượng cùng bầu không khí cuồng nhiệt từ người hâm mộ."
+        },
+
+        hosts: [
+            {
+                name: "Đức",
+                code: "GER",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8570.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "Munich", country: "GER" },
+            { city: "Dortmund", country: "GER" },
+            { city: "Leipzig", country: "GER" },
+            { city: "Leverkusen", country: "GER" },
+            { city: "Frankfurt", country: "GER" },
+            { city: "Stuttgart", country: "GER" },
+            { city: "Wolfsburg", country: "GER" },
+            { city: "Mönchengladbach", country: "GER" },
+            { city: "Bremen", country: "GER" },
+            { city: "Freiburg", country: "GER" },
+            { city: "Mainz", country: "GER" },
+            { city: "Augsburg", country: "GER" },
+            { city: "Berlin", country: "GER" },
+            { city: "Heidenheim", country: "GER" },
+            { city: "Sinsheim", country: "GER" },
+            { city: "Hamburg", country: "GER" },
+            { city: "Cologne", country: "GER" },
+            { city: "Gelsenkirchen", country: "GER" }
+        ],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "18 đội thi đấu vòng tròn 2 lượt (34 trận/đội). 2 đội cuối bảng rớt hạng trực tiếp, đội xếp thứ 16 phải đá Play-off trụ hạng với đội hạng 3 của 2. Bundesliga."
+
+            description:
+                "18 đội bóng thi đấu vòng tròn hai lượt trong suốt mùa giải. Đội có số điểm cao nhất giành chức vô địch Bundesliga, trong khi hai đội xếp cuối bảng xuống hạng trực tiếp. Đội xếp thứ 16 sẽ tham dự trận play-off tranh suất tham dự Bundesliga mùa giải tiếp theo."
         },
-        tournamentInfo: { startDate: "2026-08-21", endDate: "2027-05-22", teams: 18, matches: 306 },
+
+        tournamentInfo: {
+            startDate: "2026-08-21",
+            endDate: "2027-05-22",
+            teams: 18,
+            matches: 306
+        },
+
         teams: []
     },
     bundesliga2526: {
-        config: { leagueId: 54, season: "2025/2026", query: "Bundesliga 2025 2026", tournamentKey: "bundesliga2526" },
-        hero: { badge: "German Football", title: "BUNDESLIGA 25/26", backgroundImage: "/images/bundesliga.jpg", video: "" },
+        config: {
+            leagueId: 54,
+            season: "2025/2026",
+            query: "Bundesliga 2025 2026",
+            tournamentKey: "bundesliga2526"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "German Football",
+            title: "BUNDESLIGA 25/26",
+            backgroundImage: "/images/bundesliga.jpg",
+            video: ""
+        },
+
         overview: {
             title: "Bundesliga 2025/26",
-            description: "Mùa giải kịch tính với sự cạnh tranh khốc liệt cho chiếc Đĩa bạc danh giá của bóng đá Đức.",
-            stats: { teams: 18, matches: 306 }
+            description:
+                "Bundesliga 2025/26 tiếp tục mang đến những trận cầu đỉnh cao cùng cuộc cạnh tranh quyết liệt cho chiếc Đĩa bạc danh giá của bóng đá Đức. Với sự góp mặt của các câu lạc bộ giàu truyền thống và những tài năng trẻ xuất sắc, mùa giải hứa hẹn tạo nên nhiều khoảnh khắc đáng nhớ.",
+            stats: {
+                teams: 18,
+                matches: 306,
+                cities: 18,
+                stadiums: 18
+            }
         },
+
+        message: {
+            title: "THE HOME OF GERMAN FOOTBALL",
+            description:
+                "Bundesliga là biểu tượng của bóng đá Đức với lối chơi giàu năng lượng, các sân vận động hiện đại và bầu không khí cuồng nhiệt từ người hâm mộ. Giải đấu luôn mang đến sự cân bằng giữa truyền thống, sức trẻ và tính cạnh tranh ở đẳng cấp cao."
+        },
+
+        hosts: [
+            {
+                name: "Đức",
+                code: "GER",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8570.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "Munich", country: "GER" },
+            { city: "Dortmund", country: "GER" },
+            { city: "Leipzig", country: "GER" },
+            { city: "Leverkusen", country: "GER" },
+            { city: "Frankfurt", country: "GER" },
+            { city: "Stuttgart", country: "GER" },
+            { city: "Wolfsburg", country: "GER" },
+            { city: "Mönchengladbach", country: "GER" },
+            { city: "Bremen", country: "GER" },
+            { city: "Freiburg", country: "GER" },
+            { city: "Mainz", country: "GER" },
+            { city: "Augsburg", country: "GER" },
+            { city: "Berlin", country: "GER" },
+            { city: "Heidenheim", country: "GER" },
+            { city: "Sinsheim", country: "GER" },
+            { city: "Hamburg", country: "GER" },
+            { city: "Cologne", country: "GER" },
+            { city: "Gelsenkirchen", country: "GER" }
+        ],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "Thể thức 18 đội, 34 vòng. Top 4 tham dự UEFA Champions League."
+
+            description:
+                "18 đội bóng thi đấu vòng tròn hai lượt trong suốt mùa giải. Đội có số điểm cao nhất giành chức vô địch Bundesliga. Bốn đội dẫn đầu giành quyền tham dự UEFA Champions League mùa giải kế tiếp, trong khi các đội cuối bảng phải đối mặt với nguy cơ xuống hạng."
         },
-        tournamentInfo: { startDate: "2025-08-22", endDate: "2026-05-23", teams: 18, matches: 306 },
+
+        tournamentInfo: {
+            startDate: "2025-08-22",
+            endDate: "2026-05-23",
+            teams: 18,
+            matches: 306
+        },
+
         teams: []
     },
     bundesliga2425: {
-        config: { leagueId: 54, season: "2024/2025", query: "Bundesliga 2024 2025", tournamentKey: "bundesliga2425" },
-        hero: { badge: "German Football", title: "BUNDESLIGA 24/25", backgroundImage: "/images/bundesliga.jpg", video: "" },
+        config: {
+            leagueId: 54,
+            season: "2024/2025",
+            query: "Bundesliga 2024 2025",
+            tournamentKey: "bundesliga2425"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "German Football",
+            title: "BUNDESLIGA 24/25",
+            backgroundImage: "/images/bundesliga.jpg",
+            video: ""
+        },
+
         overview: {
             title: "Bundesliga 2024/25",
-            description: "Mùa giải đánh dấu những chuyển biến mới mẻ về chiến thuật và sự nổi lên của nhiều tài năng trẻ nước Đức.",
-            stats: { teams: 18, matches: 306 }
+            description:
+                "Bundesliga 2024/25 là mùa giải tiếp tục chứng kiến sự phát triển mạnh mẽ của bóng đá Đức với những đổi mới về chiến thuật, sự cạnh tranh quyết liệt giữa các câu lạc bộ hàng đầu và sự xuất hiện của nhiều tài năng trẻ đầy triển vọng.",
+            stats: {
+                teams: 18,
+                matches: 306,
+                cities: 18,
+                stadiums: 18
+            }
         },
+
+        message: {
+            title: "THE HOME OF GERMAN FOOTBALL",
+            description:
+                "Bundesliga nổi tiếng với triết lý bóng đá tấn công hiện đại, các sân vận động luôn sôi động và lượng khán giả trung bình thuộc nhóm cao nhất thế giới. Giải đấu là nơi hội tụ giữa truyền thống, đam mê và sự đổi mới không ngừng."
+        },
+
+        hosts: [
+            {
+                name: "Đức",
+                code: "GER",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8570.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "Munich", country: "GER" },
+            { city: "Dortmund", country: "GER" },
+            { city: "Leipzig", country: "GER" },
+            { city: "Leverkusen", country: "GER" },
+            { city: "Frankfurt", country: "GER" },
+            { city: "Stuttgart", country: "GER" },
+            { city: "Wolfsburg", country: "GER" },
+            { city: "Mönchengladbach", country: "GER" },
+            { city: "Bremen", country: "GER" },
+            { city: "Freiburg", country: "GER" },
+            { city: "Mainz", country: "GER" },
+            { city: "Augsburg", country: "GER" },
+            { city: "Berlin", country: "GER" },
+            { city: "Heidenheim", country: "GER" },
+            { city: "Sinsheim", country: "GER" },
+            { city: "Bochum", country: "GER" },
+            { city: "Kiel", country: "GER" },
+            { city: "St. Pauli", country: "GER" }
+        ],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "Thể thức 18 đội. Đội vô địch giành Đĩa Bạc, 2 đội rớt hạng trực tiếp, 1 đội đá play-off."
+
+            description:
+                "18 đội bóng thi đấu vòng tròn hai lượt trong suốt mùa giải. Đội có số điểm cao nhất giành chức vô địch Bundesliga và chiếc Đĩa bạc danh giá. Hai đội xếp cuối bảng xuống hạng trực tiếp, trong khi đội xếp thứ 16 tham dự trận play-off tranh suất tham dự Bundesliga mùa giải tiếp theo."
         },
-        tournamentInfo: { startDate: "2024-08-23", endDate: "2025-05-24", teams: 18, matches: 306 },
+
+        tournamentInfo: {
+            startDate: "2024-08-23",
+            endDate: "2025-05-24",
+            teams: 18,
+            matches: 306
+        },
+
         teams: []
     },
     bundesliga2324: {
-        config: { leagueId: 54, season: "2023/2024", query: "Bundesliga 2023 2024", tournamentKey: "bundesliga2324" },
-        hero: { badge: "German Football", title: "BUNDESLIGA 23/24", backgroundImage: "/images/bundesliga.jpg", video: "" },
+        config: {
+            leagueId: 54,
+            season: "2023/2024",
+            query: "Bundesliga 2023 2024",
+            tournamentKey: "bundesliga2324"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "German Football",
+            title: "BUNDESLIGA 23/24",
+            backgroundImage: "/images/bundesliga.jpg",
+            video: ""
+        },
+
         overview: {
             title: "Bundesliga 2023/24",
-            description: "Mùa giải lịch sử phá vỡ thế độc tôn lâu năm, ghi nhận một nhà vô địch bất bại với lối chơi rực lửa và thuyết phục.",
-            stats: { teams: 18, matches: 306 }
+            description:
+                "Bundesliga 2023/24 đi vào lịch sử bóng đá Đức với một mùa giải đầy cảm xúc khi thế thống trị kéo dài nhiều năm bị chấm dứt. Những màn trình diễn thuyết phục, lối chơi tấn công rực lửa và thành tích bất bại đã tạo nên một trong những mùa giải đáng nhớ nhất của giải đấu.",
+            stats: {
+                teams: 18,
+                matches: 306,
+                cities: 18,
+                stadiums: 18
+            }
         },
+
+        message: {
+            title: "THE HOME OF GERMAN FOOTBALL",
+            description:
+                "Bundesliga là nơi hội tụ của truyền thống, đam mê và sự đổi mới. Những sân vận động luôn sôi động cùng phong cách bóng đá giàu tốc độ đã giúp giải đấu trở thành một trong những sân chơi hấp dẫn nhất châu Âu."
+        },
+
+        hosts: [
+            {
+                name: "Đức",
+                code: "GER",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8570.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "Leverkusen", country: "GER" },
+            { city: "Munich", country: "GER" },
+            { city: "Stuttgart", country: "GER" },
+            { city: "Leipzig", country: "GER" },
+            { city: "Dortmund", country: "GER" },
+            { city: "Frankfurt", country: "GER" },
+            { city: "Sinsheim", country: "GER" },
+            { city: "Heidenheim", country: "GER" },
+            { city: "Bremen", country: "GER" },
+            { city: "Freiburg", country: "GER" },
+            { city: "Augsburg", country: "GER" },
+            { city: "Wolfsburg", country: "GER" },
+            { city: "Mönchengladbach", country: "GER" },
+            { city: "Berlin", country: "GER" },
+            { city: "Bochum", country: "GER" },
+            { city: "Mainz", country: "GER" },
+            { city: "Cologne", country: "GER" },
+            { city: "Darmstadt", country: "GER" }
+        ],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "18 đội thi đấu 34 vòng. Đội vô địch giành vé thẳng vào vòng bảng UCL mùa sau."
+
+            description:
+                "18 đội bóng thi đấu vòng tròn hai lượt trong suốt mùa giải. Đội có số điểm cao nhất giành chức vô địch Bundesliga và suất tham dự UEFA Champions League mùa giải tiếp theo. Hai đội cuối bảng xuống hạng trực tiếp, trong khi đội xếp thứ 16 tham dự trận play-off trụ hạng."
         },
-        tournamentInfo: { startDate: "2023-08-18", endDate: "2024-05-18", teams: 18, matches: 306 },
+
+        tournamentInfo: {
+            startDate: "2023-08-18",
+            endDate: "2024-05-18",
+            teams: 18,
+            matches: 306
+        },
+
         teams: []
     },
     bundesliga2223: {
-        config: { leagueId: 54, season: "2022/2023", query: "Bundesliga 2022 2023", tournamentKey: "bundesliga2223" },
-        hero: { badge: "German Football", title: "BUNDESLIGA 22/23", backgroundImage: "/images/bundesliga.jpg", video: "" },
+        config: {
+            leagueId: 54,
+            season: "2022/2023",
+            query: "Bundesliga 2022 2023",
+            tournamentKey: "bundesliga2223"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "German Football",
+            title: "BUNDESLIGA 22/23",
+            backgroundImage: "/images/bundesliga.jpg",
+            video: ""
+        },
+
         overview: {
             title: "Bundesliga 2022/23",
-            description: "Mùa giải chứng kiến cuộc đua vô địch nghẹt thở đến tận phút chót của vòng đấu cuối cùng.",
-            stats: { teams: 18, matches: 306 }
+            description:
+                "Bundesliga 2022/23 mang đến một trong những cuộc đua vô địch kịch tính nhất lịch sử giải đấu khi ngôi vương chỉ được định đoạt ở những phút cuối cùng của vòng đấu hạ màn. Sự cạnh tranh quyết liệt xuyên suốt mùa giải đã tạo nên nhiều cảm xúc khó quên cho người hâm mộ.",
+            stats: {
+                teams: 18,
+                matches: 306,
+                cities: 18,
+                stadiums: 18
+            }
         },
+
+        message: {
+            title: "THE HOME OF GERMAN FOOTBALL",
+            description:
+                "Bundesliga nổi bật với những trận đấu giàu tốc độ, các sân vận động cuồng nhiệt và nền văn hóa bóng đá đặc sắc. Mỗi mùa giải đều mang đến những cuộc cạnh tranh hấp dẫn từ cuộc đua vô địch đến cuộc chiến trụ hạng."
+        },
+
+        hosts: [
+            {
+                name: "Đức",
+                code: "GER",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8570.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "Munich", country: "GER" },
+            { city: "Dortmund", country: "GER" },
+            { city: "Leipzig", country: "GER" },
+            { city: "Berlin", country: "GER" },
+            { city: "Freiburg", country: "GER" },
+            { city: "Leverkusen", country: "GER" },
+            { city: "Frankfurt", country: "GER" },
+            { city: "Wolfsburg", country: "GER" },
+            { city: "Mainz", country: "GER" },
+            { city: "Mönchengladbach", country: "GER" },
+            { city: "Cologne", country: "GER" },
+            { city: "Bremen", country: "GER" },
+            { city: "Bochum", country: "GER" },
+            { city: "Sinsheim", country: "GER" },
+            { city: "Augsburg", country: "GER" },
+            { city: "Gelsenkirchen", country: "GER" },
+            { city: "Stuttgart", country: "GER" },
+            { city: "Berlin", country: "GER" }
+        ],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "Hệ thống vòng tròn 2 lượt truyền thống của bóng đá Đức gồm 18 CLB."
+
+            description:
+                "18 đội bóng thi đấu vòng tròn hai lượt theo thể thức truyền thống của bóng đá Đức. Đội dẫn đầu bảng xếp hạng sau 34 vòng đấu giành chức vô địch Bundesliga, trong khi các đội cuối bảng đối mặt với nguy cơ xuống hạng."
         },
-        tournamentInfo: { startDate: "2022-08-05", endDate: "2023-05-27", teams: 18, matches: 306 },
+
+        tournamentInfo: {
+            startDate: "2022-08-05",
+            endDate: "2023-05-27",
+            teams: 18,
+            matches: 306
+        },
+
         teams: []
     },
 
@@ -2538,78 +2856,418 @@ export const tournamentDetails = {
     // LA LIGA (TÂY BAN NHA)
     // ==========================================
     laLiga2627: {
-        config: { leagueId: 87, season: "2026/2027", query: "La Liga 2026 2027", tournamentKey: "laLiga2627" },
-        hero: { badge: "Spanish Football", title: "LA LIGA 26/27", backgroundImage: "/images/laliga.jpg", video: "" },
+        config: {
+            leagueId: 87,
+            season: "2026/2027",
+            query: "La Liga 2026 2027",
+            tournamentKey: "laLiga2627"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "Spanish Football",
+            title: "LA LIGA 26/27",
+            backgroundImage: "/images/laliga.jpg",
+            video: ""
+        },
+
         overview: {
             title: "La Liga 2026/27",
-            description: "Giải vô địch quốc gia Tây Ban Nha mùa giải 26/27. Nơi hội tụ của bóng đá kỹ thuật, những pha xử lý ngẫu hứng và những trận El Clásico rực lửa.",
-            stats: { teams: 20, matches: 380 }
+            description:
+                "La Liga 2026/27 tiếp tục là sân khấu của thứ bóng đá kỹ thuật, sáng tạo và giàu cảm xúc. Những cuộc đối đầu giữa các câu lạc bộ hàng đầu Tây Ban Nha cùng bầu không khí cuồng nhiệt trên khắp các sân vận động hứa hẹn mang đến một mùa giải đầy hấp dẫn.",
+            stats: {
+                teams: 20,
+                matches: 380,
+                cities: 20,
+                stadiums: 20
+            }
         },
+
+        message: {
+            title: "THE ART OF SPANISH FOOTBALL",
+            description:
+                "La Liga là nơi sản sinh những ngôi sao hàng đầu thế giới và nổi tiếng với lối chơi kỹ thuật, kiểm soát bóng cùng những trận cầu kinh điển. Giải đấu luôn mang đến những khoảnh khắc đỉnh cao và cảm xúc đặc biệt cho người hâm mộ."
+        },
+
+        hosts: [
+            {
+                name: "Tây Ban Nha",
+                code: "ESP",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6720.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "Madrid", country: "ESP" },
+            { city: "Barcelona", country: "ESP" },
+            { city: "Seville", country: "ESP" },
+            { city: "Valencia", country: "ESP" },
+            { city: "Villarreal", country: "ESP" },
+            { city: "Bilbao", country: "ESP" },
+            { city: "San Sebastian", country: "ESP" },
+            { city: "Pamplona", country: "ESP" },
+            { city: "Vigo", country: "ESP" },
+            { city: "Getafe", country: "ESP" },
+            { city: "Palma", country: "ESP" },
+            { city: "Girona", country: "ESP" },
+            { city: "Vitoria-Gasteiz", country: "ESP" },
+            { city: "Las Palmas", country: "ESP" },
+            { city: "Almeria", country: "ESP" },
+            { city: "Cadiz", country: "ESP" },
+            { city: "Granada", country: "ESP" },
+            { city: "Elche", country: "ESP" },
+            { city: "Oviedo", country: "ESP" },
+            { city: "Zaragoza", country: "ESP" }
+        ],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "20 đội thi đấu vòng tròn 2 lượt (tổng cộng 380 trận). Đội có số điểm cao nhất sẽ lên ngôi vô địch. 3 đội chót bảng sẽ xuống hạng thi đấu tại Segunda División."
+
+            description:
+                "20 đội bóng thi đấu vòng tròn hai lượt trong suốt mùa giải. Đội có số điểm cao nhất giành chức vô địch La Liga, trong khi ba đội xếp cuối bảng sẽ xuống hạng Segunda División. Các vị trí dẫn đầu giành quyền tham dự các cúp châu Âu mùa giải kế tiếp."
         },
-        tournamentInfo: { startDate: "2026-08-14", endDate: "2027-05-23", teams: 20, matches: 380 },
+
+        tournamentInfo: {
+            startDate: "2026-08-14",
+            endDate: "2027-05-23",
+            teams: 20,
+            matches: 380
+        },
+
         teams: []
     },
     laLiga2526: {
-        config: { leagueId: 87, season: "2025/2026", query: "La Liga 2025 2026", tournamentKey: "laLiga2526" },
-        hero: { badge: "Spanish Football", title: "LA LIGA 25/26", backgroundImage: "/images/laliga.jpg", video: "" },
+        config: {
+            leagueId: 87,
+            season: "2025/2026",
+            query: "La Liga 2025 2026",
+            tournamentKey: "laLiga2526"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "Spanish Football",
+            title: "LA LIGA 25/26",
+            backgroundImage: "/images/laliga.jpg",
+            video: ""
+        },
+
         overview: {
             title: "La Liga 2025/26",
-            description: "Mùa giải mang đến những trận cầu đỉnh cao của thứ bóng đá tấn công quyến rũ bậc nhất châu Âu.",
-            stats: { teams: 20, matches: 380 }
+            description:
+                "La Liga 2025/26 tiếp tục mang đến những trận cầu đỉnh cao với phong cách bóng đá tấn công quyến rũ, kỹ thuật điêu luyện và sự cạnh tranh gay gắt giữa các câu lạc bộ hàng đầu Tây Ban Nha. Mùa giải hứa hẹn tạo nên nhiều khoảnh khắc đáng nhớ cho người hâm mộ trên toàn thế giới.",
+            stats: {
+                teams: 20,
+                matches: 380,
+                cities: 20,
+                stadiums: 20
+            }
         },
+
+        message: {
+            title: "THE ART OF SPANISH FOOTBALL",
+            description:
+                "La Liga là biểu tượng của bóng đá kỹ thuật và sáng tạo, nơi những ngôi sao hàng đầu thế giới thể hiện tài năng trên các sân khấu lớn. Giải đấu luôn mang đến những trận cầu hấp dẫn cùng bầu không khí cuồng nhiệt đặc trưng của bóng đá Tây Ban Nha."
+        },
+
+        hosts: [
+            {
+                name: "Tây Ban Nha",
+                code: "ESP",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6720.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "Madrid", country: "ESP" },
+            { city: "Barcelona", country: "ESP" },
+            { city: "Seville", country: "ESP" },
+            { city: "Valencia", country: "ESP" },
+            { city: "Villarreal", country: "ESP" },
+            { city: "Bilbao", country: "ESP" },
+            { city: "San Sebastian", country: "ESP" },
+            { city: "Pamplona", country: "ESP" },
+            { city: "Vigo", country: "ESP" },
+            { city: "Getafe", country: "ESP" },
+            { city: "Palma", country: "ESP" },
+            { city: "Girona", country: "ESP" },
+            { city: "Vitoria-Gasteiz", country: "ESP" },
+            { city: "Las Palmas", country: "ESP" },
+            { city: "Alaves", country: "ESP" },
+            { city: "Valladolid", country: "ESP" },
+            { city: "Levante", country: "ESP" },
+            { city: "Gijon", country: "ESP" },
+            { city: "Oviedo", country: "ESP" },
+            { city: "Elche", country: "ESP" }
+        ],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "20 đội thi đấu vòng tròn 38 vòng. Trường hợp bằng điểm, thành tích đối đầu (Head-to-head) sẽ được xét đến đầu tiên thay vì hiệu số bàn thắng."
+
+            description:
+                "20 đội bóng thi đấu vòng tròn hai lượt trong tổng cộng 38 vòng đấu. Khi các đội bằng điểm, thành tích đối đầu trực tiếp được ưu tiên xét trước hiệu số bàn thắng bại. Đội dẫn đầu bảng xếp hạng sau vòng đấu cuối cùng sẽ giành chức vô địch La Liga."
         },
-        tournamentInfo: { startDate: "2025-08-15", endDate: "2026-05-24", teams: 20, matches: 380 },
+
+        tournamentInfo: {
+            startDate: "2025-08-15",
+            endDate: "2026-05-24",
+            teams: 20,
+            matches: 380
+        },
+
         teams: []
     },
     laLiga2425: {
-        config: { leagueId: 87, season: "2024/2025", query: "La Liga 2024 2025", tournamentKey: "laLiga2425" },
-        hero: { badge: "Spanish Football", title: "LA LIGA 24/25", backgroundImage: "/images/laliga.jpg", video: "" },
+        config: {
+            leagueId: 87,
+            season: "2024/2025",
+            query: "La Liga 2024 2025",
+            tournamentKey: "laLiga2425"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "Spanish Football",
+            title: "LA LIGA 24/25",
+            backgroundImage: "/images/laliga.jpg",
+            video: ""
+        },
+
         overview: {
             title: "La Liga 2024/25",
-            description: "Mùa giải chứng kiến sự vươn mình của các thế lực mới bên cạnh sự thống trị quen thuộc của các ông lớn Madrid và Catalunya.",
-            stats: { teams: 20, matches: 380 }
+            description:
+                "La Liga 2024/25 chứng kiến sự cạnh tranh ngày càng quyết liệt giữa các thế lực truyền thống và những đội bóng đang vươn lên mạnh mẽ. Mùa giải mang đến nhiều bất ngờ với những màn trình diễn ấn tượng, góp phần tạo nên một cuộc đua hấp dẫn ở cả nhóm đầu lẫn cuộc chiến trụ hạng.",
+            stats: {
+                teams: 20,
+                matches: 380,
+                cities: 20,
+                stadiums: 20
+            }
         },
+
+        message: {
+            title: "THE ART OF SPANISH FOOTBALL",
+            description:
+                "La Liga là biểu tượng của bóng đá kỹ thuật, sáng tạo và giàu cảm xúc. Những trận đấu đỉnh cao, các ngôi sao hàng đầu cùng bầu không khí cuồng nhiệt đã giúp giải đấu duy trì vị thế hàng đầu châu Âu."
+        },
+
+        hosts: [
+            {
+                name: "Tây Ban Nha",
+                code: "ESP",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6720.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "Madrid", country: "ESP" },
+            { city: "Barcelona", country: "ESP" },
+            { city: "Seville", country: "ESP" },
+            { city: "Valencia", country: "ESP" },
+            { city: "Villarreal", country: "ESP" },
+            { city: "Bilbao", country: "ESP" },
+            { city: "San Sebastian", country: "ESP" },
+            { city: "Pamplona", country: "ESP" },
+            { city: "Vigo", country: "ESP" },
+            { city: "Getafe", country: "ESP" },
+            { city: "Palma", country: "ESP" },
+            { city: "Girona", country: "ESP" },
+            { city: "Vitoria-Gasteiz", country: "ESP" },
+            { city: "Las Palmas", country: "ESP" },
+            { city: "Valladolid", country: "ESP" },
+            { city: "Leganes", country: "ESP" },
+            { city: "Vallecas", country: "ESP" },
+            { city: "Cornella", country: "ESP" },
+            { city: "Vigo", country: "ESP" },
+            { city: "Pamplona", country: "ESP" }
+        ],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "Thể thức 20 đội. Top 4 tham dự UEFA Champions League, đội vô địch Copa del Rey tham dự Europa League."
+
+            description:
+                "20 đội bóng thi đấu vòng tròn hai lượt trong suốt mùa giải. Bốn đội dẫn đầu giành quyền tham dự UEFA Champions League mùa giải tiếp theo, trong khi đội vô địch Copa del Rey giành suất tham dự UEFA Europa League. Ba đội cuối bảng sẽ xuống hạng Segunda División."
         },
-        tournamentInfo: { startDate: "2024-08-15", endDate: "2025-05-25", teams: 20, matches: 380 },
+
+        tournamentInfo: {
+            startDate: "2024-08-15",
+            endDate: "2025-05-25",
+            teams: 20,
+            matches: 380
+        },
+
         teams: []
     },
     laLiga2324: {
-        config: { leagueId: 87, season: "2023/2024", query: "La Liga 2023 2024", tournamentKey: "laLiga2324" },
-        hero: { badge: "Spanish Football", title: "LA LIGA 23/24", backgroundImage: "/images/laliga.jpg", video: "" },
+        config: {
+            leagueId: 87,
+            season: "2023/2024",
+            query: "La Liga 2023 2024",
+            tournamentKey: "laLiga2324"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "Spanish Football",
+            title: "LA LIGA 23/24",
+            backgroundImage: "/images/laliga.jpg",
+            video: ""
+        },
+
         overview: {
             title: "La Liga 2023/24",
-            description: "Mùa giải kịch tính với sự xuất hiện của hiện tượng ngựa ô gây bất ngờ lớn cho cuộc đua vô địch.",
-            stats: { teams: 20, matches: 380 }
+            description:
+                "La Liga 2023/24 là một trong những mùa giải đáng chú ý nhất trong những năm gần đây khi cuộc đua vô địch xuất hiện một hiện tượng mới đầy bất ngờ. Sự cạnh tranh quyết liệt xuyên suốt mùa giải đã mang đến nhiều cảm xúc và những trận cầu chất lượng cao.",
+            stats: {
+                teams: 20,
+                matches: 380,
+                cities: 20,
+                stadiums: 20
+            }
         },
+
+        message: {
+            title: "THE ART OF SPANISH FOOTBALL",
+            description:
+                "La Liga luôn là nơi hội tụ của những cầu thủ kỹ thuật hàng đầu thế giới, những trận đấu giàu tính chiến thuật và các cuộc đối đầu kinh điển làm say mê hàng triệu người hâm mộ."
+        },
+
+        hosts: [
+            {
+                name: "Tây Ban Nha",
+                code: "ESP",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6720.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "Madrid", country: "ESP" },
+            { city: "Barcelona", country: "ESP" },
+            { city: "Girona", country: "ESP" },
+            { city: "Bilbao", country: "ESP" },
+            { city: "San Sebastian", country: "ESP" },
+            { city: "Valencia", country: "ESP" },
+            { city: "Villarreal", country: "ESP" },
+            { city: "Seville", country: "ESP" },
+            { city: "Getafe", country: "ESP" },
+            { city: "Pamplona", country: "ESP" },
+            { city: "Vigo", country: "ESP" },
+            { city: "Palma", country: "ESP" },
+            { city: "Las Palmas", country: "ESP" },
+            { city: "Vitoria-Gasteiz", country: "ESP" },
+            { city: "Almeria", country: "ESP" },
+            { city: "Granada", country: "ESP" },
+            { city: "Cadiz", country: "ESP" },
+            { city: "Vallecas", country: "ESP" },
+            { city: "Cornella", country: "ESP" },
+            { city: "Seville", country: "ESP" }
+        ],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "Thi đấu vòng tròn 38 vòng. Các đội đồng điểm ưu tiên xét thành tích đối đầu."
+
+            description:
+                "20 đội bóng thi đấu vòng tròn hai lượt trong tổng cộng 38 vòng đấu. Khi các đội bằng điểm, thành tích đối đầu trực tiếp được ưu tiên xét trước hiệu số bàn thắng bại. Đội có số điểm cao nhất sau mùa giải sẽ giành chức vô địch La Liga."
         },
-        tournamentInfo: { startDate: "2023-08-11", endDate: "2024-05-26", teams: 20, matches: 380 },
+
+        tournamentInfo: {
+            startDate: "2023-08-11",
+            endDate: "2024-05-26",
+            teams: 20,
+            matches: 380
+        },
+
         teams: []
     },
     laLiga2223: {
-        config: { leagueId: 87, season: "2022/2023", query: "La Liga 2022 2023", tournamentKey: "laLiga2223" },
-        hero: { badge: "Spanish Football", title: "LA LIGA 22/23", backgroundImage: "/images/laliga.jpg", video: "" },
+        config: {
+            leagueId: 87,
+            season: "2022/2023",
+            query: "La Liga 2022 2023",
+            tournamentKey: "laLiga2223"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "Spanish Football",
+            title: "LA LIGA 22/23",
+            backgroundImage: "/images/laliga.jpg",
+            video: ""
+        },
+
         overview: {
             title: "La Liga 2022/23",
-            description: "Mùa giải đặc biệt với quãng nghỉ dài nhường chỗ cho World Cup, đòi hỏi các đội bóng phải có chiều sâu đội hình vượt trội.",
-            stats: { teams: 20, matches: 380 }
+            description:
+                "La Liga 2022/23 là mùa giải đặc biệt khi lịch thi đấu bị gián đoạn bởi FIFA World Cup giữa mùa. Điều này đòi hỏi các câu lạc bộ phải sở hữu chiều sâu đội hình và khả năng thích nghi cao để duy trì sự ổn định trong cuộc đua kéo dài suốt năm.",
+            stats: {
+                teams: 20,
+                matches: 380,
+                cities: 20,
+                stadiums: 20
+            }
         },
+
+        message: {
+            title: "THE ART OF SPANISH FOOTBALL",
+            description:
+                "La Liga nổi tiếng với lối chơi kỹ thuật, khả năng kiểm soát bóng và những trận đấu đỉnh cao giữa các câu lạc bộ giàu truyền thống. Giải đấu luôn mang đến những cảm xúc đặc biệt cho người hâm mộ bóng đá trên toàn thế giới."
+        },
+
+        hosts: [
+            {
+                name: "Tây Ban Nha",
+                code: "ESP",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6720.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "Madrid", country: "ESP" },
+            { city: "Barcelona", country: "ESP" },
+            { city: "Seville", country: "ESP" },
+            { city: "Valencia", country: "ESP" },
+            { city: "Villarreal", country: "ESP" },
+            { city: "Bilbao", country: "ESP" },
+            { city: "San Sebastian", country: "ESP" },
+            { city: "Pamplona", country: "ESP" },
+            { city: "Vigo", country: "ESP" },
+            { city: "Getafe", country: "ESP" },
+            { city: "Palma", country: "ESP" },
+            { city: "Girona", country: "ESP" },
+            { city: "Vitoria-Gasteiz", country: "ESP" },
+            { city: "Almeria", country: "ESP" },
+            { city: "Cadiz", country: "ESP" },
+            { city: "Elche", country: "ESP" },
+            { city: "Valladolid", country: "ESP" },
+            { city: "Cornella", country: "ESP" },
+            { city: "Vallecas", country: "ESP" },
+            { city: "Seville", country: "ESP" }
+        ],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "20 CLB đá vòng tròn 2 lượt. 3 vé xuống hạng trực tiếp."
+
+            description:
+                "20 câu lạc bộ thi đấu vòng tròn hai lượt trong suốt mùa giải. Đội dẫn đầu bảng xếp hạng sau 38 vòng đấu sẽ giành chức vô địch La Liga, trong khi ba đội xếp cuối bảng sẽ xuống hạng thi đấu tại Segunda División."
         },
-        tournamentInfo: { startDate: "2022-08-12", endDate: "2023-06-04", teams: 20, matches: 380 },
+
+        tournamentInfo: {
+            startDate: "2022-08-12",
+            endDate: "2023-06-04",
+            teams: 20,
+            matches: 380
+        },
+
         teams: []
     },
 
@@ -2617,78 +3275,410 @@ export const tournamentDetails = {
     // LIGUE 1 (PHÁP)
     // ==========================================
     ligue12627: {
-        config: { leagueId: 53, season: "2026/2027", query: "Ligue 1 2026 2027", tournamentKey: "ligue12627" },
-        hero: { badge: "French Football", title: "LIGUE 1 26/27", backgroundImage: "/images/ligue1.jpg", video: "" },
+        config: {
+            leagueId: 53,
+            season: "2026/2027",
+            query: "Ligue 1 2026 2027",
+            tournamentKey: "ligue12627"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "French Football",
+            title: "LIGUE 1 26/27",
+            backgroundImage: "/images/ligue1.jpg",
+            video: ""
+        },
+
         overview: {
             title: "Ligue 1 2026/27",
-            description: "Giải bóng đá vô địch quốc gia Pháp. Môi trường giàu tính thể lực và là cái nôi ươm mầm những tài năng trẻ sáng giá bậc nhất thế giới.",
-            stats: { teams: 18, matches: 306 }
+            description:
+                "Ligue 1 2026/27 tiếp tục khẳng định vị thế là một trong những giải đấu phát triển tài năng trẻ hàng đầu thế giới. Với sự kết hợp giữa tốc độ, thể lực và kỹ thuật, mùa giải hứa hẹn mang đến những cuộc cạnh tranh hấp dẫn từ cuộc đua vô địch đến cuộc chiến trụ hạng.",
+            stats: {
+                teams: 18,
+                matches: 306,
+                cities: 18,
+                stadiums: 18
+            }
         },
+
+        message: {
+            title: "THE HEART OF FRENCH FOOTBALL",
+            description:
+                "Ligue 1 nổi tiếng với khả năng sản sinh những ngôi sao trẻ xuất sắc, môi trường thi đấu giàu tính cạnh tranh và phong cách bóng đá hiện đại. Giải đấu luôn mang đến những màn trình diễn bùng nổ cùng nhiều tài năng triển vọng."
+        },
+
+        hosts: [
+            {
+                name: "Pháp",
+                code: "FRA",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6723.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "Paris", country: "FRA" },
+            { city: "Marseille", country: "FRA" },
+            { city: "Lyon", country: "FRA" },
+            { city: "Lille", country: "FRA" },
+            { city: "Monaco", country: "FRA" },
+            { city: "Nice", country: "FRA" },
+            { city: "Lens", country: "FRA" },
+            { city: "Rennes", country: "FRA" },
+            { city: "Nantes", country: "FRA" },
+            { city: "Strasbourg", country: "FRA" },
+            { city: "Montpellier", country: "FRA" },
+            { city: "Toulouse", country: "FRA" },
+            { city: "Brest", country: "FRA" },
+            { city: "Reims", country: "FRA" },
+            { city: "Auxerre", country: "FRA" },
+            { city: "Le Havre", country: "FRA" },
+            { city: "Angers", country: "FRA" },
+            { city: "Metz", country: "FRA" }
+        ],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "18 đội thi đấu vòng tròn 2 lượt (tổng cộng 34 vòng đấu). 2 đội cuối bảng xuống hạng trực tiếp, đội thứ 16 đá Play-off trụ hạng."
+
+            description:
+                "18 đội bóng thi đấu vòng tròn hai lượt trong tổng cộng 34 vòng đấu. Đội có số điểm cao nhất sẽ giành chức vô địch Ligue 1. Hai đội cuối bảng xuống hạng trực tiếp, trong khi đội xếp thứ 16 tham dự trận play-off tranh suất thi đấu Ligue 1 mùa giải tiếp theo."
         },
-        tournamentInfo: { startDate: "2026-08-14", endDate: "2027-05-23", teams: 18, matches: 306 },
+
+        tournamentInfo: {
+            startDate: "2026-08-14",
+            endDate: "2027-05-23",
+            teams: 18,
+            matches: 306
+        },
+
         teams: []
     },
     ligue12526: {
-        config: { leagueId: 53, season: "2025/2026", query: "Ligue 1 2025 2026", tournamentKey: "ligue12526" },
-        hero: { badge: "French Football", title: "LIGUE 1 25/26", backgroundImage: "/images/ligue1.jpg", video: "" },
+        config: {
+            leagueId: 53,
+            season: "2025/2026",
+            query: "Ligue 1 2025 2026",
+            tournamentKey: "ligue12526"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "French Football",
+            title: "LIGUE 1 25/26",
+            backgroundImage: "/images/ligue1.jpg",
+            video: ""
+        },
+
         overview: {
             title: "Ligue 1 2025/26",
-            description: "Mùa giải thứ 3 liên tiếp Ligue 1 vận hành với thể thức 18 đội, mang đến tính cạnh tranh khốc liệt hơn cho từng điểm số.",
-            stats: { teams: 18, matches: 306 }
+            description:
+                "Ligue 1 2025/26 tiếp tục vận hành với mô hình 18 đội, giúp nâng cao chất lượng chuyên môn và gia tăng tính cạnh tranh ở từng vòng đấu. Các câu lạc bộ hàng đầu nước Pháp cùng thế hệ cầu thủ trẻ đầy triển vọng tạo nên một mùa giải đáng chờ đợi.",
+            stats: {
+                teams: 18,
+                matches: 306,
+                cities: 18,
+                stadiums: 18
+            }
         },
+
+        message: {
+            title: "THE HEART OF FRENCH FOOTBALL",
+            description:
+                "Ligue 1 là môi trường lý tưởng cho sự phát triển của các tài năng trẻ, đồng thời là nơi các câu lạc bộ giàu truyền thống cạnh tranh quyết liệt cho những danh hiệu cao quý và suất tham dự cúp châu Âu."
+        },
+
+        hosts: [
+            {
+                name: "Pháp",
+                code: "FRA",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6723.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "Paris", country: "FRA" },
+            { city: "Marseille", country: "FRA" },
+            { city: "Lyon", country: "FRA" },
+            { city: "Lille", country: "FRA" },
+            { city: "Monaco", country: "FRA" },
+            { city: "Nice", country: "FRA" },
+            { city: "Lens", country: "FRA" },
+            { city: "Rennes", country: "FRA" },
+            { city: "Nantes", country: "FRA" },
+            { city: "Strasbourg", country: "FRA" },
+            { city: "Montpellier", country: "FRA" },
+            { city: "Toulouse", country: "FRA" },
+            { city: "Brest", country: "FRA" },
+            { city: "Reims", country: "FRA" },
+            { city: "Auxerre", country: "FRA" },
+            { city: "Le Havre", country: "FRA" },
+            { city: "Angers", country: "FRA" },
+            { city: "Metz", country: "FRA" }
+        ],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "Thể thức 18 đội, 34 vòng đấu. Cắt giảm từ 20 xuống 18 đội để tối ưu hóa chất lượng giải đấu."
+
+            description:
+                "18 đội bóng thi đấu vòng tròn hai lượt trong tổng cộng 34 vòng đấu. Thể thức 18 đội giúp gia tăng tính cạnh tranh và chất lượng chuyên môn của giải đấu. Các đội dẫn đầu giành quyền tham dự các cúp châu Âu, trong khi các đội cuối bảng đối mặt với nguy cơ xuống hạng."
         },
-        tournamentInfo: { startDate: "2025-08-15", endDate: "2026-05-24", teams: 18, matches: 306 },
+
+        tournamentInfo: {
+            startDate: "2025-08-15",
+            endDate: "2026-05-24",
+            teams: 18,
+            matches: 306
+        },
+
         teams: []
     },
     ligue12425: {
-        config: { leagueId: 53, season: "2024/2025", query: "Ligue 1 2024 2025", tournamentKey: "ligue12425" },
-        hero: { badge: "French Football", title: "LIGUE 1 24/25", backgroundImage: "/images/ligue1.jpg", video: "" },
+        config: {
+            leagueId: 53,
+            season: "2024/2025",
+            query: "Ligue 1 2024 2025",
+            tournamentKey: "ligue12425"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "French Football",
+            title: "LIGUE 1 24/25",
+            backgroundImage: "/images/ligue1.jpg",
+            video: ""
+        },
+
         overview: {
             title: "Ligue 1 2024/25",
-            description: "Sự chuyển giao thế hệ và sự trỗi dậy của các thế lực cũ tạo nên một diện mạo mới đầy hấp dẫn cho bóng đá Pháp.",
-            stats: { teams: 18, matches: 306 }
+            description:
+                "Ligue 1 2024/25 đánh dấu giai đoạn chuyển giao quan trọng của bóng đá Pháp khi các thế lực truyền thống tiếp tục cạnh tranh với những đội bóng đang trỗi dậy mạnh mẽ. Mùa giải mang đến sự cân bằng hơn và nhiều bất ngờ trong cuộc đua ở cả nhóm đầu và nhóm cuối bảng.",
+            stats: {
+                teams: 18,
+                matches: 306,
+                cities: 18,
+                stadiums: 18
+            }
         },
+
+        message: {
+            title: "THE HEART OF FRENCH FOOTBALL",
+            description:
+                "Ligue 1 là môi trường giàu tính cạnh tranh, nơi sản sinh và phát triển nhiều tài năng trẻ hàng đầu thế giới. Giải đấu kết hợp giữa tốc độ, thể lực và kỹ thuật, tạo nên những trận cầu giàu cảm xúc."
+        },
+
+        hosts: [
+            {
+                name: "Pháp",
+                code: "FRA",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6723.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "Paris", country: "FRA" },
+            { city: "Marseille", country: "FRA" },
+            { city: "Lyon", country: "FRA" },
+            { city: "Lille", country: "FRA" },
+            { city: "Monaco", country: "FRA" },
+            { city: "Nice", country: "FRA" },
+            { city: "Lens", country: "FRA" },
+            { city: "Rennes", country: "FRA" },
+            { city: "Nantes", country: "FRA" },
+            { city: "Strasbourg", country: "FRA" },
+            { city: "Montpellier", country: "FRA" },
+            { city: "Toulouse", country: "FRA" },
+            { city: "Brest", country: "FRA" },
+            { city: "Reims", country: "FRA" },
+            { city: "Le Havre", country: "FRA" },
+            { city: "Metz", country: "FRA" },
+            { city: "Angers", country: "FRA" },
+            { city: "Clermont", country: "FRA" }
+        ],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "18 đội đá vòng tròn 2 lượt (34 trận/đội). 2 đội rớt hạng trực tiếp, 1 đội đá play-off."
+
+            description:
+                "18 đội bóng thi đấu vòng tròn hai lượt trong suốt 34 vòng đấu. Hai đội cuối bảng xuống hạng trực tiếp, trong khi đội xếp thứ 16 tham dự trận play-off trụ hạng để tranh suất thi đấu Ligue 1 mùa sau."
         },
-        tournamentInfo: { startDate: "2024-08-16", endDate: "2025-05-18", teams: 18, matches: 306 },
+
+        tournamentInfo: {
+            startDate: "2024-08-16",
+            endDate: "2025-05-18",
+            teams: 18,
+            matches: 306
+        },
+
         teams: []
     },
     ligue12324: {
-        config: { leagueId: 53, season: "2023/2024", query: "Ligue 1 2023 2024", tournamentKey: "ligue12324" },
-        hero: { badge: "French Football", title: "LIGUE 1 23/24", backgroundImage: "/images/ligue1.jpg", video: "" },
+        config: {
+            leagueId: 53,
+            season: "2023/2024",
+            query: "Ligue 1 2023 2024",
+            tournamentKey: "ligue12324"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "French Football",
+            title: "LIGUE 1 23/24",
+            backgroundImage: "/images/ligue1.jpg",
+            video: ""
+        },
+
         overview: {
             title: "Ligue 1 2023/24",
-            description: "Mùa giải đầu tiên Ligue 1 chính thức áp dụng thể thức 18 đội, gia tăng mật độ các trận cầu đinh và giảm tải thể lực.",
-            stats: { teams: 18, matches: 306 }
+            description:
+                "Ligue 1 2023/24 là mùa giải mang tính bước ngoặt khi thể thức 18 đội chính thức được áp dụng, giúp nâng cao chất lượng chuyên môn và tăng tính cạnh tranh giữa các câu lạc bộ.",
+            stats: {
+                teams: 18,
+                matches: 306,
+                cities: 18,
+                stadiums: 18
+            }
         },
+
+        message: {
+            title: "THE HEART OF FRENCH FOOTBALL",
+            description:
+                "Ligue 1 là giải đấu giàu tính phát triển, nơi các tài năng trẻ được trao cơ hội tỏa sáng bên cạnh những đội bóng giàu truyền thống của bóng đá Pháp."
+        },
+
+        hosts: [
+            {
+                name: "Pháp",
+                code: "FRA",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6723.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "Paris", country: "FRA" },
+            { city: "Marseille", country: "FRA" },
+            { city: "Lyon", country: "FRA" },
+            { city: "Lille", country: "FRA" },
+            { city: "Monaco", country: "FRA" },
+            { city: "Nice", country: "FRA" },
+            { city: "Lens", country: "FRA" },
+            { city: "Rennes", country: "FRA" },
+            { city: "Nantes", country: "FRA" },
+            { city: "Strasbourg", country: "FRA" },
+            { city: "Montpellier", country: "FRA" },
+            { city: "Toulouse", country: "FRA" },
+            { city: "Brest", country: "FRA" },
+            { city: "Reims", country: "FRA" },
+            { city: "Le Havre", country: "FRA" },
+            { city: "Metz", country: "FRA" },
+            { city: "Lorient", country: "FRA" },
+            { city: "Clermont", country: "FRA" }
+        ],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "Thể thức 18 đội, 34 vòng đấu. Các đội thi đấu cạnh tranh gay gắt hơn cho vé dự cúp châu Âu."
+
+            description:
+                "18 đội bóng thi đấu vòng tròn hai lượt trong suốt mùa giải. Việc thu gọn số đội giúp giải đấu trở nên cạnh tranh và chất lượng hơn, đặc biệt trong cuộc đua trụ hạng và suất dự cúp châu Âu."
         },
-        tournamentInfo: { startDate: "2023-08-11", endDate: "2024-05-19", teams: 18, matches: 306 },
+
+        tournamentInfo: {
+            startDate: "2023-08-11",
+            endDate: "2024-05-19",
+            teams: 18,
+            matches: 306
+        },
+
         teams: []
     },
     ligue12223: {
-        config: { leagueId: 53, season: "2022/2023", query: "Ligue 1 2022 2023", tournamentKey: "ligue12223" },
-        hero: { badge: "French Football", title: "LIGUE 1 22/23", backgroundImage: "/images/ligue1.jpg", video: "" },
+        config: {
+            leagueId: 53,
+            season: "2022/2023",
+            query: "Ligue 1 2022 2023",
+            tournamentKey: "ligue12223"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "French Football",
+            title: "LIGUE 1 22/23",
+            backgroundImage: "/images/ligue1.jpg",
+            video: ""
+        },
+
         overview: {
             title: "Ligue 1 2022/23",
-            description: "Mùa giải mang tính bản lề, nơi có đến 4 đội bóng phải nhận vé xuống hạng trực tiếp để tái cấu trúc giải đấu.",
-            stats: { teams: 20, matches: 380 }
+            description:
+                "Ligue 1 2022/23 là mùa giải bản lề quan trọng trước khi giải đấu bước vào giai đoạn tái cấu trúc mạnh mẽ về số lượng đội tham dự, với nhiều thay đổi lớn về tính cạnh tranh và áp lực trụ hạng.",
+            stats: {
+                teams: 20,
+                matches: 380,
+                cities: 20,
+                stadiums: 20
+            }
         },
+
+        message: {
+            title: "THE HEART OF FRENCH FOOTBALL",
+            description:
+                "Ligue 1 2022/23 chứng kiến sự cạnh tranh quyết liệt giữa các câu lạc bộ hàng đầu nước Pháp, đồng thời là sân khấu cho nhiều ngôi sao lớn thể hiện đẳng cấp của mình."
+        },
+
+        hosts: [
+            {
+                name: "Pháp",
+                code: "FRA",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/6723.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "Paris", country: "FRA" },
+            { city: "Marseille", country: "FRA" },
+            { city: "Lyon", country: "FRA" },
+            { city: "Lille", country: "FRA" },
+            { city: "Monaco", country: "FRA" },
+            { city: "Nice", country: "FRA" },
+            { city: "Lens", country: "FRA" },
+            { city: "Rennes", country: "FRA" },
+            { city: "Nantes", country: "FRA" },
+            { city: "Strasbourg", country: "FRA" },
+            { city: "Montpellier", country: "FRA" },
+            { city: "Toulouse", country: "FRA" },
+            { city: "Brest", country: "FRA" },
+            { city: "Reims", country: "FRA" },
+            { city: "Nice", country: "FRA" },
+            { city: "Lorient", country: "FRA" },
+            { city: "Clermont", country: "FRA" },
+            { city: "Angers", country: "FRA" },
+            { city: "Troyes", country: "FRA" },
+            { city: "Ajaccio", country: "FRA" }
+        ],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "Mùa giải cuối cùng với 20 đội. Kỷ lục 4 đội phải rớt hạng trực tiếp để dọn đường cho việc giảm quy mô giải đấu vào năm sau."
+
+            description:
+                "Mùa giải cuối cùng Ligue 1 với 20 đội tham dự. Giải đấu áp dụng hệ thống xuống hạng nghiêm ngặt hơn nhằm chuẩn bị cho việc tái cấu trúc số lượng đội ở mùa sau."
         },
-        tournamentInfo: { startDate: "2022-08-05", endDate: "2023-06-03", teams: 20, matches: 380 },
+
+        tournamentInfo: {
+            startDate: "2022-08-05",
+            endDate: "2023-06-03",
+            teams: 20,
+            matches: 380
+        },
+
         teams: []
     },
 
@@ -2696,78 +3686,418 @@ export const tournamentDetails = {
     // SERIE A (Ý)
     // ==========================================
     serieA2627: {
-        config: { leagueId: 55, season: "2026/2027", query: "Serie A 2026 2027", tournamentKey: "serieA2627" },
-        hero: { badge: "Italian Football", title: "SERIE A 26/27", backgroundImage: "/images/serie-a.jpg", video: "" },
+        config: {
+            leagueId: 55,
+            season: "2026/2027",
+            query: "Serie A 2026 2027",
+            tournamentKey: "serieA2627"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "Italian Football",
+            title: "SERIE A 26/27",
+            backgroundImage: "/images/serie-a.jpg",
+            video: ""
+        },
+
         overview: {
             title: "Serie A 2026/27",
-            description: "Giải đấu cao nhất cấp câu lạc bộ của Ý. Đấu trường khét tiếng với tư duy chiến thuật đỉnh cao, phòng ngự chặt chẽ và sự lãng mạn đậm chất Catenaccio.",
-            stats: { teams: 20, matches: 380 }
+            description:
+                "Serie A 2026/27 tiếp tục khẳng định vị thế là một trong những giải đấu giàu tính chiến thuật nhất thế giới. Sự cân bằng giữa phòng ngự chặt chẽ, tổ chức kỷ luật và những khoảnh khắc bùng nổ của các ngôi sao tạo nên một mùa giải đầy kịch tính từ đầu đến cuối.",
+            stats: {
+                teams: 20,
+                matches: 380,
+                cities: 20,
+                stadiums: 20
+            }
         },
+
+        message: {
+            title: "THE ART OF ITALIAN FOOTBALL",
+            description:
+                "Serie A là biểu tượng của bóng đá chiến thuật, nơi các đội bóng đề cao sự kỷ luật, tư duy chiến lược và khả năng phòng ngự chắc chắn. Giải đấu luôn mang đến những cuộc đối đầu căng thẳng và giàu tính toan tính."
+        },
+
+        hosts: [
+            {
+                name: "Ý",
+                code: "ITA",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8204.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "Milan", country: "ITA" },
+            { city: "Turin", country: "ITA" },
+            { city: "Rome", country: "ITA" },
+            { city: "Naples", country: "ITA" },
+            { city: "Florence", country: "ITA" },
+            { city: "Bologna", country: "ITA" },
+            { city: "Genoa", country: "ITA" },
+            { city: "Verona", country: "ITA" },
+            { city: "Bergamo", country: "ITA" },
+            { city: "Udine", country: "ITA" },
+            { city: "Parma", country: "ITA" },
+            { city: "Cagliari", country: "ITA" },
+            { city: "Sassuolo", country: "ITA" },
+            { city: "Lecce", country: "ITA" },
+            { city: "Salerno", country: "ITA" },
+            { city: "Empoli", country: "ITA" },
+            { city: "Monza", country: "ITA" },
+            { city: "Frosinone", country: "ITA" },
+            { city: "Como", country: "ITA" },
+            { city: "Venice", country: "ITA" }
+        ],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "20 câu lạc bộ thi đấu vòng tròn 38 vòng. 3 đội có thứ hạng thấp nhất phải xuống chơi tại Serie B."
+
+            description:
+                "20 câu lạc bộ thi đấu vòng tròn hai lượt trong suốt 38 vòng đấu. Ba đội xếp cuối bảng phải xuống chơi tại Serie B. Trong trường hợp các đội bằng điểm ở vị trí quan trọng, trận play-off sẽ được áp dụng để phân định thứ hạng."
         },
-        tournamentInfo: { startDate: "2026-08-22", endDate: "2027-05-30", teams: 20, matches: 380 },
+
+        tournamentInfo: {
+            startDate: "2026-08-22",
+            endDate: "2027-05-30",
+            teams: 20,
+            matches: 380
+        },
+
         teams: []
     },
     serieA2526: {
-        config: { leagueId: 55, season: "2025/2026", query: "Serie A 2025 2026", tournamentKey: "serieA2526" },
-        hero: { badge: "Italian Football", title: "SERIE A 25/26", backgroundImage: "/images/serie-a.jpg", video: "" },
+        config: {
+            leagueId: 55,
+            season: "2025/2026",
+            query: "Serie A 2025 2026",
+            tournamentKey: "serieA2526"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "Italian Football",
+            title: "SERIE A 25/26",
+            backgroundImage: "/images/serie-a.jpg",
+            video: ""
+        },
+
         overview: {
             title: "Serie A 2025/26",
-            description: "Mùa giải đầy biến động với sự trở lại mạnh mẽ của các đế chế truyền thống và sức cạnh tranh đáng gờm từ các đội bóng tầm trung.",
-            stats: { teams: 20, matches: 380 }
+            description:
+                "Serie A 2025/26 tiếp tục chứng kiến sự cạnh tranh khốc liệt giữa các câu lạc bộ hàng đầu nước Ý. Sự kết hợp giữa chiến thuật chặt chẽ truyền thống và xu hướng pressing hiện đại tạo nên một mùa giải giàu tính chiến thuật và khó lường.",
+            stats: {
+                teams: 20,
+                matches: 380,
+                cities: 20,
+                stadiums: 20
+            }
         },
+
+        message: {
+            title: "THE ART OF ITALIAN FOOTBALL",
+            description:
+                "Serie A là giải đấu giàu tính chiến thuật bậc nhất châu Âu, nơi các đội bóng luôn đề cao sự kỷ luật, tổ chức và tính thực dụng trong từng trận đấu. Đây cũng là sân khấu của nhiều cuộc cạnh tranh danh hiệu căng thẳng và giàu cảm xúc."
+        },
+
+        hosts: [
+            {
+                name: "Ý",
+                code: "ITA",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8204.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "Milan", country: "ITA" },
+            { city: "Turin", country: "ITA" },
+            { city: "Rome", country: "ITA" },
+            { city: "Naples", country: "ITA" },
+            { city: "Florence", country: "ITA" },
+            { city: "Bologna", country: "ITA" },
+            { city: "Genoa", country: "ITA" },
+            { city: "Verona", country: "ITA" },
+            { city: "Bergamo", country: "ITA" },
+            { city: "Udine", country: "ITA" },
+            { city: "Parma", country: "ITA" },
+            { city: "Cagliari", country: "ITA" },
+            { city: "Sassuolo", country: "ITA" },
+            { city: "Lecce", country: "ITA" },
+            { city: "Salerno", country: "ITA" },
+            { city: "Empoli", country: "ITA" },
+            { city: "Monza", country: "ITA" },
+            { city: "Frosinone", country: "ITA" },
+            { city: "Como", country: "ITA" },
+            { city: "Venice", country: "ITA" }
+        ],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "20 đội thi đấu 38 vòng. Trong trường hợp 2 đội bằng điểm ở vị trí tranh chức vô địch hoặc vé trụ hạng, một trận tie-breaker (play-off) sẽ được tổ chức."
+
+            description:
+                "20 câu lạc bộ thi đấu vòng tròn hai lượt trong suốt 38 vòng đấu. Bốn đội dẫn đầu giành quyền tham dự UEFA Champions League, trong khi các vị trí tiếp theo cạnh tranh suất dự Europa League và Conference League. Ba đội cuối bảng xuống hạng Serie B."
         },
-        tournamentInfo: { startDate: "2025-08-23", endDate: "2026-05-24", teams: 20, matches: 380 },
+
+        tournamentInfo: {
+            startDate: "2025-08-23",
+            endDate: "2026-05-24",
+            teams: 20,
+            matches: 380
+        },
+
         teams: []
     },
     serieA2425: {
-        config: { leagueId: 55, season: "2024/2025", query: "Serie A 2024 2025", tournamentKey: "serieA2425" },
-        hero: { badge: "Italian Football", title: "SERIE A 24/25", backgroundImage: "/images/serie-a.jpg", video: "" },
+        config: {
+            leagueId: 55,
+            season: "2024/2025",
+            query: "Serie A 2024 2025",
+            tournamentKey: "serieA2425"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "Italian Football",
+            title: "SERIE A 24/25",
+            backgroundImage: "/images/serie-a.jpg",
+            video: ""
+        },
+
         overview: {
             title: "Serie A 2024/25",
-            description: "Sự thăng hoa của lối chơi pressing cường độ cao đang dần phá vỡ các khối phòng ngự truyền thống của bóng đá Ý.",
-            stats: { teams: 20, matches: 380 }
+            description:
+                "Serie A 2024/25 đánh dấu sự chuyển dịch rõ rệt về phong cách thi đấu khi các đội bóng ngày càng áp dụng pressing cường độ cao, phá vỡ dần những hệ thống phòng ngự truyền thống vốn là đặc trưng lâu đời của bóng đá Ý.",
+            stats: {
+                teams: 20,
+                matches: 380,
+                cities: 20,
+                stadiums: 20
+            }
         },
+
+        message: {
+            title: "THE ART OF ITALIAN FOOTBALL",
+            description:
+                "Serie A mang đậm tính chiến thuật, nơi các đội bóng luôn đề cao sự kỷ luật và khả năng tổ chức. Giải đấu là sự cân bằng giữa truyền thống phòng ngự và xu hướng bóng đá hiện đại."
+        },
+
+        hosts: [
+            {
+                name: "Ý",
+                code: "ITA",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8204.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "Milan", country: "ITA" },
+            { city: "Turin", country: "ITA" },
+            { city: "Rome", country: "ITA" },
+            { city: "Naples", country: "ITA" },
+            { city: "Florence", country: "ITA" },
+            { city: "Bologna", country: "ITA" },
+            { city: "Genoa", country: "ITA" },
+            { city: "Verona", country: "ITA" },
+            { city: "Bergamo", country: "ITA" },
+            { city: "Udine", country: "ITA" },
+            { city: "Parma", country: "ITA" },
+            { city: "Cagliari", country: "ITA" },
+            { city: "Sassuolo", country: "ITA" },
+            { city: "Lecce", country: "ITA" },
+            { city: "Salerno", country: "ITA" },
+            { city: "Empoli", country: "ITA" },
+            { city: "Monza", country: "ITA" },
+            { city: "Frosinone", country: "ITA" },
+            { city: "Como", country: "ITA" },
+            { city: "Venice", country: "ITA" }
+        ],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "Thể thức 20 đội. Top 4 tham dự UEFA Champions League, đội hạng 5 tham dự Europa League."
+
+            description:
+                "20 đội bóng thi đấu vòng tròn hai lượt trong suốt 38 vòng đấu. Hệ thống phân hạng châu Âu tiếp tục tạo nên cuộc đua căng thẳng giữa các nhóm đội từ top 4 đến nhóm trụ hạng."
         },
-        tournamentInfo: { startDate: "2024-08-17", endDate: "2025-05-25", teams: 20, matches: 380 },
+
+        tournamentInfo: {
+            startDate: "2024-08-17",
+            endDate: "2025-05-25",
+            teams: 20,
+            matches: 380
+        },
+
         teams: []
     },
     serieA2324: {
-        config: { leagueId: 55, season: "2023/2024", query: "Serie A 2023 2024", tournamentKey: "serieA2324" },
-        hero: { badge: "Italian Football", title: "SERIE A 23/24", backgroundImage: "/images/serie-a.jpg", video: "" },
+        config: {
+            leagueId: 55,
+            season: "2023/2024",
+            query: "Serie A 2023 2024",
+            tournamentKey: "serieA2324"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "Italian Football",
+            title: "SERIE A 23/24",
+            backgroundImage: "/images/serie-a.jpg",
+            video: ""
+        },
+
         overview: {
             title: "Serie A 2023/24",
-            description: "Mùa giải chứng kiến sự áp đảo tuyệt đối để mang về ngôi sao thứ hai trên ngực áo của nhà đương kim vô địch.",
-            stats: { teams: 20, matches: 380 }
+            description:
+                "Serie A 2023/24 là mùa giải chứng kiến sự thống trị thuyết phục của nhà vô địch, với lối chơi hiệu quả và ổn định xuyên suốt mùa giải, mang về danh hiệu Scudetto đầy xứng đáng.",
+            stats: {
+                teams: 20,
+                matches: 380,
+                cities: 20,
+                stadiums: 20
+            }
         },
+
+        message: {
+            title: "THE ART OF ITALIAN FOOTBALL",
+            description:
+                "Serie A tiếp tục giữ vững bản sắc chiến thuật đặc trưng, nơi các đội bóng thể hiện sự kỷ luật, tổ chức chặt chẽ và khả năng thích nghi chiến thuật cao."
+        },
+
+        hosts: [
+            {
+                name: "Ý",
+                code: "ITA",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8204.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "Milan", country: "ITA" },
+            { city: "Turin", country: "ITA" },
+            { city: "Rome", country: "ITA" },
+            { city: "Naples", country: "ITA" },
+            { city: "Florence", country: "ITA" },
+            { city: "Bologna", country: "ITA" },
+            { city: "Genoa", country: "ITA" },
+            { city: "Verona", country: "ITA" },
+            { city: "Bergamo", country: "ITA" },
+            { city: "Udine", country: "ITA" },
+            { city: "Parma", country: "ITA" },
+            { city: "Cagliari", country: "ITA" },
+            { city: "Sassuolo", country: "ITA" },
+            { city: "Lecce", country: "ITA" },
+            { city: "Salerno", country: "ITA" },
+            { city: "Empoli", country: "ITA" },
+            { city: "Monza", country: "ITA" },
+            { city: "Frosinone", country: "ITA" },
+            { city: "Como", country: "ITA" },
+            { city: "Genoa", country: "ITA" }
+        ],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "Thi đấu vòng tròn 2 lượt (tổng 380 trận). Đội vô địch giành danh hiệu Scudetto danh giá."
+
+            description:
+                "20 câu lạc bộ thi đấu vòng tròn hai lượt trong suốt 38 vòng đấu. Đội dẫn đầu bảng xếp hạng sau mùa giải giành chức vô địch Serie A, trong khi các đội cuối bảng phải xuống chơi tại Serie B."
         },
-        tournamentInfo: { startDate: "2023-08-19", endDate: "2024-05-26", teams: 20, matches: 380 },
+
+        tournamentInfo: {
+            startDate: "2023-08-19",
+            endDate: "2024-05-26",
+            teams: 20,
+            matches: 380
+        },
+
         teams: []
     },
     serieA2223: {
-        config: { leagueId: 55, season: "2022/2023", query: "Serie A 2022 2023", tournamentKey: "serieA2223" },
-        hero: { badge: "Italian Football", title: "SERIE A 22/23", backgroundImage: "/images/serie-a.jpg", video: "" },
+        config: {
+            leagueId: 55,
+            season: "2022/2023",
+            query: "Serie A 2022 2023",
+            tournamentKey: "serieA2223"
+        },
+
+        fonts: {
+        },
+
+        hero: {
+            badge: "Italian Football",
+            title: "SERIE A 22/23",
+            backgroundImage: "/images/serie-a.jpg",
+            video: ""
+        },
+
         overview: {
             title: "Serie A 2022/23",
-            description: "Mùa giải lịch sử với hành trình kỳ diệu đưa Scudetto trở về với miền Nam nước Ý sau hơn 3 thập kỷ chờ đợi.",
-            stats: { teams: 20, matches: 380 }
+            description:
+                "Serie A 2022/23 là mùa giải mang tính lịch sử khi chứng kiến một hành trình đầy cảm xúc đưa Scudetto trở lại miền Nam nước Ý sau hơn ba thập kỷ chờ đợi, tạo nên dấu ấn đặc biệt trong kỷ nguyên hiện đại của bóng đá Ý.",
+            stats: {
+                teams: 20,
+                matches: 380,
+                cities: 20,
+                stadiums: 20
+            }
         },
+
+        message: {
+            title: "THE ART OF ITALIAN FOOTBALL",
+            description:
+                "Serie A tiếp tục thể hiện bản sắc chiến thuật đặc trưng với sự cạnh tranh khốc liệt giữa các nhóm đội mạnh, nơi từng điểm số đều có ý nghĩa quyết định trong cuộc đua danh hiệu và suất dự cúp châu Âu."
+        },
+
+        hosts: [
+            {
+                name: "Ý",
+                code: "ITA",
+                logo: "https://images.fotmob.com/image_resources/logo/teamlogo/8204.png"
+            }
+        ],
+
+        hostCities: [
+            { city: "Milan", country: "ITA" },
+            { city: "Turin", country: "ITA" },
+            { city: "Rome", country: "ITA" },
+            { city: "Naples", country: "ITA" },
+            { city: "Florence", country: "ITA" },
+            { city: "Bologna", country: "ITA" },
+            { city: "Genoa", country: "ITA" },
+            { city: "Verona", country: "ITA" },
+            { city: "Bergamo", country: "ITA" },
+            { city: "Udine", country: "ITA" },
+            { city: "Parma", country: "ITA" },
+            { city: "Cagliari", country: "ITA" },
+            { city: "Sassuolo", country: "ITA" },
+            { city: "Lecce", country: "ITA" },
+            { city: "Salerno", country: "ITA" },
+            { city: "Empoli", country: "ITA" },
+            { city: "Monza", country: "ITA" },
+            { city: "Frosinone", country: "ITA" },
+            { city: "Como", country: "ITA" },
+            { city: "Venice", country: "ITA" }
+        ],
+
         format: {
             title: "Thể thức thi đấu",
-            description: "20 CLB đá vòng tròn 2 lượt. Hệ thống phân chia vé tham dự cúp châu Âu cạnh tranh gắt gao giữa nhóm Big 7."
+
+            description:
+                "20 câu lạc bộ thi đấu vòng tròn hai lượt trong suốt 38 vòng đấu. Cuộc đua Scudetto và top 4 diễn ra gay cấn đến những vòng cuối cùng, trong khi nhóm cuối bảng cũng phải cạnh tranh khốc liệt để trụ hạng."
         },
-        tournamentInfo: { startDate: "2022-08-13", endDate: "2023-06-04", teams: 20, matches: 380 },
+
+        tournamentInfo: {
+            startDate: "2022-08-13",
+            endDate: "2023-06-04",
+            teams: 20,
+            matches: 380
+        },
+
         teams: []
     },
 

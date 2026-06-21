@@ -43,7 +43,7 @@ const WEATHER_MAP: Record<string, string> = {
     "Rain": "Có mưa",
     "Light Rain": "Mưa nhỏ",
     "Showers": "Mưa rào",
-    "Thunderstorm": "Có sấm sét",
+    "Thunderstorms": "Mưa dông",
     "Snow": "Có tuyết",
     "Fog": "Sương mù"
 };

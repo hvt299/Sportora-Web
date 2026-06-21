@@ -219,11 +219,11 @@ export default function MatchTimeline({ matchData, homeTeam, awayTeam }: { match
                 </div>
             )}
 
-            {/* ÁP LỰC TRẬN ĐẤU (Momentum Chart) */}
+            {/* BIỂU ĐỒ ĐỘNG LỰC TRẬN ĐẤU (Match Momentum Chart) */}
             {momentumBars.length > 0 && (
                 <div className="bg-slate-900/40 border border-slate-800 rounded-3xl p-6 md:p-8">
                     <h3 className="text-xl font-black italic tracking-tighter uppercase mb-8 flex items-center gap-3 text-slate-200 border-b border-slate-800 pb-4">
-                        <BarChart2 className="w-5 h-5 text-indigo-500" /> Áp lực trận đấu
+                        <BarChart2 className="w-5 h-5 text-indigo-500" /> BIỂU ĐỒ ĐỘNG LỰC TRẬN ĐẤU
                     </h3>
                     {/* KHÔNG DÙNG overflow-hidden ở thẻ cha để các icon không bị cắt mất */}
                     <div className="relative w-full h-32 flex flex-col mt-8 mb-6">
@@ -311,7 +311,7 @@ export default function MatchTimeline({ matchData, homeTeam, awayTeam }: { match
             {/* DIỄN BIẾN CHÍNH (Timeline) */}
             <div className="bg-slate-900/40 border border-slate-800 rounded-3xl p-6 md:p-8">
                 <h3 className="text-xl font-black italic tracking-tighter uppercase mb-8 flex items-center gap-3 text-slate-200 border-b border-slate-800 pb-4">
-                    <Clock className="w-5 h-5 text-teal-500" /> Diễn biến
+                    <Clock className="w-5 h-5 text-teal-500" /> Diễn biến chính
                 </h3>
                 {groupedEvents.length > 0 ? (
                     <div className="relative flex flex-col w-full py-2">
