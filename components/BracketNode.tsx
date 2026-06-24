@@ -75,7 +75,7 @@ export default function BracketNode({
                 <div className="flex items-center gap-1.5 truncate">
                     {!isAwayTBD && awayLogo ? (
                         <img
-                            src={awayLogo} alt={away} className="w-3.5 h-3.5 rounded-full object-cover bg-white"
+                            src={awayLogo} alt={away} className="w-3.5 h-3.5 rounded-full object-cover"
                             onError={(e) => e.currentTarget.outerHTML = '<div class="w-3.5 h-3.5 rounded-full bg-slate-700 flex items-center justify-center text-[6px] font-bold text-slate-400 border border-slate-600">?</div>'}
                         />
                     ) : (

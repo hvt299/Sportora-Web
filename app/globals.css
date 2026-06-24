@@ -72,26 +72,40 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "FVH-PremierLeagueW01-Bold";
+  src: url("/fonts/FVH-PremierLeagueW01-Bold.otf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FVH-PremierLeagueW01-Regular";
+  src: url("/fonts/FVH-PremierLeagueW01-Regular.otf") format("truetype");
+  font-display: swap;
+}
+
 @theme inline {
   --font-body: "NotoSans", sans-serif;
 
-  --font-wc26: "FIFA-26", sans-serif;
-  --font-wc26-black: "FWC-Black", sans-serif;
-  --font-wc26-regular: "FWC-Regular", sans-serif;
+  --font-wc2026: "FIFA-26", sans-serif;
+  --font-wc2026-black: "FWC-Black", sans-serif;
+  --font-wc2026-regular: "FWC-Regular", sans-serif;
 
-  --font-wc22-heavy: "Qatar-Heavy", sans-serif;
-  --font-wc22-bold: "Qatar-Bold", sans-serif;
-  --font-wc22-medium: "Qatar-Medium", sans-serif;
+  --font-wc2022-heavy: "Qatar-Heavy", sans-serif;
+  --font-wc2022-bold: "Qatar-Bold", sans-serif;
+  --font-wc2022-medium: "Qatar-Medium", sans-serif;
 
-  --font-wc18: "Dusha-FWC2018", sans-serif;
+  --font-wc2018: "Dusha-FWC2018", sans-serif;
 
-  --font-wc14: "Brasil-WorldCup-2014", sans-serif;
+  --font-wc2014: "Brasil-WorldCup-2014", sans-serif;
 
-  --font-wc10: "South-Africa-2010", sans-serif;
+  --font-wc2010: "South-Africa-2010", sans-serif;
 
-  --font-wc06: "ReGermany2006", sans-serif;
+  --font-wc2006: "ReGermany2006", sans-serif;
 
-  --font-pl-25-26: "Premier-League-2025-2026", sans-serif;
+  --font-pl-23-24: "Premier-League-2025-2026", sans-serif;
+  --font-pl-bold: "FVH-PremierLeagueW01-Bold", sans-serif;
+  --font-pl-regular: "FVH-PremierLeagueW01-Regular", sans-serif;
 }
 
 :root {

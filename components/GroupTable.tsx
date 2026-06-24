@@ -12,35 +12,73 @@ interface TeamData {
     qualColor: string | null;
 }
 
-export default function GroupTable({ data, groupName }: { data: TeamData[], groupName?: string }) {
+export default function GroupTable({ data, groupName, tournamentKey = '' }: { data: TeamData[], groupName?: string, tournamentKey?: string }) {
     const gridCols = "grid-cols-[28px_1fr_28px_28px_28px_28px_45px_30px_35px]";
 
     // Lọc ra các màu thực sự được sử dụng trong bảng này
     const usedColors = Array.from(new Set(data.map(row => row.qualColor).filter(Boolean))) as string[];
 
-    // Tự động phân loại chú thích dựa trên tên bảng đấu
-    const getLegendText = (color: string, name: string = '') => {
-        // Nhận diện giải Cúp: Tên bảng thường rất ngắn (1-2 ký tự như "A", "B") hoặc có chứa từ khóa
-        const isCup = name.length <= 2 || /bảng|group|hạng 3/i.test(name);
+    // Tự động phân loại chú thích dựa trên Giải đấu (tournamentKey) và Tên bảng đấu
+    const getLegendText = (color: string, name: string = '', tKey: string = '') => {
+        const upperColor = color.toUpperCase();
+        const tk = tKey.toLowerCase();
 
-        if (isCup) {
-            switch (color.toUpperCase()) {
-                case '#2AD572': return 'Đủ điều kiện đi tiếp';
-                case '#FFD908': return 'Có khả năng đi tiếp / Play-off';
-                case '#0046A7': return 'Chuyển xuống giải cấp thấp hơn';
+        // 1. Cúp Châu Âu (C1, C2, C3)
+        if (tk.includes('ucl') || tk.includes('ecl') || tk.includes('ucl3')) {
+            switch (upperColor) {
+                case '#2AD572': return 'Đủ điều kiện vòng 16 đội';
+                case '#FFD908': return 'Vòng loại trực tiếp';
+                case '#0046A7':
+                case '#02CCF0': return 'Đủ điều kiện vòng 32 đội';
                 case '#FF4646': return 'Bị loại';
-                default: return 'Vị trí đặc biệt';
+                default: return 'Đủ điều kiện vòng 32 đội';
             }
-        } else {
-            // Dành cho các giải VĐQG (League) như Premier League, La Liga...
-            switch (color.toUpperCase()) {
+        }
+
+        // 2. Ligue 1
+        if (tk.includes('ligue1') || tk.includes('ligue-1')) {
+            switch (upperColor) {
+                case '#2AD572': return 'Vô địch / Thăng hạng / Cúp C1 (Champions League)';
+                case '#0046A7': return 'Cúp C2 (Europa League)';
+                case '#02CCF0': return 'Cúp C3 (Conference League)';
+                case '#FFD908': return 'Vòng loại Cúp C1';
+                case '#FF4646': return 'Nhóm xuống hạng';
+                default: return 'Play-off trụ hạng';
+            }
+        }
+
+        // 3. Bundesliga
+        if (tk.includes('bundesliga')) {
+            switch (upperColor) {
                 case '#2AD572': return 'Vô địch / Thăng hạng / Cúp C1 (Champions League)';
                 case '#0046A7': return 'Cúp C2 (Europa League)';
                 case '#02CCF0': return 'Cúp C3 (Conference League)';
                 case '#FFD908': return 'Vòng Play-off';
                 case '#FF4646': return 'Nhóm xuống hạng';
-                default: return 'Vị trí đặc biệt';
+                default: return 'Play-off trụ hạng';
             }
+        }
+
+        // 4. Giải đấu Cúp Quốc Tế (World Cup, Euro, Copa America)
+        const isCup = name.length <= 2 || /bảng|group|hạng 3|best 3rd/i.test(name) || tk.includes('cup') || tk.includes('euro') || tk.includes('copa');
+        if (isCup && !tk.includes('ligue') && !tk.includes('bundesliga')) {
+            switch (upperColor) {
+                case '#2AD572': return 'Đủ điều kiện đi tiếp';
+                case '#FFD908': return 'Có khả năng đi tiếp / Play-off';
+                case '#0046A7': return 'Chuyển xuống giải cấp thấp hơn';
+                case '#FF4646': return 'Bị loại';
+                default: return 'Đủ điều kiện đi tiếp';
+            }
+        }
+
+        // 5. Mặc định cho các giải VĐQG còn lại (Premier League, La Liga, Serie A...)
+        switch (upperColor) {
+            case '#2AD572': return 'Vô địch / Thăng hạng / Cúp C1 (Champions League)';
+            case '#0046A7': return 'Cúp C2 (Europa League)';
+            case '#02CCF0': return 'Cúp C3 (Conference League)';
+            case '#FFD908': return 'Vòng Play-off';
+            case '#FF4646': return 'Nhóm xuống hạng';
+            default: return 'Vị trí đặc biệt';
         }
     };
 
@@ -107,7 +145,7 @@ export default function GroupTable({ data, groupName }: { data: TeamData[], grou
                                 className="w-2 h-2 rounded-full"
                                 style={{ backgroundColor: color, boxShadow: `0 0 8px ${color}` }}
                             />
-                            {getLegendText(color, groupName)}
+                            {getLegendText(color, groupName, tournamentKey)}
                         </div>
                     ))}
                 </div>

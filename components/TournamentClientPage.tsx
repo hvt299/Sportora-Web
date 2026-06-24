@@ -63,7 +63,7 @@ export default function TournamentClientPage({
     const TABS = [
         { id: 'overview', name: 'Tổng quan', icon: Trophy },
         { id: 'fixtures', name: 'Lịch thi đấu', icon: CalendarDays },
-        { id: 'standings', name: 'Bảng xếp hạng', icon: Table },
+        ...(!tournamentKey.toLowerCase().includes('facup') ? [{ id: 'standings', name: 'Bảng xếp hạng', icon: Table }] : []),
         ...(hasBracket ? [{ id: 'bracket', name: 'Nhánh đấu', icon: GitBranch }] : []),
         { id: 'player-stats', name: 'Chỉ số cầu thủ', icon: Users },
         { id: 'team-stats', name: 'Chỉ số đội bóng', icon: BarChart2 },
@@ -128,6 +128,60 @@ export default function TournamentClientPage({
         const x = e.pageX - hostCitiesRef.current.offsetLeft;
         const walk = (x - startXCities) * 1.5;
         hostCitiesRef.current.scrollLeft = scrollLeftCities - walk;
+    };
+
+    // --- THÊM LOGIC KÉO VUỐT CHO VÒNG ĐẤU (ROUNDS) ---
+    const roundsScrollRef = useRef<HTMLDivElement>(null);
+    const [isDraggingRounds, setIsDraggingRounds] = useState(false);
+    const [isDraggedRounds, setIsDraggedRounds] = useState(false);
+    const [startXRounds, setStartXRounds] = useState(0);
+    const [scrollLeftRounds, setScrollLeftRounds] = useState(0);
+
+    const handleRoundsMouseDown = (e: React.MouseEvent) => {
+        if (!roundsScrollRef.current) return;
+        setIsDraggingRounds(true);
+        setIsDraggedRounds(false);
+        setStartXRounds(e.pageX - roundsScrollRef.current.offsetLeft);
+        setScrollLeftRounds(roundsScrollRef.current.scrollLeft);
+    };
+    const handleRoundsMouseLeaveOrUp = () => {
+        setIsDraggingRounds(false);
+        setTimeout(() => setIsDraggedRounds(false), 50);
+    };
+    const handleRoundsMouseMove = (e: React.MouseEvent) => {
+        if (!isDraggingRounds || !roundsScrollRef.current) return;
+        e.preventDefault();
+        setIsDraggedRounds(true); // Đánh dấu là đang kéo để không bị nhầm thành click
+        const x = e.pageX - roundsScrollRef.current.offsetLeft;
+        const walk = (x - startXRounds) * 1.5;
+        roundsScrollRef.current.scrollLeft = scrollLeftRounds - walk;
+    };
+
+    // --- THÊM LOGIC KÉO VUỐT CHO BẢNG ĐẤU (GROUPS) ---
+    const groupsScrollRef = useRef<HTMLDivElement>(null);
+    const [isDraggingGroups, setIsDraggingGroups] = useState(false);
+    const [isDraggedGroups, setIsDraggedGroups] = useState(false);
+    const [startXGroups, setStartXGroups] = useState(0);
+    const [scrollLeftGroups, setScrollLeftGroups] = useState(0);
+
+    const handleGroupsMouseDown = (e: React.MouseEvent) => {
+        if (!groupsScrollRef.current) return;
+        setIsDraggingGroups(true);
+        setIsDraggedGroups(false);
+        setStartXGroups(e.pageX - groupsScrollRef.current.offsetLeft);
+        setScrollLeftGroups(groupsScrollRef.current.scrollLeft);
+    };
+    const handleGroupsMouseLeaveOrUp = () => {
+        setIsDraggingGroups(false);
+        setTimeout(() => setIsDraggedGroups(false), 50);
+    };
+    const handleGroupsMouseMove = (e: React.MouseEvent) => {
+        if (!isDraggingGroups || !groupsScrollRef.current) return;
+        e.preventDefault();
+        setIsDraggedGroups(true);
+        const x = e.pageX - groupsScrollRef.current.offsetLeft;
+        const walk = (x - startXGroups) * 1.5;
+        groupsScrollRef.current.scrollLeft = scrollLeftGroups - walk;
     };
 
     return (
@@ -474,6 +528,14 @@ export default function TournamentClientPage({
                 )}
 
                 {activeTab === 'fixtures' && (() => {
+                    if (!sortedRounds || sortedRounds.length === 0) {
+                        return (
+                            <div className="py-20 text-center border-2 border-dashed border-slate-800 rounded-3xl bg-slate-900/20">
+                                <p className="text-slate-400 font-medium">Chưa có lịch thi đấu cho giải đấu này.</p>
+                            </div>
+                        );
+                    }
+
                     const processedRoundData = Object.keys(roundData).reduce((acc, date) => {
                         const filteredMatches = roundData[date].filter((match: any) => {
                             if (hideFinished) return match.status !== "Kết thúc" && match.status !== "Hủy";
@@ -487,14 +549,24 @@ export default function TournamentClientPage({
                         <div className="space-y-8 animate-in fade-in duration-500">
                             {/* DYNAMIC ROUND SELECTOR */}
                             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                                <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide w-full md:w-auto">
+                                <div
+                                    ref={roundsScrollRef}
+                                    onMouseDown={handleRoundsMouseDown}
+                                    onMouseLeave={handleRoundsMouseLeaveOrUp}
+                                    onMouseUp={handleRoundsMouseLeaveOrUp}
+                                    onMouseMove={handleRoundsMouseMove}
+                                    className={`flex gap-2 overflow-x-auto pb-2 scrollbar-hide w-full md:w-auto transition-all select-none ${isDraggingRounds ? "cursor-grabbing" : "cursor-grab"}`}
+                                >
                                     {sortedRounds.map((round) => (
                                         <button
                                             key={round}
-                                            onClick={() => setSelectedRound(round)}
+                                            onClick={(e) => {
+                                                if (isDraggedRounds) { e.preventDefault(); return; }
+                                                setSelectedRound(round);
+                                            }}
                                             className={`px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all ${selectedRound === round
-                                                ? "bg-white text-black"
-                                                : "bg-slate-900 text-slate-400 hover:bg-slate-800"
+                                                ? "bg-white text-black shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+                                                : "bg-slate-900 text-slate-400 hover:bg-slate-800 hover:text-white"
                                                 }`}
                                         >
                                             {round}
@@ -550,28 +622,46 @@ export default function TournamentClientPage({
 
                 {activeTab === 'standings' && (
                     <div className="space-y-6 animate-in fade-in duration-500">
-                        {/* CONDITIONAL RENDER: Chỉ hiện nếu giải đấu có nhiều hơn 1 bảng */}
-                        {Object.keys(initialStandings).length > 1 && (
-                            <div className="flex gap-6 overflow-x-auto scrollbar-hide border-b border-slate-800">
-                                {Object.keys(initialStandings).map((groupName) => (
-                                    <button
-                                        key={groupName}
-                                        onClick={() => setActiveGroup(groupName)}
-                                        className={`pb-3 text-xs font-bold border-b-2 transition-all whitespace-nowrap ${activeGroup === groupName
-                                            ? "border-blue-500 text-white"
-                                            : "border-transparent text-slate-500 hover:border-slate-500"
-                                            }`}
-                                    >
-                                        {formatGroupName(groupName).toUpperCase()}
-                                    </button>
-                                ))}
+                        {(!initialStandings || Object.keys(initialStandings).length === 0) ? (
+                            <div className="py-20 text-center border-2 border-dashed border-slate-800 rounded-3xl bg-slate-900/20">
+                                <p className="text-slate-400 font-medium">Chưa có bảng xếp hạng cho giải đấu này.</p>
                             </div>
-                        )}
-
-                        {initialStandings[activeGroup] ? (
-                            <GroupTable data={initialStandings[activeGroup]} groupName={activeGroup} />
                         ) : (
-                            <p className="text-slate-500 text-center py-10">Đang tải dữ liệu bảng này...</p>
+                            <>
+                                {/* CONDITIONAL RENDER: Chỉ hiện nếu giải đấu có nhiều hơn 1 bảng */}
+                                {Object.keys(initialStandings).length > 1 && (
+                                    <div
+                                        ref={groupsScrollRef}
+                                        onMouseDown={handleGroupsMouseDown}
+                                        onMouseLeave={handleGroupsMouseLeaveOrUp}
+                                        onMouseUp={handleGroupsMouseLeaveOrUp}
+                                        onMouseMove={handleGroupsMouseMove}
+                                        className={`flex gap-6 overflow-x-auto scrollbar-hide border-b border-slate-800 transition-all select-none ${isDraggingGroups ? "cursor-grabbing" : "cursor-grab"}`}
+                                    >
+                                        {Object.keys(initialStandings).map((groupName) => (
+                                            <button
+                                                key={groupName}
+                                                onClick={(e) => {
+                                                    if (isDraggedGroups) { e.preventDefault(); return; }
+                                                    setActiveGroup(groupName);
+                                                }}
+                                                className={`pb-3 text-xs font-bold border-b-2 transition-all whitespace-nowrap ${activeGroup === groupName
+                                                    ? "border-blue-500 text-white"
+                                                    : "border-transparent text-slate-500 hover:border-slate-500"
+                                                    }`}
+                                            >
+                                                {formatGroupName(groupName).toUpperCase()}
+                                            </button>
+                                        ))}
+                                    </div>
+                                )}
+
+                                {initialStandings[activeGroup] ? (
+                                    <GroupTable data={initialStandings[activeGroup]} groupName={activeGroup} tournamentKey={tournamentKey} />
+                                ) : (
+                                    <p className="text-slate-500 text-center py-10">Đang tải dữ liệu bảng này...</p>
+                                )}
+                            </>
                         )}
                     </div>
                 )}
@@ -579,19 +669,31 @@ export default function TournamentClientPage({
                 {activeTab === 'bracket' && (<Bracket data={initialBracket} fonts={fonts} />)}
 
                 {activeTab === 'player-stats' && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
-                        {initialStats?.players?.map((statBlock: any, idx: number) => (
-                            <StatCard key={idx} statBlock={statBlock} type="player" fonts={fonts} />
-                        ))}
-                    </div>
+                    initialStats?.players?.length > 0 ? (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
+                            {initialStats.players.map((statBlock: any, idx: number) => (
+                                <StatCard key={idx} statBlock={statBlock} type="player" fonts={fonts} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="py-20 text-center border-2 border-dashed border-slate-800 rounded-3xl bg-slate-900/20">
+                            <p className="text-slate-400 font-medium">Chưa có dữ liệu thống kê cầu thủ cho giải đấu này.</p>
+                        </div>
+                    )
                 )}
 
                 {activeTab === 'team-stats' && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
-                        {initialStats?.teams?.map((statBlock: any, idx: number) => (
-                            <StatCard key={idx} statBlock={statBlock} type="team" fonts={fonts} />
-                        ))}
-                    </div>
+                    initialStats?.teams?.length > 0 ? (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
+                            {initialStats.teams.map((statBlock: any, idx: number) => (
+                                <StatCard key={idx} statBlock={statBlock} type="team" fonts={fonts} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="py-20 text-center border-2 border-dashed border-slate-800 rounded-3xl bg-slate-900/20">
+                            <p className="text-slate-400 font-medium">Chưa có dữ liệu thống kê đội bóng cho giải đấu này.</p>
+                        </div>
+                    )
                 )}
             </main>
         </div>

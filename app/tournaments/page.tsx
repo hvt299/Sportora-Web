@@ -19,7 +19,7 @@ const DynamicIcon = ({ name, className = "w-4 h-4" }: { name: string, className?
 const groupEventsByFranchise = (events: any[]) => {
     const grouped: Record<string, any[]> = {};
     events.forEach((event) => {
-        const franchiseName = event.name.replace(/\s*\d{2,4}(\/\d{2})?$/, "").trim();
+        const franchiseName = event.name.replace(/\s*\d{2,4}(\/\d{2,4})?$/, "").trim();
         if (!grouped[franchiseName]) {
             grouped[franchiseName] = [];
         }

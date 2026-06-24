@@ -8,7 +8,8 @@ const GOAL_DESC_MAP: Record<string, string> = {
     "Right foot": "Chân phải",
     "Left foot": "Chân trái",
     "RightFoot": "Chân phải",
-    "LeftFoot": "Chân trái"
+    "LeftFoot": "Chân trái",
+    "Missed penalty": "Đá hỏng phạt đền",
 };
 
 const VAR_DESC_MAP: Record<string, string> = {
@@ -37,6 +38,7 @@ const renderEventIcon = (type: string, cardType?: string, isHome?: boolean) => {
             if (cardType === "Red") return <Square className="w-3 h-3 text-red-500 fill-red-500" />;
             return <Square className="w-3 h-3 text-yellow-500 fill-yellow-500" />;
         case "VAR": return <Monitor className="w-3 h-3 text-purple-400" />;
+        case "MissedPenalty": return <XCircle className="w-3 h-3 text-red-500" />;
         default: return <CircleDot className={`w-3 h-3 ${teamColor}`} />;
     }
 };
@@ -113,9 +115,11 @@ export default function MatchTimeline({ matchData, homeTeam, awayTeam }: { match
         const goalDesc = ev.goalDescription ? (GOAL_DESC_MAP[ev.goalDescription] || ev.goalDescription) : "";
         let combinedDesc = [goalDesc, assistText].filter(Boolean).join(", ");
 
-        // Xử lý chuỗi text cho sự kiện VAR
+        // Xử lý chuỗi text cho sự kiện VAR và Đá hỏng phạt đền
         if (ev.type === "VAR" && ev.VAR?.decision?.value) {
             combinedDesc = ev.VAR.decision.value.map((v: string) => VAR_DESC_MAP[v] || v).join(" - ");
+        } else if (ev.type === "MissedPenalty") {
+            combinedDesc = "Đá hỏng phạt đền";
         }
 
         return (
@@ -219,11 +223,11 @@ export default function MatchTimeline({ matchData, homeTeam, awayTeam }: { match
                 </div>
             )}
 
-            {/* ÁP LỰC TRẬN ĐẤU (Momentum Chart) */}
+            {/* BIỂU ĐỒ ĐỘNG LỰC TRẬN ĐẤU (Match Momentum Chart) */}
             {momentumBars.length > 0 && (
                 <div className="bg-slate-900/40 border border-slate-800 rounded-3xl p-6 md:p-8">
                     <h3 className="text-xl font-black italic tracking-tighter uppercase mb-8 flex items-center gap-3 text-slate-200 border-b border-slate-800 pb-4">
-                        <BarChart2 className="w-5 h-5 text-indigo-500" /> Áp lực trận đấu
+                        <BarChart2 className="w-5 h-5 text-indigo-500" /> BIỂU ĐỒ ĐỘNG LỰC TRẬN ĐẤU
                     </h3>
                     {/* KHÔNG DÙNG overflow-hidden ở thẻ cha để các icon không bị cắt mất */}
                     <div className="relative w-full h-32 flex flex-col mt-8 mb-6">
@@ -311,7 +315,7 @@ export default function MatchTimeline({ matchData, homeTeam, awayTeam }: { match
             {/* DIỄN BIẾN CHÍNH (Timeline) */}
             <div className="bg-slate-900/40 border border-slate-800 rounded-3xl p-6 md:p-8">
                 <h3 className="text-xl font-black italic tracking-tighter uppercase mb-8 flex items-center gap-3 text-slate-200 border-b border-slate-800 pb-4">
-                    <Clock className="w-5 h-5 text-teal-500" /> Diễn biến
+                    <Clock className="w-5 h-5 text-teal-500" /> Diễn biến chính
                 </h3>
                 {groupedEvents.length > 0 ? (
                     <div className="relative flex flex-col w-full py-2">
