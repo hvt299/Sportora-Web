@@ -699,12 +699,12 @@ export const tournaments = [
         "icon": "Basketball",
         "events": [
             {
-                "id": "nba-202025-2026",
+                "id": "nba-2025-2026",
                 "category": "basketball",
-                "name": "NBA 202025-2026",
-                "shortName": "NBA 2025-2026",
+                "name": "NBA 2025/2026",
+                "shortName": "NBA 2025/2026",
                 "slug": "nba",
-                "season": "202025-2026",
+                "season": "2025-2026",
                 "path": "/basketball/nba/2025-2026",
                 "image": "/images/basketball/nba.jpg",
                 "logo": "/images/basketball/nba-logo.png",
@@ -712,7 +712,7 @@ export const tournaments = [
                 "themeColor": "#17408B",
                 "startDate": "2025-10-21T00:00:00+07:00",
                 "endDate": "2026-06-22T23:59:59+07:00",
-                "detailKey": "nba2020252026"
+                "detailKey": "nba20252026"
             }
         ]
     },

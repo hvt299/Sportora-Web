@@ -7,7 +7,6 @@ import MatchTimeline from '@/components/match/MatchTimeline';
 import MatchLineups from '@/components/match/MatchLineups';
 import MatchSidebar from '@/components/match/MatchSidebar';
 
-// Thêm dòng này để import cấu hình giải đấu
 import { tournamentDetails } from '@/data/tournament-details';
 
 export default async function MatchDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -25,22 +24,17 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ id
         );
     }
 
-    // --- TÌM BỘ FONT TƯƠNG ỨNG VỚI GIẢI ĐẤU ---
-    // 1. Ưu tiên lấy parentLeagueId (VD: 77 của World Cup), nếu không có mới lấy leagueId
+    // --- TÌM BỘ FONT VÀ CẤU HÌNH TƯƠNG ỨNG VỚI GIẢI ĐẤU ---
     const matchLeagueId = matchData.general?.parentLeagueId || matchData.general?.leagueId;
-
-    // 2. Lấy năm của trận đấu để phân biệt các mùa giải (VD: 2022 và 2026)
     const matchYear = matchData.general?.matchTimeUTCDate
         ? new Date(matchData.general.matchTimeUTCDate).getFullYear().toString()
         : "";
 
-    // 3. Quét danh sách: Phải khớp cả LeagueID VÀ Mùa giải (season)
     const foundTournamentKey = Object.keys(tournamentDetails).find((key) => {
         const config = (tournamentDetails[key as keyof typeof tournamentDetails] as any).config;
         return config?.leagueId === matchLeagueId && config?.season?.includes(matchYear);
-    }) || "worldCup2026"; // Fallback mặc định
+    }) || "worldCup2026";
 
-    // Lấy biến fonts ra
     const currentTournament = tournamentDetails[foundTournamentKey as keyof typeof tournamentDetails] as any;
 
     const fonts = currentTournament.fonts || {
@@ -49,33 +43,33 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ id
         subHeading: "font-bold"
     };
 
+    // LẤY CATEGORY THỂ THAO (Mặc định là football nếu chưa cấu hình)
+    const category = currentTournament.config?.category || 'football';
+
     const homeTeam = matchData.header.teams[0];
     const awayTeam = matchData.header.teams[1];
     const lineup = matchData.content?.lineup;
 
     return (
-        // Truyền biến fonts.base vào main
         <main className={`min-h-screen bg-black text-white pb-20 ${fonts.base}`}>
-            {/* Nút Quay Lại */}
             <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-6">
                 <BackButton />
             </div>
 
-            {/* Khối Hero (Tỉ số, Highlights) */}
             <div className="max-w-6xl mx-auto px-4 sm:px-6 mt-6">
-                {/* Truyền fonts xuống MatchHero */}
-                <MatchHero matchData={matchData} homeTeam={homeTeam} awayTeam={awayTeam} fonts={fonts} />
+                {/* TRUYỀN THÊM CATEGORY */}
+                <MatchHero category={category} matchData={matchData} homeTeam={homeTeam} awayTeam={awayTeam} fonts={fonts} />
             </div>
 
-            {/* Layout 2 Cột: Main & Sidebar */}
             <div className="max-w-6xl mx-auto px-4 sm:px-6 mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
                 <div className="lg:col-span-8 space-y-8">
-                    {/* TRUYỀN TOÀN BỘ matchData, homeTeam, awayTeam ĐỂ MatchTimeline CÓ ĐỦ DỮ LIỆU */}
-                    <MatchTimeline matchData={matchData} homeTeam={homeTeam} awayTeam={awayTeam} />
-                    <MatchLineups lineup={lineup} homeTeam={homeTeam} awayTeam={awayTeam} />
+                    {/* TRUYỀN THÊM CATEGORY */}
+                    <MatchTimeline category={category} matchData={matchData} homeTeam={homeTeam} awayTeam={awayTeam} />
+                    <MatchLineups category={category} lineup={lineup} homeTeam={homeTeam} awayTeam={awayTeam} />
                 </div>
                 <div className="lg:col-span-4">
-                    <MatchSidebar matchData={matchData} homeTeam={homeTeam} awayTeam={awayTeam} />
+                    {/* TRUYỀN THÊM CATEGORY */}
+                    <MatchSidebar category={category} matchData={matchData} homeTeam={homeTeam} awayTeam={awayTeam} />
                 </div>
             </div>
         </main >

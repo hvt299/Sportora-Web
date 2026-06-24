@@ -2,9 +2,9 @@
 import { useRef, useState, useEffect } from 'react';
 import { Trophy, CalendarDays, Table, GitBranch, ArrowLeft, Volume2, VolumeX, Users, BarChart2, Image as ImageIcon, Video } from 'lucide-react';
 import Link from 'next/link';
-import MatchCard from '@/components/MatchCard';
-import GroupTable from '@/components/GroupTable';
-import Bracket from '@/components/Bracket';
+import MatchCard from '@/components/football/FootballMatchCard';
+import GroupTable from '@/components/football/FootballGroupTable';
+import Bracket from '@/components/football/FootballBracket';
 import SidebarNews from '@/components/SidebarNews';
 import { NewsItem, MatchItem } from '@/lib/scraper';
 import { useRouter } from 'next/navigation';
@@ -20,6 +20,7 @@ interface PageProps {
     initialBracket: any;
     initialStats: { players: any[], teams: any[] };
     tournamentKey: string;
+    category?: string;
 }
 
 type TournamentDetailType = {
@@ -39,14 +40,7 @@ type TournamentDetailType = {
     teams?: { name: string; logo: string }[];
 };
 
-export default function TournamentClientPage({
-    initialMatches,
-    initialStandings,
-    initialNews,
-    initialBracket,
-    initialStats,
-    tournamentKey
-}: PageProps) {
+export default function TournamentClientPage({ initialMatches, initialStandings, initialNews, initialBracket, initialStats, tournamentKey, category = 'football' }: PageProps) {
     const [activeTab, setActiveTab] = useState('overview');
     const [activeGroup, setActiveGroup] = useState(() => Object.keys(initialStandings)[0]);
     const [newsData] = useState(initialNews);
@@ -600,7 +594,7 @@ export default function TournamentClientPage({
                                                 </h4>
                                                 <div className="space-y-3">
                                                     {processedRoundData[date].map((match: any, i: number) => (
-                                                        <MatchCard key={i} {...match} fonts={fonts} />
+                                                        <MatchCard key={i} {...match} fonts={fonts} category={category} />
                                                     ))}
                                                 </div>
                                             </div>
@@ -657,7 +651,7 @@ export default function TournamentClientPage({
                                 )}
 
                                 {initialStandings[activeGroup] ? (
-                                    <GroupTable data={initialStandings[activeGroup]} groupName={activeGroup} tournamentKey={tournamentKey} />
+                                    <GroupTable data={initialStandings[activeGroup]} groupName={activeGroup} tournamentKey={tournamentKey} category={category} />
                                 ) : (
                                     <p className="text-slate-500 text-center py-10">Đang tải dữ liệu bảng này...</p>
                                 )}
@@ -666,7 +660,7 @@ export default function TournamentClientPage({
                     </div>
                 )}
 
-                {activeTab === 'bracket' && (<Bracket data={initialBracket} fonts={fonts} />)}
+                {activeTab === 'bracket' && (<Bracket data={initialBracket} fonts={fonts} category={category} />)}
 
                 {activeTab === 'player-stats' && (
                     initialStats?.players?.length > 0 ? (
