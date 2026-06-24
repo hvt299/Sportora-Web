@@ -11,16 +11,16 @@ export const tournamentDetails = {
         },
 
         fonts: {
-            base: "font-wc26-regular",
-            heading: "font-wc26-black",
-            subHeading: "font-wc26-black"
+            base: "font-wc2026-regular",
+            heading: "font-wc2026-black",
+            subHeading: "font-wc2026-black"
         },
 
         hero: {
             badge: "FIFA Official Tournament",
             title: "FIFA WORLD CUP 2026",
-            backgroundImage: "/images/wc26.jpg",
-            video: "/videos/wc26.mp4"
+            backgroundImage: "/images/football/wc2026.jpg",
+            video: "/videos/football/wc2026.mp4"
         },
 
         overview: {
@@ -350,16 +350,16 @@ export const tournamentDetails = {
         },
 
         fonts: {
-            base: "font-wc22-medium",
-            heading: "font-wc22-heavy",
-            subHeading: "font-wc22-bold"
+            base: "font-wc2022-medium",
+            heading: "font-wc2022-heavy",
+            subHeading: "font-wc2022-bold"
         },
 
         hero: {
             badge: "FIFA Official Tournament",
             title: "FIFA WORLD CUP 2022",
-            backgroundImage: "/images/wc22.jpg",
-            video: "/videos/wc22.mp4"
+            backgroundImage: "/images/football/wc2022.jpg",
+            video: "/videos/football/wc2022.mp4"
         },
 
         overview: {
@@ -558,16 +558,16 @@ export const tournamentDetails = {
         },
 
         fonts: {
-            base: "font-wc18",
-            heading: "font-wc18",
-            subHeading: "font-wc18"
+            base: "font-wc2018",
+            heading: "font-wc2018",
+            subHeading: "font-wc2018"
         },
 
         hero: {
             badge: "FIFA Official Tournament",
             title: "FIFA WORLD CUP 2018",
-            backgroundImage: "/images/wc18.jpg",
-            video: "/videos/wc18.mp4"
+            backgroundImage: "/images/football/wc2018.jpg",
+            video: "/videos/football/wc2018.mp4"
         },
 
         overview: {
@@ -799,16 +799,16 @@ export const tournamentDetails = {
         },
 
         fonts: {
-            // base: "font-wc14",
-            heading: "font-wc14",
-            subHeading: "font-wc14"
+            // base: "font-wc2014",
+            heading: "font-wc2014",
+            subHeading: "font-wc2014"
         },
 
         hero: {
             badge: "FIFA Official Tournament",
             title: "FIFA WORLD CUP 2014",
-            backgroundImage: "/images/wc14.jpg",
-            video: "/videos/wc14.mp4"
+            backgroundImage: "/images/football/wc2014.jpg",
+            video: "/videos/football/wc2014.mp4"
         },
 
         overview: {
@@ -1039,16 +1039,16 @@ export const tournamentDetails = {
         },
 
         fonts: {
-            // base: "font-wc10",
-            heading: "font-wc10",
-            subHeading: "font-wc10"
+            // base: "font-wc2010",
+            heading: "font-wc2010",
+            subHeading: "font-wc2010"
         },
 
         hero: {
             badge: "FIFA Official Tournament",
             title: "FIFA WORLD CUP 2010",
-            backgroundImage: "/images/wc10.jpg",
-            video: "/videos/wc10.mp4"
+            backgroundImage: "/images/football/wc2010.jpg",
+            video: "/videos/football/wc2010.mp4"
         },
 
         overview: {
@@ -1274,16 +1274,16 @@ export const tournamentDetails = {
         },
 
         fonts: {
-            base: "font-wc06",
-            heading: "font-wc06",
-            subHeading: "font-wc06"
+            base: "font-wc2006",
+            heading: "font-wc2006",
+            subHeading: "font-wc2006"
         },
 
         hero: {
             badge: "FIFA Official Tournament",
             title: "FIFA WORLD CUP 2006",
-            backgroundImage: "/images/wc06.jpg",
-            video: "/videos/wc06.mp4"
+            backgroundImage: "/images/football/wc2006.jpg",
+            video: "/videos/football/wc2006.mp4"
         },
 
         overview: {
@@ -1508,12 +1508,12 @@ export const tournamentDetails = {
     // ==========================================
     // PREMIER LEAGUE (NGOẠI HẠNG ANH)
     // ==========================================
-    premierLeague2627: {
+    premierLeague20262027: {
         config: {
             leagueId: 47,
             season: "2026/2027",
             query: "Premier League 2026 2027",
-            tournamentKey: "premierLeague2627"
+            tournamentKey: "premierLeague20262027"
         },
 
         fonts: {
@@ -1525,7 +1525,7 @@ export const tournamentDetails = {
         hero: {
             badge: "English Football",
             title: "PREMIER LEAGUE 26/27",
-            backgroundImage: "/images/premier-league.jpg",
+            backgroundImage: "/images/football/premier-league.jpg",
             video: ""
         },
 
@@ -1693,12 +1693,12 @@ export const tournamentDetails = {
             },
         ]
     },
-    premierLeague2526: {
+    premierLeague20252026: {
         config: {
             leagueId: 47,
             season: "2025/2026",
             query: "Premier League 2025 2026",
-            tournamentKey: "premierLeague2526"
+            tournamentKey: "premierLeague20252026"
         },
 
         fonts: {
@@ -1710,8 +1710,8 @@ export const tournamentDetails = {
         hero: {
             badge: "English Football",
             title: "PREMIER LEAGUE 25/26",
-            backgroundImage: "/images/premier-league-2.jpg",
-            video: "/videos/premier-league-25-26.mp4"
+            backgroundImage: "/images/football/premier-league-2.jpg",
+            video: "/videos/football/premier-league-25-26.mp4"
         },
 
         overview: {
@@ -1881,12 +1881,12 @@ export const tournamentDetails = {
         ]
 
     },
-    premierLeague2425: {
+    premierLeague20242025: {
         config: {
             leagueId: 47,
             season: "2024/2025",
             query: "Premier League 2024 2025",
-            tournamentKey: "premierLeague2425"
+            tournamentKey: "premierLeague20242025"
         },
 
         fonts: {
@@ -1898,8 +1898,8 @@ export const tournamentDetails = {
         hero: {
             badge: "English Football",
             title: "PREMIER LEAGUE 24/25",
-            backgroundImage: "/images/premier-league-2.jpg",
-            video: "/videos/premier-league-24-25.mp4"
+            backgroundImage: "/images/football/premier-league-2.jpg",
+            video: "/videos/football/premier-league-24-25.mp4"
         },
 
         overview: {
@@ -2067,12 +2067,12 @@ export const tournamentDetails = {
             },
         ]
     },
-    premierLeague2324: {
+    premierLeague20232024: {
         config: {
             leagueId: 47,
             season: "2023/2024",
             query: "Premier League 2023 2024",
-            tournamentKey: "premierLeague2324"
+            tournamentKey: "premierLeague20232024"
         },
 
         fonts: {
@@ -2084,8 +2084,8 @@ export const tournamentDetails = {
         hero: {
             badge: "English Football",
             title: "PREMIER LEAGUE 23/24",
-            backgroundImage: "/images/premier-league-2.jpg",
-            video: "/videos/premier-league-23-24.mp4"
+            backgroundImage: "/images/football/premier-league-2.jpg",
+            video: "/videos/football/premier-league-23-24.mp4"
         },
 
         overview: {
@@ -2255,12 +2255,12 @@ export const tournamentDetails = {
             },
         ]
     },
-    premierLeague2223: {
+    premierLeague20222023: {
         config: {
             leagueId: 47,
             season: "2022/2023",
             query: "Premier League 2022 2023",
-            tournamentKey: "premierLeague2223"
+            tournamentKey: "premierLeague20222023"
         },
 
         fonts: {
@@ -2272,8 +2272,8 @@ export const tournamentDetails = {
         hero: {
             badge: "English Football",
             title: "PREMIER LEAGUE 22/23",
-            backgroundImage: "/images/premier-league-2.jpg",
-            video: "/videos/premier-league-22-23.mp4"
+            backgroundImage: "/images/football/premier-league-2.jpg",
+            video: "/videos/football/premier-league-22-23.mp4"
         },
 
         overview: {
@@ -2446,12 +2446,12 @@ export const tournamentDetails = {
     // ==========================================
     // BUNDESLIGA (ĐỨC)
     // ==========================================
-    bundesliga2627: {
+    bundesliga20262027: {
         config: {
             leagueId: 54,
             season: "2026/2027",
             query: "Bundesliga 2026 2027",
-            tournamentKey: "bundesliga2627"
+            tournamentKey: "bundesliga20262027"
         },
 
         fonts: {
@@ -2460,7 +2460,7 @@ export const tournamentDetails = {
         hero: {
             badge: "German Football",
             title: "BUNDESLIGA 26/27",
-            backgroundImage: "/images/bundesliga.jpg",
+            backgroundImage: "/images/football/bundesliga.jpg",
             video: ""
         },
 
@@ -2527,12 +2527,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    bundesliga2526: {
+    bundesliga20252026: {
         config: {
             leagueId: 54,
             season: "2025/2026",
             query: "Bundesliga 2025 2026",
-            tournamentKey: "bundesliga2526"
+            tournamentKey: "bundesliga20252026"
         },
 
         fonts: {
@@ -2541,7 +2541,7 @@ export const tournamentDetails = {
         hero: {
             badge: "German Football",
             title: "BUNDESLIGA 25/26",
-            backgroundImage: "/images/bundesliga.jpg",
+            backgroundImage: "/images/football/bundesliga.jpg",
             video: ""
         },
 
@@ -2608,12 +2608,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    bundesliga2425: {
+    bundesliga20242025: {
         config: {
             leagueId: 54,
             season: "2024/2025",
             query: "Bundesliga 2024 2025",
-            tournamentKey: "bundesliga2425"
+            tournamentKey: "bundesliga20242025"
         },
 
         fonts: {
@@ -2622,7 +2622,7 @@ export const tournamentDetails = {
         hero: {
             badge: "German Football",
             title: "BUNDESLIGA 24/25",
-            backgroundImage: "/images/bundesliga.jpg",
+            backgroundImage: "/images/football/bundesliga.jpg",
             video: ""
         },
 
@@ -2689,12 +2689,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    bundesliga2324: {
+    bundesliga20232024: {
         config: {
             leagueId: 54,
             season: "2023/2024",
             query: "Bundesliga 2023 2024",
-            tournamentKey: "bundesliga2324"
+            tournamentKey: "bundesliga20232024"
         },
 
         fonts: {
@@ -2703,7 +2703,7 @@ export const tournamentDetails = {
         hero: {
             badge: "German Football",
             title: "BUNDESLIGA 23/24",
-            backgroundImage: "/images/bundesliga.jpg",
+            backgroundImage: "/images/football/bundesliga.jpg",
             video: ""
         },
 
@@ -2770,12 +2770,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    bundesliga2223: {
+    bundesliga20222023: {
         config: {
             leagueId: 54,
             season: "2022/2023",
             query: "Bundesliga 2022 2023",
-            tournamentKey: "bundesliga2223"
+            tournamentKey: "bundesliga20222023"
         },
 
         fonts: {
@@ -2784,7 +2784,7 @@ export const tournamentDetails = {
         hero: {
             badge: "German Football",
             title: "BUNDESLIGA 22/23",
-            backgroundImage: "/images/bundesliga.jpg",
+            backgroundImage: "/images/football/bundesliga.jpg",
             video: ""
         },
 
@@ -2855,12 +2855,12 @@ export const tournamentDetails = {
     // ==========================================
     // LA LIGA (TÂY BAN NHA)
     // ==========================================
-    laLiga2627: {
+    laLiga20262027: {
         config: {
             leagueId: 87,
             season: "2026/2027",
             query: "La Liga 2026 2027",
-            tournamentKey: "laLiga2627"
+            tournamentKey: "laLiga20262027"
         },
 
         fonts: {
@@ -2869,7 +2869,7 @@ export const tournamentDetails = {
         hero: {
             badge: "Spanish Football",
             title: "LA LIGA 26/27",
-            backgroundImage: "/images/laliga.jpg",
+            backgroundImage: "/images/football/laliga.jpg",
             video: ""
         },
 
@@ -2938,12 +2938,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    laLiga2526: {
+    laLiga20252026: {
         config: {
             leagueId: 87,
             season: "2025/2026",
             query: "La Liga 2025 2026",
-            tournamentKey: "laLiga2526"
+            tournamentKey: "laLiga20252026"
         },
 
         fonts: {
@@ -2952,7 +2952,7 @@ export const tournamentDetails = {
         hero: {
             badge: "Spanish Football",
             title: "LA LIGA 25/26",
-            backgroundImage: "/images/laliga.jpg",
+            backgroundImage: "/images/football/laliga.jpg",
             video: ""
         },
 
@@ -3021,12 +3021,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    laLiga2425: {
+    laLiga20242025: {
         config: {
             leagueId: 87,
             season: "2024/2025",
             query: "La Liga 2024 2025",
-            tournamentKey: "laLiga2425"
+            tournamentKey: "laLiga20242025"
         },
 
         fonts: {
@@ -3035,7 +3035,7 @@ export const tournamentDetails = {
         hero: {
             badge: "Spanish Football",
             title: "LA LIGA 24/25",
-            backgroundImage: "/images/laliga.jpg",
+            backgroundImage: "/images/football/laliga.jpg",
             video: ""
         },
 
@@ -3104,12 +3104,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    laLiga2324: {
+    laLiga20232024: {
         config: {
             leagueId: 87,
             season: "2023/2024",
             query: "La Liga 2023 2024",
-            tournamentKey: "laLiga2324"
+            tournamentKey: "laLiga20232024"
         },
 
         fonts: {
@@ -3118,7 +3118,7 @@ export const tournamentDetails = {
         hero: {
             badge: "Spanish Football",
             title: "LA LIGA 23/24",
-            backgroundImage: "/images/laliga.jpg",
+            backgroundImage: "/images/football/laliga.jpg",
             video: ""
         },
 
@@ -3187,12 +3187,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    laLiga2223: {
+    laLiga20222023: {
         config: {
             leagueId: 87,
             season: "2022/2023",
             query: "La Liga 2022 2023",
-            tournamentKey: "laLiga2223"
+            tournamentKey: "laLiga20222023"
         },
 
         fonts: {
@@ -3201,7 +3201,7 @@ export const tournamentDetails = {
         hero: {
             badge: "Spanish Football",
             title: "LA LIGA 22/23",
-            backgroundImage: "/images/laliga.jpg",
+            backgroundImage: "/images/football/laliga.jpg",
             video: ""
         },
 
@@ -3274,12 +3274,12 @@ export const tournamentDetails = {
     // ==========================================
     // LIGUE 1 (PHÁP)
     // ==========================================
-    ligue12627: {
+    ligue120262027: {
         config: {
             leagueId: 53,
             season: "2026/2027",
             query: "Ligue 1 2026 2027",
-            tournamentKey: "ligue12627"
+            tournamentKey: "ligue120262027"
         },
 
         fonts: {
@@ -3288,7 +3288,7 @@ export const tournamentDetails = {
         hero: {
             badge: "French Football",
             title: "LIGUE 1 26/27",
-            backgroundImage: "/images/ligue1.jpg",
+            backgroundImage: "/images/football/ligue1.jpg",
             video: ""
         },
 
@@ -3355,12 +3355,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    ligue12526: {
+    ligue120252026: {
         config: {
             leagueId: 53,
             season: "2025/2026",
             query: "Ligue 1 2025 2026",
-            tournamentKey: "ligue12526"
+            tournamentKey: "ligue120252026"
         },
 
         fonts: {
@@ -3369,7 +3369,7 @@ export const tournamentDetails = {
         hero: {
             badge: "French Football",
             title: "LIGUE 1 25/26",
-            backgroundImage: "/images/ligue1.jpg",
+            backgroundImage: "/images/football/ligue1.jpg",
             video: ""
         },
 
@@ -3436,12 +3436,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    ligue12425: {
+    ligue120242025: {
         config: {
             leagueId: 53,
             season: "2024/2025",
             query: "Ligue 1 2024 2025",
-            tournamentKey: "ligue12425"
+            tournamentKey: "ligue120242025"
         },
 
         fonts: {
@@ -3450,7 +3450,7 @@ export const tournamentDetails = {
         hero: {
             badge: "French Football",
             title: "LIGUE 1 24/25",
-            backgroundImage: "/images/ligue1.jpg",
+            backgroundImage: "/images/football/ligue1.jpg",
             video: ""
         },
 
@@ -3517,12 +3517,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    ligue12324: {
+    ligue120232024: {
         config: {
             leagueId: 53,
             season: "2023/2024",
             query: "Ligue 1 2023 2024",
-            tournamentKey: "ligue12324"
+            tournamentKey: "ligue120232024"
         },
 
         fonts: {
@@ -3531,7 +3531,7 @@ export const tournamentDetails = {
         hero: {
             badge: "French Football",
             title: "LIGUE 1 23/24",
-            backgroundImage: "/images/ligue1.jpg",
+            backgroundImage: "/images/football/ligue1.jpg",
             video: ""
         },
 
@@ -3598,12 +3598,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    ligue12223: {
+    ligue120222023: {
         config: {
             leagueId: 53,
             season: "2022/2023",
             query: "Ligue 1 2022 2023",
-            tournamentKey: "ligue12223"
+            tournamentKey: "ligue120222023"
         },
 
         fonts: {
@@ -3612,7 +3612,7 @@ export const tournamentDetails = {
         hero: {
             badge: "French Football",
             title: "LIGUE 1 22/23",
-            backgroundImage: "/images/ligue1.jpg",
+            backgroundImage: "/images/football/ligue1.jpg",
             video: ""
         },
 
@@ -3685,12 +3685,12 @@ export const tournamentDetails = {
     // ==========================================
     // SERIE A (Ý)
     // ==========================================
-    serieA2627: {
+    serieA20262027: {
         config: {
             leagueId: 55,
             season: "2026/2027",
             query: "Serie A 2026 2027",
-            tournamentKey: "serieA2627"
+            tournamentKey: "serieA20262027"
         },
 
         fonts: {
@@ -3699,7 +3699,7 @@ export const tournamentDetails = {
         hero: {
             badge: "Italian Football",
             title: "SERIE A 26/27",
-            backgroundImage: "/images/serie-a.jpg",
+            backgroundImage: "/images/football/serie-a.jpg",
             video: ""
         },
 
@@ -3768,12 +3768,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    serieA2526: {
+    serieA20252026: {
         config: {
             leagueId: 55,
             season: "2025/2026",
             query: "Serie A 2025 2026",
-            tournamentKey: "serieA2526"
+            tournamentKey: "serieA20252026"
         },
 
         fonts: {
@@ -3782,7 +3782,7 @@ export const tournamentDetails = {
         hero: {
             badge: "Italian Football",
             title: "SERIE A 25/26",
-            backgroundImage: "/images/serie-a.jpg",
+            backgroundImage: "/images/football/serie-a.jpg",
             video: ""
         },
 
@@ -3851,12 +3851,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    serieA2425: {
+    serieA20242025: {
         config: {
             leagueId: 55,
             season: "2024/2025",
             query: "Serie A 2024 2025",
-            tournamentKey: "serieA2425"
+            tournamentKey: "serieA20242025"
         },
 
         fonts: {
@@ -3865,7 +3865,7 @@ export const tournamentDetails = {
         hero: {
             badge: "Italian Football",
             title: "SERIE A 24/25",
-            backgroundImage: "/images/serie-a.jpg",
+            backgroundImage: "/images/football/serie-a.jpg",
             video: ""
         },
 
@@ -3934,12 +3934,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    serieA2324: {
+    serieA20232024: {
         config: {
             leagueId: 55,
             season: "2023/2024",
             query: "Serie A 2023 2024",
-            tournamentKey: "serieA2324"
+            tournamentKey: "serieA20232024"
         },
 
         fonts: {
@@ -3948,7 +3948,7 @@ export const tournamentDetails = {
         hero: {
             badge: "Italian Football",
             title: "SERIE A 23/24",
-            backgroundImage: "/images/serie-a.jpg",
+            backgroundImage: "/images/football/serie-a.jpg",
             video: ""
         },
 
@@ -4017,12 +4017,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    serieA2223: {
+    serieA20222023: {
         config: {
             leagueId: 55,
             season: "2022/2023",
             query: "Serie A 2022 2023",
-            tournamentKey: "serieA2223"
+            tournamentKey: "serieA20222023"
         },
 
         fonts: {
@@ -4031,7 +4031,7 @@ export const tournamentDetails = {
         hero: {
             badge: "Italian Football",
             title: "SERIE A 22/23",
-            backgroundImage: "/images/serie-a.jpg",
+            backgroundImage: "/images/football/serie-a.jpg",
             video: ""
         },
 
@@ -4104,12 +4104,12 @@ export const tournamentDetails = {
     // ==========================================
     // UEFA CHAMPIONS LEAGUE (C1)
     // ==========================================
-    ucl2627: {
+    ucl20262027: {
         config: {
             leagueId: 42,
             season: "2026/2027",
             query: "Champions League 2026 2027",
-            tournamentKey: "ucl2627"
+            tournamentKey: "ucl20262027"
         },
 
         fonts: {
@@ -4118,7 +4118,7 @@ export const tournamentDetails = {
         hero: {
             badge: "European Football",
             title: "CHAMPIONS LEAGUE 26/27",
-            backgroundImage: "/images/ucl.jpg",
+            backgroundImage: "/images/football/ucl.jpg",
             video: ""
         },
 
@@ -4129,8 +4129,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 36,
                 matches: 189,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -4166,12 +4166,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    ucl2526: {
+    ucl20252026: {
         config: {
             leagueId: 42,
             season: "2025/2026",
             query: "Champions League 2025 2026",
-            tournamentKey: "ucl2526"
+            tournamentKey: "ucl20252026"
         },
 
         fonts: {
@@ -4180,7 +4180,7 @@ export const tournamentDetails = {
         hero: {
             badge: "European Football",
             title: "CHAMPIONS LEAGUE 25/26",
-            backgroundImage: "/images/ucl.jpg",
+            backgroundImage: "/images/football/ucl.jpg",
             video: ""
         },
 
@@ -4191,8 +4191,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 36,
                 matches: 189,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -4228,12 +4228,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    ucl2425: {
+    ucl20242025: {
         config: {
             leagueId: 42,
             season: "2024/2025",
             query: "Champions League 2024 2025",
-            tournamentKey: "ucl2425"
+            tournamentKey: "ucl20242025"
         },
 
         fonts: {
@@ -4242,7 +4242,7 @@ export const tournamentDetails = {
         hero: {
             badge: "European Football",
             title: "CHAMPIONS LEAGUE 24/25",
-            backgroundImage: "/images/ucl.jpg",
+            backgroundImage: "/images/football/ucl.jpg",
             video: ""
         },
 
@@ -4253,8 +4253,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 36,
                 matches: 189,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -4290,12 +4290,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    ucl2324: {
+    ucl20232024: {
         config: {
             leagueId: 42,
             season: "2023/2024",
             query: "Champions League 2023 2024",
-            tournamentKey: "ucl2324"
+            tournamentKey: "ucl20232024"
         },
 
         fonts: {
@@ -4304,7 +4304,7 @@ export const tournamentDetails = {
         hero: {
             badge: "European Football",
             title: "CHAMPIONS LEAGUE 23/24",
-            backgroundImage: "/images/ucl.jpg",
+            backgroundImage: "/images/football/ucl.jpg",
             video: ""
         },
 
@@ -4315,8 +4315,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 32,
                 matches: 125,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -4352,12 +4352,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    ucl2223: {
+    ucl20222023: {
         config: {
             leagueId: 42,
             season: "2022/2023",
             query: "Champions League 2022 2023",
-            tournamentKey: "ucl2223"
+            tournamentKey: "ucl20222023"
         },
 
         fonts: {
@@ -4366,7 +4366,7 @@ export const tournamentDetails = {
         hero: {
             badge: "European Football",
             title: "CHAMPIONS LEAGUE 22/23",
-            backgroundImage: "/images/ucl.jpg",
+            backgroundImage: "/images/football/ucl.jpg",
             video: ""
         },
 
@@ -4377,8 +4377,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 32,
                 matches: 125,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -4418,12 +4418,12 @@ export const tournamentDetails = {
     // ==========================================
     // UEFA EUROPA LEAGUE (C2)
     // ==========================================
-    uel2627: {
+    uel20262027: {
         config: {
             leagueId: 73,
             season: "2026/2027",
             query: "Europa League 2026 2027",
-            tournamentKey: "uel2627"
+            tournamentKey: "uel20262027"
         },
 
         fonts: {
@@ -4432,7 +4432,7 @@ export const tournamentDetails = {
         hero: {
             badge: "European Football",
             title: "EUROPA LEAGUE 26/27",
-            backgroundImage: "/images/uel.jpg",
+            backgroundImage: "/images/football/uel.jpg",
             video: ""
         },
 
@@ -4443,8 +4443,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 36,
                 matches: 189,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -4480,12 +4480,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    uel2526: {
+    uel20252026: {
         config: {
             leagueId: 73,
             season: "2025/2026",
             query: "Europa League 2025 2026",
-            tournamentKey: "uel2526"
+            tournamentKey: "uel20252026"
         },
 
         fonts: {
@@ -4494,7 +4494,7 @@ export const tournamentDetails = {
         hero: {
             badge: "European Football",
             title: "EUROPA LEAGUE 25/26",
-            backgroundImage: "/images/uel.jpg",
+            backgroundImage: "/images/football/uel.jpg",
             video: ""
         },
 
@@ -4505,8 +4505,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 36,
                 matches: 189,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -4542,12 +4542,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    uel2425: {
+    uel20242025: {
         config: {
             leagueId: 73,
             season: "2024/2025",
             query: "Europa League 2024 2025",
-            tournamentKey: "uel2425"
+            tournamentKey: "uel20242025"
         },
 
         fonts: {
@@ -4556,7 +4556,7 @@ export const tournamentDetails = {
         hero: {
             badge: "European Football",
             title: "EUROPA LEAGUE 24/25",
-            backgroundImage: "/images/uel.jpg",
+            backgroundImage: "/images/football/uel.jpg",
             video: ""
         },
 
@@ -4567,8 +4567,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 36,
                 matches: 189,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -4604,12 +4604,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    uel2324: {
+    uel20232024: {
         config: {
             leagueId: 73,
             season: "2023/2024",
             query: "Europa League 2023 2024",
-            tournamentKey: "uel2324"
+            tournamentKey: "uel20232024"
         },
 
         fonts: {
@@ -4618,7 +4618,7 @@ export const tournamentDetails = {
         hero: {
             badge: "European Football",
             title: "EUROPA LEAGUE 23/24",
-            backgroundImage: "/images/uel.jpg",
+            backgroundImage: "/images/football/uel.jpg",
             video: ""
         },
 
@@ -4629,8 +4629,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 32,
                 matches: 141,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -4666,12 +4666,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    uel2223: {
+    uel20222023: {
         config: {
             leagueId: 73,
             season: "2022/2023",
             query: "Europa League 2022 2023",
-            tournamentKey: "uel2223"
+            tournamentKey: "uel20222023"
         },
 
         fonts: {
@@ -4680,7 +4680,7 @@ export const tournamentDetails = {
         hero: {
             badge: "European Football",
             title: "EUROPA LEAGUE 22/23",
-            backgroundImage: "/images/uel.jpg",
+            backgroundImage: "/images/football/uel.jpg",
             video: ""
         },
 
@@ -4691,8 +4691,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 32,
                 matches: 141,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -4732,12 +4732,12 @@ export const tournamentDetails = {
     // ==========================================
     // UEFA CONFERENCE LEAGUE (C3)
     // ==========================================
-    ucl32627: {
+    ucl320262027: {
         config: {
-            leagueId: 282,
+            leagueId: 10216,
             season: "2026/2027",
             query: "Conference League 2026 2027",
-            tournamentKey: "ucl32627"
+            tournamentKey: "ucl320262027"
         },
 
         fonts: {
@@ -4746,7 +4746,7 @@ export const tournamentDetails = {
         hero: {
             badge: "European Football",
             title: "CONFERENCE LEAGUE 26/27",
-            backgroundImage: "/images/ucl3.jpg",
+            backgroundImage: "/images/football/ucl3.jpg",
             video: ""
         },
 
@@ -4757,8 +4757,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 36,
                 matches: 153,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -4794,12 +4794,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    ucl32526: {
+    ucl320252026: {
         config: {
-            leagueId: 282,
+            leagueId: 10216,
             season: "2025/2026",
             query: "Conference League 2025 2026",
-            tournamentKey: "ucl32526"
+            tournamentKey: "ucl320252026"
         },
 
         fonts: {
@@ -4808,7 +4808,7 @@ export const tournamentDetails = {
         hero: {
             badge: "European Football",
             title: "CONFERENCE LEAGUE 25/26",
-            backgroundImage: "/images/ucl3.jpg",
+            backgroundImage: "/images/football/ucl3.jpg",
             video: ""
         },
 
@@ -4819,8 +4819,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 36,
                 matches: 153,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -4856,12 +4856,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    ucl32425: {
+    ucl320242025: {
         config: {
-            leagueId: 282,
+            leagueId: 10216,
             season: "2024/2025",
             query: "Conference League 2024 2025",
-            tournamentKey: "ucl32425"
+            tournamentKey: "ucl320242025"
         },
 
         fonts: {
@@ -4870,7 +4870,7 @@ export const tournamentDetails = {
         hero: {
             badge: "European Football",
             title: "CONFERENCE LEAGUE 24/25",
-            backgroundImage: "/images/ucl3.jpg",
+            backgroundImage: "/images/football/ucl3.jpg",
             video: ""
         },
 
@@ -4881,8 +4881,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 36,
                 matches: 153,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -4918,12 +4918,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    ucl32324: {
+    ucl320232024: {
         config: {
-            leagueId: 282,
+            leagueId: 10216,
             season: "2023/2024",
             query: "Europa Conference League 2023 2024",
-            tournamentKey: "ucl32324"
+            tournamentKey: "ucl320232024"
         },
 
         fonts: {
@@ -4932,7 +4932,7 @@ export const tournamentDetails = {
         hero: {
             badge: "European Football",
             title: "CONFERENCE LEAGUE 23/24",
-            backgroundImage: "/images/ucl3.jpg",
+            backgroundImage: "/images/football/ucl3.jpg",
             video: ""
         },
 
@@ -4943,8 +4943,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 32,
                 matches: 141,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -4980,12 +4980,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    ucl32223: {
+    ucl320222023: {
         config: {
-            leagueId: 282,
+            leagueId: 10216,
             season: "2022/2023",
             query: "Europa Conference League 2022 2023",
-            tournamentKey: "ucl32223"
+            tournamentKey: "ucl320222023"
         },
 
         fonts: {
@@ -4994,7 +4994,7 @@ export const tournamentDetails = {
         hero: {
             badge: "European Football",
             title: "CONFERENCE LEAGUE 22/23",
-            backgroundImage: "/images/ucl3.jpg",
+            backgroundImage: "/images/football/ucl3.jpg",
             video: ""
         },
 
@@ -5005,8 +5005,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 32,
                 matches: 141,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -5046,12 +5046,12 @@ export const tournamentDetails = {
     // ==========================================
     // FA CUP (CÚP QUỐC GIA ANH)
     // ==========================================
-    facup2627: {
+    facup20262027: {
         config: {
             leagueId: 132,
             season: "2026/2027",
             query: "FA Cup 2026 2027",
-            tournamentKey: "facup2627"
+            tournamentKey: "facup20262027"
         },
 
         fonts: {
@@ -5060,7 +5060,7 @@ export const tournamentDetails = {
         hero: {
             badge: "English Football",
             title: "FA CUP 26/27",
-            backgroundImage: "/images/fa-cup.jpg",
+            backgroundImage: "/images/football/fa-cup.jpg",
             video: ""
         },
 
@@ -5071,8 +5071,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 732,
                 matches: 800,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -5108,12 +5108,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    facup2526: {
+    facup20252026: {
         config: {
             leagueId: 132,
             season: "2025/2026",
             query: "FA Cup 2025 2026",
-            tournamentKey: "facup2526"
+            tournamentKey: "facup20252026"
         },
 
         fonts: {
@@ -5122,7 +5122,7 @@ export const tournamentDetails = {
         hero: {
             badge: "English Football",
             title: "FA CUP 25/26",
-            backgroundImage: "/images/fa-cup.jpg",
+            backgroundImage: "/images/football/fa-cup.jpg",
             video: ""
         },
 
@@ -5133,8 +5133,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 732,
                 matches: 800,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -5170,12 +5170,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    facup2425: {
+    facup20242025: {
         config: {
             leagueId: 132,
             season: "2024/2025",
             query: "FA Cup 2024 2025",
-            tournamentKey: "facup2425"
+            tournamentKey: "facup20242025"
         },
 
         fonts: {
@@ -5184,7 +5184,7 @@ export const tournamentDetails = {
         hero: {
             badge: "English Football",
             title: "FA CUP 24/25",
-            backgroundImage: "/images/fa-cup.jpg",
+            backgroundImage: "/images/football/fa-cup.jpg",
             video: ""
         },
 
@@ -5195,8 +5195,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 732,
                 matches: 800,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -5232,12 +5232,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    facup2324: {
+    facup20232024: {
         config: {
             leagueId: 132,
             season: "2023/2024",
             query: "FA Cup 2023 2024",
-            tournamentKey: "facup2324"
+            tournamentKey: "facup20232024"
         },
 
         fonts: {
@@ -5246,7 +5246,7 @@ export const tournamentDetails = {
         hero: {
             badge: "English Football",
             title: "FA CUP 23/24",
-            backgroundImage: "/images/fa-cup.jpg",
+            backgroundImage: "/images/football/fa-cup.jpg",
             video: ""
         },
 
@@ -5257,8 +5257,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 732,
                 matches: 800,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -5294,12 +5294,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    facup2223: {
+    facup20222023: {
         config: {
             leagueId: 132,
             season: "2022/2023",
             query: "FA Cup 2022 2023",
-            tournamentKey: "facup2223"
+            tournamentKey: "facup20222023"
         },
 
         fonts: {
@@ -5308,7 +5308,7 @@ export const tournamentDetails = {
         hero: {
             badge: "English Football",
             title: "FA CUP 22/23",
-            backgroundImage: "/images/fa-cup.jpg",
+            backgroundImage: "/images/football/fa-cup.jpg",
             video: ""
         },
 
@@ -5319,8 +5319,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 732,
                 matches: 800,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -5374,7 +5374,7 @@ export const tournamentDetails = {
         hero: {
             badge: "European Championship",
             title: "EURO 2028",
-            backgroundImage: "/images/euro.jpg",
+            backgroundImage: "/images/football/euro2028.jpg",
             video: ""
         },
 
@@ -5385,8 +5385,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 24,
                 matches: 51,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -5436,7 +5436,7 @@ export const tournamentDetails = {
         hero: {
             badge: "European Championship",
             title: "EURO 2024",
-            backgroundImage: "/images/euro.jpg",
+            backgroundImage: "/images/football/euro2024.jpg",
             video: ""
         },
 
@@ -5447,8 +5447,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 24,
                 matches: 51,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -5498,7 +5498,7 @@ export const tournamentDetails = {
         hero: {
             badge: "European Championship",
             title: "EURO 2020",
-            backgroundImage: "/images/euro.jpg",
+            backgroundImage: "/images/football/euro2020.jpg",
             video: ""
         },
 
@@ -5509,8 +5509,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 24,
                 matches: 51,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -5560,7 +5560,7 @@ export const tournamentDetails = {
         hero: {
             badge: "European Championship",
             title: "EURO 2016",
-            backgroundImage: "/images/euro.jpg",
+            backgroundImage: "/images/football/euro2016.jpg",
             video: ""
         },
 
@@ -5571,8 +5571,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 24,
                 matches: 51,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -5614,7 +5614,7 @@ export const tournamentDetails = {
     // ==========================================
     copaAmerica2028: {
         config: {
-            leagueId: 113,
+            leagueId: 44,
             season: "2028",
             query: "Copa America 2028",
             tournamentKey: "copaAmerica2028"
@@ -5626,7 +5626,7 @@ export const tournamentDetails = {
         hero: {
             badge: "South American Football",
             title: "COPA AMERICA 2028",
-            backgroundImage: "/images/copa-america.jpg",
+            backgroundImage: "/images/football/copa-america-2028.jpg",
             video: ""
         },
 
@@ -5637,8 +5637,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 16,
                 matches: 32,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -5676,7 +5676,7 @@ export const tournamentDetails = {
     },
     copaAmerica2024: {
         config: {
-            leagueId: 113,
+            leagueId: 44,
             season: "2024",
             query: "Copa America 2024",
             tournamentKey: "copaAmerica2024"
@@ -5688,7 +5688,7 @@ export const tournamentDetails = {
         hero: {
             badge: "South American Football",
             title: "COPA AMERICA 2024",
-            backgroundImage: "/images/copa-america.jpg",
+            backgroundImage: "/images/football/copa-america-2024.jpg",
             video: ""
         },
 
@@ -5699,8 +5699,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 16,
                 matches: 32,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -5738,7 +5738,7 @@ export const tournamentDetails = {
     },
     copaAmerica2021: {
         config: {
-            leagueId: 113,
+            leagueId: 44,
             season: "2021",
             query: "Copa America 2021",
             tournamentKey: "copaAmerica2021"
@@ -5750,7 +5750,7 @@ export const tournamentDetails = {
         hero: {
             badge: "South American Football",
             title: "COPA AMERICA 2021",
-            backgroundImage: "/images/copa-america.jpg",
+            backgroundImage: "/images/football/copa-america-2021.jpg",
             video: ""
         },
 
@@ -5761,8 +5761,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 10,
                 matches: 28,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
@@ -5800,7 +5800,7 @@ export const tournamentDetails = {
     },
     copaAmerica2019: {
         config: {
-            leagueId: 113,
+            leagueId: 44,
             season: "2019",
             query: "Copa America 2019",
             tournamentKey: "copaAmerica2019"
@@ -5812,7 +5812,7 @@ export const tournamentDetails = {
         hero: {
             badge: "South American Football",
             title: "COPA AMERICA 2019",
-            backgroundImage: "/images/copa-america.jpg",
+            backgroundImage: "/images/football/copa-america-2019.jpg",
             video: ""
         },
 
@@ -5823,8 +5823,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 12,
                 matches: 26,
-                cities: 0,
-                stadiums: 0
+            //     cities: 0,
+            //     stadiums: 0
             }
         },
 
@@ -5862,7 +5862,7 @@ export const tournamentDetails = {
     },
     copaAmerica2016: {
         config: {
-            leagueId: 113,
+            leagueId: 44,
             season: "2016",
             query: "Copa America 2016",
             tournamentKey: "copaAmerica2016"
@@ -5874,7 +5874,7 @@ export const tournamentDetails = {
         hero: {
             badge: "South American Football",
             title: "COPA AMERICA 2016",
-            backgroundImage: "/images/copa-america.jpg",
+            backgroundImage: "/images/football/copa-america-2016.jpg",
             video: ""
         },
 
@@ -5885,8 +5885,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 16,
                 matches: 32,
-                cities: 0,
-                stadiums: 0
+                // cities: 0,
+                // stadiums: 0
             }
         },
 
