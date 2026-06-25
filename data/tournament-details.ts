@@ -1711,7 +1711,7 @@ export const tournamentDetails = {
             badge: "English Football",
             title: "PREMIER LEAGUE 25/26",
             backgroundImage: "/images/football/premier-league-2.jpg",
-            video: "/videos/football/premier-league-25-26.mp4"
+            video: "/videos/football/premier-league-2025-2026.mp4"
         },
 
         overview: {
@@ -1899,7 +1899,7 @@ export const tournamentDetails = {
             badge: "English Football",
             title: "PREMIER LEAGUE 24/25",
             backgroundImage: "/images/football/premier-league-2.jpg",
-            video: "/videos/football/premier-league-24-25.mp4"
+            video: "/videos/football/premier-league-2024-2025.mp4"
         },
 
         overview: {
@@ -2085,7 +2085,7 @@ export const tournamentDetails = {
             badge: "English Football",
             title: "PREMIER LEAGUE 23/24",
             backgroundImage: "/images/football/premier-league-2.jpg",
-            video: "/videos/football/premier-league-23-24.mp4"
+            video: "/videos/football/premier-league-2023-2024.mp4"
         },
 
         overview: {
@@ -2273,7 +2273,7 @@ export const tournamentDetails = {
             badge: "English Football",
             title: "PREMIER LEAGUE 22/23",
             backgroundImage: "/images/football/premier-league-2.jpg",
-            video: "/videos/football/premier-league-22-23.mp4"
+            video: "/videos/football/premier-league-2022-2023.mp4"
         },
 
         overview: {
@@ -2542,7 +2542,7 @@ export const tournamentDetails = {
             badge: "German Football",
             title: "BUNDESLIGA 25/26",
             backgroundImage: "/images/football/bundesliga.jpg",
-            video: ""
+            video: "/videos/football/bundesliga-2025-2026.mp4"
         },
 
         overview: {
@@ -2623,7 +2623,7 @@ export const tournamentDetails = {
             badge: "German Football",
             title: "BUNDESLIGA 24/25",
             backgroundImage: "/images/football/bundesliga.jpg",
-            video: ""
+            video: "/videos/football/bundesliga-2024-2025.mp4"
         },
 
         overview: {
@@ -2704,7 +2704,7 @@ export const tournamentDetails = {
             badge: "German Football",
             title: "BUNDESLIGA 23/24",
             backgroundImage: "/images/football/bundesliga.jpg",
-            video: ""
+            video: "/videos/football/bundesliga-2023-2024.mp4"
         },
 
         overview: {
@@ -2785,7 +2785,7 @@ export const tournamentDetails = {
             badge: "German Football",
             title: "BUNDESLIGA 22/23",
             backgroundImage: "/images/football/bundesliga.jpg",
-            video: ""
+            video: "/videos/football/bundesliga-2022-2023.mp4"
         },
 
         overview: {
@@ -2832,7 +2832,6 @@ export const tournamentDetails = {
             { city: "Augsburg", country: "GER" },
             { city: "Gelsenkirchen", country: "GER" },
             { city: "Stuttgart", country: "GER" },
-            { city: "Berlin", country: "GER" }
         ],
 
         format: {
@@ -2953,7 +2952,7 @@ export const tournamentDetails = {
             badge: "Spanish Football",
             title: "LA LIGA 25/26",
             backgroundImage: "/images/football/laliga.jpg",
-            video: ""
+            video: "/videos/football/laliga-2025-2026.mp4"
         },
 
         overview: {
@@ -3036,7 +3035,7 @@ export const tournamentDetails = {
             badge: "Spanish Football",
             title: "LA LIGA 24/25",
             backgroundImage: "/images/football/laliga.jpg",
-            video: ""
+            video: "/videos/football/laliga-2024-2025.mp4"
         },
 
         overview: {
@@ -3119,7 +3118,7 @@ export const tournamentDetails = {
             badge: "Spanish Football",
             title: "LA LIGA 23/24",
             backgroundImage: "/images/football/laliga.jpg",
-            video: ""
+            video: "/videos/football/laliga-2023-2024.mp4"
         },
 
         overview: {
@@ -3202,7 +3201,7 @@ export const tournamentDetails = {
             badge: "Spanish Football",
             title: "LA LIGA 22/23",
             backgroundImage: "/images/football/laliga.jpg",
-            video: ""
+            video: "/videos/football/laliga-2022-2023.mp4"
         },
 
         overview: {
@@ -3370,7 +3369,7 @@ export const tournamentDetails = {
             badge: "French Football",
             title: "LIGUE 1 25/26",
             backgroundImage: "/images/football/ligue1.jpg",
-            video: ""
+            video: "/videos/football/ligue1-2025-2026.mp4"
         },
 
         overview: {
@@ -3451,7 +3450,7 @@ export const tournamentDetails = {
             badge: "French Football",
             title: "LIGUE 1 24/25",
             backgroundImage: "/images/football/ligue1.jpg",
-            video: ""
+            video: "/videos/football/ligue1-2024-2025.mp4"
         },
 
         overview: {
@@ -3532,7 +3531,7 @@ export const tournamentDetails = {
             badge: "French Football",
             title: "LIGUE 1 23/24",
             backgroundImage: "/images/football/ligue1.jpg",
-            video: ""
+            video: "/videos/football/ligue1-2023-2024.mp4"
         },
 
         overview: {
@@ -3613,7 +3612,7 @@ export const tournamentDetails = {
             badge: "French Football",
             title: "LIGUE 1 22/23",
             backgroundImage: "/images/football/ligue1.jpg",
-            video: ""
+            video: "/videos/football/ligue1-2022-2023.mp4"
         },
 
         overview: {
@@ -3783,7 +3782,7 @@ export const tournamentDetails = {
             badge: "Italian Football",
             title: "SERIE A 25/26",
             backgroundImage: "/images/football/serie-a.jpg",
-            video: ""
+            video: "/videos/football/serie-a-2025-2026.mp4"
         },
 
         overview: {
@@ -3866,7 +3865,7 @@ export const tournamentDetails = {
             badge: "Italian Football",
             title: "SERIE A 24/25",
             backgroundImage: "/images/football/serie-a.jpg",
-            video: ""
+            video: "/videos/football/serie-a-2024-2025.mp4"
         },
 
         overview: {
@@ -3949,7 +3948,7 @@ export const tournamentDetails = {
             badge: "Italian Football",
             title: "SERIE A 23/24",
             backgroundImage: "/images/football/serie-a.jpg",
-            video: ""
+            video: "/videos/football/serie-a-2023-2024.mp4"
         },
 
         overview: {
@@ -4032,7 +4031,7 @@ export const tournamentDetails = {
             badge: "Italian Football",
             title: "SERIE A 22/23",
             backgroundImage: "/images/football/serie-a.jpg",
-            video: ""
+            video: "/videos/football/serie-a-2022-2023.mp4"
         },
 
         overview: {
@@ -4181,7 +4180,7 @@ export const tournamentDetails = {
             badge: "European Football",
             title: "CHAMPIONS LEAGUE 25/26",
             backgroundImage: "/images/football/ucl.jpg",
-            video: ""
+            video: "/videos/football/ucl-2025-2026.mp4"
         },
 
         overview: {
@@ -4243,7 +4242,7 @@ export const tournamentDetails = {
             badge: "European Football",
             title: "CHAMPIONS LEAGUE 24/25",
             backgroundImage: "/images/football/ucl.jpg",
-            video: ""
+            video: "/videos/football/ucl-2024-2025.mp4"
         },
 
         overview: {
@@ -4305,7 +4304,7 @@ export const tournamentDetails = {
             badge: "European Football",
             title: "CHAMPIONS LEAGUE 23/24",
             backgroundImage: "/images/football/ucl.jpg",
-            video: ""
+            video: "/videos/football/ucl-2023-2024.mp4"
         },
 
         overview: {
@@ -4367,7 +4366,7 @@ export const tournamentDetails = {
             badge: "European Football",
             title: "CHAMPIONS LEAGUE 22/23",
             backgroundImage: "/images/football/ucl.jpg",
-            video: ""
+            video: "/videos/football/ucl-2022-2023.mp4"
         },
 
         overview: {
@@ -4495,7 +4494,7 @@ export const tournamentDetails = {
             badge: "European Football",
             title: "EUROPA LEAGUE 25/26",
             backgroundImage: "/images/football/uel.jpg",
-            video: ""
+            video: "/videos/football/uel-2025-2026.mp4"
         },
 
         overview: {
@@ -4557,7 +4556,7 @@ export const tournamentDetails = {
             badge: "European Football",
             title: "EUROPA LEAGUE 24/25",
             backgroundImage: "/images/football/uel.jpg",
-            video: ""
+            video: "/videos/football/uel-uecl-2024-2025.mp4"
         },
 
         overview: {
@@ -4619,7 +4618,7 @@ export const tournamentDetails = {
             badge: "European Football",
             title: "EUROPA LEAGUE 23/24",
             backgroundImage: "/images/football/uel.jpg",
-            video: ""
+            video: "/videos/football/uel-2023-2024.mp4"
         },
 
         overview: {
@@ -4681,7 +4680,7 @@ export const tournamentDetails = {
             badge: "European Football",
             title: "EUROPA LEAGUE 22/23",
             backgroundImage: "/images/football/uel.jpg",
-            video: ""
+            video: "/videos/football/uel-uecl-2022-2023.mp4"
         },
 
         overview: {
@@ -4732,12 +4731,12 @@ export const tournamentDetails = {
     // ==========================================
     // UEFA CONFERENCE LEAGUE (C3)
     // ==========================================
-    ucl320262027: {
+    uecl20262027: {
         config: {
             leagueId: 10216,
             season: "2026/2027",
             query: "Conference League 2026 2027",
-            tournamentKey: "ucl320262027"
+            tournamentKey: "uecl20262027"
         },
 
         fonts: {
@@ -4746,7 +4745,7 @@ export const tournamentDetails = {
         hero: {
             badge: "European Football",
             title: "CONFERENCE LEAGUE 26/27",
-            backgroundImage: "/images/football/ucl3.jpg",
+            backgroundImage: "/images/football/uecl.jpg",
             video: ""
         },
 
@@ -4794,12 +4793,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    ucl320252026: {
+    uecl20252026: {
         config: {
             leagueId: 10216,
             season: "2025/2026",
             query: "Conference League 2025 2026",
-            tournamentKey: "ucl320252026"
+            tournamentKey: "uecl20252026"
         },
 
         fonts: {
@@ -4808,8 +4807,8 @@ export const tournamentDetails = {
         hero: {
             badge: "European Football",
             title: "CONFERENCE LEAGUE 25/26",
-            backgroundImage: "/images/football/ucl3.jpg",
-            video: ""
+            backgroundImage: "/images/football/uecl.jpg",
+            video: "/videos/football/uecl-2025-2026.mp4"
         },
 
         overview: {
@@ -4856,12 +4855,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    ucl320242025: {
+    uecl20242025: {
         config: {
             leagueId: 10216,
             season: "2024/2025",
             query: "Conference League 2024 2025",
-            tournamentKey: "ucl320242025"
+            tournamentKey: "uecl20242025"
         },
 
         fonts: {
@@ -4870,8 +4869,8 @@ export const tournamentDetails = {
         hero: {
             badge: "European Football",
             title: "CONFERENCE LEAGUE 24/25",
-            backgroundImage: "/images/football/ucl3.jpg",
-            video: ""
+            backgroundImage: "/images/football/uecl.jpg",
+            video: "/videos/football/uecl-2024-2025.mp4"
         },
 
         overview: {
@@ -4918,12 +4917,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    ucl320232024: {
+    uecl20232024: {
         config: {
             leagueId: 10216,
             season: "2023/2024",
             query: "Europa Conference League 2023 2024",
-            tournamentKey: "ucl320232024"
+            tournamentKey: "uecl20232024"
         },
 
         fonts: {
@@ -4932,8 +4931,8 @@ export const tournamentDetails = {
         hero: {
             badge: "European Football",
             title: "CONFERENCE LEAGUE 23/24",
-            backgroundImage: "/images/football/ucl3.jpg",
-            video: ""
+            backgroundImage: "/images/football/uecl.jpg",
+            video: "/videos/football/uecl-2023-2024.mp4"
         },
 
         overview: {
@@ -4980,12 +4979,12 @@ export const tournamentDetails = {
 
         teams: []
     },
-    ucl320222023: {
+    uecl20222023: {
         config: {
             leagueId: 10216,
             season: "2022/2023",
             query: "Europa Conference League 2022 2023",
-            tournamentKey: "ucl320222023"
+            tournamentKey: "uecl20222023"
         },
 
         fonts: {
@@ -4994,8 +4993,8 @@ export const tournamentDetails = {
         hero: {
             badge: "European Football",
             title: "CONFERENCE LEAGUE 22/23",
-            backgroundImage: "/images/football/ucl3.jpg",
-            video: ""
+            backgroundImage: "/images/football/uecl.jpg",
+            video: "/videos/football/uecl-2022-2023.mp4"
         },
 
         overview: {

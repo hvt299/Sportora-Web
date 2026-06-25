@@ -6,7 +6,7 @@ import { tournaments } from '@/data/tournaments';
 export const dynamic = 'force-dynamic';
 
 export default async function Page() {
-    const { leagueId, season, query, tournamentKey } = tournamentDetails.ucl320262027.config;
+    const { leagueId, season, query, tournamentKey } = tournamentDetails.uecl20262027.config;
     const eventInfo = tournaments.flatMap(t => t.events).find(e => e.detailKey === tournamentKey);
     const category = eventInfo?.category || 'football';
 

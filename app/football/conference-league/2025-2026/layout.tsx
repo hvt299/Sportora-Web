@@ -1,4 +1,4 @@
-export default function Ucl320252026Layout({ children }: { children: React.ReactNode }) {
+export default function Uecl20252026Layout({ children }: { children: React.ReactNode }) {
     return (
         <div>
             {children}

@@ -376,25 +376,25 @@ export const tournaments = [
                 slug: "conference-league",
                 season: "2026-2027",
                 path: "/football/conference-league/2026-2027",
-                image: "/images/football/ucl3.jpg",
-                logo: "/images/football/ucl3-logo.png",
+                image: "/images/football/uecl.jpg",
+                logo: "/images/football/uecl-logo.png",
                 gradient: "from-slate-950 via-slate-900/80 to-transparent",
                 themeColor: "#22C55E",
                 startDate: "2026-09-17T00:00:00+07:00",
                 endDate: "2027-05-26T23:59:59+07:00",
-                detailKey: "ucl320262027",
+                detailKey: "uecl20262027",
             },
             {
-                id: "conference-league-2025-2026", category: "football", name: "UEFA Conference League 2025/2026", shortName: "C3 2025/2026", slug: "conference-league-2025-2026", season: "2025-2026", path: "/football/conference-league/2025-2026", image: "/images/football/ucl3-2.jpg", logo: "/images/football/ucl3-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#22C55E", startDate: "2025-10-02T00:00:00+07:00", endDate: "2026-05-27T23:59:59+07:00", detailKey: "ucl320252026"
+                id: "conference-league-2025-2026", category: "football", name: "UEFA Conference League 2025/2026", shortName: "C3 2025/2026", slug: "conference-league-2025-2026", season: "2025-2026", path: "/football/conference-league/2025-2026", image: "/images/football/uecl-2.jpg", logo: "/images/football/uecl-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#22C55E", startDate: "2025-10-02T00:00:00+07:00", endDate: "2026-05-27T23:59:59+07:00", detailKey: "uecl20252026"
             },
             {
-                id: "conference-league-2024-2025", category: "football", name: "UEFA Conference League 2024/2025", shortName: "C3 2024/2025", slug: "conference-league-2024-2025", season: "2024-2025", path: "/football/conference-league/2024-2025", image: "/images/football/ucl3-2.jpg", logo: "/images/football/ucl3-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#22C55E", startDate: "2024-10-03T00:00:00+07:00", endDate: "2025-05-28T23:59:59+07:00", detailKey: "ucl320242025"
+                id: "conference-league-2024-2025", category: "football", name: "UEFA Conference League 2024/2025", shortName: "C3 2024/2025", slug: "conference-league-2024-2025", season: "2024-2025", path: "/football/conference-league/2024-2025", image: "/images/football/uecl-2.jpg", logo: "/images/football/uecl-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#22C55E", startDate: "2024-10-03T00:00:00+07:00", endDate: "2025-05-28T23:59:59+07:00", detailKey: "uecl20242025"
             },
             {
-                id: "conference-league-2023-2024", category: "football", name: "UEFA Conference League 2023/2024", shortName: "C3 2023/2024", slug: "conference-league-2023-2024", season: "2023-2024", path: "/football/conference-league/2023-2024", image: "/images/football/ucl3-2.jpg", logo: "/images/football/ucl3-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#22C55E", startDate: "2023-09-21T00:00:00+07:00", endDate: "2024-05-29T23:59:59+07:00", detailKey: "ucl320232024"
+                id: "conference-league-2023-2024", category: "football", name: "UEFA Conference League 2023/2024", shortName: "C3 2023/2024", slug: "conference-league-2023-2024", season: "2023-2024", path: "/football/conference-league/2023-2024", image: "/images/football/uecl-2.jpg", logo: "/images/football/uecl-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#22C55E", startDate: "2023-09-21T00:00:00+07:00", endDate: "2024-05-29T23:59:59+07:00", detailKey: "uecl20232024"
             },
             {
-                id: "conference-league-2022-2023", category: "football", name: "UEFA Conference League 2022/2023", shortName: "C3 2022/2023", slug: "conference-league-2022-2023", season: "2022-2023", path: "/football/conference-league/2022-2023", image: "/images/football/ucl3-2.jpg", logo: "/images/football/ucl3-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#22C55E", startDate: "2022-09-08T00:00:00+07:00", endDate: "2023-06-07T23:59:59+07:00", detailKey: "ucl3d20222023"
+                id: "conference-league-2022-2023", category: "football", name: "UEFA Conference League 2022/2023", shortName: "C3 2022/2023", slug: "conference-league-2022-2023", season: "2022-2023", path: "/football/conference-league/2022-2023", image: "/images/football/uecl-2.jpg", logo: "/images/football/uecl-logo.png", gradient: "from-slate-950 via-slate-900/80 to-transparent", themeColor: "#22C55E", startDate: "2022-09-08T00:00:00+07:00", endDate: "2023-06-07T23:59:59+07:00", detailKey: "uecld20222023"
             },
 
             // ===================== FA CUP =====================
