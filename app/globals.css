@@ -84,6 +84,84 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Product-Sans-Bold";
+  src: url("/fonts/Product-Sans-Bold.otf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Product-Sans-Regular";
+  src: url("/fonts/Product-Sans-Regular.otf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ITC-Novarese-Book";
+  src: url("/fonts/ITC-Novarese-Book.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ITC-Novarese-Std-Bold";
+  src: url("/fonts/ITC-Novarese-Std-Bold.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ITC-Novarese-Ultra";
+  src: url("/fonts/ITC-Novarese-Ultra") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Europa-Nuova-Bold";
+  src: url("/fonts/Europa-Nuova-Bold.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Europa-Nuova-Regular";
+  src: url("/fonts/Europa-Nuova-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Europa-Title-Bold";
+  src: url("/fonts/Europa-Title-Bold.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DVN-UEFAEuro-HeavyNarrow";
+  src: url("/fonts/DVN-UEFAEuro-HeavyNarrow.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DFVN-BridgeType-Regular";
+  src: url("/fonts/DFVN-BridgeType-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FS-PFBeauSansPro-Bold";
+  src: url("/fonts/FS-PFBeauSansPro-Bold.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FS-PFBeauSansPro-Regular";
+  src: url("/fonts/FS-PFBeauSansPro-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "EuNerkoOne-Regular";
+  src: url("/fonts/NerkoOne-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
 @theme inline {
   --font-body: "NotoSans", sans-serif;
 
@@ -106,6 +184,24 @@
   --font-pl-23-24: "Premier-League-2025-2026", sans-serif;
   --font-pl-bold: "FVH-PremierLeagueW01-Bold", sans-serif;
   --font-pl-regular: "FVH-PremierLeagueW01-Regular", sans-serif;
+
+  --font-ps-bold: "Product-Sans-Bold", sans-serif;
+  --font-ps-regular: "Product-Sans-Regular", sans-serif;
+
+  --font-itc-novarese-ultra: "ITC-Novarese-Ultra", sans-serif;
+  --font-itc-novarese-book: "ITC-Novarese-Book", sans-serif;
+  --font-itc-novarese-std-bold: "ITC-Novarese-Std-Bold", sans-serif;
+
+  --font-europa-title-bold: "Europa-Title-Bold", sans-serif;
+  --font-europa-nuova-bold: "Europa-Nuova-Bold", sans-serif;
+  --font-europa-nuova-regular: "Europa-Nuova-Regular", sans-serif;
+
+  --font-euro2024: "DVN-UEFAEuro-HeavyNarrow", sans-serif;
+  --font-euro2020: "DFVN-BridgeType-Regular", sans-serif;
+  --font-euro2016-bold: "FS-PFBeauSansPro-Bold", sans-serif;
+  --font-euro2016-regular: "FS-PFBeauSansPro-Regular", sans-serif;
+
+  --font-copa-america: "EuNerkoOne-Regular", sans-serif;
 }
 
 :root {

@@ -799,7 +799,7 @@ export const tournamentDetails = {
         },
 
         fonts: {
-            // base: "font-wc2014",
+            base: "font-ps-bold",
             heading: "font-wc2014",
             subHeading: "font-wc2014"
         },
@@ -1039,7 +1039,7 @@ export const tournamentDetails = {
         },
 
         fonts: {
-            // base: "font-wc2010",
+            base: "font-ps-bold",
             heading: "font-wc2010",
             subHeading: "font-wc2010"
         },
@@ -2455,6 +2455,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -2536,6 +2539,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -2617,6 +2623,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -2698,6 +2707,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -2779,6 +2791,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -2863,6 +2878,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -2946,6 +2964,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -3029,6 +3050,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -3112,6 +3136,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -3195,6 +3222,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -3282,6 +3312,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -3363,6 +3396,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -3444,6 +3480,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -3525,6 +3564,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -3606,6 +3648,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -3693,6 +3738,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -3776,6 +3824,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -3859,6 +3910,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -3942,6 +3996,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -4025,6 +4082,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -4112,6 +4172,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-itc-novarese-ultra",
+            heading: "font-itc-novarese-book",
+            subHeading: "font-itc-novarese-std-bold"
         },
 
         hero: {
@@ -4174,6 +4237,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-itc-novarese-ultra",
+            heading: "font-itc-novarese-book",
+            subHeading: "font-itc-novarese-std-bold"
         },
 
         hero: {
@@ -4236,6 +4302,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-itc-novarese-ultra",
+            heading: "font-itc-novarese-book",
+            subHeading: "font-itc-novarese-std-bold"
         },
 
         hero: {
@@ -4298,6 +4367,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-itc-novarese-ultra",
+            heading: "font-itc-novarese-book",
+            subHeading: "font-itc-novarese-std-bold"
         },
 
         hero: {
@@ -4360,6 +4432,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-itc-novarese-ultra",
+            heading: "font-itc-novarese-book",
+            subHeading: "font-itc-novarese-std-bold"
         },
 
         hero: {
@@ -4426,6 +4501,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-europa-title-bold",
+            heading: "font-europa-nuova-bold",
+            subHeading: "font-europa-nuova-regular"
         },
 
         hero: {
@@ -4488,6 +4566,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-europa-title-bold",
+            heading: "font-europa-nuova-bold",
+            subHeading: "font-europa-nuova-regular"
         },
 
         hero: {
@@ -4550,6 +4631,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-europa-title-bold",
+            heading: "font-europa-nuova-bold",
+            subHeading: "font-europa-nuova-regular"
         },
 
         hero: {
@@ -4612,6 +4696,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-europa-title-bold",
+            heading: "font-europa-nuova-bold",
+            subHeading: "font-europa-nuova-regular"
         },
 
         hero: {
@@ -4674,6 +4761,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-europa-title-bold",
+            heading: "font-europa-nuova-bold",
+            subHeading: "font-europa-nuova-regular"
         },
 
         hero: {
@@ -4740,6 +4830,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-europa-title-bold",
+            heading: "font-europa-nuova-bold",
+            subHeading: "font-europa-nuova-regular"
         },
 
         hero: {
@@ -4802,6 +4895,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-europa-title-bold",
+            heading: "font-europa-nuova-bold",
+            subHeading: "font-europa-nuova-regular"
         },
 
         hero: {
@@ -4864,6 +4960,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-europa-title-bold",
+            heading: "font-europa-nuova-bold",
+            subHeading: "font-europa-nuova-regular"
         },
 
         hero: {
@@ -4921,11 +5020,14 @@ export const tournamentDetails = {
         config: {
             leagueId: 10216,
             season: "2023/2024",
-            query: "Europa Conference League 2023 2024",
+            query: "Conference League 2023 2024",
             tournamentKey: "uecl20232024"
         },
 
         fonts: {
+            base: "font-europa-title-bold",
+            heading: "font-europa-nuova-bold",
+            subHeading: "font-europa-nuova-regular"
         },
 
         hero: {
@@ -4936,7 +5038,7 @@ export const tournamentDetails = {
         },
 
         overview: {
-            title: "UEFA Europa Conference League 2023/24",
+            title: "UEFA Conference League 2023/24",
             description:
                 "Mùa giải 2023/24 là phiên bản cuối cùng theo thể thức cũ trước khi giải đấu chuyển sang mô hình League Phase hiện đại.",
             stats: {
@@ -4983,11 +5085,14 @@ export const tournamentDetails = {
         config: {
             leagueId: 10216,
             season: "2022/2023",
-            query: "Europa Conference League 2022 2023",
+            query: "Conference League 2022 2023",
             tournamentKey: "uecl20222023"
         },
 
         fonts: {
+            base: "font-europa-title-bold",
+            heading: "font-europa-nuova-bold",
+            subHeading: "font-europa-nuova-regular"
         },
 
         hero: {
@@ -4998,7 +5103,7 @@ export const tournamentDetails = {
         },
 
         overview: {
-            title: "UEFA Europa Conference League 2022/23",
+            title: "UEFA Conference League 2022/23",
             description:
                 "Mùa giải 2022/23 chứng kiến sự trưởng thành rõ rệt của giải đấu trẻ nhất UEFA, mang đến nhiều câu chuyện bất ngờ và giàu cảm xúc.",
             stats: {
@@ -5054,6 +5159,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -5116,6 +5224,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -5178,6 +5289,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -5240,6 +5354,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -5302,6 +5419,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -5368,6 +5488,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -5430,6 +5553,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-euro2024",
+            heading: "font-euro2024",
+            subHeading: "font-euro2024"
         },
 
         hero: {
@@ -5492,6 +5618,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-euro2020",
+            heading: "font-euro2020",
+            subHeading: "font-euro2020"
         },
 
         hero: {
@@ -5554,6 +5683,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-euro2016-bold",
+            heading: "font-euro2016-bold",
+            subHeading: "font-euro2016-regular"
         },
 
         hero: {
@@ -5620,6 +5752,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-ps-bold",
+            subHeading: "font-ps-regular"
         },
 
         hero: {
@@ -5682,6 +5817,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-copa-america",
+            subHeading: "font-copa-america"
         },
 
         hero: {
@@ -5744,6 +5882,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-copa-america",
+            subHeading: "font-copa-america"
         },
 
         hero: {
@@ -5806,6 +5947,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-copa-america",
+            subHeading: "font-copa-america"
         },
 
         hero: {
@@ -5822,8 +5966,8 @@ export const tournamentDetails = {
             stats: {
                 teams: 12,
                 matches: 26,
-            //     cities: 0,
-            //     stadiums: 0
+                //     cities: 0,
+                //     stadiums: 0
             }
         },
 
@@ -5868,6 +6012,9 @@ export const tournamentDetails = {
         },
 
         fonts: {
+            base: "font-ps-bold",
+            heading: "font-copa-america",
+            subHeading: "font-copa-america"
         },
 
         hero: {
