@@ -24,10 +24,13 @@ export default function GroupTable({ data, groupName, tournamentKey = '', catego
         const tk = tKey.toLowerCase();
 
         // 1. Cúp Châu Âu (C1, C2, C3)
-        if (tk.includes('ucl') || tk.includes('ecl') || tk.includes('ucl3')) {
+        if (tk.includes('ucl') || tk.includes('uel') || tk.includes('uecl') || tk.includes('champions') || tk.includes('europa') || tk.includes('conference')) {
             switch (upperColor) {
                 case '#2AD572': return 'Đủ điều kiện vòng 16 đội';
-                case '#FFD908': return 'Vòng loại trực tiếp';
+                case '#FFD908':
+                    if (tk.includes('ucl')) return 'Vòng play-off Cúp C2 (Europa League)';
+                    if (tk.includes('uel')) return 'Vòng play-off Cúp C3 (Conference League)';
+                    return 'Vòng play-off';
                 case '#0046A7':
                 case '#02CCF0': return 'Đủ điều kiện vòng 32 đội';
                 case '#FF4646': return 'Bị loại';

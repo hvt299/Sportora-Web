@@ -141,7 +141,7 @@ export default function FootballHero({ matchData, homeTeam, awayTeam, fonts, cat
                 <div className="flex flex-col items-center gap-2 mb-6 z-10 text-slate-400 text-xs md:text-sm font-medium">
                     <div className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5 text-blue-400" /> <span className="capitalize">{displayTime}</span></div>
                     <div className="flex items-center gap-3">
-                        <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-emerald-400" /> {infoBox?.Stadium?.name || 'Đang cập nhật'}</span>
+                        <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-emerald-400" /> Địa điểm: {infoBox?.Stadium?.name || 'Đang cập nhật'}</span>
                         <span className="w-1 h-1 bg-slate-700 rounded-full" />
                         <span className="flex items-center gap-1.5"><User className="w-3.5 h-3.5 text-amber-400" /> Trọng tài chính: {infoBox?.Referee?.text || 'Đang cập nhật'}</span>
                     </div>

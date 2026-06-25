@@ -5122,7 +5122,7 @@ export const tournamentDetails = {
             badge: "English Football",
             title: "FA CUP 25/26",
             backgroundImage: "/images/football/fa-cup.jpg",
-            video: ""
+            video: "/videos/football/fa-cup-2025-2026.mp4"
         },
 
         overview: {
@@ -5184,7 +5184,7 @@ export const tournamentDetails = {
             badge: "English Football",
             title: "FA CUP 24/25",
             backgroundImage: "/images/football/fa-cup.jpg",
-            video: ""
+            video: "/videos/football/fa-cup-2024-2025.mp4"
         },
 
         overview: {
@@ -5246,7 +5246,7 @@ export const tournamentDetails = {
             badge: "English Football",
             title: "FA CUP 23/24",
             backgroundImage: "/images/football/fa-cup.jpg",
-            video: ""
+            video: "/videos/football/fa-cup-2023-2024.mp4"
         },
 
         overview: {
@@ -5308,7 +5308,7 @@ export const tournamentDetails = {
             badge: "English Football",
             title: "FA CUP 22/23",
             backgroundImage: "/images/football/fa-cup.jpg",
-            video: ""
+            video: "/videos/football/fa-cup-2022-2023.mp4"
         },
 
         overview: {
@@ -5374,7 +5374,7 @@ export const tournamentDetails = {
             badge: "European Championship",
             title: "EURO 2028",
             backgroundImage: "/images/football/euro2028.jpg",
-            video: ""
+            video: "/videos/football/euro2028.mp4"
         },
 
         overview: {
@@ -5436,7 +5436,7 @@ export const tournamentDetails = {
             badge: "European Championship",
             title: "EURO 2024",
             backgroundImage: "/images/football/euro2024.jpg",
-            video: ""
+            video: "/videos/football/euro2024.mp4"
         },
 
         overview: {
@@ -5498,7 +5498,7 @@ export const tournamentDetails = {
             badge: "European Championship",
             title: "EURO 2020",
             backgroundImage: "/images/football/euro2020.jpg",
-            video: ""
+            video: "/videos/football/euro2020.mp4"
         },
 
         overview: {
@@ -5560,7 +5560,7 @@ export const tournamentDetails = {
             badge: "European Championship",
             title: "EURO 2016",
             backgroundImage: "/images/football/euro2016.jpg",
-            video: ""
+            video: "/videos/football/euro2016.mp4"
         },
 
         overview: {
@@ -5688,7 +5688,7 @@ export const tournamentDetails = {
             badge: "South American Football",
             title: "COPA AMERICA 2024",
             backgroundImage: "/images/football/copa-america-2024.jpg",
-            video: ""
+            video: "/videos/football/copa-america-2024.mp4"
         },
 
         overview: {
@@ -5750,7 +5750,7 @@ export const tournamentDetails = {
             badge: "South American Football",
             title: "COPA AMERICA 2021",
             backgroundImage: "/images/football/copa-america-2021.jpg",
-            video: ""
+            video: "/videos/football/copa-america-2021.mp4"
         },
 
         overview: {
@@ -5812,7 +5812,7 @@ export const tournamentDetails = {
             badge: "South American Football",
             title: "COPA AMERICA 2019",
             backgroundImage: "/images/football/copa-america-2019.jpg",
-            video: ""
+            video: "/videos/football/copa-america-2019.mp4"
         },
 
         overview: {
@@ -5874,7 +5874,7 @@ export const tournamentDetails = {
             badge: "South American Football",
             title: "COPA AMERICA 2016",
             backgroundImage: "/images/football/copa-america-2016.jpg",
-            video: ""
+            video: "/videos/football/copa-america-2016.mp4"
         },
 
         overview: {
